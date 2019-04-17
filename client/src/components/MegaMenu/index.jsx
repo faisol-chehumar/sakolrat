@@ -2,9 +2,9 @@ import React from 'react'
 import { Row, Col } from 'antd'
 import styled from 'styled-components'
 
-import categories from './categories'
+import menu from './menu'
 
-const menuList = Object.keys(categories)
+const { menuLeft, menuRight } = menu
 
 const MegaMenuContainer = styled.div`
   background-color: #fa4c06;
@@ -17,9 +17,25 @@ const MegaMenuContainer = styled.div`
     display: inline-block;
     font-size: .8rem;
     font-weight: 600;
-    color: #fff;
     padding: 1.35rem .5rem;
     height: 44px;
+  }
+
+  .sub-menu a {
+    color: #fff;
+
+    &:hover {
+      background-color: #fff;
+      color: #333;
+    }
+  }
+
+  .extra-menu a {
+    color: #333;
+
+    &:hover {
+      color: #fff;
+    }
   }
 `
 
@@ -27,18 +43,26 @@ const MegaMenu = () => (
   <MegaMenuContainer>
     <Row gutter={16}>
       <Col xs={0} lg={16}>
-        <div className="text-left">
+        <div className="text-left sub-menu">
           {
-            menuList.map((menu, index) => (
+            menuLeft.map((menu, index) => (
               <a key={index}>
-                {menu.toUpperCase()}
+                {menu.title.toUpperCase()}
               </a>
             ))
           }
         </div>
       </Col>
       <Col xs={0} lg={8}>
-        sddsd
+        <div className="text-right extra-menu">
+          {
+            menuRight.map((menu, index) => (
+              <a key={index}>
+                {menu.title.toUpperCase()}
+              </a>
+            ))
+          }
+        </div>
       </Col>
     </Row>
   </MegaMenuContainer>

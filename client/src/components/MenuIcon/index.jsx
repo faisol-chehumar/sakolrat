@@ -13,7 +13,7 @@ const MenuIconContainer = styled.div`
     font-size: 0.8rem;
     display: block;
     position: relative;
-    margin-right: 1rem;
+    margin-left: 1rem;
   }
 
   span {

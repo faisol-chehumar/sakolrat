@@ -16,6 +16,10 @@ const GlobalStyle = createGlobalStyle`
     text-align: left !important;
   }
 
+  .text-right {
+    text-align: right !important;
+  }
+
   .ant-layout-header {
     background-color: transparent !imporatnt;
   }
