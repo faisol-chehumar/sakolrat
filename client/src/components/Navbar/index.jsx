@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 import Logo from '../Logo'
 import MenuIcon from '../MenuIcon'
+import MegaMenu from '../MegaMenu'
 
 const DarkHeader = styled.nav`
   color: #fff;
@@ -131,7 +132,8 @@ const Navbar = () => {
           <Col
             className="sub-header"
             xs={{ span: 24, offset: 0 }}
-            lg={{ span: 10, offset: 6 }}
+            lg={{ span: 9, offset: 5 }}
+            xl={{ span: 10, offset: 6 }}
           >
             <Input
               placeholder="Search Product or Part #"
@@ -140,7 +142,7 @@ const Navbar = () => {
               }
             />
           </Col>
-          <Col xs={0} lg={4}>
+          <Col xs={0} lg={6} xl={4}>
             <div className="menu-group">
               <MenuIcon
                 type="tool"
@@ -161,6 +163,7 @@ const Navbar = () => {
           </Col>
         </Row>
       </MainMenu>
+      <MegaMenu />
       <Drawer
         title="Basic Drawer"
         placement="left"

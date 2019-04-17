@@ -8,6 +8,14 @@ const {
 } = Layout
 
 const GlobalStyle = createGlobalStyle`
+  a {
+    color: #fa4c06;
+  }
+
+  .text-left {
+    text-align: left !important;
+  }
+
   .ant-layout-header {
     background-color: transparent !imporatnt;
   }
