@@ -6,7 +6,7 @@ import Logo from '../Logo'
 import MenuIcon from '../MenuIcon'
 import MegaMenu from '../MegaMenu'
 
-const DarkHeader = styled.nav`
+const DarkHeader = styled.div`
   color: #fff;
 
   div {
@@ -70,7 +70,7 @@ const Navbar = () => {
   return (
     <DarkHeader>
       <UtilityBar>
-        <Row gutter={16}>
+        <Row>
           <Col xs={0} lg={6} xl={4} offset={1}>
             <a href="/customer-service">
               Contact Our Team:
