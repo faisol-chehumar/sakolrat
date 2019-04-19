@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Row, Col } from 'antd'
 import styled from 'styled-components'
 
@@ -68,53 +68,77 @@ const MegaMemuPanel = styled.div`
   }
 `
 
-const MegaMenu = () => (
-  <MegaMenuContainer>
-    <MegaMenuBar>
-      <Row gutter={16}>
-        <Col xs={0} lg={16}>
-          <ul className="text-left sub-menu">
-            {
-              menuLeft.map((menu, index) => (
-                <li key={index}>
-                  <a href={menu.title.replace(' ', '-')}>
+const MegaMenu = () => {
+  const [ currentMenuIndex ] = useState(0)
+
+  return (
+    <MegaMenuContainer>
+      <MegaMenuBar>
+        <Row gutter={16}>
+          <Col xs={0} lg={16}>
+            <ul className="text-left sub-menu">
+              {
+                menuLeft.map((menu, index) => (
+                  <li key={index}>
+                    <a href={menu.title.replace(' ', '-')}>
+                      {menu.title.toUpperCase()}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </Col>
+          <Col xs={0} lg={8}>
+            <div className="text-right extra-menu">
+              {
+                menuRight.map((menu, index) => (
+                  <a key={index}>
                     {menu.title.toUpperCase()}
                   </a>
-                </li>
-              ))
-            }
-          </ul>
-        </Col>
-        <Col xs={0} lg={8}>
-          <div className="text-right extra-menu">
-            {
-              menuRight.map((menu, index) => (
-                <a key={index}>
-                  {menu.title.toUpperCase()}
-                </a>
-              ))
-            }
-          </div>
-        </Col>
-      </Row>
-    </MegaMenuBar>
-    <MegaMemuPanel>
-      <Row>
-        <Col className="text-left" xs={24}>
-          <b className="cat-title">SHOP {menuLeft[0].title.toUpperCase()}</b>
-          <a className="cat-link" href={menuLeft[0].title.replace(' ', '-')}>Shop All &gt;</a>
-        </Col>
-        <Col xs={0} lg={16}>
-          <Row>
+                ))
+              }
+            </div>
+          </Col>
+        </Row>
+      </MegaMenuBar>
+      <MegaMemuPanel>
+        <Row>
+          <Col
+            className="text-left"
+            xs={24}
+          >
+            <b className="cat-title">
+              SHOP {menuLeft[0].title.toUpperCase()}
+            </b>
+            <a
+              className="cat-link"
+              href={menuLeft[0].title.replace(' ', '-')}
+            >
+              Shop All &gt;
+            </a>
+          </Col>
+          <Col xs={0} lg={16}>
+            <Row type="flex" justify="space-around">
+              {
+                currentMenuIndex >= 0
+                  ? menuLeft[currentMenuIndex]['categories'].map((menu, index) => (
+                    <Col key={index} span={4}>
+                      <a>
+                        <img src={menu.img} alt={`${menu.title} image.`} />
+                        { menu.title }
+                      </a>
+                    </Col>
+                  )) : null
+              }
+            </Row>
+          </Col>
+          <Col xs={0} lg={8}>
 
-          </Row>
-        </Col>
-        <Col xs={0} lg={8}>
-
-        </Col>
-      </Row>
-    </MegaMemuPanel>
-  </MegaMenuContainer>
-)
+          </Col>
+        </Row>
+      </MegaMemuPanel>
+    </MegaMenuContainer>
+  )
+}
 
 export default MegaMenu
