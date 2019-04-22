@@ -56,6 +56,21 @@ const MegaMemuPanel = styled.div`
   border-bottom: 4px solid #fa4c06;
   padding: .5rem 4rem;
   color: #333;
+  position: relative;
+
+  a {
+    font-size: .8rem;
+    font-weight: 600;
+    color: #333;
+
+    &:hover {
+      color: #fa4c06;
+    }
+  }
+
+  img {
+    width: 80%;
+  }
 
   .cat-title {
     color: #333;
@@ -66,6 +81,26 @@ const MegaMemuPanel = styled.div`
   .cat-link {
     font-size: .8rem;
   }
+`
+
+const MegaMenuSidePanel = styled.div`
+  background-color: #eee;
+  height: 100%;
+  width: 25rem;
+  position: absolute;
+  top: 0;
+  right: 5%;
+  padding: 0.5rem 1rem;
+`
+
+const SidePanelButton = styled.div`
+  border: 2px solid #bebebe;
+  width: 100%;
+  padding: 1rem;
+  line-height: 1;
+  margin-bottom: .5rem;
+  font-size: .8rem;
+  color: #333;
 `
 
 const MegaMenu = () => {
@@ -122,20 +157,40 @@ const MegaMenu = () => {
               {
                 currentMenuIndex >= 0
                   ? menuLeft[currentMenuIndex]['categories'].map((menu, index) => (
-                    <Col key={index} span={4}>
+                    <Col key={index} span={5}>
                       <a>
                         <img src={menu.img} alt={`${menu.title} image.`} />
-                        { menu.title }
+                        { menu.title.toUpperCase() }
                       </a>
                     </Col>
                   )) : null
               }
             </Row>
           </Col>
-          <Col xs={0} lg={8}>
-
-          </Col>
         </Row>
+        <MegaMenuSidePanel>
+          <Row>
+            <Col
+              className="text-left"
+              xs={24}
+            >
+              <b className="cat-title">
+                SHOP {menuLeft[0].title.toUpperCase()} BY STYLE
+              </b>
+            </Col>
+            <Col span={24}>
+              {
+                menuLeft[0].categoriesByStyle.map((button, index) =>
+                  <a href={button.link} key={index}>
+                    <SidePanelButton>
+                      <b>{button.title.toUpperCase()}</b>
+                    </SidePanelButton>
+                  </a>
+                )
+              }
+            </Col>
+          </Row>
+        </MegaMenuSidePanel>
       </MegaMemuPanel>
     </MegaMenuContainer>
   )

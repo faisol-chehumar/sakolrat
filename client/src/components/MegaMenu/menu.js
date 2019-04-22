@@ -34,14 +34,32 @@ const menuLeft = [
       {
         title: 'modular',
         img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png'
+      }
+    ],
+    categoriesByStyle: [
+      {
+        title: 'sport',
+        link: 'sportbike-helmets'
       },
       {
-        title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png'
+        title: 'adv/touring',
+        link: 'adv-touring-motorcycle-helmet'
       },
       {
-        title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png'
+        title: 'adv/touring',
+        link: 'adv-touring-motorcycle-helmet'
+      },
+      {
+        title: 'adv/touring',
+        link: 'adv-touring-motorcycle-helmet'
+      },
+      {
+        title: 'adv/touring',
+        link: 'adv-touring-motorcycle-helmet'
+      },
+      {
+        title: 'adv/touring',
+        link: 'adv-touring-motorcycle-helmet'
       }
     ]
   },
