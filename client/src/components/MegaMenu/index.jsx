@@ -15,6 +15,7 @@ const MegaMenuBar = styled.div`
   padding: 0 4rem;
   height: 44px;
   line-height: 0;
+  display: none;
 
   ul {
     margin: 0;
@@ -49,6 +50,10 @@ const MegaMenuBar = styled.div`
       color: #fff;
     }
   }
+
+  @media (min-width: 992px) {
+    display: block;
+  }
 `
 
 const MegaMemuPanel = styled.div`
@@ -57,6 +62,7 @@ const MegaMemuPanel = styled.div`
   padding: .5rem 4rem;
   color: #333;
   position: relative;
+  display: none;
 
   a {
     font-size: .8rem;
@@ -81,16 +87,34 @@ const MegaMemuPanel = styled.div`
   .cat-link {
     font-size: .8rem;
   }
+
+  @media (min-width: 992px) {
+    display: block;
+  }
 `
 
 const MegaMenuSidePanel = styled.div`
   background-color: #eee;
   height: 100%;
-  width: 25rem;
   position: absolute;
   top: 0;
   right: 5%;
   padding: 0.5rem 1rem;
+  display: none;
+
+  @media (min-width: 992px) {
+    display: block;
+    width: 18rem;
+  }
+
+  @media (min-width: 992px) {
+    display: block;
+    width: 18rem;
+  }
+
+ @media (min-width: 1200px) {
+  width: 25rem;
+ }
 `
 
 const SidePanelButton = styled.div`
@@ -104,7 +128,7 @@ const SidePanelButton = styled.div`
 `
 
 const MegaMenu = () => {
-  const [ currentMenuIndex ] = useState(0)
+  const [ currentMenuIndex, setCurrentIndex ] = useState(null)
 
   return (
     <MegaMenuContainer>
@@ -114,7 +138,10 @@ const MegaMenu = () => {
             <ul className="text-left sub-menu">
               {
                 menuLeft.map((menu, index) => (
-                  <li key={index}>
+                  <li
+                    key={index}
+                    onMouseEnter={(e) => setCurrentIndex(index)}
+                  >
                     <a href={menu.title.replace(' ', '-')}>
                       {menu.title.toUpperCase()}
                     </a>
@@ -136,62 +163,67 @@ const MegaMenu = () => {
           </Col>
         </Row>
       </MegaMenuBar>
-      <MegaMemuPanel>
-        <Row>
-          <Col
-            className="text-left"
-            xs={24}
-          >
-            <b className="cat-title">
-              SHOP {menuLeft[0].title.toUpperCase()}
-            </b>
-            <a
-              className="cat-link"
-              href={menuLeft[0].title.replace(' ', '-')}
-            >
-              Shop All &gt;
-            </a>
-          </Col>
-          <Col xs={0} lg={16}>
-            <Row type="flex" justify="space-around">
-              {
-                currentMenuIndex >= 0
-                  ? menuLeft[currentMenuIndex]['categories'].map((menu, index) => (
-                    <Col key={index} span={5}>
-                      <a>
-                        <img src={menu.img} alt={`${menu.title} image.`} />
-                        { menu.title.toUpperCase() }
-                      </a>
-                    </Col>
-                  )) : null
-              }
+      {
+        currentMenuIndex !== null ? (
+          <MegaMemuPanel>
+            <Row>
+              <Col
+                className="text-left"
+                xs={0}
+                lg={24}
+              >
+                <b className="cat-title">
+                  SHOP {menuLeft[currentMenuIndex].title.toUpperCase()}
+                </b>
+                <a
+                  className="cat-link"
+                  href={menuLeft[currentMenuIndex].title.replace(' ', '-')}
+                >
+                  Shop All &gt;
+                </a>
+              </Col>
+              <Col xs={0} lg={16}>
+                <Row type="flex" justify="space-around">
+                  {
+                    menuLeft[currentMenuIndex]['categories'].map((menu, index) => (
+                      <Col key={index} span={5}>
+                        <a href={menu.link}>
+                          <img src={menu.img} alt={`${menu.title} image.`} />
+                          { menu.title.toUpperCase() }
+                        </a>
+                      </Col>
+                    ))
+                  }
+                </Row>
+              </Col>
             </Row>
-          </Col>
-        </Row>
-        <MegaMenuSidePanel>
-          <Row>
-            <Col
-              className="text-left"
-              xs={24}
-            >
-              <b className="cat-title">
-                SHOP {menuLeft[0].title.toUpperCase()} BY STYLE
-              </b>
-            </Col>
-            <Col span={24}>
-              {
-                menuLeft[0].categoriesByStyle.map((button, index) =>
-                  <a href={button.link} key={index}>
-                    <SidePanelButton>
-                      <b>{button.title.toUpperCase()}</b>
-                    </SidePanelButton>
-                  </a>
-                )
-              }
-            </Col>
-          </Row>
-        </MegaMenuSidePanel>
-      </MegaMemuPanel>
+            <MegaMenuSidePanel>
+              <Row>
+                <Col
+                  className="text-left"
+                  xs={0}
+                  lg={24}
+                >
+                  <b className="cat-title">
+                    SHOP {menuLeft[currentMenuIndex].title.toUpperCase()} BY STYLE
+                  </b>
+                </Col>
+                <Col xs={0} lg={24}>
+                  {
+                    menuLeft[currentMenuIndex].categoriesByStyle.map((button, index) =>
+                      <a href={button.link} key={index}>
+                        <SidePanelButton>
+                          <b>{button.title.toUpperCase()}</b>
+                        </SidePanelButton>
+                      </a>
+                    )
+                  }
+                </Col>
+              </Row>
+            </MegaMenuSidePanel>
+          </MegaMemuPanel>
+        ) : null
+      }
     </MegaMenuContainer>
   )
 }
