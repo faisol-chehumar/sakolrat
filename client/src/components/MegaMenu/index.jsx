@@ -134,7 +134,6 @@ const MegaMenu = () => {
   const megaMenupanel = useRef()
 
   useEffect(() => {
-    console.log(megaMenuBar)
     // add when mounted
     megaMenuBar.current.addEventListener('mouseleave', () =>
       setCurrentIndex(null)
