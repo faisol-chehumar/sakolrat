@@ -129,62 +129,42 @@ const SidePanelButton = styled.div`
 
 const MegaMenu = () => {
   const [currentMenuIndex, setCurrentIndex] = useState(null)
-  const [isOnMegaMenuPanel, setIsOntiveMegaMenuPanel] = useState(false)
   const megaMenuBar = useRef()
-  const megaMenupanel = useRef()
+  const megaMenuPanel = useRef()
 
-  const handleEnter = (index) => (e) => {
-    console.log('Enter')
-    console.log((e))
+  const handleEnter = index => e => {
     if (megaMenuBar.current.contains(e.target)) {
-      // megaMenupanel.current.contains(e.target)
-      console.log('Enter megaMenuBar')
       setCurrentIndex(index)
     }
+  }
 
-    if (megaMenupanel.current.contains(e.target)) {
-      // megaMenupanel.current.contains(e.target)
-      console.log('Enter megaMenupanel')
-      setIsOntiveMegaMenuPanel(true)
+  const handleLeaveMenuBar = e => {
+    if (!megaMenuPanel.current.contains(e.relatedTarget)) {
+      setCurrentIndex(null)
     }
   }
 
-  const handleLeave = e => {
-    if (megaMenuBar.current.contains(e.target)) {
-      // megaMenupanel.current.contains(e.target)
-      console.log('Outer megaMenuBar')
-    }
-
-    if (megaMenupanel.current.contains(e.target)) {
-      // megaMenupanel.current.contains(e.target)
-      console.log('Outer megaMenupanel')
+  const handleLeavePanel = e => {
+    if (!megaMenuPanel.current.contains(e.relatedTarget)) {
+      setCurrentIndex(null)
     }
   }
-
-  // const handleOpenMegaMenuPanel = e => {
-  //   if (megaMenupanel.current.contains(e.target)) {
-  //     console.log('In panl')
-  //     setIsOntiveMegaMenuPanel(true)
-  //   }
-  // }
 
   useEffect(() => {
     megaMenuBar.current.childNodes.forEach((element, index) => {
       element.addEventListener('mouseover', handleEnter(index))
-      element.addEventListener('mouseleave', handleLeave)
+      element.addEventListener('mouseout', handleLeaveMenuBar)
     })
 
-    megaMenupanel.current.addEventListener('mouseover', handleEnter)
-    megaMenupanel.current.addEventListener('mouseleave', handleLeave)
+    megaMenuPanel.current.addEventListener('mouseout', handleLeavePanel)
 
     return () => {
-      megaMenuBar.current.childNodes.forEach(element => {
-        element.removeEventListener('mouseenter', handleEnter)
-        element.removeEventListener('mouseleave', handleLeave)
+      megaMenuBar.current.childNodes.forEach((element, index) => {
+        element.removeEventListener('mouseover', handleEnter(index))
+        element.removeEventListener('mouseout', handleLeaveMenuBar)
       })
 
-      megaMenupanel.current.removeEventListener('mouseenter', handleEnter)
-      megaMenupanel.current.removeEventListener('mouseleave', handleLeave)
+      megaMenuPanel.current.removeEventListener('mouseout', handleLeavePanel)
     }
   }, [])
 
@@ -214,7 +194,7 @@ const MegaMenu = () => {
           </Row>
         </MegaMenuBar>
       </div>
-      <div ref={megaMenupanel}>
+      <div ref={megaMenuPanel}>
         {currentMenuIndex !== null ? (
           <MegaMemuPanel>
             <Row>
