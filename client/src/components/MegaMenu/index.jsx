@@ -129,33 +129,74 @@ const SidePanelButton = styled.div`
 
 const MegaMenu = () => {
   const [currentMenuIndex, setCurrentIndex] = useState(null)
-
+  const [isOnMegaMenuPanel, setIsOntiveMegaMenuPanel] = useState(false)
   const megaMenuBar = useRef()
   const megaMenupanel = useRef()
 
+  const handleEnter = (index) => (e) => {
+    console.log('Enter')
+    console.log((e))
+    if (megaMenuBar.current.contains(e.target)) {
+      // megaMenupanel.current.contains(e.target)
+      console.log('Enter megaMenuBar')
+      setCurrentIndex(index)
+    }
+
+    if (megaMenupanel.current.contains(e.target)) {
+      // megaMenupanel.current.contains(e.target)
+      console.log('Enter megaMenupanel')
+      setIsOntiveMegaMenuPanel(true)
+    }
+  }
+
+  const handleLeave = e => {
+    if (megaMenuBar.current.contains(e.target)) {
+      // megaMenupanel.current.contains(e.target)
+      console.log('Outer megaMenuBar')
+    }
+
+    if (megaMenupanel.current.contains(e.target)) {
+      // megaMenupanel.current.contains(e.target)
+      console.log('Outer megaMenupanel')
+    }
+  }
+
+  // const handleOpenMegaMenuPanel = e => {
+  //   if (megaMenupanel.current.contains(e.target)) {
+  //     console.log('In panl')
+  //     setIsOntiveMegaMenuPanel(true)
+  //   }
+  // }
+
   useEffect(() => {
-    // add when mounted
-    megaMenuBar.current.addEventListener('mouseleave', () =>
-      setCurrentIndex(null)
-    )
-    // return function to be called when unmounted
+    megaMenuBar.current.childNodes.forEach((element, index) => {
+      element.addEventListener('mouseover', handleEnter(index))
+      element.addEventListener('mouseleave', handleLeave)
+    })
+
+    megaMenupanel.current.addEventListener('mouseover', handleEnter)
+    megaMenupanel.current.addEventListener('mouseleave', handleLeave)
+
     return () => {
-      megaMenuBar.current.removeEventListener('mouseleave', () =>
-        setCurrentIndex(null)
-      )
+      megaMenuBar.current.childNodes.forEach(element => {
+        element.removeEventListener('mouseenter', handleEnter)
+        element.removeEventListener('mouseleave', handleLeave)
+      })
+
+      megaMenupanel.current.removeEventListener('mouseenter', handleEnter)
+      megaMenupanel.current.removeEventListener('mouseleave', handleLeave)
     }
   }, [])
 
-  console.log(currentMenuIndex)
   return (
     <MegaMenuContainer>
-      <div ref={megaMenuBar}>
+      <div>
         <MegaMenuBar>
           <Row gutter={16}>
             <Col xs={0} lg={16}>
-              <ul className="text-left sub-menu">
+              <ul className="text-left sub-menu" ref={megaMenuBar}>
                 {menuLeft.map((menu, index) => (
-                  <li key={index} onMouseEnter={() => setCurrentIndex(index)}>
+                  <li key={index}>
                     <a href={menu.title.replace(' ', '-')}>
                       {menu.title.toUpperCase()}
                     </a>
@@ -173,11 +214,8 @@ const MegaMenu = () => {
           </Row>
         </MegaMenuBar>
       </div>
-      {currentMenuIndex !== null ? (
-        <div
-          ref={megaMenupanel}
-          // onMouseLeave={handleLeaveMegaMenu}
-        >
+      <div ref={megaMenupanel}>
+        {currentMenuIndex !== null ? (
           <MegaMemuPanel>
             <Row>
               <Col className="text-left" xs={0} lg={24}>
@@ -228,8 +266,8 @@ const MegaMenu = () => {
               </Row>
             </MegaMenuSidePanel>
           </MegaMemuPanel>
-        </div>
-      ) : null}
+        ) : null}
+      </div>
     </MegaMenuContainer>
   )
 }
