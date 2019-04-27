@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Layout } from 'antd'
 import styled, { createGlobalStyle } from 'styled-components'
 
@@ -75,5 +76,9 @@ const Theme = ({ children }) => (
     </Layout>
   </div>
 )
+
+Theme.propTypes = {
+  children: PropTypes.children
+}
 
 export default Theme

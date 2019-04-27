@@ -1,17 +1,17 @@
 export default [
   {
-    title: 'xxx',
-    imgUrl: 'ssss',
+    title: '111',
+    src: 'hero-banner-1.jpg',
     link: 'sdsdsd'
   },
   {
-    title: 'xxx',
-    imgUrl: 'ssss',
+    title: '222',
+    src: 'hero-banner-1.jpg',
     link: 'sdsdsd'
   },
   {
-    title: 'xxx',
-    imgUrl: 'ssss',
+    title: '333',
+    src: 'hero-banner-1.jpg',
     link: 'sdsdsd'
   }
 ]

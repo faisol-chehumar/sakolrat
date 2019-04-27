@@ -1,12 +1,10 @@
 import React from 'react'
 
-import logoUrl from '../../images/logo.svg'
-
 const Logo = ({ ...rest }) => (
   <>
     <a href="/">
       <img
-        src={logoUrl}
+        src={'logo.svg'}
         alt="Website logo"
         {...rest}
       />
