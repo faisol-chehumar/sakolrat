@@ -137,36 +137,44 @@ const MegaMenu = () => {
   const menu = useRef()
   const panel = useRef()
 
-  const handleEnter = index => e => {
-    if (menu.current.contains(e.target)) {
-      setCurrentIndex(index)
-    }
-  }
+  const setActiveMenu = index => e => menu.current.contains(e.target) ? setCurrentIndex(index) : null
 
-  const handleLeaveMenuBar = e => {
-    if (!panel.current.contains(e.relatedTarget)) {
-      setCurrentIndex(null)
-    }
-  }
+  const handleLeaveMenuBar = e => !panel.current.contains(e.relatedTarget)
+    ? setCurrentIndex(null) : null
 
-  const handleLeavePanel = e => {
-    if (!panel.current.contains(e.relatedTarget)) {
-      setCurrentIndex(null)
-    }
-  }
+  const handleLeavePanel = e => !panel.current.contains(e.relatedTarget)
+    ? setCurrentIndex(null) : null
 
   useEffect(() => {
     menu.current.childNodes.forEach((element, index) => {
-      element.addEventListener('mouseover', handleEnter(index))
-      element.addEventListener('mouseout', handleLeaveMenuBar)
+      let timer = ''
+      element.addEventListener('mouseover', e => {
+        timer = setTimeout(() => {
+          setActiveMenu(index)(e)
+        }, 100, index, e)
+      }, index, timer)
+
+      element.addEventListener('mouseout', e => {
+        clearTimeout(timer)
+        handleLeaveMenuBar(e)
+      })
     })
 
     panel.current.addEventListener('mouseout', handleLeavePanel)
 
     return () => {
       menu.current.childNodes.forEach((element, index) => {
-        element.removeEventListener('mouseover', handleEnter(index))
-        element.removeEventListener('mouseout', handleLeaveMenuBar)
+        let timer = ''
+        element.removeListener('mouseover', e => {
+          timer = setTimeout(() => {
+            setActiveMenu(index)(e)
+          }, 100, index, e)
+        }, index, timer)
+
+        element.removeListener('mouseout', e => {
+          clearTimeout(timer)
+          handleLeaveMenuBar(e)
+        })
       })
 
       panel.current.removeEventListener('mouseout', handleLeavePanel)
