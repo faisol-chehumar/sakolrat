@@ -34,7 +34,12 @@ const MegaMenuBar = styled.div`
     height: 44px;
   }
 
-  .sub-menu a {
+  .is-active a {
+    background-color: #fff;
+    color: #333 !important;
+  }
+
+  .sub-menu  a {
     color: #fff;
 
     &:hover {
@@ -129,42 +134,42 @@ const SidePanelButton = styled.div`
 
 const MegaMenu = () => {
   const [currentMenuIndex, setCurrentIndex] = useState(null)
-  const megaMenuBar = useRef()
-  const megaMenuPanel = useRef()
+  const menu = useRef()
+  const panel = useRef()
 
   const handleEnter = index => e => {
-    if (megaMenuBar.current.contains(e.target)) {
+    if (menu.current.contains(e.target)) {
       setCurrentIndex(index)
     }
   }
 
   const handleLeaveMenuBar = e => {
-    if (!megaMenuPanel.current.contains(e.relatedTarget)) {
+    if (!panel.current.contains(e.relatedTarget)) {
       setCurrentIndex(null)
     }
   }
 
   const handleLeavePanel = e => {
-    if (!megaMenuPanel.current.contains(e.relatedTarget)) {
+    if (!panel.current.contains(e.relatedTarget)) {
       setCurrentIndex(null)
     }
   }
 
   useEffect(() => {
-    megaMenuBar.current.childNodes.forEach((element, index) => {
+    menu.current.childNodes.forEach((element, index) => {
       element.addEventListener('mouseover', handleEnter(index))
       element.addEventListener('mouseout', handleLeaveMenuBar)
     })
 
-    megaMenuPanel.current.addEventListener('mouseout', handleLeavePanel)
+    panel.current.addEventListener('mouseout', handleLeavePanel)
 
     return () => {
-      megaMenuBar.current.childNodes.forEach((element, index) => {
+      menu.current.childNodes.forEach((element, index) => {
         element.removeEventListener('mouseover', handleEnter(index))
         element.removeEventListener('mouseout', handleLeaveMenuBar)
       })
 
-      megaMenuPanel.current.removeEventListener('mouseout', handleLeavePanel)
+      panel.current.removeEventListener('mouseout', handleLeavePanel)
     }
   }, [])
 
@@ -174,9 +179,9 @@ const MegaMenu = () => {
         <MegaMenuBar>
           <Row gutter={16}>
             <Col xs={0} lg={16}>
-              <ul className="text-left sub-menu" ref={megaMenuBar}>
+              <ul className="text-left sub-menu" ref={menu}>
                 {menuLeft.map((menu, index) => (
-                  <li key={index}>
+                  <li key={index} className={currentMenuIndex === index ? 'is-active' : null}>
                     <a href={menu.title.replace(' ', '-')}>
                       {menu.title.toUpperCase()}
                     </a>
@@ -194,7 +199,7 @@ const MegaMenu = () => {
           </Row>
         </MegaMenuBar>
       </div>
-      <div ref={megaMenuPanel}>
+      <div ref={panel}>
         {currentMenuIndex !== null ? (
           <MegaMemuPanel>
             <Row>
