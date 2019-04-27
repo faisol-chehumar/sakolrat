@@ -112,11 +112,6 @@ const MegaMenuSidePanel = styled.div`
     width: 18rem;
   }
 
-  @media (min-width: 992px) {
-    display: block;
-    width: 18rem;
-  }
-
   @media (min-width: 1200px) {
     width: 25rem;
   }
