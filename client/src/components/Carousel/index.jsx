@@ -1,13 +1,21 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Carousel } from 'antd'
 
-const CarouselBanner = () => (
+const CarouselBanner = ({ data }) => (
   <Carousel autoplay>
-    <div><h3>1</h3></div>
-    <div><h3>2</h3></div>
-    <div><h3>3</h3></div>
-    <div><h3>4</h3></div>
+    {
+      data.map((img, index) => (
+        <div key={index}>
+          <h3>1</h3>
+        </div>
+      ))
+    }
   </Carousel>
 )
+
+CarouselBanner.propsType = {
+  data: PropTypes.object
+}
 
 export default CarouselBanner

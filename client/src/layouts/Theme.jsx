@@ -59,7 +59,7 @@ const HeaderContainer = styled.div`
   }
 `
 
-const Index = () => (
+const Theme = ({ children }) => (
   <div>
     <Layout>
       <HeaderContainer>
@@ -67,11 +67,13 @@ const Index = () => (
           <Navbar />
         </Header>
       </HeaderContainer>
-      <Content>Content</Content>
+      <Content>
+        {children}
+      </Content>
       <Footer>Footer</Footer>
       <GlobalStyle />
     </Layout>
   </div>
 )
 
-export default Index
+export default Theme
