@@ -61,7 +61,7 @@ const MegaMenuBar = styled.div`
   }
 `
 
-const MegaMemuPanel = styled.div`
+const MegaMenuPanel = styled.div`
   background-color: #fff;
   border-bottom: 4px solid #fa4c06;
   padding: 0.5rem 4rem;
@@ -204,7 +204,7 @@ const MegaMenu = () => {
       </div>
       <div ref={panel}>
         {currentMenuIndex !== null ? (
-          <MegaMemuPanel>
+          <MegaMenuPanel>
             <Row>
               <Col className="text-left" xs={0} lg={24}>
                 <b className="cat-title">
@@ -253,7 +253,7 @@ const MegaMenu = () => {
                 </Col>
               </Row>
             </MegaMenuSidePanel>
-          </MegaMemuPanel>
+          </MegaMenuPanel>
         ) : null}
       </div>
     </MegaMenuContainer>

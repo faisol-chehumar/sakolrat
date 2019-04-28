@@ -3,10 +3,13 @@ import PropTypes from 'prop-types'
 import { Layout } from 'antd'
 import styled, { createGlobalStyle } from 'styled-components'
 
-import Navbar from '../components/Navbar'
+import components from '../components/'
+
 const {
   Header, Footer, Content
 } = Layout
+
+const { Navbar } = components
 
 const GlobalStyle = createGlobalStyle`
   a {
@@ -42,7 +45,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .container {
-    padding: 2rem;
+    padding: 1rem;
   }
 
   @media (max-width: 992px) {
