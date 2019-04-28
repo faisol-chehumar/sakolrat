@@ -40,6 +40,17 @@ const GlobalStyle = createGlobalStyle`
   .clickable {
     cursor: pointer;
   }
+
+  .container {
+    padding: 2rem;
+  }
+
+  @media (max-width: 992px) {
+    .container {
+      padding-left: 2rem;
+      padding-left: 2rem
+    }
+  }
 `
 
 const HeaderContainer = styled.div`
@@ -78,7 +89,10 @@ const Theme = ({ children }) => (
 )
 
 Theme.propTypes = {
-  children: PropTypes.object
+  children: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array
+  ])
 }
 
 export default Theme

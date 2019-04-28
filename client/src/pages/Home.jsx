@@ -1,13 +1,15 @@
 import React from 'react'
 
-import CarouselBanner from '../components/Carousel'
 import Theme from '../layouts/Theme'
+import HeroBanner from '../components/HeroBanner'
+import ExtraBar from '../components/ExtraBar'
 
 import heroBanners from '../stores/hero-banners.js'
 
 const Home = () => (
   <Theme>
-    <CarouselBanner data={heroBanners} />
+    <HeroBanner data={heroBanners} />
+    <ExtraBar />
   </Theme>
 )
 

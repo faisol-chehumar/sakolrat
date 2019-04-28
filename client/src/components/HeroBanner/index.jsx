@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Carousel } from 'antd'
 import styled from 'styled-components'
 
-const HeroBanner = styled.div`
+const HeroBannerContainer = styled.div`
   background-image: url( ${props => props.imgSrc.xs} );
   height: 22rem;
   background-size: cover;
@@ -16,22 +16,22 @@ const HeroBanner = styled.div`
   }
 `
 
-const CarouselBanner = ({ data }) => (
+const HeroBanner = ({ data }) => (
   <Carousel autoplay>
     {
       data.map((img, index) => (
         <a key={index} href={img.link}>
-          <HeroBanner imgSrc={img.src}>
+          <HeroBannerContainer imgSrc={img.src}>
             <h1>{img.title}</h1>
-          </HeroBanner>
+          </HeroBannerContainer>
         </a>
       ))
     }
   </Carousel>
 )
 
-CarouselBanner.propTypes = {
+HeroBanner.propTypes = {
   data: PropTypes.array
 }
 
-export default CarouselBanner
+export default HeroBanner
