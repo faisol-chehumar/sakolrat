@@ -12,7 +12,7 @@ const Home = () => (
   <Theme>
     <HeroBanner data={heroBanners} />
     <ExtraBar />
-    <Container>
+    <Container size="md">
       <CategoryMenu
         header="SHOP BY RIDING STYLE"
         data={categoriesMenu}

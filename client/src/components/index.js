@@ -5,6 +5,8 @@ import Logo from './Logo'
 import MegaMenu from './MegaMenu'
 import MenuIcon from './MenuIcon'
 import Navbar from './Navbar'
+import ProductList from './ProductList'
+import ProductItem from './ProductItem'
 
 export default {
   CategoryMenu,
@@ -13,5 +15,7 @@ export default {
   Logo,
   MegaMenu,
   MenuIcon,
-  Navbar
+  Navbar,
+  ProductList,
+  ProductItem
 }

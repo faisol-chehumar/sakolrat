@@ -48,6 +48,14 @@ const GlobalStyle = createGlobalStyle`
     padding: 1rem;
   }
 
+  .mg-sm {
+    margin: 1rem;
+  }
+
+  .block {
+    display: block;
+  }
+
   @media (max-width: 992px) {
     .container {
       padding-left: 2rem;
