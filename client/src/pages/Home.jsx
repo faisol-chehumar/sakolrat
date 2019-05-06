@@ -12,7 +12,7 @@ const {
   BlogPost,
   FilterBox
 } = components
-const { categoriesMenu, heroBanners, posts } = stores
+const { categoriesMenu, heroBanners, posts, guides } = stores
 
 const Home = () => (
   <Theme>
@@ -32,6 +32,9 @@ const Home = () => (
         className="bdt-primary"
         header="SHOP BY BIKE"
       />
+    </Container>
+    <Container>
+      <BlogPost data={guides} type={'hero-text'}/>
     </Container>
   </Theme>
 )

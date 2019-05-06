@@ -18,8 +18,8 @@ const ButtonContainer = styled(btn)`
   }
 `
 
-const Button = ({ type, text, ...rest }) => (
-  <ButtonContainer {...rest} type="secondary">
+const Button = ({ text, ...rest }) => (
+  <ButtonContainer {...rest}>
     { text }
   </ButtonContainer>
 )

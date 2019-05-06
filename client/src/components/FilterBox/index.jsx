@@ -79,7 +79,7 @@ const FilterBox = ({ header, ...rest }) => {
           <Col xs={24}>
             <Card>
               <Row>
-                <Col xs={24} lg={8}>
+                <Col xs={24} lg={4}>
                   <HeaderText text={header} />
                 </Col>
                 <Col xs={24} lg={6}>
@@ -126,7 +126,7 @@ const FilterBox = ({ header, ...rest }) => {
                   </SelectContainer>
                 </Col>
                 <Col xs={24} lg={4}>
-                  <Button text="GO!" />
+                  <Button type="secondary" text="GO!" />
                 </Col>
               </Row>
             </Card>
