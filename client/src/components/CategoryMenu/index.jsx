@@ -10,9 +10,14 @@ const CardContainer = styled(Card)`
   font-weight: 800;
   color: #111;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .15);
+  font-size: .8rem;
 
   &:hover {
     box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .15);
+  }
+
+  @media (min-width: 992px) {
+    font-size: .8rem;
   }
 `
 
@@ -25,7 +30,7 @@ const CategoryMenu = ({ header, data }) => (
     </Row>
     <Row>
       {data.map((menu, index) => (
-        <Col key={index} lg={24 / data.length}>
+        <Col key={index} xs={12} lg={24 / data.length}>
           <a className="block mg-sm" href={menu.link}>
             <CardContainer>
               <img src={menu.src} />

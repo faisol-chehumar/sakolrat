@@ -1,7 +1,9 @@
+import posts from './blog-post'
 import categoriesMenu from './categories-menu'
 import heroBanners from './hero-banners'
 
 export default {
-  heroBanners,
-  categoriesMenu
+  posts,
+  categoriesMenu,
+  heroBanners
 }

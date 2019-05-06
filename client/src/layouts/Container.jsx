@@ -3,14 +3,15 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 const ContainerBlock = styled.div`
-  padding: ${props => props.size === 'xs'
-    ? '2rem 8rem'
-    : props.size === 'md'
-      ? '2rem 8rem' : null};
+  padding: 1rem .5rem;
+
+  @media (min-width: 992px) {
+    padding: 2rem 10rem;
+  }
 `
 
 const Container = ({ children, size }) => (
-  <ContainerBlock size="xs">
+  <ContainerBlock>
     {children}
   </ContainerBlock>
 )

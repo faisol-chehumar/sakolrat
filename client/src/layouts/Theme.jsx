@@ -52,6 +52,10 @@ const GlobalStyle = createGlobalStyle`
     margin: 1rem;
   }
 
+  .mgt-sm {
+    margin-top: 1rem;
+  }
+
   .block {
     display: block;
   }
@@ -59,7 +63,10 @@ const GlobalStyle = createGlobalStyle`
   @media (max-width: 992px) {
     .container {
       padding-left: 2rem;
-      padding-left: 2rem
+    }
+
+    .mg-sm {
+      margin: .5rem;
     }
   }
 `

@@ -1,3 +1,5 @@
+import BlogPost from './BlogPost'
+import Button from './Button'
 import CategoryMenu from './CategoryMenu'
 import ExtraBar from './ExtraBar'
 import HeroBanner from './HeroBanner'
@@ -9,6 +11,8 @@ import ProductList from './ProductList'
 import ProductItem from './ProductItem'
 
 export default {
+  BlogPost,
+  Button,
   CategoryMenu,
   ExtraBar,
   HeroBanner,
