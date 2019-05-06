@@ -5,7 +5,13 @@ import Container from '../layouts/Container'
 import components from '../components/'
 import stores from '../stores/'
 
-const { HeroBanner, ExtraBar, CategoryMenu, BlogPost } = components
+const {
+  HeroBanner,
+  ExtraBar,
+  CategoryMenu,
+  BlogPost,
+  FilterBox
+} = components
 const { categoriesMenu, heroBanners, posts } = stores
 
 const Home = () => (
@@ -20,6 +26,12 @@ const Home = () => (
     </Container>
     <Container>
       <BlogPost data={posts} />
+    </Container>
+    <Container className="mgt-sm">
+      <FilterBox
+        className="bdt-primary"
+        header="SHOP BY BIKE"
+      />
     </Container>
   </Theme>
 )

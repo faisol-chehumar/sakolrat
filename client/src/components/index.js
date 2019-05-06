@@ -2,6 +2,7 @@ import BlogPost from './BlogPost'
 import Button from './Button'
 import CategoryMenu from './CategoryMenu'
 import ExtraBar from './ExtraBar'
+import FilterBox from './FilterBox'
 import HeroBanner from './HeroBanner'
 import Logo from './Logo'
 import MegaMenu from './MegaMenu'
@@ -15,6 +16,7 @@ export default {
   Button,
   CategoryMenu,
   ExtraBar,
+  FilterBox,
   HeroBanner,
   Logo,
   MegaMenu,

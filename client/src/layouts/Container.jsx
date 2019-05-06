@@ -10,8 +10,8 @@ const ContainerBlock = styled.div`
   }
 `
 
-const Container = ({ children, size }) => (
-  <ContainerBlock>
+const Container = ({ children, size, ...rest }) => (
+  <ContainerBlock {...rest}>
     {children}
   </ContainerBlock>
 )

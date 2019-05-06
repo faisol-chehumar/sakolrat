@@ -4,10 +4,12 @@ import { Button as btn } from 'antd'
 import styled from 'styled-components'
 
 const ButtonContainer = styled(btn)`
-  border: 3px solid #333;
-  color: #333;
+  border: ${props => props.type === 'secondary' ? '#eee' : '3px solid #333'};
+  color: ${props => props.type === 'secondary' ? '#fff' : '#333'};
   border-radius: 0;
   font-weight: 600;
+  width: 100%;
+  background-color: ${props => props.type === 'secondary' ? '#c7c7c6' : 'transparent'};
 
   &:hover {
     background-color: #fa4c06;
@@ -17,7 +19,7 @@ const ButtonContainer = styled(btn)`
 `
 
 const Button = ({ type, text, ...rest }) => (
-  <ButtonContainer {...rest}>
+  <ButtonContainer {...rest} type="secondary">
     { text }
   </ButtonContainer>
 )

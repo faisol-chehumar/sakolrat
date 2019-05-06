@@ -64,6 +64,10 @@ const GlobalStyle = createGlobalStyle`
     overflow: hidden;
   }
 
+  .bdt-primary {
+    border-top: 2px solid #fa4c06;
+  }
+
   @media (max-width: 992px) {
     .container {
       padding-left: 2rem;
