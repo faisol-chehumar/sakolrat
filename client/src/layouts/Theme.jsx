@@ -68,6 +68,10 @@ const GlobalStyle = createGlobalStyle`
     border-top: 2px solid #fa4c06;
   }
 
+  .bg-white {
+    background-color: #fff;
+  }
+
   @media (max-width: 992px) {
     .container {
       padding-left: 2rem;
@@ -105,7 +109,7 @@ const Theme = ({ children }) => (
           <Navbar />
         </Header>
       </HeaderContainer>
-      <Content>
+      <Content className="bg-white">
         {children}
       </Content>
       <Footer>Footer</Footer>
