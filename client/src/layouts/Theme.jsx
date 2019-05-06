@@ -40,6 +40,10 @@ const GlobalStyle = createGlobalStyle`
     color: #333 !important;
   }
 
+  .block {
+    display: block;
+  }
+
   .clickable {
     cursor: pointer;
   }
@@ -56,8 +60,8 @@ const GlobalStyle = createGlobalStyle`
     margin-top: 1rem;
   }
 
-  .block {
-    display: block;
+  .thumb-img {
+    overflow: hidden;
   }
 
   @media (max-width: 992px) {
