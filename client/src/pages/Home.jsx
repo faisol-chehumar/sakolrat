@@ -1,18 +1,28 @@
 import React from 'react'
 
+import stores from '../stores/'
+import components from '../components/'
 import Theme from '../layouts/Theme'
 import Container from '../layouts/Container'
-import components from '../components/'
-import stores from '../stores/'
 
 const {
+  brands,
+  categoriesMenu,
+  guides,
+  heroBanners,
+  posts
+} = stores
+
+const {
+  BrandSlider,
   HeroBanner,
   ExtraBar,
   CategoryMenu,
   BlogPost,
   FilterBox
 } = components
-const { categoriesMenu, heroBanners, posts, guides } = stores
+
+// console.log(brands)
 
 const Home = () => (
   <Theme>
@@ -35,6 +45,9 @@ const Home = () => (
     </Container>
     <Container>
       <BlogPost data={guides} type={'hero-text'}/>
+    </Container>
+    <Container>
+      <BrandSlider data={brands} />
     </Container>
   </Theme>
 )

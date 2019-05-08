@@ -1,4 +1,5 @@
 import BlogPost from './BlogPost'
+import BrandSlider from './BrandSlider'
 import Button from './Button'
 import CategoryMenu from './CategoryMenu'
 import ExtraBar from './ExtraBar'
@@ -13,6 +14,7 @@ import ProductItem from './ProductItem'
 
 export default {
   BlogPost,
+  BrandSlider,
   Button,
   CategoryMenu,
   ExtraBar,

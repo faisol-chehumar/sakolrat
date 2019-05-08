@@ -2,10 +2,12 @@ import posts from './blog-post'
 import guides from './guides'
 import categoriesMenu from './categories-menu'
 import heroBanners from './hero-banners'
+import brands from './brands'
 
 export default {
-  posts,
-  guides,
+  brands,
   categoriesMenu,
-  heroBanners
+  guides,
+  heroBanners,
+  posts
 }
