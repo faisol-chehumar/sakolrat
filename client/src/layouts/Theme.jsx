@@ -88,7 +88,7 @@ const HeaderContainer = styled(Header)`
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
   height: auto !important;
-  background-color: #151211;
+  background-color: #151211 !important;
 
   @media (min-width: 992px) {
     padding-left: 4rem !important;
