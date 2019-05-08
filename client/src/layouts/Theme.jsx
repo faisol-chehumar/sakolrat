@@ -83,36 +83,33 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-const HeaderContainer = styled.div`
+const HeaderContainer = styled(Header)`
   font-size: 1.5rem;
-
-  header {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    height: auto;
-    background-color: #151211;
-  }
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+  height: auto !important;
+  background-color: #151211;
 
   @media (min-width: 992px) {
-    header {
-      padding-left: 4rem;
-      padding-right: 4rem;
-    }
+    padding-left: 4rem !important;
+    padding-right: 4rem !important;
   }
 `
+
+// const FooterContainer = styled(Footer)
 
 const Theme = ({ children }) => (
   <div>
     <Layout>
       <HeaderContainer>
-        <Header>
-          <Navbar />
-        </Header>
+        <Navbar />
       </HeaderContainer>
       <Content className="bg-white">
         {children}
       </Content>
-      <Footer>Footer</Footer>
+      <Footer>
+        Footer
+      </Footer>
       <GlobalStyle />
     </Layout>
   </div>

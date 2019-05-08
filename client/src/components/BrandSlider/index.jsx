@@ -1,40 +1,48 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Row, Col, Carousel } from 'antd'
+// import { Row, Col } from 'antd'
 import styled from 'styled-components'
+import Slider from 'react-slick'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
-const CarouselContainer = styled(Carousel)`
+const SliderContainer = styled(Slider)`
   text-align: center;
-  padding: 1rem;
-
-  .slick-dots li,
-  .slick-dots li.slick-active button {
-    background-color: #333;
-  }
 `
 
-const BrandSlider = ({ data }) => (
-  <CarouselContainer autoplay>
-    {
-      data.map((page, index) => (
-        <div key={index}>
-          <Row>
-            {
-              page.map((brand, i) => (
-                <Col key={i} xs={24} lg={4}>
-                  <a href={brand.link}>
-                    <img src={brand.logo} />
-                    <p>{brand.title}</p>
-                  </a>
-                </Col>
-              ))
-            }
-          </Row>
-        </div>
-      ))
-    }
-  </CarouselContainer>
-)
+const BrandSlider = ({ data }) => {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 8,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: false
+        }
+      }
+    ]
+  }
+
+  return (
+    <SliderContainer {...settings}>
+      {
+        data.map((brand, index) => (
+          <a key={index}>
+            <img src={brand.logo} />
+            {brand.title}
+          </a>
+        ))
+      }
+    </SliderContainer>
+  )
+}
 
 BrandSlider.propTypes = {
   data: PropTypes.array
