@@ -11,6 +11,9 @@ import MenuIcon from './MenuIcon'
 import Navbar from './Navbar'
 import ProductList from './ProductList'
 import ProductItem from './ProductItem'
+import ProductSlider from './ProductSlider'
+import ProductCard from './ProductCard'
+import Rating from './Rating'
 
 export default {
   BlogPost,
@@ -24,6 +27,9 @@ export default {
   MegaMenu,
   MenuIcon,
   Navbar,
+  ProductCard,
   ProductList,
-  ProductItem
+  ProductItem,
+  ProductSlider,
+  Rating
 }

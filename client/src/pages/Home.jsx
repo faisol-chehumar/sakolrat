@@ -10,7 +10,8 @@ const {
   categoriesMenu,
   guides,
   heroBanners,
-  posts
+  posts,
+  productSlide
 } = stores
 
 const {
@@ -19,7 +20,8 @@ const {
   ExtraBar,
   CategoryMenu,
   BlogPost,
-  FilterBox
+  FilterBox,
+  ProductSlider
 } = components
 
 // console.log(brands)
@@ -48,6 +50,9 @@ const Home = () => (
     </Container>
     <Container>
       <BrandSlider data={brands} />
+    </Container>
+    <Container>
+      <ProductSlider data={productSlide} />
     </Container>
   </Theme>
 )

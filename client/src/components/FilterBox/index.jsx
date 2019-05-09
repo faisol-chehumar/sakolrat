@@ -80,7 +80,7 @@ const FilterBox = ({ header, ...rest }) => {
             <Card>
               <Row>
                 <Col xs={24} lg={4}>
-                  <HeaderText text={header} />
+                  <HeaderText text={header} level={3} />
                 </Col>
                 <Col xs={24} lg={6}>
                   <TagAction href="https://www.revzilla.com/#">
