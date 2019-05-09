@@ -5,6 +5,7 @@ import CategoryMenu from './CategoryMenu'
 import ExtraBar from './ExtraBar'
 import FilterBox from './FilterBox'
 import HeroBanner from './HeroBanner'
+import InfoBlock from './InfoBlock'
 import Logo from './Logo'
 import MegaMenu from './MegaMenu'
 import MenuIcon from './MenuIcon'
@@ -23,6 +24,7 @@ export default {
   ExtraBar,
   FilterBox,
   HeroBanner,
+  InfoBlock,
   Logo,
   MegaMenu,
   MenuIcon,

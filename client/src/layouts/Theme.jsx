@@ -4,16 +4,23 @@ import { Layout } from 'antd'
 import styled, { createGlobalStyle } from 'styled-components'
 
 import components from '../components/'
+import store from '../stores'
 
 const {
   Header, Footer, Content
 } = Layout
 
-const { Navbar } = components
+const { infoContent } = store
+const { Navbar, InfoBlock } = components
 
 const GlobalStyle = createGlobalStyle`
   a {
     color: #fa4c06;
+
+    &:active,
+    &:hover {
+      color: #ff6629 !important;
+    }
   }
 
   .text-left {
@@ -96,7 +103,19 @@ const HeaderContainer = styled(Header)`
   }
 `
 
-// const FooterContainer = styled(Footer)
+const FooterContainer = styled(Footer)`
+  background: #151211 !important;
+  color: #fff !important;
+
+  h3,
+  .ant-typography {
+    color: #fff;
+  }
+
+  .footer-info {
+    margin: 4rem 0;
+  }
+`
 
 const Theme = ({ children }) => (
   <div>
@@ -107,9 +126,11 @@ const Theme = ({ children }) => (
       <Content className="bg-white">
         {children}
       </Content>
-      <Footer>
-        Footer
-      </Footer>
+      <FooterContainer>
+        <div className="footer-info">
+          <InfoBlock data={infoContent[0]} />
+        </div>
+      </FooterContainer>
       <GlobalStyle />
     </Layout>
   </div>

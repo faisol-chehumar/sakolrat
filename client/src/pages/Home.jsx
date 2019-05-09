@@ -24,8 +24,6 @@ const {
   ProductSlider
 } = components
 
-// console.log(brands)
-
 const Home = () => (
   <Theme>
     <HeroBanner data={heroBanners} />
