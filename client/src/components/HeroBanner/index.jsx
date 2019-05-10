@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Carousel } from 'antd'
 import styled from 'styled-components'
+import { Link } from 'gatsby'
 
 const HeroBannerContainer = styled.div`
   background-image: url( ${props => props.imgSrc.xs} );
@@ -20,11 +21,11 @@ const HeroBanner = ({ data }) => (
   <Carousel autoplay>
     {
       data.map((img, index) => (
-        <a key={index} href={img.link}>
+        <Link key={index} to={img.link}>
           <HeroBannerContainer imgSrc={img.src}>
             <h1>{img.title}</h1>
           </HeroBannerContainer>
-        </a>
+        </Link>
       ))
     }
   </Carousel>

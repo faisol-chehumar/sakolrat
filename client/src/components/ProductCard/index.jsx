@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Card } from 'antd'
 import styled from 'styled-components'
+import { Link } from 'gatsby'
 
 import Rating from '../Rating'
 
@@ -22,7 +23,7 @@ const CardContainer = styled(Card)`
 `
 
 const ProductCard = ({ data }) => (
-  <a href={data.link}>
+  <Link to={data.link}>
     <CardContainer
       hoverable
       cover={<img alt={data.title} src={data.thumbImg} />}
@@ -33,7 +34,7 @@ const ProductCard = ({ data }) => (
       <p className="price">{data.price}</p>
       <Rating score={data.rating} />
     </CardContainer>
-  </a>
+  </Link>
 )
 
 ProductCard.propTypes = {

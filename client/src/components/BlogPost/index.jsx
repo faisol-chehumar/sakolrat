@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col, Card } from 'antd'
+import { Link } from 'gatsby'
 import styled from 'styled-components'
 
 import Button from '../Button'
@@ -53,7 +54,7 @@ const BlogPost = ({ data, type }) => (
     {
       data.map((post, index) => (
         <Col key={index} xs={24} lg={12}>
-          <a className="block mg-sm" href={post.link}>
+          <Link className="block mg-sm" to={post.link}>
             <BlogPostContainer type={type}>
               <figure>
                 <div className="thumb-img">
@@ -69,14 +70,14 @@ const BlogPost = ({ data, type }) => (
                         <figcaption className="mgt-sm">{post.caption}</figcaption>
                       </Col>
                       <Col xs={0} lg={6}>
-                        <Button className="mgt-sm" text={'SHOP NOW'} />
+                        <Button className="mgt-sm" text={'SHOP NOW'} href={post.link} />
                       </Col>
                     </Row>
                   )
                 }
               </figure>
             </BlogPostContainer>
-          </a>
+          </Link>
         </Col>
       ))
     }

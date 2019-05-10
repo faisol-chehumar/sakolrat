@@ -2,6 +2,7 @@ import React from 'react'
 import { Icon } from 'antd'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { Link } from 'gatsby'
 
 const MenuIconContainer = styled.div`
   line-height: 0;
@@ -42,12 +43,12 @@ const MenuIcon = ({
   effect = null
 }) => (
   <MenuIconContainer>
-    <a href={link}>
+    <Link to={link}>
       <Icon
         type={type}
       />
       <span>{text}</span>
-    </a>
+    </Link>
   </MenuIconContainer>
 )
 

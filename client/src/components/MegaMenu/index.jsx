@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Row, Col } from 'antd'
 import styled from 'styled-components'
+import { Link } from 'gatsby'
 
 import menu from './menu'
 
@@ -185,9 +186,9 @@ const MegaMenu = () => {
               <ul className="text-left sub-menu" ref={menu}>
                 {menuLeft.map((menu, index) => (
                   <li key={index} className={currentMenuIndex === index ? 'is-active' : null}>
-                    <a href={menu.title.replace(' ', '-')}>
+                    <Link to={menu.title.replace(' ', '-')}>
                       {menu.title.toUpperCase()}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -195,7 +196,7 @@ const MegaMenu = () => {
             <Col xs={0} lg={8}>
               <div className="text-right extra-menu">
                 {menuRight.map((menu, index) => (
-                  <a key={index}>{menu.title.toUpperCase()}</a>
+                  <Link key={index}>{menu.title.toUpperCase()}</Link>
                 ))}
               </div>
             </Col>
@@ -210,22 +211,22 @@ const MegaMenu = () => {
                 <b className="cat-title">
                   SHOP {menuLeft[currentMenuIndex].title.toUpperCase()}
                 </b>
-                <a
+                <Link
                   className="cat-link"
-                  href={menuLeft[currentMenuIndex].title.replace(' ', '-')}
+                  to={menuLeft[currentMenuIndex].title.replace(' ', '-')}
                 >
                   Shop All &gt;
-                </a>
+                </Link>
               </Col>
               <Col xs={0} lg={16}>
                 <Row type="flex" justify="space-around">
                   {menuLeft[currentMenuIndex]['categories'].map(
                     (menu, index) => (
                       <Col key={index} span={5}>
-                        <a href={menu.link}>
+                        <Link to={menu.link}>
                           <img src={menu.img} alt={`${menu.title} image.`} />
                           {menu.title.toUpperCase()}
-                        </a>
+                        </Link>
                       </Col>
                     )
                   )}
@@ -243,11 +244,11 @@ const MegaMenu = () => {
                 <Col xs={0} lg={24}>
                   {menuLeft[currentMenuIndex].categoriesByStyle.map(
                     (button, index) => (
-                      <a href={button.link} key={index}>
+                      <Link to={button.link} key={index}>
                         <SidePanelButton>
                           <b>{button.title.toUpperCase()}</b>
                         </SidePanelButton>
-                      </a>
+                      </Link>
                     )
                   )}
                 </Col>

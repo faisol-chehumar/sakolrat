@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Drawer, Row, Col, Icon, Input } from 'antd'
 import styled from 'styled-components'
+import { Link } from 'gatsby'
 
 import Logo from '../Logo'
 import MenuIcon from '../MenuIcon'
@@ -72,37 +73,37 @@ const Navbar = () => {
       <UtilityBar>
         <Row>
           <Col xs={0} lg={6} xl={4} offset={1}>
-            <a href="/customer-service">
+            <Link to="/customer-service">
               Contact Our Team:
               <b>+1 (215) 334-5500</b>
-            </a>
+            </Link>
           </Col>
           <Col
             xs={0}
             lg={{ span: 3, offset: 4 }}
             xl={{ span: 2, offset: 10 }}
           >
-            <a href="/auth">
+            <Link to="/auth">
               Log in/Sign up
-            </a>
+            </Link>
           </Col>
           <Col xs={0} lg={3} xl={2}>
-            <a href="/order-status">
+            <Link to="/order-status">
               Order Status
-            </a>
+            </Link>
           </Col>
           <Col xs={0} lg={3} xl={2}>
-            <a href="/customer-service">
+            <Link to="/customer-service">
               Customer Service
-            </a>
+            </Link>
           </Col>
           <Col xs={0} lg={3} xl={2}>
-            <a
+            <Link
               className="a-hilight"
-              href="/zillacash-reward"
+              to="/zillacash-reward"
             >
               Earn Zilla cash
-            </a>
+            </Link>
           </Col>
         </Row>
       </UtilityBar>

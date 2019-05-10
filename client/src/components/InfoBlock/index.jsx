@@ -2,6 +2,7 @@ import React from 'react'
 import { Typography } from 'antd'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { Link } from 'gatsby'
 
 const { Title, Paragraph } = Typography
 
@@ -35,9 +36,9 @@ const InfoBlock = ({ data, ...rest }) => (
     <Paragraph className="info-paragraph">
       {data.paragraph}
     </Paragraph>
-    <a className="info-link" href={data.link}>
+    <Link className="info-link" to={data.link}>
       Read more
-    </a>
+    </Link>
   </InfoBlockContainer>
 )
 

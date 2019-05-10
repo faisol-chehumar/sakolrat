@@ -1,14 +1,15 @@
 import React from 'react'
+import { Link } from 'gatsby'
 
 const Logo = ({ ...rest }) => (
   <>
-    <a href="/">
+    <Link to="/">
       <img
         src={'logo.svg'}
         alt="Website logo"
         {...rest}
       />
-    </a>
+    </Link>
   </>
 )
 

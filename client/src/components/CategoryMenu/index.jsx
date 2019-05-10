@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col, Card } from 'antd'
 import styled from 'styled-components'
+import { Link } from 'gatsby'
 
 import HeaderText from '../HeaderText'
 
@@ -31,12 +32,12 @@ const CategoryMenu = ({ header, data }) => (
     <Row>
       {data.map((menu, index) => (
         <Col key={index} xs={12} lg={24 / data.length}>
-          <a className="block mg-sm" href={menu.link}>
+          <Link className="block mg-sm" to={menu.link}>
             <CardContainer>
               <img src={menu.src} />
               {menu.title}
             </CardContainer>
-          </a>
+          </Link>
         </Col>
       ))}
     </Row>
