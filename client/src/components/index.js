@@ -10,6 +10,7 @@ import InfoBlock from './InfoBlock'
 import Logo from './Logo'
 import MegaMenu from './MegaMenu'
 import MenuIcon from './MenuIcon'
+import MenuLink from './MenuLink'
 import Navbar from './Navbar'
 import ProductList from './ProductList'
 import ProductItem from './ProductItem'
@@ -31,6 +32,7 @@ export default {
   Logo,
   MegaMenu,
   MenuIcon,
+  MenuLink,
   Navbar,
   ProductCard,
   ProductList,

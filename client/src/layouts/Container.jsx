@@ -6,7 +6,7 @@ const ContainerBlock = styled.div`
   padding: 1rem .5rem;
 
   @media (min-width: 992px) {
-    padding: 2rem 10rem;
+    padding: 2rem 6rem;
   }
 `
 

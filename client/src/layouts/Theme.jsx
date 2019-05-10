@@ -99,6 +99,10 @@ const HeaderContainer = styled(Header)`
   }
 `
 
+const ContentContainer = styled(Content)`
+  background-color: ${props => props.bg}
+`
+
 const FooterContainer = styled(Footer)`
   background: #151211 !important;
   color: #fff !important;
@@ -109,15 +113,15 @@ const FooterContainer = styled(Footer)`
   }
 `
 
-const Theme = ({ children }) => (
+const Theme = ({ bg = '#fff', children }) => (
   <div>
     <Layout>
       <HeaderContainer>
         <Navbar />
       </HeaderContainer>
-      <Content className="bg-white">
+      <ContentContainer bg={bg}>
         {children}
-      </Content>
+      </ContentContainer>
       <FooterContainer>
         <InfoBlock data={infoContent[0]} />
         <SubscribeBox data={subscribeBox[0]} />
@@ -131,7 +135,8 @@ Theme.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.array
-  ])
+  ]),
+  bg: PropTypes.string
 }
 
 export default Theme

@@ -1,5 +1,6 @@
 import React from 'react'
-import { Layout } from 'antd'
+import { Layout, Typography } from 'antd'
+import styled from 'styled-components'
 
 import Theme from '../layouts/Theme'
 import Container from '../layouts/Container'
@@ -7,27 +8,45 @@ import components from '../components/'
 import stores from '../stores'
 
 const {
-  Header, Content, Footer, Sider
+  Header
+  // Content,
+  // Footer
 } = Layout
 
-const { coverHeader } = stores
-const { ExtraBar, HeaderCover } = components
+const { Title } = Typography
+
+const {
+  coverHeader,
+  menuLink
+} = stores
+
+const {
+  ExtraBar,
+  HeaderCover,
+  MenuLink
+} = components
+
+const HeaderContainer = styled(Header)`
+  background: transparent !important;
+`
+
+const LayoutContainer = styled(Layout)`
+  background: transparent !important;
+`
 
 const CustomerService = () => (
-  <Theme>
+  <Theme bg={'#eee'}>
     <HeaderCover data={coverHeader.customerService} />
     <ExtraBar />
     <Container>
-      <Layout>
-        <Sider>Sider</Sider>
-        <Layout>
-          <Header>Header</Header>
-          <Content>
-            xxx
-          </Content>
-          <Footer>Footer</Footer>
-        </Layout>
-      </Layout>
+      <LayoutContainer>
+        <HeaderContainer>
+          <Title level={2}>
+            Customer Services
+          </Title>
+          <MenuLink data={menuLink.customerService} />
+        </HeaderContainer>
+      </LayoutContainer>
     </Container>
   </Theme>
 )
