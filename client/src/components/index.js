@@ -15,6 +15,7 @@ import ProductItem from './ProductItem'
 import ProductSlider from './ProductSlider'
 import ProductCard from './ProductCard'
 import Rating from './Rating'
+import SubscribeBox from './SubscribeBox'
 
 export default {
   BlogPost,
@@ -33,5 +34,6 @@ export default {
   ProductList,
   ProductItem,
   ProductSlider,
-  Rating
+  Rating,
+  SubscribeBox
 }

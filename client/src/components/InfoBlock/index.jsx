@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography, Button } from 'antd'
+import { Typography } from 'antd'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -7,10 +7,23 @@ const { Title, Paragraph } = Typography
 
 const InfoBlockContainer = styled.div`
   color: ${props => props.color};
+  background-color: #151211 !important;
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 
   .info-title,
   .info-paragraph {
     color: #fff;
+  }
+
+  .info-link {
+
+    &:active,
+    &:hover {
+      color: #ff6629 !important;
+    }
   }
 `
 

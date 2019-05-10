@@ -10,17 +10,16 @@ const {
   Header, Footer, Content
 } = Layout
 
-const { infoContent } = store
-const { Navbar, InfoBlock } = components
+const { infoContent, subscribeBox } = store
+const {
+  Navbar,
+  InfoBlock,
+  SubscribeBox
+} = components
 
 const GlobalStyle = createGlobalStyle`
   a {
     color: #fa4c06;
-
-    &:active,
-    &:hover {
-      color: #ff6629 !important;
-    }
   }
 
   .text-left {
@@ -92,10 +91,7 @@ const GlobalStyle = createGlobalStyle`
 
 const HeaderContainer = styled(Header)`
   font-size: 1.5rem;
-  padding-left: 0.5rem !important;
-  padding-right: 0.5rem !important;
   height: auto !important;
-  background-color: #151211 !important;
 
   @media (min-width: 992px) {
     padding-left: 4rem !important;
@@ -111,10 +107,6 @@ const FooterContainer = styled(Footer)`
   .ant-typography {
     color: #fff;
   }
-
-  .footer-info {
-    margin: 4rem 0;
-  }
 `
 
 const Theme = ({ children }) => (
@@ -127,9 +119,8 @@ const Theme = ({ children }) => (
         {children}
       </Content>
       <FooterContainer>
-        <div className="footer-info">
-          <InfoBlock data={infoContent[0]} />
-        </div>
+        <InfoBlock data={infoContent[0]} />
+        <SubscribeBox data={subscribeBox[0]} />
       </FooterContainer>
       <GlobalStyle />
     </Layout>

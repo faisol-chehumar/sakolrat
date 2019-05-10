@@ -2,9 +2,10 @@ import posts from './blog-post'
 import guides from './guides'
 import categoriesMenu from './categories-menu'
 import heroBanners from './hero-banners'
+import infoContent from './info-content'
 import brands from './brands'
 import productSlide from './products-slide'
-import infoContent from './info-content'
+import subscribeBox from './subscribe-box'
 
 export default {
   brands,
@@ -13,5 +14,6 @@ export default {
   heroBanners,
   infoContent,
   posts,
-  productSlide
+  productSlide,
+  subscribeBox
 }
