@@ -1,3 +1,4 @@
+import announce from './announce'
 import brands from './brands'
 import categoriesMenu from './categoriesMenu'
 import coverHeader from './coverHeader'
@@ -10,6 +11,7 @@ import productSlide from './productsSlide'
 import subscribeBox from './subscribeBox'
 
 export default {
+  announce,
   brands,
   categoriesMenu,
   coverHeader,

@@ -1,3 +1,4 @@
+import AnnounceBox from './AnnounceBox'
 import BlogPost from './BlogPost'
 import BrandSlider from './BrandSlider'
 import Button from './Button'
@@ -20,6 +21,7 @@ import Rating from './Rating'
 import SubscribeBox from './SubscribeBox'
 
 export default {
+  AnnounceBox,
   BlogPost,
   BrandSlider,
   Button,

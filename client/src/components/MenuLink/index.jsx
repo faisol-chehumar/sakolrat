@@ -8,6 +8,8 @@ const { Item } = Menu
 
 const MenuContainer = styled(Menu)`
   background: transparent !important;
+  margin-bottom: 1rem !important;
+  border-bottom: 0 !important;
 `
 
 const ItemContainer = styled(Item)`

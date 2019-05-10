@@ -30,10 +30,6 @@ const GlobalStyle = createGlobalStyle`
     text-align: right !important;
   }
 
-  .ant-layout-header {
-    background-color: transparent !imporatnt;
-  }
-
   .a-hilight {
     color: #67aa43 !important;
 
