@@ -72,7 +72,7 @@ const Navbar = () => {
     <DarkHeader>
       <UtilityBar>
         <Row>
-          <Col xs={0} lg={6} xl={4} offset={1}>
+          <Col xs={0} lg={6} xl={5} offset={1}>
             <Link to="/customer-service">
               Contact Our Team:
               <b>+1 (215) 334-5500</b>
@@ -81,7 +81,7 @@ const Navbar = () => {
           <Col
             xs={0}
             lg={{ span: 3, offset: 4 }}
-            xl={{ span: 2, offset: 10 }}
+            xl={{ span: 2, offset: 9 }}
           >
             <Link to="/auth">
               Log in/Sign up

@@ -4,25 +4,26 @@ import { Layout } from 'antd'
 import Theme from '../layouts/Theme'
 import Container from '../layouts/Container'
 import components from '../components/'
+import stores from '../stores'
 
 const {
   Header, Content, Footer, Sider
 } = Layout
 
-const { ExtraBar } = components
+const { coverHeader } = stores
+const { ExtraBar, HeaderCover } = components
 
-const { ProductList } = components
-
-const ProductDetail = () => (
+const CustomerService = () => (
   <Theme>
+    <HeaderCover data={coverHeader.customerService} />
     <ExtraBar />
-    <Container size="xs">
+    <Container>
       <Layout>
         <Sider>Sider</Sider>
         <Layout>
           <Header>Header</Header>
           <Content>
-            <ProductList />
+            xxx
           </Content>
           <Footer>Footer</Footer>
         </Layout>
@@ -31,4 +32,4 @@ const ProductDetail = () => (
   </Theme>
 )
 
-export default ProductDetail
+export default CustomerService

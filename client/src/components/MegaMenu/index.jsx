@@ -196,7 +196,7 @@ const MegaMenu = () => {
             <Col xs={0} lg={8}>
               <div className="text-right extra-menu">
                 {menuRight.map((menu, index) => (
-                  <Link key={index}>{menu.title.toUpperCase()}</Link>
+                  <Link key={index} to={'/'}>{menu.title.toUpperCase()}</Link>
                 ))}
               </div>
             </Col>

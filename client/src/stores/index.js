@@ -1,15 +1,17 @@
-import posts from './blog-post'
+import posts from './blogPost'
 import guides from './guides'
-import categoriesMenu from './categories-menu'
-import heroBanners from './hero-banners'
-import infoContent from './info-content'
+import categoriesMenu from './categoriesMenu'
+import coverHeader from './coverHeader'
+import heroBanners from './heroBanners'
+import infoContent from './infoContent'
 import brands from './brands'
-import productSlide from './products-slide'
-import subscribeBox from './subscribe-box'
+import productSlide from './productsSlide'
+import subscribeBox from './subscribeBox'
 
 export default {
   brands,
   categoriesMenu,
+  coverHeader,
   guides,
   heroBanners,
   infoContent,

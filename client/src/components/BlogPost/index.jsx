@@ -70,7 +70,7 @@ const BlogPost = ({ data, type }) => (
                         <figcaption className="mgt-sm">{post.caption}</figcaption>
                       </Col>
                       <Col xs={0} lg={6}>
-                        <Button className="mgt-sm" text={'SHOP NOW'} href={post.link} />
+                        <Button className="mgt-sm" text={'SHOP NOW'} />
                       </Col>
                     </Row>
                   )

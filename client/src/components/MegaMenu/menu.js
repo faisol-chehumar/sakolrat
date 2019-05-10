@@ -5,42 +5,42 @@ const menuLeft = [
     categories: [
       {
         title: 'fullface',
-        img: 'https://www.revzilla.com/facet_set/image/4845/REDLIN-2853_Full-Face-Helmets-Visual-Category-Link_global.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       }
     ],
@@ -77,42 +77,42 @@ const menuLeft = [
     categories: [
       {
         title: 'fullface',
-        img: 'https://www.revzilla.com/facet_set/image/4845/REDLIN-2853_Full-Face-Helmets-Visual-Category-Link_global.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       }
     ],
@@ -149,42 +149,42 @@ const menuLeft = [
     categories: [
       {
         title: 'fullface',
-        img: 'https://www.revzilla.com/facet_set/image/4845/REDLIN-2853_Full-Face-Helmets-Visual-Category-Link_global.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       }
     ],
@@ -221,42 +221,42 @@ const menuLeft = [
     categories: [
       {
         title: 'fullface',
-        img: 'https://www.revzilla.com/facet_set/image/4845/REDLIN-2853_Full-Face-Helmets-Visual-Category-Link_global.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       }
     ],
@@ -293,42 +293,42 @@ const menuLeft = [
     categories: [
       {
         title: 'fullface',
-        img: 'https://www.revzilla.com/facet_set/image/4845/REDLIN-2853_Full-Face-Helmets-Visual-Category-Link_global.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       }
     ],
@@ -365,42 +365,42 @@ const menuLeft = [
     categories: [
       {
         title: 'fullface',
-        img: 'https://www.revzilla.com/facet_set/image/4845/REDLIN-2853_Full-Face-Helmets-Visual-Category-Link_global.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       }
     ],
@@ -437,42 +437,42 @@ const menuLeft = [
     categories: [
       {
         title: 'fullface',
-        img: 'https://www.revzilla.com/facet_set/image/4845/REDLIN-2853_Full-Face-Helmets-Visual-Category-Link_global.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       }
     ],
@@ -509,42 +509,42 @@ const menuLeft = [
     categories: [
       {
         title: 'fullface',
-        img: 'https://www.revzilla.com/facet_set/image/4845/REDLIN-2853_Full-Face-Helmets-Visual-Category-Link_global.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       }
     ],
@@ -581,42 +581,42 @@ const menuLeft = [
     categories: [
       {
         title: 'fullface',
-        img: 'https://www.revzilla.com/facet_set/image/4845/REDLIN-2853_Full-Face-Helmets-Visual-Category-Link_global.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       },
       {
         title: 'modular',
-        img: 'https://www.revzilla.com/facet_set/image/4847/REDLINE-2854_Modular-Helmets-Visual-Category-Link.png',
+        img: 'cat-advtouring.svg',
         link: 'https://www.google.com'
       }
     ],

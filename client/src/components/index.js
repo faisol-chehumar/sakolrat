@@ -4,6 +4,7 @@ import Button from './Button'
 import CategoryMenu from './CategoryMenu'
 import ExtraBar from './ExtraBar'
 import FilterBox from './FilterBox'
+import HeaderCover from './HeaderCover'
 import HeroBanner from './HeroBanner'
 import InfoBlock from './InfoBlock'
 import Logo from './Logo'
@@ -24,6 +25,7 @@ export default {
   CategoryMenu,
   ExtraBar,
   FilterBox,
+  HeaderCover,
   HeroBanner,
   InfoBlock,
   Logo,
