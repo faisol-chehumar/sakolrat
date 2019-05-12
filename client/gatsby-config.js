@@ -18,7 +18,7 @@ module.exports = {
         name: 'pages'
       }
     },
-    `gatsby-plugin-sharp`,
+    // `gatsby-plugin-sharp`,
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     {
@@ -27,12 +27,12 @@ module.exports = {
         libraryName: 'antd',
         style: 'css'
       }
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: `xxx`
-      }
     }
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     trackingId: `xxx`
+    //   }
+    // }
   ]
 }
