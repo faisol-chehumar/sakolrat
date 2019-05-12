@@ -161,13 +161,13 @@ const MegaMenu = () => {
     return () => {
       menu.current.childNodes.forEach((element, index) => {
         let timer = ''
-        element.removeListener('mouseover', e => {
+        element.removeEventListener('mouseover', e => {
           timer = setTimeout(() => {
             setActiveMenu(index)(e)
           }, 100, index, e)
         }, index, timer)
 
-        element.removeListener('mouseout', e => {
+        element.removeEventListener('mouseout', e => {
           clearTimeout(timer)
           handleLeaveMenuBar(e)
         })

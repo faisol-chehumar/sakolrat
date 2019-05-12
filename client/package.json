@@ -13,13 +13,16 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "dependencies": {
+    "@moltin/gatsby-source-moltin": "^1.2.2",
     "antd": "^3.16.2",
     "axios": "^0.18.0",
     "babel-plugin-styled-components": "^1.10.0",
     "gatsby": "^2.3.15",
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-routes": "^1.0.0",
+    "gatsby-plugin-sharp": "^2.0.37",
     "gatsby-plugin-styled-components": "^3.0.7",
+    "gatsby-source-filesystem": "^2.0.33",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0",

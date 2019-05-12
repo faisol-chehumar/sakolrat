@@ -4,12 +4,12 @@ module.exports = [
     path: '/',
     component: path.resolve(`src/pages/Home.jsx`)
   },
+  // {
+  //   path: '/products',
+  //   component: path.resolve(`src/pages/Products.jsx`)
+  // },
   {
-    path: '/products',
-    component: path.resolve(`src/pages/Products.jsx`)
-  },
-  {
-    path: '/customer-service',
+    path: '/customer-service/',
     component: path.resolve(`src/pages/CustomerService.jsx`)
   }
 ]

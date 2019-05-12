@@ -8,6 +8,8 @@ import FilterBox from './FilterBox'
 import HeaderCover from './HeaderCover'
 import HeroBanner from './HeroBanner'
 import InfoBlock from './InfoBlock'
+import LoginForm from './LoginForm'
+import LoginModal from './LoginModal'
 import Logo from './Logo'
 import MegaMenu from './MegaMenu'
 import MenuIcon from './MenuIcon'
@@ -31,6 +33,8 @@ export default {
   HeaderCover,
   HeroBanner,
   InfoBlock,
+  LoginForm,
+  LoginModal,
   Logo,
   MegaMenu,
   MenuIcon,

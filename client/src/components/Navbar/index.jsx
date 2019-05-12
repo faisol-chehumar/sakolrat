@@ -6,6 +6,12 @@ import { Link } from 'gatsby'
 import Logo from '../Logo'
 import MenuIcon from '../MenuIcon'
 import MegaMenu from '../MegaMenu'
+import LoginModal from '../LoginModal'
+// import {
+//   MenuIcon,
+//   MegaMenu,
+//   LoginModal
+// } from '../../components'
 
 const DarkHeader = styled.div`
   color: #fff;
@@ -83,9 +89,7 @@ const Navbar = () => {
             lg={{ span: 3, offset: 4 }}
             xl={{ span: 2, offset: 9 }}
           >
-            <Link to="/auth">
-              Log in/Sign up
-            </Link>
+            <LoginModal />
           </Col>
           <Col xs={0} lg={3} xl={2}>
             <Link to="/order-status">
