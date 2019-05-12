@@ -1,16 +1,16 @@
 export default [
   {
-    title: '111',
+    title: 'hero-banner-1',
     src: { xs: 'hero-banner-1.jpg', lg: 'hero-banner-1-lg.jpg' },
     link: '/product/1'
   },
   {
-    title: '222',
+    title: 'hero-banner-2',
     src: { xs: 'hero-banner-1.jpg', lg: 'hero-banner-1-lg.jpg' },
     link: '/product/1'
   },
   {
-    title: '333',
+    title: 'hero-banner-3',
     src: { xs: 'hero-banner-1.jpg', lg: 'hero-banner-1-lg.jpg' },
     link: '/product/1'
   }
