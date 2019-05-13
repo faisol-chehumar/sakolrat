@@ -4,6 +4,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 
 import stores from '../stores'
 import components from '../components'
+import { getUniqueProducts } from '../utils/moltinHelper'
 
 import Theme from '../layouts/Theme'
 import Container from '../layouts/Container'
@@ -38,14 +39,24 @@ const Home = ({ location }) => {
       allMoltinProduct {
         edges {
           node {
-            id
             name
-            description
+            slug
+            mainImageHref
+            meta {
+              display_price {
+                without_tax {
+                  formatted
+                }
+              }
+            }
           }
         }
       }
     }
   `)
+
+  const uniqueProducts = getUniqueProducts(data['allMoltinProduct']['edges'], 'name')
+  console.log(uniqueProducts)
 
   return (
     <Theme>
@@ -72,9 +83,11 @@ const Home = ({ location }) => {
       <Container>
         <BrandSlider data={brands} />
       </Container>
-      <Container>
-        <ProductSlider data={productSlide} />
-      </Container>
+      {uniqueProducts.length > 7 && (
+        <Container>
+          <ProductSlider data={uniqueProducts} />
+        </Container>
+      )}
     </Theme>
   )
 }
