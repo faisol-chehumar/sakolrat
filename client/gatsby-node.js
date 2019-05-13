@@ -14,6 +14,7 @@ exports.createPages = ({ graphql, actions }) => {
               edges {
                 node {
                   id
+                  slug
                 }
               }
             }
@@ -26,10 +27,10 @@ exports.createPages = ({ graphql, actions }) => {
         }
         result.data.allMoltinProduct.edges.forEach(edge => {
           createPage({
-            path: `/product/${edge.node.id}/`,
+            path: `/product/${edge.node.slug}/`,
             component: productPageTemplate,
             context: {
-              id: edge.node.id
+              id: edge.node.slug
             }
           })
         })

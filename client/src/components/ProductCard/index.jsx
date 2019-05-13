@@ -23,7 +23,7 @@ const CardContainer = styled(Card)`
 `
 
 const ProductCard = ({ data }) => (
-  <Link to={`/propduct/${data.slug}/`}>
+  <Link to={`/product/${data.slug}/`}>
     <CardContainer
       hoverable
       cover={<img alt={data.title} src={data.mainImageHref} />}
