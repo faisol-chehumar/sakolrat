@@ -15,8 +15,8 @@ text-align: left;
   }
 `
 
-const Rating = ({ score }) => (
-  <RatingContainer>
+const Rating = ({ score, ...rest }) => (
+  <RatingContainer {...rest}>
     {
       Array(5).fill('').map((_, index) => (
         <Icon key={index} type="star" theme={index + 1 <= score ? 'filled' : 'outlined' } />

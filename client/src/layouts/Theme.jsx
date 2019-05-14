@@ -74,6 +74,14 @@ const GlobalStyle = createGlobalStyle`
     background-color: #fff;
   }
 
+  .fl {
+    float: left;
+  }
+
+  .inline {
+    display: inline-block;
+  }
+
   @media (max-width: 992px) {
     .container {
       padding-left: 2rem;

@@ -224,7 +224,7 @@ const MegaMenu = () => {
                     (menu, index) => (
                       <Col key={index} span={5}>
                         <Link to={menu.link}>
-                          <img src={menu.img} alt={`${menu.title} image.`} />
+                          <img src={`/${menu.img}`} alt={`${menu.title}`} />
                           {menu.title.toUpperCase()}
                         </Link>
                       </Col>

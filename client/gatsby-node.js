@@ -20,17 +20,18 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         `
-      ).then(result => {
+      ).then(async result => {
         if (result.errors) {
           console.log(result.errors)
           reject(result.errors)
         }
+
         result.data.allMoltinProduct.edges.forEach(edge => {
           createPage({
             path: `/product/${edge.node.slug}/`,
             component: productPageTemplate,
             context: {
-              id: edge.node.slug
+              id: edge.node.id
             }
           })
         })

@@ -14,8 +14,8 @@ const {
   categoriesMenu,
   guides,
   heroBanners,
-  posts,
-  productSlide
+  posts
+  // productSlide
 } = stores
 
 const {
