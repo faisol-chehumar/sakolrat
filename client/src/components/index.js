@@ -1,6 +1,7 @@
 import AnnounceBox from './AnnounceBox'
 import BlogPost from './BlogPost'
 import BrandSlider from './BrandSlider'
+import BreadcrumbShop from './BreadcrumbShop'
 import Button from './Button'
 import CategoryMenu from './CategoryMenu'
 import ExtraBar from './ExtraBar'
@@ -26,6 +27,7 @@ export default {
   AnnounceBox,
   BlogPost,
   BrandSlider,
+  BreadcrumbShop,
   Button,
   CategoryMenu,
   ExtraBar,
