@@ -9,6 +9,7 @@ import {
 import { connect } from 'react-redux'
 import { graphql, useStaticQuery } from 'gatsby'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 import Theme from '../layouts/Theme'
 import Container from '../layouts/Container'
@@ -21,7 +22,8 @@ const Option = Select.Option
 const {
   ExtraBar,
   BreadcrumbShop,
-  ProductCard
+  ProductCard,
+  SidebarFilter
 } = components
 
 const mapStateToProps = ({
@@ -33,6 +35,10 @@ const mapStateToProps = ({
 const mapDispatchToProps = dispatch => {
   return { setProducts: (products) => dispatch({ type: `SET_PRODUCTS`, payload: products }) }
 }
+
+const ContentContainer = styled.div`
+
+`
 
 const Product = (props) => {
   const { products, setProducts, sortBy } = props
@@ -77,38 +83,40 @@ const Product = (props) => {
       <ExtraBar />
       <Container>
         <Row>
-          <Col xs={24} lg={8}>
-            Filter
+          <Col xs={24} lg={6}>
+            <SidebarFilter />
           </Col>
-          <Col xs={24} lg={16}>
-            <BreadcrumbShop />
-            <Title level={2}>
-              {categoriesList.product.toUpperCase()} PRODUCT <span>(7631)</span>
-            </Title>
-            <Row>
-              <Col xs={2}>
-                <p>Sort By:</p>
-              </Col>
-              <Col xs={4}>
-                <Select defaultValue="Featured" style={{ width: 200 }}>
-                  {sortBy.map((sort, index) => (
-                    <Option key={index} value={sort}>{sort}</Option>
-                  ))}
-                </Select>
-              </Col>
-              <Col className="right" xs={10} offset={8}>
-                <Pagination defaultCurrent={1} total={Math.ceil(products.length / 50)} />
-              </Col>
-            </Row>
-            <Row>
-              {
-                products.map((product, index) => (
-                  <Col key={index} xs={12} lg={6}>
-                    <ProductCard data={product} />
-                  </Col>
-                ))
-              }
-            </Row>
+          <Col xs={24} lg={18}>
+            <ContentContainer>
+              <BreadcrumbShop />
+              <Title level={2}>
+                {categoriesList.product.toUpperCase()} PRODUCT <span>(7631)</span>
+              </Title>
+              <Row>
+                <Col xs={2}>
+                  <p>Sort By:</p>
+                </Col>
+                <Col xs={4}>
+                  <Select defaultValue="Featured" style={{ width: 200 }}>
+                    {sortBy.map((sort, index) => (
+                      <Option key={index} value={sort}>{sort}</Option>
+                    ))}
+                  </Select>
+                </Col>
+                <Col className="right" xs={10} offset={8}>
+                  <Pagination defaultCurrent={1} total={Math.ceil(products.length / 50)} />
+                </Col>
+              </Row>
+              <Row>
+                {
+                  products.map((product, index) => (
+                    <Col key={index} xs={12} lg={6}>
+                      <ProductCard data={product} />
+                    </Col>
+                  ))
+                }
+              </Row>
+            </ContentContainer>
           </Col>
         </Row>
       </Container>
@@ -121,11 +129,8 @@ Product.propTypes = {
     PropTypes.object,
     PropTypes.array
   ]),
-  setProducts: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.array
-  ]),
-  sortBy: PropTypes.string,
+  setProducts: PropTypes.func,
+  sortBy: PropTypes.array,
   currentCategory: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.array

@@ -67,7 +67,8 @@ const MegaMenuPanel = styled.div`
   border-bottom: 4px solid #fa4c06;
   padding: 0.5rem 4rem;
   color: #333;
-  position: relative;
+  position: absolute;
+  z-index: 9999;
   display: none;
 
   a {
