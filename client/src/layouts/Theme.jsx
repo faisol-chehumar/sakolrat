@@ -86,6 +86,10 @@ const GlobalStyle = createGlobalStyle`
     text-align: center;
   }
 
+  .right {
+    text-align: right;
+  }
+
   @media (max-width: 992px) {
     .container {
       padding-left: 2rem;

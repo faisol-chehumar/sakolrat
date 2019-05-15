@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import {
   Row,
   Col,
@@ -24,25 +24,21 @@ const {
   ProductCard
 } = components
 
-const mapStateToProps = ({ products }) => ({ products })
+const mapStateToProps = ({
+  products,
+  sortBy,
+  currentCategory
+}) => ({ products, sortBy, currentCategory })
+
 const mapDispatchToProps = dispatch => {
   return { setProducts: (products) => dispatch({ type: `SET_PRODUCTS`, payload: products }) }
 }
 
 const Product = (props) => {
-  // const [products, setProducts] = useState([])
-  const { products, setProducts } = props
-  const [category, setCategory] = useState('all')
-  const [curBreadcum, setCurBreadcum] = useState([
-    {
-      title: 'HOME',
-      link: '/'
-    },
-    {
-      title: 'SHOP',
-      link: ''
-    }
-  ])
+  const { products, setProducts, sortBy } = props
+  const categoriesList = {
+    product: 'all'
+  }
 
   const data = useStaticQuery(graphql`
     query ProductsQuery {
@@ -85,27 +81,23 @@ const Product = (props) => {
             Filter
           </Col>
           <Col xs={24} lg={16}>
-            <BreadcrumbShop data={curBreadcum} />
+            <BreadcrumbShop />
             <Title level={2}>
-              {category.toUpperCase()} PRODUCT <span>(7631)</span>
+              {categoriesList.product.toUpperCase()} PRODUCT <span>(7631)</span>
             </Title>
             <Row>
               <Col xs={2}>
                 <p>Sort By:</p>
               </Col>
               <Col xs={4}>
-                <Select defaultValue="lucy" style={{ width: 120 }}>
-                  <Option value="Featured">Featured</Option>
-                  <Option value="Rating">Rating</Option>
-                  <Option value="Brand">Brand</Option>
-                  <Option value="Best Sellers">Best Sellers</Option>
-                  <Option value="Newest Arrivals">Newest Arrivals</Option>
-                  <Option value="Price: Low to High">Price: Low to High</Option>
-                  <Option value="Price: High to Low">Price: High to Low</Option>
+                <Select defaultValue="Featured" style={{ width: 200 }}>
+                  {sortBy.map((sort, index) => (
+                    <Option key={index} value={sort}>{sort}</Option>
+                  ))}
                 </Select>
               </Col>
-              <Col xs={10} offset={8}>
-                <Pagination defaultCurrent={1} total={50} />
+              <Col className="right" xs={10} offset={8}>
+                <Pagination defaultCurrent={1} total={Math.ceil(products.length / 50)} />
               </Col>
             </Row>
             <Row>
@@ -130,6 +122,11 @@ Product.propTypes = {
     PropTypes.array
   ]),
   setProducts: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array
+  ]),
+  sortBy: PropTypes.string,
+  currentCategory: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.array
   ])
