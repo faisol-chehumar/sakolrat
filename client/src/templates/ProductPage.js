@@ -11,7 +11,7 @@ import components from '../components'
 import instance from '../utils/request'
 
 const { Title, Paragraph } = Typography
-const { Rating } = components
+const { Rating, BreadcrumbShop } = components
 
 const Option = Select.Option;
 const TabPane = Tabs.TabPane;
@@ -74,7 +74,8 @@ const ProductPageTemplate = (props) => {
       title: 'AVAILABILITY',
       dataIndex: 'availability',
     },
-  ];
+  ]
+
   const dataTable = [
     {
       productStyle: 'Vance & Hines Fuelpak FP3 Autotuner For Harley 2011-2019',
@@ -84,11 +85,23 @@ const ProductPageTemplate = (props) => {
     }
   ]
 
+  const [curBreadcum] = useState([
+    {
+      title: 'HOME',
+      link: '/'
+    },
+    {
+      title: 'SHOP',
+      link: '/product/'
+    }
+  ])
+
   return (
     <Theme>
       <Container>
         <Row>
           <Col xs={24} lg={12}>
+            <BreadcrumbShop data={curBreadcum} />
             <ThumbImg>
               <img src={mainImageHref} alt={name} width="100%" />
             </ThumbImg>
@@ -229,7 +242,7 @@ const ProductPageTemplate = (props) => {
 export default ProductPageTemplate
 
 export const pageQuery = graphql`
-  query ProductsQuery($id: String!) {
+  query ProductQuery($id: String!) {
     allMoltinProduct(filter: {id: {eq: $id}}) {
       edges {
         node {

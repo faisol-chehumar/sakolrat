@@ -10,6 +10,7 @@ const { Meta } = Card
 
 const CardContainer = styled(Card)`
   margin: .25rem;
+  padding: 1rem;
 
   .ant-card-meta-title {
     margin-bottom: 1rem;

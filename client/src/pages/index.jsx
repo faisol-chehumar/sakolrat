@@ -15,7 +15,6 @@ const {
   guides,
   heroBanners,
   posts
-  // productSlide
 } = stores
 
 const {
@@ -54,9 +53,9 @@ const Home = ({ location }) => {
       }
     }
   `)
-
-  const uniqueProducts = getUniqueProducts(data['allMoltinProduct']['edges'], 'name')
-  console.log(uniqueProducts)
+  const products = data['allMoltinProduct']['edges'].map(product => product.node)
+  const uniqueProducts = getUniqueProducts(products, 'name')
+  // console.log(uniqueProducts)
 
   return (
     <Theme>
