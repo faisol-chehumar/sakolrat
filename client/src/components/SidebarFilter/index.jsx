@@ -61,7 +61,7 @@ const SidebarFilter = (props) => (
       ['Red', 'Blue', 'Green', 'Yellow', 'Pink'].map((item, index) => (
         <div key={index}>
           <Checkbox onChange={onChange}>
-            <span style={{ borderRadius: '50%', marginRight: '.5rem', display: 'inline-block', width: '12px', height: '12px', backgroundColor: item }} />
+            <span style={{ borderRadius: '50%', marginRight: '0.5rem', display: 'inline-block', width: '12px', height: '12px', backgroundColor: item }} />
             {item}
           </Checkbox>
         </div>

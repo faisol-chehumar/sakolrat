@@ -23,12 +23,11 @@ const ParagraphContainer = styled(Paragraph)`
 
 const AnnounceBox = ({ data }) => (
   <CardContainer>
-    {console.log(data)}
     <ParagraphContainer>
       {
         data.map((line, index) => (
           <p key={index}>
-            {line}dfdf
+            {line}
           </p>
         ))
       }

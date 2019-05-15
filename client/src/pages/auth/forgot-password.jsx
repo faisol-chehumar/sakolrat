@@ -10,22 +10,18 @@ import stores from '../../stores'
 const {
   Header,
   Content
-  // Footer
 } = Layout
 
 const { Title } = Typography
 
 const {
-  announce,
   coverHeader,
-  menuLink
 } = stores
 
 const {
-  AnnounceBox,
   ExtraBar,
   HeaderCover,
-  MenuLink
+  ForgotPassword
 } = components
 
 const HeaderContainer = styled(Header)`
@@ -44,16 +40,8 @@ const ForgetPassword = () => (
     <ExtraBar />
     <Container>
       <LayoutContainer>
-        <HeaderContainer>
-          <div>
-            <Title level={2}>
-              Customer Services
-            </Title>
-            <MenuLink data={menuLink.customerService} />
-          </div>
-        </HeaderContainer>
         <Content>
-          <AnnounceBox data={announce[0]} />
+          <ForgotPassword />
         </Content>
       </LayoutContainer>
     </Container>

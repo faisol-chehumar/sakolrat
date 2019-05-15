@@ -36,7 +36,7 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    this.props.form.validateFields((err, values) => {
+    props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values)
       }
@@ -73,7 +73,7 @@ const Login = (props) => {
         })(
           <Checkbox>Remember me</Checkbox>
         )}
-        <a className="login-form-forgot" href="/auth/forget-password/">Forgot password</a>
+        <a className="login-form-forgot" href="/auth/forgot-password/">Forgot password</a>
         <Button type="primary" htmlType="submit" className="login-form-button">
           Log in
         </Button>
