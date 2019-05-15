@@ -21,6 +21,7 @@ import ProductItem from './ProductItem'
 import ProductSlider from './ProductSlider'
 import ProductCard from './ProductCard'
 import Rating from './Rating'
+import RegisterForm from './RegisterForm'
 import SidebarFilter from './SidebarFilter'
 import SubscribeBox from './SubscribeBox'
 
@@ -48,6 +49,7 @@ export default {
   ProductItem,
   ProductSlider,
   Rating,
+  RegisterForm,
   SidebarFilter,
   SubscribeBox
 }

@@ -20,6 +20,14 @@ const FormContainer = styled(Form)`
   }
  .login-form-button {
     width: 100%;
+    background-color: #fa4c06 !important;
+    border-color: #fa4c06 !important;
+  }
+
+  a {
+    &:hover {
+      color: #fa4c06 !important;
+    }
   }
 `
 
@@ -37,6 +45,11 @@ const Login = (props) => {
 
   const { getFieldDecorator } = props.form
 
+  const registerHandle = (e) => {
+    props.onSwitchForm('register')
+  }
+
+  console.log(props.action)
   return (
     <FormContainer onSubmit={handleSubmit} className="login-form">
       <Item>
@@ -56,15 +69,15 @@ const Login = (props) => {
       <Item>
         {getFieldDecorator('remember', {
           valuePropName: 'checked',
-          initialValue: true
+          initialValue: false
         })(
           <Checkbox>Remember me</Checkbox>
         )}
-        <a className="login-form-forgot" href="">Forgot password</a>
+        <a className="login-form-forgot" href="/auth/forget-password/">Forgot password</a>
         <Button type="primary" htmlType="submit" className="login-form-button">
           Log in
         </Button>
-        Or <a href="">register now!</a>
+        Or <a onClick={registerHandle}>register now!!!</a>
       </Item>
     </FormContainer>
   )
