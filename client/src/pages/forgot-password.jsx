@@ -1,5 +1,8 @@
 import React from 'react'
-import { Layout, Typography } from 'antd'
+import {
+  Layout
+  // Typography
+} from 'antd'
 import styled from 'styled-components'
 
 import Theme from '../layouts/Theme'
@@ -8,14 +11,14 @@ import components from '../components/'
 import stores from '../stores'
 
 const {
-  Header,
+  // Header,
   Content
 } = Layout
 
-const { Title } = Typography
+// const { Title } = Typography
 
 const {
-  coverHeader,
+  coverHeader
 } = stores
 
 const {
@@ -24,11 +27,11 @@ const {
   ForgotPasswordForm
 } = components
 
-const HeaderContainer = styled(Header)`
-  background: transparent !important;
-  padding-left: 0 !important;
-  height: auto !important;
-`
+// const HeaderContainer = styled(Header)`
+//   background: transparent !important;
+//   padding-left: 0 !important;
+//   height: auto !important;
+// `
 
 const LayoutContainer = styled(Layout)`
   background: transparent !important;
