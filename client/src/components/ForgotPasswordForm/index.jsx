@@ -23,17 +23,17 @@ const ParagraphContainer = styled(Paragraph)`
   color: #111;
 `
 
-const handleSubmit = e => {
-  e.preventDefault()
-  props.form.validateFields((err, values) => {
-    if (!err) {
-      console.log('Received values of form: ', values)
-    }
-  })
-}
-
-const ForgotPassword = (props) => {
+const ForgotPasswordComponent = (props) => {
   const { getFieldDecorator } = props.form
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    props.form.validateFields((err, values) => {
+      if (!err) {
+        console.log('Received values of form: ', values)
+      }
+    })
+  }
 
   return (
     <CardContainer>
@@ -45,22 +45,22 @@ const ForgotPassword = (props) => {
         to have difficulty accessing your account.
       </ParagraphContainer>
       <Form layout="inline" onSubmit={handleSubmit}>
-          <Item label="Email Adress">
-            {getFieldDecorator('emailAdress', {
-              rules: [{ required: true, message: 'Please enter your email address.' }]
-            })(
-              <Input
-                prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                placeholder="Email Address"
-              />
-            )}
-          </Item>
-          <Item>
-            <Button type="primary" htmlType="submit">
-              Reset Password
-            </Button>
-          </Item>
-        </Form>
+        <Item label="Email Adress">
+          {getFieldDecorator('emailAdress', {
+            rules: [{ required: true, message: 'Please enter your email address.' }]
+          })(
+            <Input
+              prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              placeholder="Email Address"
+            />
+          )}
+        </Item>
+        <Item>
+          <Button type="primary" htmlType="submit">
+            Reset Password
+          </Button>
+        </Item>
+      </Form>
       <Paragraph>
         If you do not receive an email, or if your email address has changed since you registered
         please contact <Link to={'/customer-service/'}>Customer Service.</Link>
@@ -69,13 +69,17 @@ const ForgotPassword = (props) => {
   )
 }
 
-ForgotPassword.propTypes = {
+ForgotPasswordComponent.propTypes = {
   data: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array
+  ]),
+  form: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.array
   ])
 }
 
-const ForgotPasswordForm = Form.create({ name: 'normal_login' })(ForgotPassword)
+const ForgotPasswordForm = Form.create({ name: 'normal_login' })(ForgotPasswordComponent)
 
 export default ForgotPasswordForm
