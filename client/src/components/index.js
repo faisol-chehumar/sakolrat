@@ -17,6 +17,7 @@ import MegaMenu from './MegaMenu'
 import MenuIcon from './MenuIcon'
 import MenuLink from './MenuLink'
 import Navbar from './Navbar'
+import OrderStatusForm from './OrderStatus'
 import ProductList from './ProductList'
 import ProductItem from './ProductItem'
 import ProductSlider from './ProductSlider'
@@ -46,6 +47,7 @@ export default {
   MenuIcon,
   MenuLink,
   Navbar,
+  OrderStatusForm,
   ProductCard,
   ProductList,
   ProductItem,

@@ -651,10 +651,12 @@ const menuLeft = [
 
 const menuRight = [
   {
-    title: 'riding gear'
+    title: 'SHOP',
+    link: '/product/'
   },
   {
-    title: 'parts'
+    title: 'parts',
+    link: '/parts/'
   }
 ]
 

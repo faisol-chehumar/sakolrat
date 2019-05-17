@@ -2,10 +2,10 @@ import React from 'react'
 import { Layout, Typography } from 'antd'
 import styled from 'styled-components'
 
-import Theme from '../../layouts/Theme'
-import Container from '../../layouts/Container'
-import components from '../../components/'
-import stores from '../../stores'
+import Theme from '../layouts/Theme'
+import Container from '../layouts/Container'
+import components from '../components/'
+import stores from '../stores'
 
 const {
   Header,
@@ -21,7 +21,7 @@ const {
 const {
   ExtraBar,
   HeaderCover,
-  ForgotPassword
+  ForgotPasswordForm
 } = components
 
 const HeaderContainer = styled(Header)`
@@ -34,18 +34,18 @@ const LayoutContainer = styled(Layout)`
   background: transparent !important;
 `
 
-const ForgetPassword = () => (
+const ForgotPassword = () => (
   <Theme bg={'#eee'}>
     <HeaderCover data={coverHeader.customerService} />
     <ExtraBar />
     <Container>
       <LayoutContainer>
         <Content>
-          <ForgotPassword />
+          <ForgotPasswordForm />
         </Content>
       </LayoutContainer>
     </Container>
   </Theme>
 )
 
-export default ForgetPassword
+export default ForgotPassword

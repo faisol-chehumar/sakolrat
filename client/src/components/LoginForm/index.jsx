@@ -49,7 +49,7 @@ const Login = (props) => {
     props.onSwitchForm('register')
   }
 
-  console.log(props.action)
+  // console.log(props.action)
   return (
     <FormContainer onSubmit={handleSubmit} className="login-form">
       <Item>
@@ -73,7 +73,7 @@ const Login = (props) => {
         })(
           <Checkbox>Remember me</Checkbox>
         )}
-        <a className="login-form-forgot" href="/auth/forgot-password/">Forgot password</a>
+        <a className="login-form-forgot" href="/forgot-password/">Forgot password</a>
         <Button type="primary" htmlType="submit" className="login-form-button">
           Log in
         </Button>
@@ -90,7 +90,8 @@ Login.propTypes = {
     PropTypes.object,
     PropTypes.array
   ]),
-  size: PropTypes.string
+  size: PropTypes.string,
+  onSwitchForm: PropTypes.func
 }
 
 export default LoginForm
