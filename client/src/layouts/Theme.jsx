@@ -104,6 +104,7 @@ const GlobalStyle = createGlobalStyle`
 const HeaderContainer = styled(Header)`
   font-size: 1.5rem;
   height: auto !important;
+  padding: 0 1rem !important;
 
   @media (min-width: 992px) {
     padding-left: 4rem !important;

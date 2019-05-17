@@ -22,9 +22,7 @@ const HeroBanner = ({ data }) => (
     {
       data.map((img, index) => (
         <Link key={index} to={img.link}>
-          <HeroBannerContainer imgSrc={img.src}>
-            <h1>{img.title}</h1>
-          </HeroBannerContainer>
+          <HeroBannerContainer imgSrc={img.src} />
         </Link>
       ))
     }

@@ -54,6 +54,9 @@ const MainMenu = styled.div`
 
   .sub-header {
     background-color: #333;
+    margin: 0 -15px;
+    padding: 0 1rem !important;
+    width: 109%;
   }
 
   @media (min-width: 992px) {
@@ -135,17 +138,18 @@ const Navbar = () => {
             />
           </Col>
           <Col
-            className="sub-header"
             xs={{ span: 24, offset: 0 }}
             lg={{ span: 9, offset: 5 }}
             xl={{ span: 10, offset: 6 }}
           >
-            <Input
-              placeholder="Search Product or Part #"
-              suffix={
-                <Icon type="search" className="certain-category-icon black clickable" />
-              }
-            />
+            <div className="sub-header">
+              <Input
+                placeholder="Search Product or Part #"
+                suffix={
+                  <Icon type="search" className="certain-category-icon black clickable" />
+                }
+              />
+            </div>
           </Col>
           <Col xs={0} lg={6} xl={4}>
             <div className="menu-group">

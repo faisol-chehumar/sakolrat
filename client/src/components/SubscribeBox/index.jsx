@@ -9,7 +9,7 @@ const SubscribeBoxContainer = styled.div`
   color: ${props => props.color};
   background-color: #fa4c06 !important;
   padding: 4rem .5rem 3rem !important;
-  margin: 2rem -4rem;
+  margin: 2rem -3rem;
 
   .ant-col {
     text-align: center;
