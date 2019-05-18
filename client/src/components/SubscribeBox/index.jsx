@@ -33,10 +33,14 @@ const SubscribeBoxContainer = styled.div`
 
 const SubscribeInput = styled(Input)`
   height: 3.5rem;
+  margin-top: 1rem;
+
+  @media (min-width: 992px) {
+    margin-top: 0;
+  }
 `
 
 const SubscribeButton = styled(Button)`
-  margin-left: 1rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
   height: 3.5rem;
@@ -44,16 +48,22 @@ const SubscribeButton = styled(Button)`
   background-color: #222;
   color: #fff;
   border-color: #111 !important;
+  margin-top: 1rem;
 
   &:hover {
     background-color: #3c3c3c;
+  }
+
+  @media (min-width: 992px) {
+    margin-left: 1rem;
+    margin-top: 0;
   }
 `
 
 const SubscribeBox = ({ data, ...rest }) => (
   <SubscribeBoxContainer {...rest}>
     <Row>
-      <Col xs={24} lg={6} offset={3}>
+      <Col xs={{ span: 24 }} lg={{ span: 6, offset: 3 }}>
         <HeaderText
           className="subscribe-title"
           text={data.title}
