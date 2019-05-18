@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Layout } from 'antd'
+import { Layout, Divider } from 'antd'
 import styled, { createGlobalStyle } from 'styled-components'
 
 import components from '../components/'
@@ -126,6 +126,17 @@ const FooterContainer = styled(Footer)`
   }
 `
 
+const BrandDivider = styled(Divider)`
+  &::before,
+  &::after {
+    border-color: #484848 !important;
+  }
+`
+
+const ImageDivider = styled.div`
+  width: 80px;
+`
+
 const Theme = ({ bg = '#fff', children }) => (
   <div>
     <Layout>
@@ -138,6 +149,11 @@ const Theme = ({ bg = '#fff', children }) => (
       <FooterContainer>
         <InfoBlock data={infoContent[0]} />
         <SubscribeBox data={subscribeBox[0]} />
+        <BrandDivider>
+          <ImageDivider>
+            <img src="revzilla_icon_logo.svg" alt="Brand Logo" />
+          </ImageDivider>
+        </BrandDivider>
       </FooterContainer>
       <GlobalStyle />
     </Layout>

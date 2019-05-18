@@ -4,6 +4,7 @@ import BrandSlider from './BrandSlider'
 import BreadcrumbShop from './BreadcrumbShop'
 import Button from './Button'
 import CategoryMenu from './CategoryMenu'
+import CustomLineBreak from './CustomLineBreak'
 import ExtraBar from './ExtraBar'
 import FilterBox from './FilterBox'
 import ForgotPasswordForm from './ForgotPasswordForm'
@@ -34,6 +35,7 @@ export default {
   BreadcrumbShop,
   Button,
   CategoryMenu,
+  CustomLineBreak,
   ExtraBar,
   FilterBox,
   ForgotPasswordForm,
