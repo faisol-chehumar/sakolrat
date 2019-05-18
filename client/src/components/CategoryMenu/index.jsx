@@ -26,7 +26,7 @@ const CategoryMenu = ({ header, data }) => (
   <div>
     <Row>
       <Col xs={24}>
-        <HeaderText text={header} />
+        <HeaderText text={header} level={3} />
       </Col>
     </Row>
     <Row>
