@@ -4,22 +4,48 @@ import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import linkBuilder from '../../utils/linkBuider.js'
+
 const { Title } = Typography
 
-const MenuVerticleContainer = styled.div`
+const MenuTitle = styled(Title)`
+  text-transform: uppercase;
+`
 
+const MenuVerticleContainer = styled.div`
+  a {
+    color: #6f6c6c;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+    text-transform: capitalize;
+  }
+
+  li {
+    padding: .5rem 0;
+  }
+
+  @media (min-width: 992px) {
+    text-align: left;
+  }
 `
 const MenuVerticle = ({ data }) => (
   <MenuVerticleContainer>
-    <Title level={4}>
+    <MenuTitle level={4}>
       {data.title}
-    </Title>
+    </MenuTitle>
     <ul>
       {
-        data.list.map((menu, index) => (
+        data.lists.map((menu, index) => (
           <li key={index}>
-            <Link to={menu.link}>
-              {menu.title}
+            <Link to={linkBuilder(menu)}>
+              {menu}
             </Link>
           </li>
         ))

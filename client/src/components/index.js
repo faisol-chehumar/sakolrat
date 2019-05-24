@@ -7,6 +7,7 @@ import CategoryMenu from './CategoryMenu'
 import CustomLineBreak from './CustomLineBreak'
 import ExtraBar from './ExtraBar'
 import FilterBox from './FilterBox'
+import FooterInfo from './FooterInfo'
 import ForgotPasswordForm from './ForgotPasswordForm'
 import HeaderCover from './HeaderCover'
 import HeroBanner from './HeroBanner'
@@ -27,6 +28,7 @@ import Rating from './Rating'
 import RegisterForm from './RegisterForm'
 import SidebarFilter from './SidebarFilter'
 import SubscribeBox from './SubscribeBox'
+import MenuVerticle from './MenuVerticle'
 
 export default {
   AnnounceBox,
@@ -38,6 +40,7 @@ export default {
   CustomLineBreak,
   ExtraBar,
   FilterBox,
+  FooterInfo,
   ForgotPasswordForm,
   HeaderCover,
   HeroBanner,
@@ -57,5 +60,6 @@ export default {
   Rating,
   RegisterForm,
   SidebarFilter,
-  SubscribeBox
+  SubscribeBox,
+  MenuVerticle
 }

@@ -14,7 +14,8 @@ const { infoContent, subscribeBox } = store
 const {
   Navbar,
   InfoBlock,
-  SubscribeBox
+  SubscribeBox,
+  FooterInfo
 } = components
 
 const GlobalStyle = createGlobalStyle`
@@ -154,6 +155,7 @@ const Theme = ({ bg = '#fff', children }) => (
             <img src="revzilla_icon_logo.svg" alt="Brand Logo" />
           </ImageDivider>
         </BrandDivider>
+        <FooterInfo />
       </FooterContainer>
       <GlobalStyle />
     </Layout>
