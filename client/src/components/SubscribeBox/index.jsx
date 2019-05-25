@@ -3,7 +3,7 @@ import { Row, Col, Typography, Input, Button } from 'antd'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import HeaderText from '../HeaderText'
+import HeaderTitle from '../HeaderTitle'
 
 const { Text } = Typography
 
@@ -64,7 +64,7 @@ const SubscribeBox = ({ data, ...rest }) => (
   <SubscribeBoxContainer {...rest}>
     <Row>
       <Col xs={{ span: 24 }} lg={{ span: 6, offset: 3 }}>
-        <HeaderText
+        <HeaderTitle
           className="subscribe-title"
           text={data.title}
           level={4}

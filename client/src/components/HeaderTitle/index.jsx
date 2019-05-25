@@ -5,8 +5,8 @@ import styled from 'styled-components'
 
 const { Title } = Typography
 
-const HeaderTextContainer = styled.div`
-  text-align: center;
+const HeaderTitleContainer = styled.div`
+  text-align: ${props => props.align || 'center'};
   background-image: ${props => props.background ? `url(${props.background})` : 'none'};
 
   h3.ant-typography {
@@ -14,18 +14,17 @@ const HeaderTextContainer = styled.div`
   }
 `
 
-const HeaderText = ({ text, level, bg }) => (
-  <HeaderTextContainer background={bg}>
+const HeaderTitle = ({ text, level, ...rest }) => (
+  <HeaderTitleContainer {...rest}>
     <Title level={level}>
       {text}
     </Title>
-  </HeaderTextContainer>
+  </HeaderTitleContainer>
 )
 
-HeaderText.propTypes = {
+HeaderTitle.propTypes = {
   text: PropTypes.string,
-  level: PropTypes.number,
-  bg: PropTypes.string
+  level: PropTypes.number
 }
 
-export default HeaderText
+export default HeaderTitle

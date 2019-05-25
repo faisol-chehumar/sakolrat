@@ -11,7 +11,7 @@ import components from '../components'
 import instance from '../utils/request'
 
 const { Title, Paragraph } = Typography
-const { Rating, BreadcrumbShop } = components
+const { Rating, BreadcrumbShop, HeaderTitle } = components
 
 const Option = Select.Option;
 const TabPane = Tabs.TabPane;
@@ -20,10 +20,10 @@ const ThumbImg = styled.div`
   padding: 2rem;
 `
 
-const HeaderText = styled(Title)`
-  font-weight: 800;
-  text-transform: uppercase;
-`
+// const HeaderTitle = styled(Title)`
+//   font-weight: 800;
+//   text-transform: uppercase;
+// `
 
 const MetaData = styled.div`
   margin-bottom: 1rem;
@@ -107,9 +107,7 @@ const ProductPageTemplate = (props) => {
             </ThumbImg>
           </Col>
           <Col xs={24} lg={12}>
-            <HeaderText level={2}>
-              {name}
-            </HeaderText>
+            <HeaderTitle leve={2} text={name} align="left" />
             <MetaData>
               <div>
                 Item: XXX | SKU: {sku}

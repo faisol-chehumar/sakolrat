@@ -5,7 +5,7 @@ import { Link } from 'gatsby'
 
 import menu from './menu'
 
-const { menuLeft, menuRight } = menu
+const { menuLeft } = menu
 
 const MegaMenuContainer = styled.nav`
   margin: 0 -4rem;
@@ -46,14 +46,6 @@ const MegaMenuBar = styled.div`
     &:hover {
       background-color: #fff;
       color: #333;
-    }
-  }
-
-  .extra-menu a {
-    color: #333;
-
-    &:hover {
-      color: #fff;
     }
   }
 
@@ -183,7 +175,7 @@ const MegaMenu = () => {
       <div>
         <MegaMenuBar>
           <Row gutter={16}>
-            <Col xs={0} lg={16}>
+            <Col xs={0} lg={24}>
               <ul className="text-left sub-menu" ref={menu}>
                 {menuLeft.map((menu, index) => (
                   <li key={index} className={currentMenuIndex === index ? 'is-active' : null}>
@@ -193,13 +185,6 @@ const MegaMenu = () => {
                   </li>
                 ))}
               </ul>
-            </Col>
-            <Col xs={0} lg={8}>
-              <div className="text-right extra-menu">
-                {menuRight.map((menu, index) => (
-                  <Link key={index} to={menu.link}>{menu.title.toUpperCase()}</Link>
-                ))}
-              </div>
             </Col>
           </Row>
         </MegaMenuBar>

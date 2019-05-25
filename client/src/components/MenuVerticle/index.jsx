@@ -1,19 +1,21 @@
 import React from 'react'
-import { Typography } from 'antd'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import linkBuilder from '../../utils/linkBuider.js'
-
-const { Title } = Typography
-
-const MenuTitle = styled(Title)`
-  text-transform: uppercase;
-`
+import TitleText from '../TitleText'
 
 const MenuVerticleContainer = styled.div`
-  a {
+  & > a {
+    color: #fff;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  li > a {
     color: #6f6c6c;
 
     &:hover {
@@ -37,9 +39,9 @@ const MenuVerticleContainer = styled.div`
 `
 const MenuVerticle = ({ data }) => (
   <MenuVerticleContainer>
-    <MenuTitle level={4}>
-      {data.title}
-    </MenuTitle>
+    <Link to={linkBuilder(data.title)}>
+      <TitleText text={data.title} />
+    </Link>
     <ul>
       {
         data.lists.map((menu, index) => (

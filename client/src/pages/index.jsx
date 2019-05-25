@@ -67,9 +67,11 @@ const Home = ({ location }) => {
           data={categoriesMenu}
         />
       </Container>
-      <Container>
-        <BlogPost data={posts} />
-      </Container>
+      {uniqueProducts.length > 7 && (
+        <Container>
+          <ProductSlider data={uniqueProducts} />
+        </Container>
+      )}
       <Container className="mgt-sm">
         <FilterBox
           className="bdt-primary"
@@ -82,11 +84,9 @@ const Home = ({ location }) => {
       <Container>
         <BrandSlider data={brands} />
       </Container>
-      {uniqueProducts.length > 7 && (
-        <Container>
-          <ProductSlider data={uniqueProducts} />
-        </Container>
-      )}
+      <Container>
+        <BlogPost data={posts} />
+      </Container>
     </Theme>
   )
 }

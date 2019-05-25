@@ -1,32 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Row, Col, Card, Icon, Select } from 'antd'
+import { Row, Col, Card, Select } from 'antd'
 import styled from 'styled-components'
 
-import HeaderText from '../HeaderText'
+import HeaderTitle from '../HeaderTitle'
 import Button from '../Button'
 
 const Option = Select.Option
-
-const TagAction = styled.a`
-  background-color: #333;
-  color: #fff;
-  padding: .5rem 1rem;
-  position: absolute;
-  display: block;
-  left: -24px;
-  top: -125px;
-  border-radius: 3px;
-
-  b {
-    margin-right: .5rem;
-    margin-left: .5rem;
-  }
-
-  @media (min-width: 992px) {
-    position: static;
-  }
-`
 
 const SelectContainer = styled(Select)`
   width: 100%;
@@ -80,16 +60,7 @@ const FilterBox = ({ header, ...rest }) => {
             <Card>
               <Row>
                 <Col xs={24} lg={4}>
-                  <HeaderText text={header} level={3} />
-                </Col>
-                <Col xs={24} lg={6}>
-                  <TagAction href="https://www.revzilla.com/#">
-                    <Icon type="setting" />
-                    <b>Garage</b>
-                    <span>
-                      Log In to Access Saved Bikes
-                    </span>
-                  </TagAction>
+                  <HeaderTitle text={header} level={3} />
                 </Col>
               </Row>
               <Row>

@@ -89,8 +89,8 @@ const Navbar = () => {
           </Col>
           <Col
             xs={0}
-            lg={{ span: 3, offset: 4 }}
-            xl={{ span: 2, offset: 9 }}
+            lg={{ span: 3, offset: 7 }}
+            xl={{ span: 2, offset: 11 }}
           >
             <LoginModal />
           </Col>
@@ -102,14 +102,6 @@ const Navbar = () => {
           <Col xs={0} lg={3} xl={2}>
             <Link to="/customer-service">
               Customer Service
-            </Link>
-          </Col>
-          <Col xs={0} lg={3} xl={2}>
-            <Link
-              className="a-hilight"
-              to="/zillacash-reward"
-            >
-              Earn Zilla cash
             </Link>
           </Col>
         </Row>
@@ -153,11 +145,6 @@ const Navbar = () => {
           </Col>
           <Col xs={0} lg={6} xl={4}>
             <div className="menu-group">
-              <MenuIcon
-                type="tool"
-                link="/garage"
-                text="Garage"
-              />
               <MenuIcon
                 type="star"
                 link="/whislist"

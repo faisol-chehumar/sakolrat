@@ -4,9 +4,7 @@ export default [
     lists: [
       'about us',
       'careers',
-      'zillacash rewards',
       'discount codes',
-      'philly showroom',
       'blog'
     ]
   },
@@ -17,7 +15,6 @@ export default [
       'return policy',
       'shipping policies',
       'price match policy',
-      'gift certificate policy',
       'order status',
       'faq'
     ]

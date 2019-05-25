@@ -4,7 +4,7 @@ import { Row, Col, Card } from 'antd'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
-import HeaderText from '../HeaderText'
+import HeaderTitle from '../HeaderTitle'
 
 const CardContainer = styled(Card)`
   text-align: center;
@@ -26,7 +26,7 @@ const CategoryMenu = ({ header, data }) => (
   <div>
     <Row>
       <Col xs={24}>
-        <HeaderText text={header} level={3} />
+        <HeaderTitle text={header} level={3} />
       </Col>
     </Row>
     <Row>

@@ -10,8 +10,10 @@ import FilterBox from './FilterBox'
 import FooterInfo from './FooterInfo'
 import ForgotPasswordForm from './ForgotPasswordForm'
 import HeaderCover from './HeaderCover'
+import HeaderTitle from './HeaderTitle'
 import HeroBanner from './HeroBanner'
 import InfoBlock from './InfoBlock'
+import TitleText from './TitleText'
 import LoginForm from './LoginForm'
 import LoginModal from './LoginModal'
 import Logo from './Logo'
@@ -43,8 +45,10 @@ export default {
   FooterInfo,
   ForgotPasswordForm,
   HeaderCover,
+  HeaderTitle,
   HeroBanner,
   InfoBlock,
+  TitleText,
   LoginForm,
   LoginModal,
   Logo,

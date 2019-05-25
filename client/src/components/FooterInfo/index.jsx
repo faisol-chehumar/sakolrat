@@ -1,23 +1,26 @@
 import React from 'react'
-import { Row, Col, Typography, Button } from 'antd'
+import { Row, Col, Button } from 'antd'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import Container from '../../layouts/Container'
 import MenuVerticle from '../MenuVerticle'
+import TitleText from '../TitleText'
 
 import stores from '../../stores'
 
 const { footerInfo } = stores
 
-const { Text, Title } = Typography
-
 const FooterInfoContainer = styled.div`
   text-align: center;
 `
 
-const GhostText = styled(Text)`
-  color: #827c7c !important
+const RowWithExtendedMargin = styled(Row)`
+  margin-bottom: 1.5rem;
+`
+
+const GhostText = styled.p`
+  color: #827c7c !important;
 `
 
 const GhostButton = styled(Button)`
@@ -29,22 +32,20 @@ const FooterInfo = ({ data }) => (
     <FooterInfoContainer>
       <Row>
         <Col xs={24} lg={{ span: 12, push: 12 }}>
-          <Row>
+          <RowWithExtendedMargin>
             <Col xs={24} lg={12}>
-              <Title level={4}>NEED HELP?</Title>
+              <TitleText text={'NEED HELP ?'} />
             </Col>
             <Col xs={24} lg={12}>
               <p>
-                <b><a href="tel:+1 (215) 334-5500">+1 (215) 334-5500</a></b>
+                <b><a href="tel:tel:+1 (215) 334-5500">+1 (215) 334-5500</a></b>
               </p>
             </Col>
-          </Row>
+          </RowWithExtendedMargin>
           <Row>
             <Col xs={24} lg={12}>
-              <Title level={4}>ALWAYS LOOKING TO IMPROVE</Title>
-              <p>
-                <GhostText disabled>Tell us what you love or what we need to fix.</GhostText>
-              </p>
+              <TitleText text={'ALWAYS LOOKING TO IMPROVE'} />
+              <GhostText disabled>Tell us what you love or what we need to fix.</GhostText>
             </Col>
             <Col xs={24} lg={12}>
               <GhostButton ghost>LEAVE FEEDBACK</GhostButton>
@@ -52,7 +53,7 @@ const FooterInfo = ({ data }) => (
           </Row>
           <Row>
             <Col xs={24} lg={24}>
-              <Title level={4}>ALWAYS LOOKING TO IMPROVE</Title>
+              ddd
             </Col>
           </Row>
         </Col>
