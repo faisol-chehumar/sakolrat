@@ -1,15 +1,16 @@
 import React from 'react'
-import { Row, Col, Button } from 'antd'
+import { Row, Col, Button, Divider } from 'antd'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import Container from '../../layouts/Container'
 import MenuVerticle from '../MenuVerticle'
 import TitleText from '../TitleText'
+import SocialGroup from '../SocialGroup'
 
 import stores from '../../stores'
 
-const { footerInfo } = stores
+const { footerInfo, socialGroup } = stores
 
 const FooterInfoContainer = styled.div`
   text-align: center;
@@ -27,9 +28,36 @@ const GhostButton = styled(Button)`
   margin-bottom: 1rem;
 `
 
+const SocialGroupContainer = styled.div`
+  @media (min-width: 992px) {
+    margin-top: 4rem;
+  }
+`
+
+const BrandDivider = styled(Divider)`
+
+  &::before,
+  &::after {
+    border-color: #484848 !important;
+  }
+`
+
+const ImageDivider = styled.div`
+  width: 80px;
+`
+
+const GhostDivider = styled(Divider)`
+  background: #484848 !important;
+`
+
 const FooterInfo = ({ data }) => (
   <Container>
     <FooterInfoContainer>
+      <BrandDivider>
+        <ImageDivider>
+          <img src="revzilla_icon_logo.svg" alt="Brand Logo" />
+        </ImageDivider>
+      </BrandDivider>w
       <Row>
         <Col xs={24} lg={{ span: 12, push: 12 }}>
           <RowWithExtendedMargin>
@@ -52,8 +80,10 @@ const FooterInfo = ({ data }) => (
             </Col>
           </Row>
           <Row>
-            <Col xs={24} lg={24}>
-              ddd
+            <Col xs={24} lg={{ span: 8, offset: 13 }}>
+              <SocialGroupContainer>
+                <SocialGroup data={socialGroup} />
+              </SocialGroupContainer>
             </Col>
           </Row>
         </Col>
@@ -68,6 +98,7 @@ const FooterInfo = ({ data }) => (
           </Row>
         </Col>
       </Row>
+      <GhostDivider />
     </FooterInfoContainer>
   </Container>
 )

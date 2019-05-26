@@ -29,6 +29,7 @@ import ProductCard from './ProductCard'
 import Rating from './Rating'
 import RegisterForm from './RegisterForm'
 import SidebarFilter from './SidebarFilter'
+import SocialGroup from './SocialGroup'
 import SubscribeBox from './SubscribeBox'
 import MenuVerticle from './MenuVerticle'
 
@@ -64,6 +65,7 @@ export default {
   Rating,
   RegisterForm,
   SidebarFilter,
+  SocialGroup,
   SubscribeBox,
   MenuVerticle
 }
