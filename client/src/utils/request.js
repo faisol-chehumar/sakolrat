@@ -14,6 +14,7 @@ const implicitLogin = async () => {
   const token = result.data
   return token
 }
+
 instance.interceptors.request.use(async (config) => {
   // check if token exist
   let token = localStorage.getItem(KEY)

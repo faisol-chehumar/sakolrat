@@ -19,7 +19,7 @@ const LoginModal = () => {
   }
 
   const closeModal = e => {
-    setVisible(false);
+    setVisible(false)
   }
 
   const modalHandle = input => {
