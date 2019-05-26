@@ -2,6 +2,7 @@ import React from 'react'
 import { Row, Col, Button, Divider } from 'antd'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { Link } from 'gatsby'
 
 import Container from '../../layouts/Container'
 import MenuVerticle from '../MenuVerticle'
@@ -22,6 +23,16 @@ const RowWithExtendedMargin = styled(Row)`
 
 const GhostText = styled.p`
   color: #827c7c !important;
+  font-size: ${props => props.size || '1rem'};
+  text-align: ${props => props.align || 'center'};
+
+  a {
+    color: #827c7c !important;
+
+    &:hover {
+      color: #827c7c !important;
+    }
+  }
 `
 
 const GhostButton = styled(Button)`
@@ -29,6 +40,9 @@ const GhostButton = styled(Button)`
 `
 
 const SocialGroupContainer = styled.div`
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+
   @media (min-width: 992px) {
     margin-top: 4rem;
   }
@@ -57,7 +71,7 @@ const FooterInfo = ({ data }) => (
         <ImageDivider>
           <img src="revzilla_icon_logo.svg" alt="Brand Logo" />
         </ImageDivider>
-      </BrandDivider>w
+      </BrandDivider>
       <Row>
         <Col xs={24} lg={{ span: 12, push: 12 }}>
           <RowWithExtendedMargin>
@@ -73,7 +87,7 @@ const FooterInfo = ({ data }) => (
           <Row>
             <Col xs={24} lg={12}>
               <TitleText text={'ALWAYS LOOKING TO IMPROVE'} />
-              <GhostText disabled>Tell us what you love or what we need to fix.</GhostText>
+              <GhostText size=".85rem">Tell us what you love or what we need to fix.</GhostText>
             </Col>
             <Col xs={24} lg={12}>
               <GhostButton ghost>LEAVE FEEDBACK</GhostButton>
@@ -99,6 +113,32 @@ const FooterInfo = ({ data }) => (
         </Col>
       </Row>
       <GhostDivider />
+      <Row>
+        <Col xs={24} lg={6}>
+          <GhostText size=".6rem" align="left">© 2019 REVZILLA.COM ALL RIGHTS RESERVED</GhostText>
+        </Col>
+        <Col xs={24} lg={3}>
+          <GhostText size=".6rem" align="left">
+            <Link to={'/customer-service-hacker-tested-and-secured/'}>
+              SECURE SHOPPING
+            </Link>
+          </GhostText>
+        </Col>
+        <Col xs={24} lg={3}>
+          <GhostText size=".6rem" align="left">
+            <Link to={'/customer-service-hacker-tested-and-secured/'}>
+              PRIVACY POLICY
+            </Link>
+          </GhostText>
+        </Col>
+        <Col xs={24} lg={3}>
+          <GhostText size=".6rem" align="left">
+            <Link to={'/customer-service-hacker-tested-and-secured/'}>
+              TERMS AND CONDITIONS
+            </Link>
+          </GhostText>
+        </Col>
+      </Row>
     </FooterInfoContainer>
   </Container>
 )
