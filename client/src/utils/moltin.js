@@ -2,7 +2,7 @@ import axios from 'axios'
 const KEY = 'motlin-token'
 
 const CLIENT_ID = 'zIHN2cq5oFlPhhCCdD9fDd8v6WimkNWtCmi6t8u08B'
-const instance = axios.create({
+const moltin = axios.create({
   baseURL: 'https://api.moltin.com/v2'
 })
 
@@ -15,7 +15,7 @@ const implicitLogin = async () => {
   return token
 }
 
-instance.interceptors.request.use(async (config) => {
+moltin.interceptors.request.use(async (config) => {
   // check if token exist
   let token = localStorage.getItem(KEY)
   if (token !== null) {
@@ -35,4 +35,4 @@ instance.interceptors.request.use(async (config) => {
   return config
 })
 
-export default instance
+export default moltin

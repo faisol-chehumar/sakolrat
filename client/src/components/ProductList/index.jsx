@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import request from '../../utils/request'
+import moltin from '../../utils/moltin'
 
 const ProductList = () => {
   const [data, setData] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await request.get('/products')
+      const res = await moltin.get('/products')
       setData([
         ...data,
         res.data

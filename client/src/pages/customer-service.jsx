@@ -10,7 +10,6 @@ import stores from '../stores'
 const {
   Header,
   Content
-  // Footer
 } = Layout
 
 const { Title } = Typography

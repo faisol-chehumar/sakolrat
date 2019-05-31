@@ -8,7 +8,7 @@ import styled from 'styled-components'
 import Theme from '../layouts/Theme'
 import Container from '../layouts/Container'
 import components from '../components'
-import instance from '../utils/request'
+import moltin from '../utils/moltin'
 
 const { Title, Paragraph } = Typography
 const { Rating, BreadcrumbShop, HeaderTitle } = components
@@ -50,7 +50,7 @@ const ProductPageTemplate = (props) => {
 
   useEffect(() => {
     const getBrand = async (id) => {
-      const productBrand = await instance.get(`/products/${id}?include=brands`)
+      const productBrand = await moltin.get(`/products/${id}?include=brands`)
       setBrand(productBrand)
     }
 
