@@ -9,6 +9,8 @@ import {
   Checkbox
 } from 'antd'
 
+import Moltin from '../../utils/moltin'
+
 const { Item } = Form
 
 const FormContainer = styled(Form)`
@@ -32,13 +34,13 @@ const FormContainer = styled(Form)`
 `
 
 const Login = (props) => {
-  // const [ usernameError, setUsernameError ] = useState('')
-
   const handleSubmit = (e) => {
     e.preventDefault()
-    props.form.validateFields((err, values) => {
+    props.form.validateFields(async (err, values) => {
+      const { username, password } = values
       if (!err) {
-        console.log('Received values of form: ', values)
+        const result = await Moltin.Customers.Token(username, password)
+        console.log(result)
       }
     })
   }
@@ -49,7 +51,6 @@ const Login = (props) => {
     props.onSwitchForm('register')
   }
 
-  // console.log(props.action)
   return (
     <FormContainer onSubmit={handleSubmit} className="login-form">
       <Item>
