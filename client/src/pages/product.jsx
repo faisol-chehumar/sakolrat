@@ -14,7 +14,7 @@ import styled from 'styled-components'
 import Theme from '../layouts/Theme'
 import Container from '../layouts/Container'
 import components from '../components/'
-import { getUniqueProducts } from '../utils/moltinHelper'
+import { getUniqueProducts } from '../utils/productHelper'
 
 const { Title } = Typography
 const Option = Select.Option

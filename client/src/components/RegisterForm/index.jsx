@@ -12,7 +12,7 @@ import {
 const { Item } = Form
 
 const FormContainer = styled(Form)`
- &.login-form {
+  &.login-form {
     max-width: 300px;
   }
  .login-form-forgot {
@@ -37,7 +37,6 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // console.log(values)
     props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values)

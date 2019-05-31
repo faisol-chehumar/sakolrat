@@ -4,7 +4,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 
 import stores from '../stores'
 import components from '../components'
-import { getUniqueProducts } from '../utils/moltinHelper'
+import { getUniqueProducts } from '../utils/productHelper'
 
 import Theme from '../layouts/Theme'
 import Container from '../layouts/Container'
