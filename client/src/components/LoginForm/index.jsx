@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {
@@ -36,13 +36,14 @@ const FormContainer = styled(Form)`
 
 const Login = (props) => {
   const { getFieldDecorator } = props.form
+  const [ alertMsg, setAlertMsg ] = useState(null)
 
   const notValidAuthenHabdle = ({ errors }) => {
-    // console.log(errors)
     const { status, detail } = errors[0]
+
     return status === 404
-      ? console.log('Incorrect Username or Password!')
-      : console.error(detail)
+      ? setAlertMsg('Incorrect Username or Password!')
+      : setAlertMsg(detail)
   }
 
   const handleSubmit = (e) => {
@@ -53,6 +54,7 @@ const Login = (props) => {
         try {
           const result = await Moltin.Customers.Token(username, password)
           console.log(result)
+          setAlertMsg(null)
         } catch (error) {
           notValidAuthenHabdle(error)
         }
@@ -66,7 +68,7 @@ const Login = (props) => {
 
   return (
     <FormContainer onSubmit={handleSubmit} className="login-form">
-      <WarningAlert desc='Test' />
+      <WarningAlert desc={alertMsg} />
       <Item>
         {getFieldDecorator('username', {
           rules: [{ required: true, message: 'Please input your username!' }]

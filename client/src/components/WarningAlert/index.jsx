@@ -9,7 +9,7 @@ const WarningAlertContainer = styled(Alert)`
 `
 
 const WarningAlert = ({ desc }) => (
-  <WarningAlertContainer
+  desc && <WarningAlertContainer
     description={desc}
     type="error"
   />
