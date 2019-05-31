@@ -10,6 +10,7 @@ import {
 } from 'antd'
 
 import Moltin from '../../utils/moltin'
+import WarningAlert from '../WarningAlert'
 
 const { Item } = Form
 
@@ -34,18 +35,30 @@ const FormContainer = styled(Form)`
 `
 
 const Login = (props) => {
+  const { getFieldDecorator } = props.form
+
+  const notValidAuthenHabdle = ({ errors }) => {
+    // console.log(errors)
+    const { status, detail } = errors[0]
+    return status === 404
+      ? console.log('Incorrect Username or Password!')
+      : console.error(detail)
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     props.form.validateFields(async (err, values) => {
       const { username, password } = values
       if (!err) {
-        const result = await Moltin.Customers.Token(username, password)
-        console.log(result)
+        try {
+          const result = await Moltin.Customers.Token(username, password)
+          console.log(result)
+        } catch (error) {
+          notValidAuthenHabdle(error)
+        }
       }
     })
   }
-
-  const { getFieldDecorator } = props.form
 
   const registerHandle = (e) => {
     props.onSwitchForm('register')
@@ -53,6 +66,7 @@ const Login = (props) => {
 
   return (
     <FormContainer onSubmit={handleSubmit} className="login-form">
+      <WarningAlert desc='Test' />
       <Item>
         {getFieldDecorator('username', {
           rules: [{ required: true, message: 'Please input your username!' }]
@@ -62,7 +76,9 @@ const Login = (props) => {
       </Item>
       <Item>
         {getFieldDecorator('password', {
-          rules: [{ required: true, message: 'Please input your Password!' }]
+          rules: [
+            { required: true, message: 'Please input your Password!' }
+          ]
         })(
           <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
         )}

@@ -20,6 +20,7 @@ import Logo from './Logo'
 import MegaMenu from './MegaMenu'
 import MenuIcon from './MenuIcon'
 import MenuLink from './MenuLink'
+import MenuVerticle from './MenuVerticle'
 import Navbar from './Navbar'
 import OrderStatusForm from './OrderStatus'
 import ProductList from './ProductList'
@@ -31,7 +32,7 @@ import RegisterForm from './RegisterForm'
 import SidebarFilter from './SidebarFilter'
 import SocialGroup from './SocialGroup'
 import SubscribeBox from './SubscribeBox'
-import MenuVerticle from './MenuVerticle'
+import WarningAlert from './WarningAlert'
 
 export default {
   AnnounceBox,
@@ -56,6 +57,7 @@ export default {
   MegaMenu,
   MenuIcon,
   MenuLink,
+  MenuVerticle,
   Navbar,
   OrderStatusForm,
   ProductCard,
@@ -67,5 +69,5 @@ export default {
   SidebarFilter,
   SocialGroup,
   SubscribeBox,
-  MenuVerticle
+  WarningAlert
 }
