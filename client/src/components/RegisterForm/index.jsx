@@ -9,6 +9,8 @@ import {
   Checkbox
 } from 'antd'
 
+import Moltin from '../../utils/moltin'
+
 const { Item } = Form
 
 const FormContainer = styled(Form)`
@@ -37,9 +39,18 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    props.form.validateFields((err, values) => {
+    props.form.validateFields(async (err, values) => {
       if (!err) {
         console.log('Received values of form: ', values)
+        const customer = {
+          name: values.email,
+          email: values.email,
+          password: values.password
+        }
+
+        Moltin.Customers.Create(customer).then(customer => {
+          console.log(`Moltin was create  ${customer}`)
+        })
       }
     })
   }
@@ -48,13 +59,25 @@ const Login = (props) => {
     props.onSwitchForm('login')
   }
 
-  const validateEmail = (rule, value, callback) => {
-    const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+  const checkDuplicateEmail = async email => {
+    const result = await Moltin.Customers.Filter({ eq: { email } }).All()
+
+    return result.data.length
+  }
+
+  const validateEmail = async (rule, email, callback) => {
+    const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
     const error = 'Invalid format of Email.'
+    const emailError = 'Duplicate Email'
 
     if (!isValidEmail) {
       callback(error)
     } else {
+      const isDuplicateEmail = await checkDuplicateEmail(email)
+
+      if (isDuplicateEmail) {
+        callback(emailError)
+      }
       callback()
     }
   }
@@ -89,7 +112,7 @@ const Login = (props) => {
       </p>
       <FormContainer onSubmit={handleSubmit} className="login-form">
         <Item>
-          {getFieldDecorator('emailAdress', {
+          {getFieldDecorator('email', {
             rules: [
               { required: true, message: 'Please enter your email address.' },
               { validator: validateEmail }
