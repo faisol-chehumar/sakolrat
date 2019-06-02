@@ -1,6 +1,6 @@
-/* eslint-disable */
-import React, { useState, useEffect } from 'react'
-import {graphql} from 'gatsby'
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import { Row, Col, Select, Typography, Button, Tabs, Table, Divider } from 'antd'
 import styled from 'styled-components'
@@ -8,22 +8,16 @@ import styled from 'styled-components'
 import Theme from '../layouts/Theme'
 import Container from '../layouts/Container'
 import components from '../components'
-import Moltin from '../utils/moltin'
 
-const { Title, Paragraph } = Typography
+const { Paragraph } = Typography
 const { Rating, BreadcrumbShop, HeaderTitle } = components
 
-const Option = Select.Option;
-const TabPane = Tabs.TabPane;
+const Option = Select.Option
+const TabPane = Tabs.TabPane
 
 const ThumbImg = styled.div`
   padding: 2rem;
 `
-
-// const HeaderTitle = styled(Title)`
-//   font-weight: 800;
-//   text-transform: uppercase;
-// `
 
 const MetaData = styled.div`
   margin-bottom: 1rem;
@@ -38,42 +32,30 @@ const ProductPageTemplate = (props) => {
   const data = props.data
   const product = get(data, 'allMoltinProduct.edges[0].node')
   const {
-    id,
     name,
     sku,
     mainImageHref,
     description,
-    meta: { display_price: { with_tax: { amount } }  }
+    meta: { display_price: { with_tax: { amount } } }
   } = product
-
-  const [brand, setBrand] = useState('')
-
-  useEffect(() => {
-    const getBrand = async (id) => {
-      const productBrand = await Moltin.get(`/products/${id}?include=brands`)
-      setBrand(productBrand)
-    }
-
-    getBrand(id)
-  }, [])
 
   const columns = [
     {
-      title: 'PRODUCT STYLE	',
-      dataIndex: 'productStyle',
+      title: 'PRODUCT STYLE',
+      dataIndex: 'productStyle'
     },
     {
       title: 'REVZILLA ITEM #',
-      dataIndex: 'revzillaItem',
+      dataIndex: 'revzillaItem'
     },
     {
       title: 'MFR. PRODUCT #',
-      dataIndex: 'mfrProduct',
+      dataIndex: 'mfrProduct'
     },
     {
       title: 'AVAILABILITY',
-      dataIndex: 'availability',
-    },
+      dataIndex: 'availability'
+    }
   ]
 
   const dataTable = [
@@ -222,7 +204,7 @@ const ProductPageTemplate = (props) => {
                   <h4>Returns</h4>
                   <p>
                     If your order arrives and it is not right, we will fix it, NO NONSENSE, we promise.
-                    Doesn't fit or just not happy with it? You can return any new, unused
+                    Doesn&apos;t fit or just not happy with it? You can return any new, unused
                     and unaltered item within 30 business days of delivery receipt of your item.
                     We will issue a full refund to your original payment method.
                     See our full Return Policy for all of the pertinent details.
@@ -235,6 +217,13 @@ const ProductPageTemplate = (props) => {
       </Container>
     </Theme>
   )
+}
+
+ProductPageTemplate.propTypes = {
+  data: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array
+  ])
 }
 
 export default ProductPageTemplate

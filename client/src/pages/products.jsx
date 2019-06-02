@@ -1,47 +1,46 @@
 import React, { useEffect } from 'react'
-import {
-  Row,
-  Col,
-  Typography,
-  Select,
-  Pagination
-} from 'antd'
 import { connect } from 'react-redux'
 import { graphql, useStaticQuery } from 'gatsby'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import {
+  Row,
+  Col,
+  Typography,
+  Pagination
+} from 'antd'
 
 import Theme from '../layouts/Theme'
 import Container from '../layouts/Container'
-import components from '../components/'
+import components from '../components'
 import { getUniqueProducts } from '../utils/productHelper'
 
 const { Title } = Typography
-const Option = Select.Option
 
 const {
-  ExtraBar,
   BreadcrumbShop,
+  ExtraBar,
+  FilterProduct,
   ProductCard,
   SidebarFilter
 } = components
 
 const mapStateToProps = ({
   products,
-  sortBy,
   currentCategory
-}) => ({ products, sortBy, currentCategory })
+}) => ({ products, currentCategory })
 
-const mapDispatchToProps = dispatch => {
-  return { setProducts: (products) => dispatch({ type: `SET_PRODUCTS`, payload: products }) }
-}
+const mapDispatchToProps = ({ products: { setProducts, setProductsAsync } }) => ({
+  setProducts: (products) => setProducts(products),
+  setProductsAsync: (products) => setProductsAsync(products)
+})
 
 const ContentContainer = styled.div`
 
 `
 
 const Product = (props) => {
-  const { products, setProducts, sortBy } = props
+  const { products, setProducts } = props
   const categoriesList = {
     product: 'all'
   }
@@ -97,11 +96,7 @@ const Product = (props) => {
                   <p>Sort By:</p>
                 </Col>
                 <Col xs={4}>
-                  <Select defaultValue="Featured" style={{ width: 200 }}>
-                    {sortBy.map((sort, index) => (
-                      <Option key={index} value={sort}>{sort}</Option>
-                    ))}
-                  </Select>
+                  <FilterProduct style={{ width: '200px' }} />
                 </Col>
                 <Col className="right" xs={10} offset={8}>
                   <Pagination defaultCurrent={1} total={Math.ceil(products.length / 50)} />

@@ -1,34 +1,8 @@
-import { createStore as reduxCreateStore } from 'redux'
+import { init } from '@rematch/core'
+import models from './models'
 
-const reducer = (state, action) => {
-  if (action.type === `SET_PRODUCTS`) {
-    return {
-      ...state,
-      products: action.payload
-    }
-  }
-  if (action.type === `SET_CURRENT_BREADCRUMB`) {
-    return {
-      ...state,
-      currentBreadcrumb: action.payload
-    }
-  }
-  return state
-}
+const store = init({
+  models
+})
 
-const initialState = {
-  products: [],
-  sortBy: [
-    'Featured',
-    'Rating',
-    'Brand',
-    'Best Sellers',
-    'Newest Arrivals',
-    'Price: Low to High',
-    'Price: High to Low'
-  ],
-  currentBreadcrumb: ''
-}
-
-const createStore = () => reduxCreateStore(reducer, initialState)
-export default createStore
+export default store

@@ -7,6 +7,7 @@ import CategoryMenu from './CategoryMenu'
 import CustomLineBreak from './CustomLineBreak'
 import ExtraBar from './ExtraBar'
 import FilterBox from './FilterBox'
+import FilterProduct from './FilterProduct'
 import FooterInfo from './FooterInfo'
 import ForgotPasswordForm from './ForgotPasswordForm'
 import HeaderCover from './HeaderCover'
@@ -44,6 +45,7 @@ export default {
   CustomLineBreak,
   ExtraBar,
   FilterBox,
+  FilterProduct,
   FooterInfo,
   ForgotPasswordForm,
   HeaderCover,
