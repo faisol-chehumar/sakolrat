@@ -22,7 +22,7 @@ const LoginModal = () => {
     setVisible(false)
   }
 
-  const modalHandle = input => {
+  const onSwitch = input => {
     setFormState(input)
   }
 
@@ -41,8 +41,8 @@ const LoginModal = () => {
       >
         {
           formState === 'login'
-            ? <LoginForm onSwitchForm={modalHandle} />
-            : <RegisterForm onSwitchForm={modalHandle} />
+            ? <LoginForm switchHandler={onSwitch} />
+            : <RegisterForm switchHandler={onSwitch} />
         }
       </Modal>
     </div>

@@ -34,16 +34,9 @@ const FormContainer = styled(Form)`
   }
 `
 
-const mapStateToProps = ({
-  products
-}) => ({ products })
-
-const mapDispatchToProps = ({ users: { login } }) => ({
-  login: (payload) => login(payload)
-})
-
 const Login = (props) => {
-  const { getFieldDecorator } = props.form
+  const { form, login, switchHandler, token } = props
+  const { getFieldDecorator } = form
   const [ alertMsg, setAlertMsg ] = useState(null)
 
   const notValidAuthenHabdle = ({ errors }) => {
@@ -56,10 +49,11 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    props.form.validateFields(async (err, values) => {
+    form.validateFields(async (err, values) => {
       if (!err) {
         try {
-          await props.login(values)
+          await login(values)
+
           setAlertMsg(null)
         } catch (error) {
           notValidAuthenHabdle(error)
@@ -68,8 +62,8 @@ const Login = (props) => {
     })
   }
 
-  const registerHandle = (e) => {
-    props.onSwitchForm('register')
+  const switchFormHandle = (e) => {
+    switchHandler('register')
   }
 
   return (
@@ -102,13 +96,11 @@ const Login = (props) => {
         <Button type="primary" htmlType="submit" className="login-form-button">
           Log in
         </Button>
-        Or <a onClick={registerHandle}>register now!!!</a>
+        Or <a onClick={switchFormHandle}>register now!!!</a>
       </Item>
     </FormContainer>
   )
 }
-
-const LoginForm = Form.create({ name: 'normal_login' })(Login)
 
 Login.propTypes = {
   form: PropTypes.oneOfType([
@@ -117,7 +109,18 @@ Login.propTypes = {
   ]),
   login: PropTypes.func,
   size: PropTypes.string,
-  onSwitchForm: PropTypes.func
+  switchHandler: PropTypes.func,
+  token: PropTypes.string
 }
+
+const LoginForm = Form.create({ name: 'normal_login' })(Login)
+
+const mapStateToProps = ({
+  users: { token }
+}) => ({ token })
+
+const mapDispatchToProps = ({ users: { login } }) => ({
+  login: (payload) => login(payload)
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)

@@ -1,7 +1,7 @@
 export const products = {
   state: [],
   reducers: {
-    setProducts (state, payload) {
+    setProducts (_, payload) {
       return [...payload]
     }
   }

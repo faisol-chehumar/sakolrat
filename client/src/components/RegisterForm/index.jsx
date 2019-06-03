@@ -55,8 +55,8 @@ const Login = (props) => {
     })
   }
 
-  const loginHandle = (e) => {
-    props.onSwitchForm('login')
+  const switchFormHandle = (e) => {
+    props.switchHandler('login')
   }
 
   const checkDuplicateEmail = async email => {
@@ -156,7 +156,7 @@ const Login = (props) => {
           <Button type="primary" htmlType="submit" className="login-form-button">
             CREATE ACCOUNT
           </Button>
-          Or Already have an account? <a onClick={loginHandle}>Log In</a>
+          Or Already have an account? <a onClick={switchFormHandle}>Log In</a>
         </Item>
       </FormContainer>
     </div>
@@ -171,7 +171,7 @@ Login.propTypes = {
     PropTypes.array
   ]),
   size: PropTypes.string,
-  onSwitchForm: PropTypes.func
+  switchHandler: PropTypes.func
 }
 
 export default RegisterForm

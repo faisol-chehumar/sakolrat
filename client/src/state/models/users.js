@@ -22,12 +22,12 @@ export const users = {
   effects: (dispatch) => ({
     async login (payload, _) {
       try {
-        const result = await Moltin.Customers.Token(payload.username, payload.password)
-        dispatch.users.setToken(result.data.token)
+        const { data } = await Moltin.Customers.Token(payload.username, payload.password)
+        dispatch.users.setToken(data.token)
 
-        return result.data
+        return Promise.resolve(data)
       } catch (e) {
-        return e
+        return Promise.reject(e)
       }
     }
   }),
