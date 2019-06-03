@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
 import {
   Form,
   Icon,
@@ -9,7 +10,6 @@ import {
   Checkbox
 } from 'antd'
 
-import Moltin from '../../utils/moltin'
 import WarningAlert from '../WarningAlert'
 
 const { Item } = Form
@@ -34,6 +34,14 @@ const FormContainer = styled(Form)`
   }
 `
 
+const mapStateToProps = ({
+  products
+}) => ({ products })
+
+const mapDispatchToProps = ({ users: { login } }) => ({
+  login: (payload) => login(payload)
+})
+
 const Login = (props) => {
   const { getFieldDecorator } = props.form
   const [ alertMsg, setAlertMsg ] = useState(null)
@@ -49,11 +57,9 @@ const Login = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     props.form.validateFields(async (err, values) => {
-      const { username, password } = values
       if (!err) {
         try {
-          const result = await Moltin.Customers.Token(username, password)
-          console.log(result)
+          await props.login(values)
           setAlertMsg(null)
         } catch (error) {
           notValidAuthenHabdle(error)
@@ -109,8 +115,9 @@ Login.propTypes = {
     PropTypes.object,
     PropTypes.array
   ]),
+  login: PropTypes.func,
   size: PropTypes.string,
   onSwitchForm: PropTypes.func
 }
 
-export default LoginForm
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
