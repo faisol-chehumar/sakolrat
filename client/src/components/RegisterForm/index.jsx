@@ -41,7 +41,6 @@ const Login = (props) => {
     e.preventDefault()
     props.form.validateFields(async (err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values)
         const customer = {
           name: values.email,
           email: values.email,
@@ -50,13 +49,15 @@ const Login = (props) => {
 
         Moltin.Customers.Create(customer).then(customer => {
           console.log(`Moltin was create  ${customer}`)
+          // close()
+          // Auto Login
         })
       }
     })
   }
 
-  const switchFormHandle = (e) => {
-    props.switchHandler('login')
+  const switchForm = () => {
+    props.onSwitch('login')
   }
 
   const checkDuplicateEmail = async email => {
@@ -156,7 +157,7 @@ const Login = (props) => {
           <Button type="primary" htmlType="submit" className="login-form-button">
             CREATE ACCOUNT
           </Button>
-          Or Already have an account? <a onClick={switchFormHandle}>Log In</a>
+          Or Already have an account? <a onClick={switchForm}>Log In</a>
         </Item>
       </FormContainer>
     </div>
@@ -171,7 +172,7 @@ Login.propTypes = {
     PropTypes.array
   ]),
   size: PropTypes.string,
-  switchHandler: PropTypes.func
+  onSwitch: PropTypes.func
 }
 
 export default RegisterForm

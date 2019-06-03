@@ -35,7 +35,7 @@ const FormContainer = styled(Form)`
 `
 
 const Login = (props) => {
-  const { form, login, switchHandler, token } = props
+  const { form, login, onSwitch, close } = props
   const { getFieldDecorator } = form
   const [ alertMsg, setAlertMsg ] = useState(null)
 
@@ -53,8 +53,8 @@ const Login = (props) => {
       if (!err) {
         try {
           await login(values)
-
           setAlertMsg(null)
+          close()
         } catch (error) {
           notValidAuthenHabdle(error)
         }
@@ -62,8 +62,8 @@ const Login = (props) => {
     })
   }
 
-  const switchFormHandle = (e) => {
-    switchHandler('register')
+  const switchForm = () => {
+    onSwitch('register')
   }
 
   return (
@@ -96,21 +96,21 @@ const Login = (props) => {
         <Button type="primary" htmlType="submit" className="login-form-button">
           Log in
         </Button>
-        Or <a onClick={switchFormHandle}>register now!!!</a>
+        Or <a onClick={switchForm}>register now!!!</a>
       </Item>
     </FormContainer>
   )
 }
 
 Login.propTypes = {
+  login: PropTypes.func,
   form: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.array
   ]),
-  login: PropTypes.func,
   size: PropTypes.string,
-  switchHandler: PropTypes.func,
-  token: PropTypes.string
+  onSwitch: PropTypes.func,
+  close: PropTypes.func
 }
 
 const LoginForm = Form.create({ name: 'normal_login' })(Login)
