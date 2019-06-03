@@ -33,6 +33,7 @@ import RegisterForm from './RegisterForm'
 import SidebarFilter from './SidebarFilter'
 import SocialGroup from './SocialGroup'
 import SubscribeBox from './SubscribeBox'
+import UserDropdownMenu from './UserDropdownMenu'
 import WarningAlert from './WarningAlert'
 
 export default {
@@ -71,5 +72,6 @@ export default {
   SidebarFilter,
   SocialGroup,
   SubscribeBox,
+  UserDropdownMenu,
   WarningAlert
 }

@@ -1,16 +1,20 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import { Modal, Button } from 'antd'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
 
 import LoginForm from '../LoginForm'
 import RegisterForm from '../RegisterForm'
+import UserDropdownMenu from '../UserDropdownMenu'
 
 const LoginButton = styled(Button)`
   background-color: #fa4c06 !important;
   border-color: #fa4c06 !important;
 `
 
-const LoginModal = () => {
+const LoginModal = (props) => {
+  const { token } = props
   const [visible, setVisible] = useState(false)
   const [formState, setFormState] = useState('login')
 
@@ -27,10 +31,16 @@ const LoginModal = () => {
   }
 
   return (
-    <div>
-      <LoginButton type="primary" onClick={showModal}>
-        Signup/Login
-      </LoginButton>
+    <div x={console.log(token)}>
+      {
+        token === null
+          ? (
+            <LoginButton type="primary" onClick={showModal}>
+              Signup/Login
+            </LoginButton>
+          )
+          : <UserDropdownMenu />
+      }
       <Modal
         title={formState === 'login' ? 'LOG IN' : 'CREATE ACCOUNT'}
         visible={visible}
@@ -49,4 +59,12 @@ const LoginModal = () => {
   )
 }
 
-export default LoginModal
+LoginModal.propTypes = {
+  token: PropTypes.string
+}
+
+const mapStateToProps = ({
+  users: { token }
+}) => ({ token })
+
+export default connect(mapStateToProps)(LoginModal)
