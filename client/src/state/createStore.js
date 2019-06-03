@@ -1,5 +1,5 @@
 import { init } from '@rematch/core'
-import models from './models'
+import * as models from './models'
 
 const store = init({
   models
