@@ -7,11 +7,6 @@ import Logo from '../Logo'
 import MenuIcon from '../MenuIcon'
 import MegaMenu from '../MegaMenu'
 import LoginModal from '../LoginModal'
-// import {
-//   MenuIcon,
-//   MegaMenu,
-//   LoginModal
-// } from '../../components'
 
 const DarkHeader = styled.div`
   color: #fff;
@@ -90,7 +85,7 @@ const Navbar = () => {
           <Col
             xs={0}
             lg={{ span: 3, offset: 7 }}
-            xl={{ span: 2, offset: 11 }}
+            xl={{ span: 3, offset: 9 }}
           >
             <LoginModal />
           </Col>

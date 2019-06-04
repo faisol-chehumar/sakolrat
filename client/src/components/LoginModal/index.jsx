@@ -31,16 +31,17 @@ const LoginModal = (props) => {
   }
 
   return (
-    <div x={console.log(token)}>
-      {
-        token === null
-          ? (
-            <LoginButton type="primary" onClick={showModal}>
-              Signup/Login
-            </LoginButton>
-          )
-          : <UserDropdownMenu />
-      }
+    <div>
+      { token === null ? (
+        <LoginButton type="primary" onClick={showModal}>
+          Signup/Login
+        </LoginButton>
+      ) : (
+        <UserDropdownMenu
+          username="My Account"
+          avatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+        />
+      )}
       <Modal
         title={formState === 'login' ? 'LOG IN' : 'CREATE ACCOUNT'}
         visible={visible}
@@ -60,7 +61,8 @@ const LoginModal = (props) => {
 }
 
 LoginModal.propTypes = {
-  token: PropTypes.string
+  token: PropTypes.string,
+  customer: PropTypes.object
 }
 
 const mapStateToProps = ({

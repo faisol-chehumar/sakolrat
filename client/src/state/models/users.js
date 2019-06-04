@@ -24,6 +24,7 @@ export const users = {
       try {
         const { data } = await Moltin.Customers.Token(payload.username, payload.password)
         dispatch.users.setToken(data.token)
+        console.log(data)
         dispatch.users.setCustomer(data)
 
         return Promise.resolve(data)
