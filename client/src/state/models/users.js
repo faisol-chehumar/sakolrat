@@ -20,22 +20,24 @@ export const users = {
     }
   },
   effects: (dispatch) => ({
-    async login (payload, _) {
+    async login (payload) {
       try {
         const { data } = await Moltin.Customers.Token(payload.username, payload.password)
         dispatch.users.setToken(data.token)
-        console.log(data)
         dispatch.users.setCustomer(data)
 
         return Promise.resolve(data)
       } catch (e) {
         return Promise.reject(e)
       }
+    },
+    async logout () {
+      await dispatch.users.setToken(null)
     }
   }),
   selectors: {
     isAuthenticated () {
-      return (rootState, _) => rootState.user.token !== null
+      return (rootState, _) => rootState.users.token !== null
     }
   }
 }
