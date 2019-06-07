@@ -6,8 +6,7 @@ import {
   Form,
   Icon,
   Input,
-  Button,
-  Checkbox
+  Button
 } from 'antd'
 
 import WarningAlert from '../WarningAlert'
@@ -86,16 +85,10 @@ const Login = (props) => {
         )}
       </Item>
       <Item>
-        {getFieldDecorator('remember', {
-          valuePropName: 'checked',
-          initialValue: false
-        })(
-          <Checkbox>Remember me</Checkbox>
-        )}
-        <a className="login-form-forgot" href="/forgot-password/">Forgot password</a>
         <Button type="primary" htmlType="submit" className="login-form-button">
           Log in
         </Button>
+        <a className="login-form-forgot" href="/forgot-password/">Forgot password</a>
         Or <a onClick={switchForm}>register now!!!</a>
       </Item>
     </FormContainer>

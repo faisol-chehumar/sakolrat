@@ -20,7 +20,6 @@ const MenuDropdown = ({ logout }) => {
     if (e.key === '3') {
       logout()
     }
-    console.log('click', e)
   }
 
   return (

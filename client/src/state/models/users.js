@@ -20,9 +20,9 @@ export const users = {
     }
   },
   effects: (dispatch) => ({
-    async login (payload) {
+    async login ({ username, password, remember }) {
       try {
-        const { data } = await Moltin.Customers.Token(payload.username, payload.password)
+        const { data } = await Moltin.Customers.Token(username, password)
         dispatch.users.setToken(data.token)
         dispatch.users.setCustomer(data)
 
@@ -33,6 +33,7 @@ export const users = {
     },
     async logout () {
       await dispatch.users.setToken(null)
+      await dispatch.users.setCustomer(null)
     }
   }),
   selectors: {
