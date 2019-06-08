@@ -1,3 +1,4 @@
+import AccountDashboard from './AccountDashboard'
 import AnnounceBox from './AnnounceBox'
 import BlogPost from './BlogPost'
 import BrandSlider from './BrandSlider'
@@ -14,6 +15,7 @@ import HeaderCover from './HeaderCover'
 import HeaderTitle from './HeaderTitle'
 import HeroBanner from './HeroBanner'
 import InfoBlock from './InfoBlock'
+import InternalLink from './InternalLink'
 import TitleText from './TitleText'
 import LoginForm from './LoginForm'
 import LoginModal from './LoginModal'
@@ -38,6 +40,7 @@ import UserDropdownMenu from './UserDropdownMenu'
 import WarningAlert from './WarningAlert'
 
 export default {
+  AccountDashboard,
   AnnounceBox,
   BlogPost,
   BrandSlider,
@@ -54,6 +57,7 @@ export default {
   HeaderTitle,
   HeroBanner,
   InfoBlock,
+  InternalLink,
   TitleText,
   LoginForm,
   LoginModal,
