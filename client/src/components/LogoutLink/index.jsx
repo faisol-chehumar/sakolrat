@@ -2,18 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { Link } from 'gatsby'
 
-const LogoutLinkContainer = styled(Link)`
-  margin-left: 1rem;
+import InternalLink from '../InternalLink'
+
+const LogoutLinkContainer = styled.span`
+  margin-left: 1rem !important;
 `
 
 const LogoutLink = ({ logout }) => (
-  <LogoutLinkContainer
-    to="/"
-    onClick={() => logout()}
-  >
-    Logout
+  <LogoutLinkContainer>
+    <InternalLink
+      linkTo="/auth/logout"
+      linkText="Logout"
+    />
   </LogoutLinkContainer>
 )
 

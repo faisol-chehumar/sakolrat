@@ -4,7 +4,12 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 const InternalLinkContainer = styled(Link)`
-  color: #eee;
+  color: #fa4c06;
+
+  &:hover {
+    color: #fa4c06;
+    text-decoration: underline;
+  }
 `
 
 const InternalLink = ({ linkTo, linkText }) => (

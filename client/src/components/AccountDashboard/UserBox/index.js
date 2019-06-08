@@ -1,9 +1,10 @@
 import React from 'react'
 import { Row, Col, Typography } from 'antd'
-import { Link } from 'gatsby'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+
+import InternalLink from '../../InternalLink'
 
 const { Title } = Typography
 
@@ -25,11 +26,17 @@ const UserBox = ({ customerDetail: { data } }) => {
           <p>
             <b>Password: </b> *******
           </p>
-          <Link to="/account">Edit</Link>
+          <InternalLink
+            linkTo="/account"
+            linkText="Edit"
+          />
         </Block>
         <Block>
           <h4><b>Riding Style</b></h4>
-          <Link to="/account/riding-style">Choos Your Riding Style</Link>
+          <InternalLink
+            linkTo="/account/riding-style"
+            linkText="Choos Your Riding Style"
+          />
         </Block>
       </Col>
       <Col xs={12} lg={8}>
