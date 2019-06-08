@@ -18,6 +18,7 @@ import TitleText from './TitleText'
 import LoginForm from './LoginForm'
 import LoginModal from './LoginModal'
 import Logo from './Logo'
+import LogoutLink from './LogoutLink'
 import MegaMenu from './MegaMenu'
 import MenuIcon from './MenuIcon'
 import MenuLink from './MenuLink'
@@ -57,6 +58,7 @@ export default {
   LoginForm,
   LoginModal,
   Logo,
+  LogoutLink,
   MegaMenu,
   MenuIcon,
   MenuLink,

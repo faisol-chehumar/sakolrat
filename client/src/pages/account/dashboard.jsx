@@ -20,13 +20,18 @@ const {
 
 const {
   ExtraBar,
-  MenuLink
+  MenuLink,
+  LogoutLink
 } = components
 
 const HeaderContainer = styled(Header)`
   background: transparent !important;
   padding-left: 0 !important;
   height: auto !important;
+
+  h2 {
+    display: inline-block;
+  }
 `
 
 const LayoutContainer = styled(Layout)`
@@ -39,12 +44,11 @@ const AccountDashboard = () => (
     <Container>
       <LayoutContainer>
         <HeaderContainer>
-          <div>
-            <Title level={2}>
-              My Account
-            </Title>
-            <MenuLink data={menuLink.AccountDashboard} />
-          </div>
+          <Title level={2}>
+            My Account
+          </Title>
+          <LogoutLink />
+          <MenuLink data={menuLink.AccountDashboard} />
         </HeaderContainer>
         <Content>
           Hello

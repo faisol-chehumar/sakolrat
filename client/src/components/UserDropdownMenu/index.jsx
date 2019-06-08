@@ -25,7 +25,7 @@ const MenuDropdown = ({ logout }) => {
   return (
     <Menu onClick={handleMenuClick}>
       <Menu.Item key="1">
-        <Link to="/me"><Icon type="profile" /> View Profile</Link>
+        <Link to="/account/dashboard"><Icon type="profile" /> View Profile</Link>
       </Menu.Item>
       <Menu.Item key="2">
         <Link to="/settings"><Icon type="setting" /> Settings</Link>
