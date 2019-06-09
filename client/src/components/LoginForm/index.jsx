@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
+import { navigate } from 'gatsby'
 import {
   Form,
   Icon,
@@ -34,7 +35,7 @@ const FormContainer = styled(Form)`
 `
 
 const Login = (props) => {
-  const { form, login, onSwitch, close } = props
+  const { form, login, onSwitch, close, location } = props
   const { getFieldDecorator } = form
   const [ alertMsg, setAlertMsg ] = useState(null)
 
@@ -52,6 +53,12 @@ const Login = (props) => {
       if (!err) {
         try {
           await login(values)
+
+          if (location === '/auth/login') {
+            navigate(`/`)
+            return null
+          }
+
           setAlertMsg(null)
           close()
         } catch (error) {
@@ -72,7 +79,11 @@ const Login = (props) => {
         {getFieldDecorator('username', {
           rules: [{ required: true, message: 'Please input your username!' }]
         })(
-          <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+          <Input
+            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+            placeholder="Username"
+            autoComplete="username"
+          />
         )}
       </Item>
       <Item>
@@ -81,7 +92,12 @@ const Login = (props) => {
             { required: true, message: 'Please input your Password!' }
           ]
         })(
-          <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
+          <Input
+            prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+            type="password"
+            placeholder="Password"
+            autoComplete="current-password"
+          />
         )}
       </Item>
       <Item>
@@ -103,7 +119,8 @@ Login.propTypes = {
   ]),
   size: PropTypes.string,
   onSwitch: PropTypes.func,
-  close: PropTypes.func
+  close: PropTypes.func,
+  location: PropTypes.string
 }
 
 const LoginForm = Form.create({ name: 'normal_login' })(Login)

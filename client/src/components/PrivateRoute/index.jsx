@@ -2,9 +2,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
+import { connect } from 'react-redux'
 
-const PrivateRoute = ({ component: Component, location, ...rest }) => {
-  if (true && location.pathname !== '/login') {
+const PrivateRoute = ({ component: Component, location, customer, ...rest }) => {
+  const isAuth = customer && customer.token
+
+  if (!isAuth && location.pathname !== '/login') {
     navigate(`/auth/login`)
     return null
   }
@@ -14,7 +17,12 @@ const PrivateRoute = ({ component: Component, location, ...rest }) => {
 
 PrivateRoute.propTypes = {
   component: PropTypes.any.isRequired,
-  location: PropTypes.any
+  location: PropTypes.any,
+  customer: PropTypes.any
 }
 
-export default PrivateRoute
+const mapStateToProps = ({
+  users: { customer }
+}) => ({ customer })
+
+export default connect(mapStateToProps)(PrivateRoute)

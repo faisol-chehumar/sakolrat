@@ -14,13 +14,13 @@ import Moltin from '../../utils/moltin'
 const { Item } = Form
 
 const FormContainer = styled(Form)`
-  &.login-form {
+  &.register-form {
     max-width: 300px;
   }
- .login-form-forgot {
+ .register-form-forgot {
     float: right;
   }
- .login-form-button {
+ .register-form-button {
     width: 100%;
     background-color: #fa4c06 !important;
     border-color: #fa4c06 !important;
@@ -33,7 +33,7 @@ const FormContainer = styled(Form)`
   }
 `
 
-const Login = (props) => {
+const Register = (props) => {
   const { getFieldDecorator } = props.form
   const [confirmDirty, setConfirmDirty] = useState(false)
 
@@ -49,8 +49,6 @@ const Login = (props) => {
 
         Moltin.Customers.Create(customer).then(customer => {
           console.log(`Moltin was create  ${customer}`)
-          // close()
-          // Auto Login
         })
       }
     })
@@ -111,7 +109,7 @@ const Login = (props) => {
         Join TeamZilla to access order details, save bikes to your garage, and earn ZillaCash with
         every order.
       </p>
-      <FormContainer onSubmit={handleSubmit} className="login-form">
+      <FormContainer onSubmit={handleSubmit} className="register-form">
         <Item>
           {getFieldDecorator('email', {
             rules: [
@@ -119,7 +117,11 @@ const Login = (props) => {
               { validator: validateEmail }
             ]
           })(
-            <Input prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Email Address" />
+            <Input
+              prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              placeholder="Email Address"
+              autoComplete="username"
+            />
           )}
         </Item>
         <Item hasFeedback>
@@ -129,7 +131,12 @@ const Login = (props) => {
               { validator: validateToNextPassword }
             ]
           })(
-            <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
+            <Input
+              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              type="password"
+              placeholder="Password"
+              autoComplete="new-password"
+            />
           )}
         </Item>
         <Item hasFeedback>
@@ -144,6 +151,7 @@ const Login = (props) => {
               onBlur={handleConfirmBlur}
               type="password"
               placeholder="Confirm Password"
+              autoComplete="new-password"
             />
           )}
         </Item>
@@ -154,7 +162,7 @@ const Login = (props) => {
           })(
             <Checkbox>Sign up for news, promos and offers</Checkbox>
           )}
-          <Button type="primary" htmlType="submit" className="login-form-button">
+          <Button type="primary" htmlType="submit" className="register-form-button">
             CREATE ACCOUNT
           </Button>
           Or Already have an account? <a onClick={switchForm}>Log In</a>
@@ -164,9 +172,9 @@ const Login = (props) => {
   )
 }
 
-const RegisterForm = Form.create({ name: 'normal_login' })(Login)
+const RegisterForm = Form.create({ name: 'normal_register' })(Register)
 
-Login.propTypes = {
+Register.propTypes = {
   form: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.array
