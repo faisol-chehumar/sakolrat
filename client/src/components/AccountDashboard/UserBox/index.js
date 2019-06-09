@@ -9,7 +9,7 @@ import InternalLink from '../../InternalLink'
 const { Title } = Typography
 
 const Block = styled.div`
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 `
 
 const UserBox = ({ customerDetail: { data } }) => {
@@ -31,19 +31,29 @@ const UserBox = ({ customerDetail: { data } }) => {
             linkText="Edit"
           />
         </Block>
+      </Col>
+      <Col xs={12} lg={16}>
         <Block>
-          <h4><b>Riding Style</b></h4>
-          <InternalLink
-            linkTo="/account/riding-style"
-            linkText="Choos Your Riding Style"
-          />
+          <p>Part of TeamZilla since 2019</p>
         </Block>
-      </Col>
-      <Col xs={12} lg={8}>
-        2
-      </Col>
-      <Col xs={12} lg={8}>
-        3
+        <Row>
+          <Col xs={24} lg={12}>
+            <Block>
+              <p>Shipping:</p>
+              <InternalLink
+                linkTo="/shipping-address"
+                linkText="Add your primary shipping address"
+              />
+            </Block>
+          </Col>
+          <Col xs={24} lg={12}>
+            <p>Payment Info:</p>
+            <InternalLink
+              linkTo="/payment-methods"
+              linkText="Add Payment Information"
+            />
+          </Col>
+        </Row>
       </Col>
     </Row>
   )

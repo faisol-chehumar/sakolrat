@@ -2,12 +2,10 @@ export default {
   AccountDashboard: [
     'home',
     'setting',
-    'riding style',
     'subscriptions',
     'order',
     'payment info',
     'shipping',
-    'my garage',
     'whislist'
   ],
   customerService: [
