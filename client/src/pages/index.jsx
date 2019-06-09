@@ -55,7 +55,6 @@ const Home = ({ location }) => {
   `)
   const products = data['allMoltinProduct']['edges'].map(product => product.node)
   const uniqueProducts = getUniqueProducts(products, 'name')
-  // console.log(uniqueProducts)
 
   return (
     <Theme>

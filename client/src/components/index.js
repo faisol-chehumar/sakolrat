@@ -27,6 +27,7 @@ import MenuLink from './MenuLink'
 import MenuVerticle from './MenuVerticle'
 import Navbar from './Navbar'
 import OrderStatusForm from './OrderStatus'
+import PrivateRoute from './PrivateRoute'
 import ProductList from './ProductList'
 import ProductItem from './ProductItem'
 import ProductSlider from './ProductSlider'
@@ -69,6 +70,7 @@ export default {
   MenuVerticle,
   Navbar,
   OrderStatusForm,
+  PrivateRoute,
   ProductCard,
   ProductList,
   ProductItem,
