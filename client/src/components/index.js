@@ -5,12 +5,14 @@ import BrandSlider from './BrandSlider'
 import BreadcrumbShop from './BreadcrumbShop'
 import Button from './Button'
 import CategoryMenu from './CategoryMenu'
+import CustomBox from './CustomBox'
 import CustomLineBreak from './CustomLineBreak'
 import ExtraBar from './ExtraBar'
 import FilterBox from './FilterBox'
 import FilterProduct from './FilterProduct'
 import FooterInfo from './FooterInfo'
 import ForgotPasswordForm from './ForgotPasswordForm'
+import GrayCard from './GrayCard'
 import HeaderCover from './HeaderCover'
 import HeaderTitle from './HeaderTitle'
 import HeroBanner from './HeroBanner'
@@ -34,6 +36,7 @@ import ProductSlider from './ProductSlider'
 import ProductCard from './ProductCard'
 import Rating from './Rating'
 import RegisterForm from './RegisterForm'
+import RowBlock from './RowBlock'
 import SidebarFilter from './SidebarFilter'
 import SocialGroup from './SocialGroup'
 import SubscribeBox from './SubscribeBox'
@@ -48,12 +51,14 @@ export default {
   BreadcrumbShop,
   Button,
   CategoryMenu,
+  CustomBox,
   CustomLineBreak,
   ExtraBar,
   FilterBox,
   FilterProduct,
   FooterInfo,
   ForgotPasswordForm,
+  GrayCard,
   HeaderCover,
   HeaderTitle,
   HeroBanner,
@@ -77,6 +82,7 @@ export default {
   ProductSlider,
   Rating,
   RegisterForm,
+  RowBlock,
   SidebarFilter,
   SocialGroup,
   SubscribeBox,

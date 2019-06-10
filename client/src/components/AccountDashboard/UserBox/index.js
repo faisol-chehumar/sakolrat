@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import GrayCard from '../../GrayCard'
 import InternalLink from '../../InternalLink'
 
 const { Title } = Typography
@@ -14,48 +15,50 @@ const Block = styled.div`
 
 const UserBox = ({ customerDetail: { data } }) => {
   return (
-    <Row>
-      <Col xs={12} lg={8}>
-        <Block>
-          <Title level={3}>
-            User Name
-          </Title>
-          <p>
-            <b>Email: </b> { data.email }
-          </p>
-          <p>
-            <b>Password: </b> *******
-          </p>
-          <InternalLink
-            linkTo="/account"
-            linkText="Edit"
-          />
-        </Block>
-      </Col>
-      <Col xs={12} lg={16}>
-        <Block>
-          <p>Part of TeamZilla since 2019</p>
-        </Block>
-        <Row>
-          <Col xs={24} lg={12}>
-            <Block>
-              <p>Shipping:</p>
-              <InternalLink
-                linkTo="/shipping-address"
-                linkText="Add your primary shipping address"
-              />
-            </Block>
-          </Col>
-          <Col xs={24} lg={12}>
-            <p>Payment Info:</p>
+    <GrayCard>
+      <Row>
+        <Col xs={12} lg={8}>
+          <Block>
+            <Title level={3}>
+              User Name
+            </Title>
+            <p>
+              <b>Email: </b> { data.email }
+            </p>
+            <p>
+              <b>Password: </b> *******
+            </p>
             <InternalLink
-              linkTo="/payment-methods"
-              linkText="Add Payment Information"
+              linkTo="/account"
+              linkText="Edit"
             />
-          </Col>
-        </Row>
-      </Col>
-    </Row>
+          </Block>
+        </Col>
+        <Col xs={12} lg={16}>
+          <Block>
+            <p>Part of TeamZilla since 2019</p>
+          </Block>
+          <Row>
+            <Col xs={24} lg={12}>
+              <Block>
+                <p>Shipping:</p>
+                <InternalLink
+                  linkTo="/shipping-address"
+                  linkText="Add your primary shipping address"
+                />
+              </Block>
+            </Col>
+            <Col xs={24} lg={12}>
+              <p>Payment Info:</p>
+              <InternalLink
+                linkTo="/payment-methods"
+                linkText="Add Payment Information"
+              />
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+    </GrayCard>
   )
 }
 

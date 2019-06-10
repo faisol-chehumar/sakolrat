@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout, Typography, Row, Col, Card } from 'antd'
+import { Layout, Typography, Col } from 'antd'
 import styled from 'styled-components'
 
 import Theme from '../../layouts/Theme'
@@ -22,10 +22,11 @@ const {
   AccountDashboard,
   ExtraBar,
   LogoutLink,
-  MenuLink
+  MenuLink,
+  RowBlock
 } = components
 
-const { UserBox } = AccountDashboard
+const { UserBox, RecentOrder } = AccountDashboard
 
 const HeaderContainer = styled(Header)`
   background: transparent !important;
@@ -41,11 +42,6 @@ const LayoutContainer = styled(Layout)`
   background: transparent !important;
 `
 
-const GrayCard = styled(Card)`
-  background-color: #fafafa !important;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .15);
-`
-
 const Dashboard = () => (
   <Theme bg={'#eee'}>
     <ExtraBar />
@@ -59,13 +55,16 @@ const Dashboard = () => (
           <MenuLink data={menuLink.AccountDashboard} />
         </HeaderContainer>
         <Content>
-          <Row>
+          <RowBlock>
             <Col xs={24}>
-              <GrayCard>
-                <UserBox />
-              </GrayCard>
+              <UserBox />
             </Col>
-          </Row>
+          </RowBlock>
+          <RowBlock>
+            <Col xs={24}>
+              <RecentOrder />
+            </Col>
+          </RowBlock>
         </Content>
       </LayoutContainer>
     </Container>
