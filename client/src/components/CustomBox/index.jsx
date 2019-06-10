@@ -20,14 +20,14 @@ const TitleBlock = styled(Row)`
   border: 1px solid #d8d8d8;
 `
 
-const CustomBox = ({ children, title, link }) => (
+const CustomBox = ({ children, title, linkText, linkTo }) => (
   <div>
     <TitleBlock>
-      <Col xs={22}>Recent Orders</Col>
-      <Col xs={2}>
+      <Col xs={20}>{title}</Col>
+      <Col xs={4}>
         <InternalLink
-          linkTo={link}
-          linkText={title}
+          linkTo={linkTo}
+          linkText={linkText}
         />
       </Col>
     </TitleBlock>
@@ -45,7 +45,8 @@ CustomBox.propTypes = {
     PropTypes.array
   ]),
   title: PropTypes.string,
-  link: PropTypes.string
+  linkText: PropTypes.string,
+  linkTo: PropTypes.string
 }
 
 export default CustomBox

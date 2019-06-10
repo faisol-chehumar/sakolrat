@@ -8,7 +8,8 @@ import Button from '../../Button'
 const RecentOrder = () => (
   <CustomBox
     title="Recent Orders"
-    link="/customer-service"
+    linkText="Contact Customer Service"
+    linkTo="/customer-service"
   >
     <p>
       <b>We can&apos;t find any previous orders.</b>

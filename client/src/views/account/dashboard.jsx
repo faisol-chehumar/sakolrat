@@ -26,7 +26,7 @@ const {
   RowBlock
 } = components
 
-const { UserBox, RecentOrder } = AccountDashboard
+const { UserBox, RecentOrder, WishListBox } = AccountDashboard
 
 const HeaderContainer = styled(Header)`
   background: transparent !important;
@@ -63,6 +63,11 @@ const Dashboard = () => (
           <RowBlock>
             <Col xs={24}>
               <RecentOrder />
+            </Col>
+          </RowBlock>
+          <RowBlock>
+            <Col xs={24}>
+              <WishListBox />
             </Col>
           </RowBlock>
         </Content>

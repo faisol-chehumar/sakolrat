@@ -7,8 +7,8 @@ const RowBlockContainer = styled(Row)`
   margin-bottom: 1rem;
 `
 
-const RowBlock = ({ children }) => (
-  <RowBlockContainer>
+const RowBlock = ({ children, ...rest }) => (
+  <RowBlockContainer {...rest}>
     { children }
   </RowBlockContainer>
 )
