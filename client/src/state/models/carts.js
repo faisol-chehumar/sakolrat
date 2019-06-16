@@ -69,6 +69,16 @@ export const carts = {
       // const totalPrice = res.data.meta.display_price.with_tax.amount / 100
       // dispatch.cart.setCartItems(cleanData)
       // dispatch.cart.setTotalPrice(totalPrice)
+    },
+    async addItem (payload, _) {
+      const cartId = await dispatch.cart.getCartId()
+      await Moltin.Cart(cartId).AddProduct(payload.productId, payload.quantity)
+      await dispatch.cart.getCartItemsAsync()
+    },
+    async deleteItem (payload, _) {
+      const cartId = await dispatch.cart.getCartId()
+      await Moltin.Cart(cartId).RemoveItem(payload.itemId)
+      await dispatch.cart.getCartItemsAsync()
     }
   })
 }
