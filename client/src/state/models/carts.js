@@ -37,7 +37,7 @@ export const carts = {
       }
 
       try {
-        const customer = await dispatch.user.getUser()
+        const customer = await dispatch.users.getUser()
 
         return Promise.resolve(customer.id)
       } catch (e) {
@@ -46,6 +46,8 @@ export const carts = {
         if (!localCartId) {
           const newCartId = uuidv4()
           localStorage.setItem('cartId', newCartId)
+
+          return localStorage.getItem('cartId')
         }
 
         return localCartId
@@ -53,30 +55,31 @@ export const carts = {
     },
     async getCartItemsAsync () {
       const cartId = await dispatch.carts.getCartId()
-      const cartData = await Moltin.Cart(cartId)
-      console.log(cartData)
-      // const cleanData = res.data.data.map((item) => {
-      //   return {
-      //     id: item.id,
-      //     productId: item.product_id,
-      //     amount: item.quantity,
-      //     name: item.name,
-      //     image: 'https://via.placeholder.com/300x400.png',
-      //     totalPrice: item.meta.display_price.with_tax.value.formatted,
-      //     pricePerUnit: item.meta.display_price.with_tax.unit.formatted,
-      //   }
-      // })
-      // const totalPrice = res.data.meta.display_price.with_tax.amount / 100
-      // dispatch.cart.setCartItems(cleanData)
-      // dispatch.cart.setTotalPrice(totalPrice)
+      const cartData = await Moltin.Cart(cartId).Items('include')
+      const cleanData = cartData.map((item) => {
+        return {
+          id: item.id,
+          productId: item.product_id,
+          amount: item.quantity,
+          name: item.name,
+          image: item.image.href,
+          totalPrice: item.meta.display_price.with_tax.value.formatted,
+          pricePerUnit: item.meta.display_price.with_tax.unit.formatted
+        }
+      })
+      const totalPrice = cartData.meta.display_price.with_tax.amount
+
+      dispatch.cart.setCartItems(cleanData)
+      dispatch.cart.setTotalPrice(totalPrice)
     },
     async addItem (payload, _) {
-      const cartId = await dispatch.cart.getCartId()
-      await Moltin.Cart(cartId).AddProduct(payload.productId, payload.quantity)
-      await dispatch.cart.getCartItemsAsync()
+      const cartId = await dispatch.carts.getCartId()
+      const result = await Moltin.Cart(cartId).AddProduct(payload.id, payload.quantity)
+      await dispatch.carts.getCartItemsAsync()
+      return result
     },
     async deleteItem (payload, _) {
-      const cartId = await dispatch.cart.getCartId()
+      const cartId = await dispatch.carts.getCartId()
       await Moltin.Cart(cartId).RemoveItem(payload.itemId)
       await dispatch.cart.getCartItemsAsync()
     }

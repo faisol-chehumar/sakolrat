@@ -68,26 +68,31 @@ const ProductPageTemplate = (props) => {
     }
   ]
 
-  const [curBreadcum] = useState(
-    [
-      {
-        title: 'HOME',
-        link: '/'
-      },
-      {
-        title: 'SHOP',
-        link: '/product/'
-      }
-    ]
-  )
+  const [quantity, setQuantity] = useState(1)
 
-  const getUserHandle = async (e) => {
+  const [curBreadcum] = useState([
+    {
+      title: 'HOME',
+      link: '/'
+    },
+    {
+      title: 'SHOP',
+      link: '/product/'
+    }
+  ])
+
+  const addToCartHandle = (e) => {
     e.preventDefault()
 
-    const cartId = await props.getCartItemsAsync()
-    console.log(cartId)
+    props.addItem({
+      id: product.id,
+      quantity: quantity
+    })
   }
-  console.log(data)
+
+  function handleSelect (qty) {
+    setQuantity(qty)
+  }
 
   return (
     <Theme>
@@ -119,14 +124,12 @@ const ProductPageTemplate = (props) => {
             <div>
               <p><b>In Stock</b>Ships within 24 hours</p>
               <div>
-                <Select defaultValue="1" style={{ width: 120 }}>
-                  {
-                    Array(10).fill('').map((_, index) => (
-                      <Option key={index} value={index + 1}>{index + 1}</Option>
-                    ))
-                  }
+                <Select defaultValue="1" style={{ width: 120 }} onChange={handleSelect}>
+                  {Array(10).fill('').map((_, index) => (
+                    <Option key={index} value={index + 1}>{index + 1}</Option>
+                  ))}
                 </Select>
-                <Button onClick={getUserHandle}>Add To Cart</Button>
+                <Button onClick={addToCartHandle}>Add To Cart</Button>
                 <a href="/"><span>Add To Wish List</span></a>
               </div>
             </div>
@@ -235,8 +238,7 @@ ProductPageTemplate.propTypes = {
     PropTypes.object,
     PropTypes.array
   ]),
-  getCartId: PropTypes.func,
-  getCartItemsAsync: PropTypes.func
+  addItem: PropTypes.func
 }
 
 const mapStateToProps = ({
@@ -244,10 +246,9 @@ const mapStateToProps = ({
 }) => ({ cartId })
 
 const mapDispatchToProps = ({
-  carts: { getCartId, getCartItemsAsync }
+  carts: { addItem }
 }) => ({
-  getCartId: () => getCartId(),
-  getCartItemsAsync: () => getCartItemsAsync()
+  addItem: (payload) => addItem(payload)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductPageTemplate)
