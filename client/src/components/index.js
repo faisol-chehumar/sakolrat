@@ -7,6 +7,7 @@ import Button from './Button'
 import CategoryMenu from './CategoryMenu'
 import CustomBox from './CustomBox'
 import CustomLineBreak from './CustomLineBreak'
+import EmptyCart from './EmptyCart'
 import ExtraBar from './ExtraBar'
 import FilterBox from './FilterBox'
 import FilterProduct from './FilterProduct'
@@ -53,6 +54,7 @@ export default {
   CategoryMenu,
   CustomBox,
   CustomLineBreak,
+  EmptyCart,
   ExtraBar,
   FilterBox,
   FilterProduct,
