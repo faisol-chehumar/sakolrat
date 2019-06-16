@@ -6,6 +6,7 @@ export const users = {
     customer: null,
     customerDetail: null
   },
+
   reducers: {
     setToken (state, payload) {
       return {
@@ -26,8 +27,9 @@ export const users = {
       }
     }
   },
+
   effects: (dispatch) => ({
-    async login ({ username, password, remember }) {
+    async login ({ username, password }) {
       try {
         const { data } = await Moltin.Customers.Token(username, password)
         const customerDetail = await Moltin.Customers.Get(data.customer_id)
@@ -44,8 +46,21 @@ export const users = {
     async logout () {
       await dispatch.users.setToken(null)
       await dispatch.users.setCustomer(null)
+    },
+    async getUser (_, rootState) {
+      const data = rootState.users.token
+
+      try {
+        const customer = await Moltin.Customers.Get(data.customer_id)
+        dispatch.users.setCustomer(customer)
+
+        return Promise.resolve(customer)
+      } catch (error) {
+        return Promise.reject(error)
+      }
     }
   }),
+
   selectors: {
     isAuthenticated () {
       return (rootState, _) => rootState.users.token !== null

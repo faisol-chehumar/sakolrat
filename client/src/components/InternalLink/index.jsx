@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 
 const InternalLinkContainer = styled(Link)`
   color: #fa4c06;
+  margin-left: ${props => props.marginLeft || 0};
 
   &:hover {
     color: #fa4c06;
@@ -12,8 +13,8 @@ const InternalLinkContainer = styled(Link)`
   }
 `
 
-const InternalLink = ({ linkTo, linkText }) => (
-  <InternalLinkContainer to={linkTo}>
+const InternalLink = ({ linkTo, linkText, ...rest }) => (
+  <InternalLinkContainer to={linkTo} {...rest}>
     { linkText }
   </InternalLinkContainer>
 )

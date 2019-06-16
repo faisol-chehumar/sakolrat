@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import { Row, Col, Select, Typography, Button, Tabs, Table, Divider } from 'antd'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
 
 import Theme from '../layouts/Theme'
 import Container from '../layouts/Container'
@@ -67,16 +68,26 @@ const ProductPageTemplate = (props) => {
     }
   ]
 
-  const [curBreadcum] = useState([
-    {
-      title: 'HOME',
-      link: '/'
-    },
-    {
-      title: 'SHOP',
-      link: '/product/'
-    }
-  ])
+  const [curBreadcum] = useState(
+    [
+      {
+        title: 'HOME',
+        link: '/'
+      },
+      {
+        title: 'SHOP',
+        link: '/product/'
+      }
+    ]
+  )
+
+  const getUserHandle = async (e) => {
+    e.preventDefault()
+
+    const cartId = await props.getCartItemsAsync()
+    console.log(cartId)
+  }
+  console.log(data)
 
   return (
     <Theme>
@@ -115,7 +126,7 @@ const ProductPageTemplate = (props) => {
                     ))
                   }
                 </Select>
-                <Button>Add To Cart</Button>
+                <Button onClick={getUserHandle}>Add To Cart</Button>
                 <a href="/"><span>Add To Wish List</span></a>
               </div>
             </div>
@@ -223,10 +234,23 @@ ProductPageTemplate.propTypes = {
   data: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.array
-  ])
+  ]),
+  getCartId: PropTypes.func,
+  getCartItemsAsync: PropTypes.func
 }
 
-export default ProductPageTemplate
+const mapStateToProps = ({
+  carts: { cartId }
+}) => ({ cartId })
+
+const mapDispatchToProps = ({
+  carts: { getCartId, getCartItemsAsync }
+}) => ({
+  getCartId: () => getCartId(),
+  getCartItemsAsync: () => getCartItemsAsync()
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductPageTemplate)
 
 export const pageQuery = graphql`
   query ProductQuery($id: String!) {
