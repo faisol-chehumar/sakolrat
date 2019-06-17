@@ -7,6 +7,7 @@ import Logo from '../Logo'
 import MenuIcon from '../MenuIcon'
 import MegaMenu from '../MegaMenu'
 import LoginModal from '../LoginModal'
+import Cart from '../Cart'
 
 const DarkHeader = styled.div`
   color: #fff;
@@ -119,10 +120,7 @@ const Navbar = () => {
             />
           </Col>
           <Col xs={4} lg={0}>
-            <MenuIcon
-              type='shopping-cart'
-              link='/cart'
-            />
+            <Cart />
           </Col>
           <Col
             xs={{ span: 24, offset: 0 }}
@@ -145,11 +143,7 @@ const Navbar = () => {
                 link="/whislist"
                 text="Whislist"
               />
-              <MenuIcon
-                type="shopping-cart"
-                link="/cart"
-                text="Cart"
-              />
+              <Cart />
             </div>
           </Col>
         </Row>

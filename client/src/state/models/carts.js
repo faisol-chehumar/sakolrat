@@ -5,10 +5,12 @@ export const carts = {
   state: {
     cartItem: [],
     totalPrice: 0,
-    cartId: null
+    cartId: null,
+    totalItems: 0
   },
   reducers: {
     setCartItems (state, payload) {
+      console.log(payload)
       return {
         ...state,
         cartItem: payload
@@ -24,6 +26,12 @@ export const carts = {
       return {
         ...state,
         cartId: payload
+      }
+    },
+    setTotalItems (state, payload) {
+      return {
+        ...state,
+        totalItems: payload
       }
     }
   },
@@ -56,7 +64,7 @@ export const carts = {
     async getCartItemsAsync () {
       const cartId = await dispatch.carts.getCartId()
       const cartData = await Moltin.Cart(cartId).Items('include')
-      const cleanData = cartData.map((item) => {
+      const cleanData = cartData.data.map((item) => {
         return {
           id: item.id,
           productId: item.product_id,
@@ -67,10 +75,15 @@ export const carts = {
           pricePerUnit: item.meta.display_price.with_tax.unit.formatted
         }
       })
-      const totalPrice = cartData.meta.display_price.with_tax.amount
 
-      dispatch.cart.setCartItems(cleanData)
-      dispatch.cart.setTotalPrice(totalPrice)
+      const totalPrice = cartData.meta.display_price.with_tax.amount
+      const totalItems = cleanData.reduce((accumulator = 0, currentValue) => {
+        return accumulator + currentValue.amount
+      }, 0)
+
+      dispatch.carts.setCartItems(cleanData)
+      dispatch.carts.setTotalPrice(totalPrice)
+      dispatch.carts.setTotalItems(totalItems)
     },
     async addItem (payload, _) {
       const cartId = await dispatch.carts.getCartId()
