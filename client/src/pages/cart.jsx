@@ -2,6 +2,7 @@ import React from 'react'
 import { Layout, Typography } from 'antd'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 import Theme from '../layouts/Theme'
 import Container from '../layouts/Container'
@@ -38,7 +39,7 @@ const EmptyCartContainer = styled.div`
   margin-top: 4rem;
   margin-bottom: 4rem;
 `
-const Cart = () => (
+const Cart = ({ cartItem, totalItems }) => (
   <Theme bg={'#eee'}>
     <ExtraBar />
     <Container>
@@ -54,17 +55,27 @@ const Cart = () => (
           />
         </HeaderContainer>
         <Content>
-          <EmptyCartContainer>
-            <EmptyCart />
-          </EmptyCartContainer>
+          <EmptyCartContainer>{
+            totalItems > 0
+              ? <div>Hello</div>
+              : <EmptyCart />
+          }</EmptyCartContainer>
         </Content>
       </LayoutContainer>
     </Container>
   </Theme>
 )
 
-const mapStateToProps = ({ customer }) => ({
-  customer
-})
+Cart.propTypes = {
+  cartItem: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array
+  ]),
+  totalItems: PropTypes.number
+}
+
+const mapStateToProps = ({
+  carts: { cartItem, totalItems }
+}) => ({ cartItem, totalItems })
 
 export default connect(mapStateToProps)(Cart)

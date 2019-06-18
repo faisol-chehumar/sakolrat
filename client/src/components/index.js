@@ -5,6 +5,7 @@ import BrandSlider from './BrandSlider'
 import BreadcrumbShop from './BreadcrumbShop'
 import Button from './Button'
 import Cart from './Cart'
+import CartItems from './CartItems'
 import CategoryMenu from './CategoryMenu'
 import CustomBox from './CustomBox'
 import CustomLineBreak from './CustomLineBreak'
@@ -53,6 +54,7 @@ export default {
   BreadcrumbShop,
   Button,
   Cart,
+  CartItems,
   CategoryMenu,
   CustomBox,
   CustomLineBreak,

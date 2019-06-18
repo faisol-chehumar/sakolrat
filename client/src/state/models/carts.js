@@ -10,7 +10,6 @@ export const carts = {
   },
   reducers: {
     setCartItems (state, payload) {
-      console.log(payload)
       return {
         ...state,
         cartItem: payload

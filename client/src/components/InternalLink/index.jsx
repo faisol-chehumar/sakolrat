@@ -3,25 +3,31 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-const InternalLinkContainer = styled(Link)`
-  color: #fa4c06;
-  margin-left: ${props => props.marginLeft || 0};
-
-  &:hover {
+const InternalLink = ({ linkTo, linkText, marginLeft, ...rest }) => {
+  const InternalLinkContainer = styled(Link)`
     color: #fa4c06;
-    text-decoration: underline;
-  }
-`
+    margin-left: ${marginLeft || 0};
 
-const InternalLink = ({ linkTo, linkText, ...rest }) => (
-  <InternalLinkContainer to={linkTo} {...rest}>
-    { linkText }
-  </InternalLinkContainer>
-)
+    &:hover {
+      color: #fa4c06;
+      text-decoration: underline;
+    }
+  `
+
+  return (
+    <InternalLinkContainer
+      to={linkTo}
+      {...rest}
+    >
+      { linkText }
+    </InternalLinkContainer>
+  )
+}
 
 InternalLink.propTypes = {
   linkTo: PropTypes.string,
-  linkText: PropTypes.string
+  linkText: PropTypes.string,
+  marginLeft: PropTypes.string
 }
 
 export default InternalLink

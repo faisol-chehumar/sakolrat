@@ -22,7 +22,6 @@ const Cart = ({ getCartItemsAsync, cartItem, totalItems }) => {
 
   return (
     <Badge
-      x={console.log(totalItems)}
       count={totalItems}
     >
       <MenuIcon
