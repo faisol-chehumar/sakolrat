@@ -64,7 +64,6 @@ export const carts = {
       const cartId = await dispatch.carts.getCartId()
       const cartData = await Moltin.Cart(cartId).Items('include')
       const cartItems = cartData.data.map((item) => {
-        console.log(item)
         return {
           id: item.id,
           sku: item.sku,
@@ -97,7 +96,7 @@ export const carts = {
     async deleteItem (payload, _) {
       const cartId = await dispatch.carts.getCartId()
       await Moltin.Cart(cartId).RemoveItem(payload.itemId)
-      await dispatch.cart.getCartItemsAsync()
+      await dispatch.carts.getCartItemsAsync()
     }
   })
 }

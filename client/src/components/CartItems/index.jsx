@@ -47,61 +47,72 @@ const handleChange = (value) => {
   console.log(`selected ${value}`)
 }
 
-const CartItems = ({ cartItem }) => (
-  cartItem.map((item, index) => (
-    <ProductBlock x={console.log(item)} key={index} gutter={15}>
-      <Col xs={8}>
-        <ProductImg src={item.image} width="100%" />
-      </Col>
-      <Col xs={16}>
-        <ProductName level={4}>{item.name}</ProductName>
-        <ProductInfo>SKU: {item.sku || '-'}</ProductInfo>
-        <ProductInfo>Color: {item.color || '-'}</ProductInfo>
-        <ProductInfo>Size: {item.size || '-'}</ProductInfo>
-      </Col>
-      <Col xs={16} offset={8}>
-        <QtySelect
-          defaultValue={item.qty}
-          style={{ width: 120 }}
-          onChange={handleChange}
-        >
-          {
-            Array(10).fill('').map((_, index) => (
-              <Option
-                value={index}
-                key={index}
-              >
-                {index}
-              </Option>
-            ))
-          }
-        </QtySelect>
-      </Col>
-      <Col xs={16} offset={8}>
-        <b>{`${item.currency} ${item.amount || '-'}` }</b>
-      </Col>
-      <Col xs={24}>
-        <HorizonMenu>
-          <a href="#">Edit</a>
-          <Divider type="vertical" />
-          <a href="#">Remove</a>
-          <Divider type="vertical" />
-          <a href="#">Move to Wish Lish</a>
-        </HorizonMenu>
-      </Col>
-    </ProductBlock>
-  ))
-)
+const CartItems = ({ cartItem, deleteItem }) => {
+  const removeItemHandle = (itemId) => (e) => {
+    deleteItem({ itemId: itemId })
+  }
+
+  return (
+    cartItem.map((item, index) => (
+      <ProductBlock key={index} gutter={15}>
+        <Col xs={8}>
+          <ProductImg src={item.image} width="100%" />
+        </Col>
+        <Col xs={16}>
+          <ProductName level={4}>{item.name}</ProductName>
+          <ProductInfo>SKU: {item.sku || '-'}</ProductInfo>
+          <ProductInfo>Color: {item.color || '-'}</ProductInfo>
+          <ProductInfo>Size: {item.size || '-'}</ProductInfo>
+        </Col>
+        <Col xs={16} offset={8}>
+          <QtySelect
+            defaultValue={item.qty}
+            style={{ width: 120 }}
+            onChange={handleChange}
+          >
+            {
+              Array(10).fill('').map((_, index) => (
+                <Option
+                  value={index}
+                  key={index}
+                >
+                  {index}
+                </Option>
+              ))
+            }
+          </QtySelect>
+        </Col>
+        <Col xs={16} offset={8}>
+          <b>{`${item.currency} ${item.amount || '-'}` }</b>
+        </Col>
+        <Col xs={24}>
+          <HorizonMenu>
+            <a href="#">Edit</a>
+            <Divider type="vertical" />
+            <a onClick={removeItemHandle(item.id)}>Remove</a>
+            <Divider type="vertical" />
+            <a href="#">Move to Wish Lish</a>
+          </HorizonMenu>
+        </Col>
+      </ProductBlock>
+    ))
+  )
+}
 
 CartItems.propTypes = {
   cartItem: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.array
-  ])
+  ]),
+  deleteItem: PropTypes.func
 }
 
 const mapStateToProps = ({
   carts: { cartItem }
 }) => ({ cartItem })
 
-export default connect(mapStateToProps)(CartItems)
+const mapDispatchToProps = ({ carts: { deleteItem } }) => ({
+  deleteItem: (payload) => deleteItem(payload)
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartItems)
