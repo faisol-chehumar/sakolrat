@@ -77,7 +77,7 @@ export const carts = {
           pricePerUnit: item.meta.display_price.with_tax.unit.formatted
         }
       })
-      console.log(cartItems)
+
       const totalPrice = cartData.meta.display_price.with_tax.amount
       const totalItems = cartItems.reduce((accumulator = 0, currentValue) => {
         return accumulator + currentValue.qty
@@ -91,6 +91,7 @@ export const carts = {
       const cartId = await dispatch.carts.getCartId()
       const result = await Moltin.Cart(cartId).AddProduct(payload.id, payload.quantity)
       await dispatch.carts.getCartItemsAsync()
+
       return result
     },
     async deleteItem (payload, _) {
