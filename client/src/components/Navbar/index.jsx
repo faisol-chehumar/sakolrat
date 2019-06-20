@@ -113,7 +113,7 @@ const Navbar = () => {
           <Col xs={8} lg={4}>
             <Logo className="logo" />
           </Col>
-          <Col xs={4} lg={0} offset={6}>
+          <Col xs={4} lg={0} offset={5}>
             <MenuIcon
               type='phone'
               link='/phone'
@@ -143,7 +143,7 @@ const Navbar = () => {
                 link="/whislist"
                 text="Whislist"
               />
-              <Cart />
+              <Cart text="Cart" />
             </div>
           </Col>
         </Row>

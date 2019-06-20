@@ -14,7 +14,7 @@ const MenuIconContainer = styled.div`
     font-size: 0.8rem;
     display: block;
     position: relative;
-    margin-left: 1rem;
+    /*margin-left: 1rem;*/
   }
 
   span {
@@ -44,10 +44,8 @@ const MenuIcon = ({
 }) => (
   <MenuIconContainer>
     <Link to={link}>
-      <Icon
-        type={type}
-      />
-      <span>{text}</span>
+      <Icon type={type} />
+      {text && <span>{text}</span>}
     </Link>
   </MenuIconContainer>
 )

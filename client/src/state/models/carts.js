@@ -77,10 +77,10 @@ export const carts = {
           pricePerUnit: item.meta.display_price.with_tax.unit.formatted
         }
       })
-
+      console.log(cartItems)
       const totalPrice = cartData.meta.display_price.with_tax.amount
       const totalItems = cartItems.reduce((accumulator = 0, currentValue) => {
-        return accumulator + currentValue.amount
+        return accumulator + currentValue.qty
       }, 0)
 
       dispatch.carts.setCartItems(cartItems)

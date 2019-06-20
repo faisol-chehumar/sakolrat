@@ -5,7 +5,12 @@ import { Badge } from 'antd'
 
 import MenuIcon from '../MenuIcon'
 
-const Cart = ({ getCartItemsAsync, cartItem, totalItems }) => {
+const Cart = ({
+  getCartItemsAsync,
+  cartItem,
+  totalItems,
+  text = null
+}) => {
   useEffect(() => {
     const initCartItem = async () => {
       await getCartItemsAsync()
@@ -21,13 +26,11 @@ const Cart = ({ getCartItemsAsync, cartItem, totalItems }) => {
   }, [])
 
   return (
-    <Badge
-      count={totalItems}
-    >
+    <Badge x={console.log(totalItems)} count={totalItems}>
       <MenuIcon
         type="shopping-cart"
         link="/cart"
-        text="Cart"
+        text={text}
       />
     </Badge>
   )
@@ -39,7 +42,8 @@ Cart.propTypes = {
     PropTypes.array
   ]),
   getCartItemsAsync: PropTypes.func,
-  totalItems: PropTypes.number
+  totalItems: PropTypes.number,
+  text: PropTypes.string
 }
 
 const mapDispatchToProps = ({
