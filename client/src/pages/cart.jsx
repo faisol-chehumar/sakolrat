@@ -16,6 +16,7 @@ const {
 const { Title } = Typography
 
 const {
+  CartItems,
   EmptyCart,
   ExtraBar,
   InternalLink
@@ -35,12 +36,12 @@ const LayoutContainer = styled(Layout)`
   background: transparent !important;
 `
 
-const EmptyCartContainer = styled.div`
+const CartItemsContainer = styled.div`
   margin-top: 4rem;
   margin-bottom: 4rem;
 `
-const Cart = ({ cartItem, totalItems }) => (
-  <Theme bg={'#eee'}>
+const Cart = ({ totalItems }) => (
+  <Theme bg={'#fafafa'}>
     <ExtraBar />
     <Container>
       <LayoutContainer>
@@ -55,11 +56,11 @@ const Cart = ({ cartItem, totalItems }) => (
           />
         </HeaderContainer>
         <Content>
-          <EmptyCartContainer>{
+          <CartItemsContainer>{
             totalItems > 0
-              ? <div>Hello</div>
+              ? <CartItems />
               : <EmptyCart />
-          }</EmptyCartContainer>
+          }</CartItemsContainer>
         </Content>
       </LayoutContainer>
     </Container>
@@ -67,15 +68,11 @@ const Cart = ({ cartItem, totalItems }) => (
 )
 
 Cart.propTypes = {
-  cartItem: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.array
-  ]),
   totalItems: PropTypes.number
 }
 
 const mapStateToProps = ({
-  carts: { cartItem, totalItems }
-}) => ({ cartItem, totalItems })
+  carts: { totalItems }
+}) => ({ totalItems })
 
 export default connect(mapStateToProps)(Cart)

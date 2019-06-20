@@ -63,11 +63,15 @@ export const carts = {
     async getCartItemsAsync () {
       const cartId = await dispatch.carts.getCartId()
       const cartData = await Moltin.Cart(cartId).Items('include')
-      const cleanData = cartData.data.map((item) => {
+      const cartItems = cartData.data.map((item) => {
+        console.log(item)
         return {
           id: item.id,
+          sku: item.sku,
           productId: item.product_id,
-          amount: item.quantity,
+          qty: item.quantity,
+          amount: item.value.amount,
+          currency: item.unit_price.currency,
           name: item.name,
           image: item.image.href,
           totalPrice: item.meta.display_price.with_tax.value.formatted,
@@ -76,11 +80,11 @@ export const carts = {
       })
 
       const totalPrice = cartData.meta.display_price.with_tax.amount
-      const totalItems = cleanData.reduce((accumulator = 0, currentValue) => {
+      const totalItems = cartItems.reduce((accumulator = 0, currentValue) => {
         return accumulator + currentValue.amount
       }, 0)
 
-      dispatch.carts.setCartItems(cleanData)
+      dispatch.carts.setCartItems(cartItems)
       dispatch.carts.setTotalPrice(totalPrice)
       dispatch.carts.setTotalItems(totalItems)
     },

@@ -42,7 +42,7 @@ const AuthLogin = ({ customer }) => {
   })
 
   return (
-    <Theme bg={'#eee'}>
+    <Theme bg={'#fafafa'}>
       <ExtraBar />
       <Container>
         <LayoutContainer>
