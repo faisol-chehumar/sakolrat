@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 
 import Moltin from '../../utils/moltin'
 import InternalLink from '../InternalLink'
+import ProductUpdateButton from '../ProductUpdateButton'
 
 const { Option } = Select
 
@@ -100,7 +101,7 @@ const EditItemModal = ({ item }) => {
               </Col>
             </Row>
             <Row>
-              <Col xs={24}>
+              <Col xs={12}>
                 <QtySelect
                   defaultValue={item.qty}
                   style={{ width: 120 }}
@@ -116,6 +117,9 @@ const EditItemModal = ({ item }) => {
                     ))
                   }
                 </QtySelect>
+              </Col>
+              <Col xs={12}>
+                <ProductUpdateButton />
               </Col>
             </Row>
           </Col>
