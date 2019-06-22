@@ -24,14 +24,11 @@ const QtySelect = styled(Select)`
   }
 `
 
-const handleChange = (value) => {
-  console.log(`selected ${value}`)
-}
-
 const EditItemModal = ({ item }) => {
   const [visible, setVisible] = useState(false)
   const [brand, setBrand] = useState([])
   const [brandLogo, setBrandLogo] = useState(null)
+  const [productQuantity, setProductQuantity] = useState(0)
 
   const showModal = (e) => {
     e.preventDefault()
@@ -43,7 +40,7 @@ const EditItemModal = ({ item }) => {
   }
 
   useEffect(() => {
-    const fetchBrandData = async () => {
+    const fetchRelateData = async () => {
       if (brand.length <= 0) {
         const product = await Moltin.Products.Get(item.productId)
         const brandId = product.data.relationships.brands.data[0].id
@@ -53,15 +50,22 @@ const EditItemModal = ({ item }) => {
 
         setBrand([brandData])
         setBrandLogo(brandImage)
+        setProductQuantity(item.qty)
       }
     }
 
-    fetchBrandData()
+    fetchRelateData()
 
     return () => {
-      fetchBrandData()
+      fetchRelateData()
     }
   })
+
+  const handleChange = (value) => {
+    console.log(setProductQuantity)
+    console.log(item)
+    setProductQuantity(value)
+  }
 
   return (
     <>
@@ -103,23 +107,27 @@ const EditItemModal = ({ item }) => {
             <Row>
               <Col xs={12}>
                 <QtySelect
-                  defaultValue={item.qty}
+                  defaultValue={productQuantity}
                   style={{ width: 120 }}
                   onChange={handleChange}
                 >{
                     Array(10).fill('').map((_, index) => (
                       <Option
-                        value={index}
-                        key={index}
+                        value={index + 1}
+                        key={index + 1}
                       >
-                        {index}
+                        {index + 1}
                       </Option>
                     ))
                   }
                 </QtySelect>
               </Col>
               <Col xs={12}>
-                <ProductUpdateButton />
+                <ProductUpdateButton
+                  id={item.id}
+                  quantity={productQuantity}
+                  onUpdateComplete={closeModal}
+                />
               </Col>
             </Row>
           </Col>

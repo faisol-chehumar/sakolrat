@@ -100,10 +100,10 @@ const CartItems = ({ cartItem, deleteItem }) => {
                 >{
                     Array(10).fill('').map((_, index) => (
                       <Option
-                        value={index}
-                        key={index}
+                        value={index + 1}
+                        key={index + 1}
                       >
-                        {index}
+                        {index + 1}
                       </Option>
                     ))
                   }

@@ -89,14 +89,21 @@ export const carts = {
       dispatch.carts.setTotalPrice(totalPrice)
       dispatch.carts.setTotalItems(totalItems)
     },
-    async addItem (payload, _) {
+    async addItem (payload) {
       const cartId = await dispatch.carts.getCartId()
       const result = await Moltin.Cart(cartId).AddProduct(payload.id, payload.quantity)
       await dispatch.carts.getCartItemsAsync()
 
       return result
     },
-    async deleteItem (payload, _) {
+    async updateItem (payload) {
+      const cartId = await dispatch.carts.getCartId()
+      const result = await Moltin.Cart(cartId).UpdateItemQuantity(payload.id, payload.quantity)
+      await dispatch.carts.getCartItemsAsync()
+
+      return result
+    },
+    async deleteItem (payload) {
       const cartId = await dispatch.carts.getCartId()
       await Moltin.Cart(cartId).RemoveItem(payload.itemId)
       await dispatch.carts.getCartItemsAsync()
