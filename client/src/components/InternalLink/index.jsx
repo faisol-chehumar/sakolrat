@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-const InternalLink = ({ linkTo, linkText, marginLeft, ...rest }) => {
+const InternalLink = ({ linkTo = null, linkText, marginLeft, ...rest }) => {
   const InternalLinkContainer = styled(Link)`
     color: #fa4c06;
     margin-left: ${marginLeft || 0};

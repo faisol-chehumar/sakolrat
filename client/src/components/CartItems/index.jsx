@@ -4,6 +4,9 @@ import PropTypes from 'prop-types'
 import { Row, Col, Typography, Select, Divider } from 'antd'
 import styled from 'styled-components'
 
+import EditItemModal from '../EditItemModal'
+import InternalLink from '../InternalLink'
+
 const { Option } = Select
 const { Title } = Typography
 
@@ -66,6 +69,7 @@ const handleChange = (value) => {
 
 const CartItems = ({ cartItem, deleteItem }) => {
   const removeItemHandle = (itemId) => (e) => {
+    e.preventDefault()
     deleteItem({ itemId: itemId })
   }
 
@@ -86,7 +90,7 @@ const CartItems = ({ cartItem, deleteItem }) => {
                 <ProductInfo><b>In Stock:</b> Ships within 24 hours</ProductInfo>
               </Col>
               <Col xs={0} lg={4}>
-                <b>{`${item.currency} ${item.amount || '-'}` }</b>
+                <b>{`${item.currency} ${item.pricePerUnit || '-'}` }</b>
               </Col>
               <Col xs={24} lg={4}>
                 <QtySelect
@@ -110,11 +114,18 @@ const CartItems = ({ cartItem, deleteItem }) => {
               </Col>
               <Col xs={0} lg={24}>
                 <HorizonMenu>
-                  <a href="#">Edit</a>
+                  <EditItemModal item={item} />
                   <Divider type="vertical" />
-                  <a onClick={removeItemHandle(item.id)}>Remove</a>
+                  <InternalLink
+                    onClick={removeItemHandle(item.id)}
+                    linkText="Remove"
+                    linkTo="#"
+                  />
                   <Divider type="vertical" />
-                  <a href="#">Move to Wish Lish</a>
+                  <InternalLink
+                    linkTo="/whish-list"
+                    linkText="Move to Wish Lish"
+                  />
                 </HorizonMenu>
               </Col>
             </Row>

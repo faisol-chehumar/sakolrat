@@ -64,6 +64,7 @@ export const carts = {
       const cartId = await dispatch.carts.getCartId()
       const cartData = await Moltin.Cart(cartId).Items('include')
       const cartItems = cartData.data.map((item) => {
+        // console.log(item)
         return {
           id: item.id,
           sku: item.sku,
@@ -74,7 +75,8 @@ export const carts = {
           name: item.name,
           image: item.image.href,
           totalPrice: item.meta.display_price.with_tax.value.formatted,
-          pricePerUnit: item.meta.display_price.with_tax.unit.formatted
+          pricePerUnit: item.meta.display_price.with_tax.unit.formatted,
+          link: item.links.product
         }
       })
 

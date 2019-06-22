@@ -9,6 +9,7 @@ import CartItems from './CartItems'
 import CategoryMenu from './CategoryMenu'
 import CustomBox from './CustomBox'
 import CustomLineBreak from './CustomLineBreak'
+import EditItemModal from './EditItemModal'
 import EmptyCart from './EmptyCart'
 import ExtraBar from './ExtraBar'
 import FilterBox from './FilterBox'
@@ -58,6 +59,7 @@ export default {
   CategoryMenu,
   CustomBox,
   CustomLineBreak,
+  EditItemModal,
   EmptyCart,
   ExtraBar,
   FilterBox,

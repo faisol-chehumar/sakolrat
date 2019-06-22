@@ -26,7 +26,7 @@ const Cart = ({
   }, [])
 
   return (
-    <Badge x={console.log(totalItems)} count={totalItems}>
+    <Badge count={totalItems}>
       <MenuIcon
         type="shopping-cart"
         link="/cart"
