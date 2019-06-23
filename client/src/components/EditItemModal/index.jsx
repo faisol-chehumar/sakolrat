@@ -1,27 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { Modal, Row, Col, Select } from 'antd'
+import { Modal, Row, Col } from 'antd'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 
 import Moltin from '../../utils/moltin'
 import InternalLink from '../InternalLink'
 import ProductUpdateButton from '../ProductUpdateButton'
-
-const { Option } = Select
+import ProductQtySelect from '../ProductQtySelect'
 
 const PriceTag = styled.p`
   font-size: 1.5rem;
-`
-
-const QtySelect = styled(Select)`
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-
-  @media(min-width: 992px) {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
 `
 
 const EditItemModal = ({ item }) => {
@@ -60,12 +49,6 @@ const EditItemModal = ({ item }) => {
       fetchRelateData()
     }
   })
-
-  const handleChange = (value) => {
-    console.log(setProductQuantity)
-    console.log(item)
-    setProductQuantity(value)
-  }
 
   return (
     <>
@@ -106,21 +89,10 @@ const EditItemModal = ({ item }) => {
             </Row>
             <Row>
               <Col xs={12}>
-                <QtySelect
-                  defaultValue={productQuantity}
-                  style={{ width: 120 }}
-                  onChange={handleChange}
-                >{
-                    Array(10).fill('').map((_, index) => (
-                      <Option
-                        value={index + 1}
-                        key={index + 1}
-                      >
-                        {index + 1}
-                      </Option>
-                    ))
-                  }
-                </QtySelect>
+                <ProductQtySelect
+                  quantity={productQuantity}
+                  updateProductQty={setProductQuantity}
+                />
               </Col>
               <Col xs={12}>
                 <ProductUpdateButton

@@ -1,13 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { Row, Col, Typography, Select, Divider } from 'antd'
+import { Row, Col, Typography, Divider } from 'antd'
 import styled from 'styled-components'
 
 import EditItemModal from '../EditItemModal'
 import InternalLink from '../InternalLink'
+import ProductQtySelect from '../ProductQtySelect'
 
-const { Option } = Select
 const { Title } = Typography
 
 const ProductBlock = styled.div`
@@ -53,20 +53,6 @@ const HorizonMenu = styled.div`
   }
 `
 
-const QtySelect = styled(Select)`
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-
-  @media(min-width: 992px) {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-`
-
-const handleChange = (value) => {
-  console.log(`selected ${value}`)
-}
-
 const CartItems = ({ cartItem, deleteItem }) => {
   const removeItemHandle = (itemId) => (e) => {
     e.preventDefault()
@@ -93,21 +79,7 @@ const CartItems = ({ cartItem, deleteItem }) => {
                 <b>{`${item.currency} ${item.pricePerUnit || '-'}` }</b>
               </Col>
               <Col xs={24} lg={4}>
-                <QtySelect
-                  defaultValue={item.qty}
-                  style={{ width: 120 }}
-                  onChange={handleChange}
-                >{
-                    Array(10).fill('').map((_, index) => (
-                      <Option
-                        value={index + 1}
-                        key={index + 1}
-                      >
-                        {index + 1}
-                      </Option>
-                    ))
-                  }
-                </QtySelect>
+                <ProductQtySelect quantity={item.qty} />
               </Col>
               <Col xs={24} lg={4}>
                 <b>{`${item.currency} ${item.amount || '-'}` }</b>

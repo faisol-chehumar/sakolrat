@@ -39,6 +39,7 @@ import ProductCard from './ProductCard'
 import ProductList from './ProductList'
 import ProductItem from './ProductItem'
 import ProductSlider from './ProductSlider'
+import ProductQtySelect from './ProductQtySelect'
 import Rating from './Rating'
 import RegisterForm from './RegisterForm'
 import RowBlock from './RowBlock'
@@ -90,6 +91,7 @@ export default {
   ProductList,
   ProductItem,
   ProductSlider,
+  ProductQtySelect,
   Rating,
   RegisterForm,
   RowBlock,

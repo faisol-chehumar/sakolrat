@@ -10,16 +10,15 @@ const ProductUpdateButton = ({
   updateItem,
   onUpdateComplete
 }) => {
-  const updateHandle = (id, quantity, updateItem) => async (e) => {
+  const updateHandle = (id, quantity) => async (e) => {
     e.preventDefault()
 
-    // await updateItem({
-    //   id,
-    //   quantity
-    // })
+    await updateItem({
+      id,
+      quantity
+    })
 
-    // setProductQuantity(quantity)
-    // onUpdateComplete()
+    onUpdateComplete()
   }
 
   return (

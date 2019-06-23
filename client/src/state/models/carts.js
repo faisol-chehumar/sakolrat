@@ -84,7 +84,8 @@ export const carts = {
       const totalItems = cartItems.reduce((accumulator = 0, currentValue) => {
         return accumulator + currentValue.qty
       }, 0)
-
+      // console.log('state store')
+      // console.log(cartItems)
       dispatch.carts.setCartItems(cartItems)
       dispatch.carts.setTotalPrice(totalPrice)
       dispatch.carts.setTotalItems(totalItems)
