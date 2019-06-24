@@ -67,14 +67,18 @@ const CartItems = ({ cartItem, deleteItem, updateItem }) => {
       quantity
     })
 
-    setProductQuantity([
-      ...productQuantity.filter(product => product.id === id)
-        .map(product => ({
-          id: product.id,
-          qty: quantity
-        })),
-      ...productQuantity.filter(product => product.id !== id)
-    ])
+    setProductQuantity(
+      productQuantity.map(product => {
+        if (product.id === id) {
+          return {
+            id: product.id,
+            qty: quantity
+          }
+        }
+
+        return product
+      })
+    )
   }
 
   const removeItemHandle = (itemId) => (e) => {

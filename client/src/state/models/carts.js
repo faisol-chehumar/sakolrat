@@ -96,6 +96,7 @@ export const carts = {
       return result
     },
     async updateItem (payload) {
+      console.log(payload)
       const cartId = await dispatch.carts.getCartId()
       const result = await Moltin.Cart(cartId).UpdateItemQuantity(payload.id, payload.quantity)
       await dispatch.carts.getCartItemsAsync()
