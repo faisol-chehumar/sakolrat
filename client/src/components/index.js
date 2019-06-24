@@ -35,6 +35,7 @@ import Navbar from './Navbar'
 import OrderStatusForm from './OrderStatus'
 import PrivateRoute from './PrivateRoute'
 import ProductUpdateButton from './ProductUpdateButton'
+import ProductQtySelectUpdate from './ProductQtySelectUpdate'
 import ProductCard from './ProductCard'
 import ProductList from './ProductList'
 import ProductItem from './ProductItem'
@@ -87,6 +88,7 @@ export default {
   OrderStatusForm,
   PrivateRoute,
   ProductUpdateButton,
+  ProductQtySelectUpdate,
   ProductCard,
   ProductList,
   ProductItem,

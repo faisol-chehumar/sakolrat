@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Row, Col, Typography, Divider } from 'antd'
@@ -6,7 +6,7 @@ import styled from 'styled-components'
 
 import EditItemModal from '../EditItemModal'
 import InternalLink from '../InternalLink'
-import ProductQtySelect from '../ProductQtySelect'
+import ProductQtySelectUpdate from '../ProductQtySelectUpdate'
 
 const { Title } = Typography
 
@@ -53,7 +53,30 @@ const HorizonMenu = styled.div`
   }
 `
 
-const CartItems = ({ cartItem, deleteItem }) => {
+const CartItems = ({ cartItem, deleteItem, updateItem }) => {
+  const [productQuantity, setProductQuantity] = useState(cartItem.map(item => ({
+    id: item.id,
+    qty: item.qty
+  })))
+
+  const [firstFetch, setFirstFetch] = useState(true)
+
+  const updateItemHandle = async (id, quantity) => {
+    await updateItem({
+      id,
+      quantity
+    })
+
+    setProductQuantity([
+      ...productQuantity.filter(product => product.id === id)
+        .map(product => ({
+          id: product.id,
+          qty: quantity
+        })),
+      ...productQuantity.filter(product => product.id !== id)
+    ])
+  }
+
   const removeItemHandle = (itemId) => (e) => {
     e.preventDefault()
     deleteItem({ itemId: itemId })
@@ -79,14 +102,25 @@ const CartItems = ({ cartItem, deleteItem }) => {
                 <b>{`${item.currency} ${item.pricePerUnit || '-'}` }</b>
               </Col>
               <Col xs={24} lg={4}>
-                <ProductQtySelect quantity={item.qty} />
+                <ProductQtySelectUpdate
+                  id={item.id}
+                  quantity={productQuantity[index].qty}
+                  updateItemHandle={updateItemHandle}
+                  setFirstFetch={setFirstFetch}
+                />
               </Col>
               <Col xs={24} lg={4}>
                 <b>{`${item.currency} ${item.amount || '-'}` }</b>
               </Col>
               <Col xs={0} lg={24}>
                 <HorizonMenu>
-                  <EditItemModal item={item} />
+                  <EditItemModal
+                    item={item}
+                    quantity={productQuantity[index].qty}
+                    updateItemHandle={updateItemHandle}
+                    firstFetch={firstFetch}
+                    setFirstFetch={setFirstFetch}
+                  />
                   <Divider type="vertical" />
                   <InternalLink
                     onClick={removeItemHandle(item.id)}
@@ -131,8 +165,9 @@ const mapStateToProps = ({
   carts: { cartItem }
 }) => ({ cartItem })
 
-const mapDispatchToProps = ({ carts: { deleteItem } }) => ({
-  deleteItem: (payload) => deleteItem(payload)
+const mapDispatchToProps = ({ carts: { deleteItem, updateItem } }) => ({
+  deleteItem: (payload) => deleteItem(payload),
+  updateItem: (payload) => updateItem(payload)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartItems)

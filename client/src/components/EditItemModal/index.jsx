@@ -1,23 +1,32 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { Modal, Row, Col } from 'antd'
+import { Modal, Row, Col, Select } from 'antd'
 import styled from 'styled-components'
-import { connect } from 'react-redux'
 
 import Moltin from '../../utils/moltin'
 import InternalLink from '../InternalLink'
 import ProductUpdateButton from '../ProductUpdateButton'
-import ProductQtySelect from '../ProductQtySelect'
 
 const PriceTag = styled.p`
   font-size: 1.5rem;
 `
+const { Option } = Select
 
-const EditItemModal = ({ item }) => {
+const QtySelect = styled(Select)`
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+  @media(min-width: 992px) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+`
+
+const EditItemModal = ({ item, quantity, updateItemHandle, firstFetch, setFirstFetch }) => {
   const [visible, setVisible] = useState(false)
   const [brand, setBrand] = useState([])
   const [brandLogo, setBrandLogo] = useState(null)
-  const [productQuantity, setProductQuantity] = useState(0)
+  const [productQty, setProductQty] = useState(quantity)
 
   const showModal = (e) => {
     e.preventDefault()
@@ -26,6 +35,10 @@ const EditItemModal = ({ item }) => {
 
   const closeModal = e => {
     setVisible(false)
+  }
+
+  const handleChange = (value) => {
+    setProductQty(value)
   }
 
   useEffect(() => {
@@ -39,13 +52,23 @@ const EditItemModal = ({ item }) => {
 
         setBrand([brandData])
         setBrandLogo(brandImage)
-        setProductQuantity(item.qty)
+        setProductQty(quantity)
       }
+    }
+
+    if (firstFetch) {
+      setProductQty(quantity)
+      setFirstFetch(false)
     }
 
     fetchRelateData()
 
     return () => {
+      if (firstFetch) {
+        setProductQty(quantity)
+        setFirstFetch(false)
+      }
+
       fetchRelateData()
     }
   })
@@ -89,15 +112,33 @@ const EditItemModal = ({ item }) => {
             </Row>
             <Row>
               <Col xs={12}>
-                <ProductQtySelect
-                  quantity={productQuantity}
-                  updateProductQty={setProductQuantity}
-                />
+                <QtySelect
+                  defaultValue={quantity}
+                  style={{ width: 120 }}
+                  onChange={handleChange}
+                  value={productQty}
+                >
+                  {
+                    Array(10).fill('').map((_, index) => {
+                      const optionValue = index + 1
+
+                      return (
+                        <Option
+                          value={optionValue}
+                          key={optionValue}
+                        >
+                          {optionValue}
+                        </Option>
+                      )
+                    })
+                  }
+                </QtySelect>
               </Col>
               <Col xs={12}>
                 <ProductUpdateButton
                   id={item.id}
-                  quantity={productQuantity}
+                  quantity={productQty}
+                  updateItem={updateItemHandle}
                   onUpdateComplete={closeModal}
                 />
               </Col>
@@ -113,11 +154,11 @@ EditItemModal.propTypes = {
   item: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.array
-  ])
+  ]),
+  quantity: PropTypes.number,
+  updateItemHandle: PropTypes.func,
+  firstFetch: PropTypes.bool,
+  setFirstFetch: PropTypes.func
 }
 
-const mapStateToProps = ({
-  users: { token }
-}) => ({ token })
-
-export default connect(mapStateToProps)(EditItemModal)
+export default EditItemModal
