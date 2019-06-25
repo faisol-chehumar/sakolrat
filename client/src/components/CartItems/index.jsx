@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import EditItemModal from '../EditItemModal'
 import InternalLink from '../InternalLink'
 import ProductQtySelectUpdate from '../ProductQtySelectUpdate'
+import NeedHelpBox from '../NeedHelpBox'
 
 const { Title } = Typography
 
@@ -53,6 +54,11 @@ const HorizonMenu = styled.div`
   }
 `
 
+const RowBlock = styled(Row)`
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+`
+
 const CartItems = ({ cartItem, deleteItem, updateItem }) => {
   const [productQuantity, setProductQuantity] = useState(cartItem.map(item => ({
     id: item.id,
@@ -87,73 +93,85 @@ const CartItems = ({ cartItem, deleteItem, updateItem }) => {
   }
 
   return (
-    cartItem.map((item, index) => (
-      <ProductBlock key={index}>
-        <Row gutter={15}>
-          <Col xs={8} lg={4}>
-            <ProductImg src={item.image} width="100%" />
-          </Col>
-          <Col xs={16} lg={20}>
+    <div>
+      {
+        cartItem.map((item, index) => (
+          <ProductBlock key={index}>
+            <Row gutter={15}>
+              <Col xs={8} lg={4}>
+                <ProductImg src={item.image} width="100%" />
+              </Col>
+              <Col xs={16} lg={20}>
+                <Row>
+                  <Col xs={24} lg={12}>
+                    <ProductName level={4}>{item.name}</ProductName>
+                    <ProductInfo>SKU: {item.sku || '-'}</ProductInfo>
+                    <ProductInfo>Color: {item.color || '-'}</ProductInfo>
+                    <ProductInfo>Size: {item.size || '-'}</ProductInfo>
+                    <ProductInfo><b>In Stock:</b> Ships within 24 hours</ProductInfo>
+                  </Col>
+                  <Col xs={0} lg={4}>
+                    <b>{`${item.currency} ${item.pricePerUnit || '-'}` }</b>
+                  </Col>
+                  <Col xs={24} lg={4}>
+                    <ProductQtySelectUpdate
+                      id={item.id}
+                      quantity={productQuantity[index].qty}
+                      updateItemHandle={updateItemHandle}
+                      setFirstFetch={setFirstFetch}
+                    />
+                  </Col>
+                  <Col xs={24} lg={4}>
+                    <b>{`${item.currency} ${item.amount || '-'}` }</b>
+                  </Col>
+                  <Col xs={0} lg={24}>
+                    <HorizonMenu>
+                      <EditItemModal
+                        item={item}
+                        quantity={productQuantity[index].qty}
+                        updateItemHandle={updateItemHandle}
+                        firstFetch={firstFetch}
+                        setFirstFetch={setFirstFetch}
+                      />
+                      <Divider type="vertical" />
+                      <InternalLink
+                        onClick={removeItemHandle(item.id)}
+                        linkText="Remove"
+                        linkTo="#"
+                      />
+                      <Divider type="vertical" />
+                      <InternalLink
+                        linkTo="/whish-list"
+                        linkText="Move to Wish Lish"
+                      />
+                    </HorizonMenu>
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
             <Row>
-              <Col xs={24} lg={12}>
-                <ProductName level={4}>{item.name}</ProductName>
-                <ProductInfo>SKU: {item.sku || '-'}</ProductInfo>
-                <ProductInfo>Color: {item.color || '-'}</ProductInfo>
-                <ProductInfo>Size: {item.size || '-'}</ProductInfo>
-                <ProductInfo><b>In Stock:</b> Ships within 24 hours</ProductInfo>
-              </Col>
-              <Col xs={0} lg={4}>
-                <b>{`${item.currency} ${item.pricePerUnit || '-'}` }</b>
-              </Col>
-              <Col xs={24} lg={4}>
-                <ProductQtySelectUpdate
-                  id={item.id}
-                  quantity={productQuantity[index].qty}
-                  updateItemHandle={updateItemHandle}
-                  setFirstFetch={setFirstFetch}
-                />
-              </Col>
-              <Col xs={24} lg={4}>
-                <b>{`${item.currency} ${item.amount || '-'}` }</b>
-              </Col>
-              <Col xs={0} lg={24}>
+              <Col xs={24} lg={0}>
                 <HorizonMenu>
-                  <EditItemModal
-                    item={item}
-                    quantity={productQuantity[index].qty}
-                    updateItemHandle={updateItemHandle}
-                    firstFetch={firstFetch}
-                    setFirstFetch={setFirstFetch}
-                  />
+                  <a href="#">Edit</a>
                   <Divider type="vertical" />
-                  <InternalLink
-                    onClick={removeItemHandle(item.id)}
-                    linkText="Remove"
-                    linkTo="#"
-                  />
+                  <a onClick={removeItemHandle(item.id)}>Remove</a>
                   <Divider type="vertical" />
-                  <InternalLink
-                    linkTo="/whish-list"
-                    linkText="Move to Wish Lish"
-                  />
+                  <a href="#">Move to Wish Lish</a>
                 </HorizonMenu>
               </Col>
             </Row>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={24} lg={0}>
-            <HorizonMenu>
-              <a href="#">Edit</a>
-              <Divider type="vertical" />
-              <a onClick={removeItemHandle(item.id)}>Remove</a>
-              <Divider type="vertical" />
-              <a href="#">Move to Wish Lish</a>
-            </HorizonMenu>
-          </Col>
-        </Row>
-      </ProductBlock>
-    ))
+          </ProductBlock>
+        ))
+      }
+      <RowBlock gutter={25}>
+        <Col xs={24} lg={16}>
+          <NeedHelpBox />
+        </Col>
+        <Col xs={24} lg={8}>
+          NeedHelpBox
+        </Col>
+      </RowBlock>
+    </div>
   )
 }
 
@@ -162,7 +180,8 @@ CartItems.propTypes = {
     PropTypes.object,
     PropTypes.array
   ]),
-  deleteItem: PropTypes.func
+  deleteItem: PropTypes.func,
+  updateItem: PropTypes.func
 }
 
 const mapStateToProps = ({

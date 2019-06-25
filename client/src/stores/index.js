@@ -7,6 +7,7 @@ import guides from './guides'
 import heroBanners from './heroBanners'
 import infoContent from './infoContent'
 import menuLink from './menuLink'
+import needHelpBox from './needHelpBox'
 import posts from './blogPost'
 import productSlide from './productsSlide'
 import socialGroup from './socialGroup'
@@ -22,6 +23,7 @@ export default {
   heroBanners,
   infoContent,
   menuLink,
+  needHelpBox,
   posts,
   productSlide,
   socialGroup,

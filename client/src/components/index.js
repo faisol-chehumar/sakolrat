@@ -22,6 +22,7 @@ import HeaderTitle from './HeaderTitle'
 import HeroBanner from './HeroBanner'
 import InfoBlock from './InfoBlock'
 import InternalLink from './InternalLink'
+import InternalLinkRegular from './InternalLinkRegular'
 import TitleText from './TitleText'
 import LoginForm from './LoginForm'
 import LoginModal from './LoginModal'
@@ -32,6 +33,7 @@ import MenuIcon from './MenuIcon'
 import MenuLink from './MenuLink'
 import MenuVerticle from './MenuVerticle'
 import Navbar from './Navbar'
+import NeedHelpBox from './NeedHelpBox'
 import OrderStatusForm from './OrderStatus'
 import PrivateRoute from './PrivateRoute'
 import ProductUpdateButton from './ProductUpdateButton'
@@ -75,6 +77,7 @@ export default {
   HeroBanner,
   InfoBlock,
   InternalLink,
+  InternalLinkRegular,
   TitleText,
   LoginForm,
   LoginModal,
@@ -85,6 +88,7 @@ export default {
   MenuLink,
   MenuVerticle,
   Navbar,
+  NeedHelpBox,
   OrderStatusForm,
   PrivateRoute,
   ProductUpdateButton,
