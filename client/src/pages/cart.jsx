@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout, Typography, Divider } from 'antd'
+import { Layout, Typography, Divider, Row, Col } from 'antd'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
@@ -19,7 +19,8 @@ const {
   CartItems,
   EmptyCart,
   ExtraBar,
-  InternalLink
+  InternalLink,
+  ProceedCheckOutButton
 } = components
 
 const HeaderContainer = styled(Header)`
@@ -45,14 +46,21 @@ const Cart = ({ totalItems }) => (
     <Container>
       <LayoutContainer>
         <HeaderContainer>
-          <Title level={2}>
-            My Account
-          </Title>
-          <InternalLink
-            linkText="View Wish List"
-            linkTo="/whish-list"
-            marginLeft={'20px'}
-          />
+          <Row>
+            <Col xs={18}>
+              <Title level={2}>
+                My Account
+              </Title>
+              <InternalLink
+                linkText="View Wish List"
+                linkTo="/whish-list"
+                marginLeft={'20px'}
+              />
+            </Col>
+            <Col xs={6}>
+              <ProceedCheckOutButton />
+            </Col>
+          </Row>
         </HeaderContainer>
         <Divider />
         <Content>

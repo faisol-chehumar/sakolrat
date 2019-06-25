@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Typography, Row, Col, Divider } from 'antd'
+import { Typography, Row, Col, Divider, Popover, Icon } from 'antd'
 
 const { Title } = Typography
 
@@ -26,7 +26,14 @@ const OrderSumaryBox = ({ subTotal, estimatedShipping }) => (
     <Divider />
     <Row>
       <Col xs={18}>
-        <b>Estimated Total</b>
+        <b>Estimated Total </b>
+        <Popover
+          content="
+            Input your shipping address during checkout to
+            view delivery options and prices."
+        >
+          <Icon type="question-circle" />
+        </Popover>
       </Col>
       <Col xs={6}>
         <b>${subTotal + estimatedShipping}</b>

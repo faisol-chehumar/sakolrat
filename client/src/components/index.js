@@ -37,6 +37,7 @@ import NeedHelpBox from './NeedHelpBox'
 import OrderSumaryBox from './OrderSumaryBox'
 import OrderStatusForm from './OrderStatusForm'
 import PrivateRoute from './PrivateRoute'
+import ProceedCheckOutButton from './ProceedCheckOutButton'
 import ProductUpdateButton from './ProductUpdateButton'
 import ProductQtySelectUpdate from './ProductQtySelectUpdate'
 import ProductCard from './ProductCard'
@@ -93,6 +94,7 @@ export default {
   OrderSumaryBox,
   OrderStatusForm,
   PrivateRoute,
+  ProceedCheckOutButton,
   ProductUpdateButton,
   ProductQtySelectUpdate,
   ProductCard,

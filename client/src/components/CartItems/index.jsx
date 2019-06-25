@@ -9,6 +9,7 @@ import InternalLink from '../InternalLink'
 import ProductQtySelectUpdate from '../ProductQtySelectUpdate'
 import NeedHelpBox from '../NeedHelpBox'
 import OrderSumaryBox from '../OrderSumaryBox'
+import ProceedCheckOutButton from '../ProceedCheckOutButton'
 
 const { Title } = Typography
 
@@ -173,6 +174,7 @@ const CartItems = ({ cartItem, deleteItem, updateItem }) => {
             subTotal={10}
             estimatedShipping={100}
           />
+          <ProceedCheckOutButton />
         </Col>
       </RowBlock>
     </div>
