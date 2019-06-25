@@ -34,7 +34,8 @@ import MenuLink from './MenuLink'
 import MenuVerticle from './MenuVerticle'
 import Navbar from './Navbar'
 import NeedHelpBox from './NeedHelpBox'
-import OrderStatusForm from './OrderStatus'
+import OrderSumaryBox from './OrderSumaryBox'
+import OrderStatusForm from './OrderStatusForm'
 import PrivateRoute from './PrivateRoute'
 import ProductUpdateButton from './ProductUpdateButton'
 import ProductQtySelectUpdate from './ProductQtySelectUpdate'
@@ -89,6 +90,7 @@ export default {
   MenuVerticle,
   Navbar,
   NeedHelpBox,
+  OrderSumaryBox,
   OrderStatusForm,
   PrivateRoute,
   ProductUpdateButton,

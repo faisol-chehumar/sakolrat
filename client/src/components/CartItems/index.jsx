@@ -8,6 +8,7 @@ import EditItemModal from '../EditItemModal'
 import InternalLink from '../InternalLink'
 import ProductQtySelectUpdate from '../ProductQtySelectUpdate'
 import NeedHelpBox from '../NeedHelpBox'
+import OrderSumaryBox from '../OrderSumaryBox'
 
 const { Title } = Typography
 
@@ -164,11 +165,14 @@ const CartItems = ({ cartItem, deleteItem, updateItem }) => {
         ))
       }
       <RowBlock gutter={25}>
-        <Col xs={24} lg={16}>
+        <Col xs={24} lg={14}>
           <NeedHelpBox />
         </Col>
-        <Col xs={24} lg={8}>
-          NeedHelpBox
+        <Col xs={24} lg={8} offset={2}>
+          <OrderSumaryBox
+            subTotal={10}
+            estimatedShipping={100}
+          />
         </Col>
       </RowBlock>
     </div>

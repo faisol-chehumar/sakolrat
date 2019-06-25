@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout, Typography } from 'antd'
+import { Layout, Typography, Divider } from 'antd'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
@@ -37,7 +37,6 @@ const LayoutContainer = styled(Layout)`
 `
 
 const CartItemsContainer = styled.div`
-  margin-top: 4rem;
   margin-bottom: 4rem;
 `
 const Cart = ({ totalItems }) => (
@@ -55,6 +54,7 @@ const Cart = ({ totalItems }) => (
             marginLeft={'20px'}
           />
         </HeaderContainer>
+        <Divider />
         <Content>
           <CartItemsContainer>{
             totalItems > 0
