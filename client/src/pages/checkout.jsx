@@ -13,8 +13,7 @@ const { Title } = Typography
 
 const {
   ExtraBar,
-  CheckoutStep,
-  ShippingForm
+  CheckoutStep
 } = components
 
 const RowContainer = styled(Row)`
@@ -40,13 +39,6 @@ const Checkout = ({ cartItem }) => {
             <CheckoutStep />
           </Col>
         </RowContainer>
-      </Container>
-      <Container>
-        <Row>
-          <Col xs={24} lg={16}>
-            <ShippingForm />
-          </Col>
-        </Row>
       </Container>
     </Theme>
   )

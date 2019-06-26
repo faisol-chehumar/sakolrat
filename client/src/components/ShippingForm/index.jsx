@@ -11,8 +11,6 @@ import {
   Icon
 } from 'antd'
 
-import Button from '../Button'
-
 const { Option } = Select
 const { Item } = Form
 
@@ -167,12 +165,6 @@ const RegistrationForm = ({ form }) => {
             </Tooltip>
           </Checkbox>
         )}
-      </Item>
-      <Item {...tailFormItemLayout}>
-        <Button
-          type="primary"
-          text="COUNTINUE"
-        />
       </Item>
     </Form>
   )
