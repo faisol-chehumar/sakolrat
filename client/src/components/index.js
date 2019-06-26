@@ -49,6 +49,7 @@ import ProductQtySelect from './ProductQtySelect'
 import Rating from './Rating'
 import RegisterForm from './RegisterForm'
 import RowBlock from './RowBlock'
+import ShippingForm from './ShippingForm'
 import SidebarFilter from './SidebarFilter'
 import SocialGroup from './SocialGroup'
 import SubscribeBox from './SubscribeBox'
@@ -107,6 +108,7 @@ export default {
   Rating,
   RegisterForm,
   RowBlock,
+  ShippingForm,
   SidebarFilter,
   SocialGroup,
   SubscribeBox,
