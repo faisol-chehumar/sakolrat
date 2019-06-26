@@ -2,7 +2,8 @@ import React, { useEffect } from 'react'
 import { navigate } from 'gatsby'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { Typography } from 'antd'
+import { Typography, Row, Col, Icon } from 'antd'
+import styled from 'styled-components'
 
 import Theme from '../layouts/Theme'
 import Container from '../layouts/Container'
@@ -11,12 +12,17 @@ import components from '../components/'
 const { Title } = Typography
 
 const {
-  ExtraBar
+  ExtraBar,
+  CheckoutStep
 } = components
+
+const RowContainer = styled(Row)`
+  margin-top: 1.5rem;
+`
 
 const Checkout = ({ cartItem }) => {
   useEffect(() => {
-    if (cartItem && window.location.pathname === '/checkout') {
+    if (cartItem.length === 0 && window.location.pathname === '/checkout') {
       navigate(`/cart`)
     }
   })
@@ -26,8 +32,20 @@ const Checkout = ({ cartItem }) => {
       <ExtraBar />
       <Container>
         <Title level={3}>
-          <b>Login</b>
+          <Icon type="lock" /><b> CHECKOUT</b>
         </Title>
+        <RowContainer>
+          <Col xs={24} lg={16}>
+            <CheckoutStep />
+          </Col>
+        </RowContainer>
+      </Container>
+      <Container>
+        <Row>
+          <Col xs={24}>
+
+          </Col>
+        </Row>
       </Container>
     </Theme>
   )

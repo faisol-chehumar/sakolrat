@@ -7,6 +7,7 @@ import Button from './Button'
 import Cart from './Cart'
 import CartItems from './CartItems'
 import CategoryMenu from './CategoryMenu'
+import CheckoutStep from './CheckoutStep'
 import CustomBox from './CustomBox'
 import CustomLineBreak from './CustomLineBreak'
 import EditItemModal from './EditItemModal'
@@ -64,6 +65,7 @@ export default {
   Cart,
   CartItems,
   CategoryMenu,
+  CheckoutStep,
   CustomBox,
   CustomLineBreak,
   EditItemModal,

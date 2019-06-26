@@ -1,12 +1,28 @@
 import React from 'react'
+import { Link } from 'gatsby'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 import Button from '../Button'
 
-const ProceedCheckOutButton = () => (
-  <Button
-    type="primary"
-    text="Proceed To Checkout"
-  />
+const ProceedCheckOutButton = ({ cartItem }) => (
+  cartItem.length > 0 && <Link to="/checkout">
+    <Button
+      type="primary"
+      text="Proceed To Checkout"
+    />
+  </Link>
 )
 
-export default ProceedCheckOutButton
+ProceedCheckOutButton.propTypes = {
+  cartItem: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array
+  ])
+}
+
+const mapStateToProps = ({
+  carts: { cartItem }
+}) => ({ cartItem })
+
+export default connect(mapStateToProps)(ProceedCheckOutButton)
