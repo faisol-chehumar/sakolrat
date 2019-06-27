@@ -3,7 +3,8 @@ import { Steps, Row, Col, Card } from 'antd'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import ShippingForm from '../ShippingForm'
+import ShippingAddressForm from '../ShippingAddressForm'
+import ShippingMethodForm from '../ShippingMethodForm'
 
 const { Step } = Steps
 
@@ -60,11 +61,11 @@ const CheckoutStep = ({ data }) => {
   const steps = [
     {
       title: 'SHIPPING ADDRESS',
-      content: ShippingForm
+      content: ShippingAddressForm
     },
     {
       title: 'SHIPPING METHOD',
-      content: 'Second-content'
+      content: ShippingMethodForm
     },
     {
       title: 'BILLING',
@@ -90,6 +91,7 @@ const CheckoutStep = ({ data }) => {
         </Col>
         <Col xs={24}>
           <CurrentPage
+            x={console.log(checkoutData)}
             currentStep={currentStep}
             length={steps.length}
             checkoutData={checkoutData}

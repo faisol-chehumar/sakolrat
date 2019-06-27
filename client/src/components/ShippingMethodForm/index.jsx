@@ -56,12 +56,15 @@ const countries = [
   }
 ]
 
-const ShippingForm = ({ form, checkoutData, currentStep, length, action }) => {
+const ShippingMethodForm = ({ form, checkoutData, currentStep, length, action }) => {
   const { setCheckoutData, setCurrentStep } = action
 
   const next = () => { setCurrentStep(currentStep + 1) }
 
-  const prev = () => { setCurrentStep(currentStep - 1) }
+  const prev = () => {
+    setCheckoutData(checkoutData)
+    setCurrentStep(currentStep - 1)
+  }
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -199,7 +202,6 @@ const ShippingForm = ({ form, checkoutData, currentStep, length, action }) => {
           <Button
             style={{ background: '#fa4c06', borderColor: '#fa4c06' }}
             type="primary"
-            // onClick={() => next(setCheckoutData)}
             htmlType="submit"
             block
           >
@@ -229,9 +231,9 @@ const ShippingForm = ({ form, checkoutData, currentStep, length, action }) => {
   )
 }
 
-const WrappedShippingForm = Form.create({ name: 'shippingAddress' })(ShippingForm)
+const WrappedShippingMethodForm = Form.create({ name: 'shippingAddress' })(ShippingMethodForm)
 
-ShippingForm.propTypes = {
+ShippingMethodForm.propTypes = {
   form: PropTypes.object,
   checkoutData: PropTypes.PropTypes.oneOfType([
     PropTypes.object,
@@ -245,4 +247,4 @@ ShippingForm.propTypes = {
   length: PropTypes.number
 }
 
-export default WrappedShippingForm
+export default WrappedShippingMethodForm
