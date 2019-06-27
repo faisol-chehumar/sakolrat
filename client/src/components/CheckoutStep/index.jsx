@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Steps, message, Button, Row, Col, Card, Divider } from 'antd'
+import { Steps, Row, Col, Card } from 'antd'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -49,35 +49,34 @@ const StepsCardContainer = styled(Card)`
   }
 `
 
-const steps = [
-  {
-    title: 'SHIPPING ADDRESS',
-    content: 'First-content'
-  },
-  {
-    title: 'SHIPPING METHOD',
-    content: 'Second-content'
-  },
-  {
-    title: 'BILLING',
-    content: 'Last-content'
-  },
-  {
-    title: 'REVIEW',
-    content: 'Last-content'
-  }
-]
-
 const CheckoutStep = ({ data }) => {
   const [currentStep, setCurrentStep] = useState(0)
+  const [checkoutData, setCheckoutData] = useState({
+    customer: {},
+    billing_address: {},
+    shipping_address: {}
+  })
 
-  const next = () => {
-    setCurrentStep(currentStep + 1)
-  }
+  const steps = [
+    {
+      title: 'SHIPPING ADDRESS',
+      content: ShippingForm
+    },
+    {
+      title: 'SHIPPING METHOD',
+      content: 'Second-content'
+    },
+    {
+      title: 'BILLING',
+      content: 'Last-content'
+    },
+    {
+      title: 'REVIEW',
+      content: 'Last-content'
+    }
+  ]
 
-  const prev = () => {
-    setCurrentStep(currentStep - 1)
-  }
+  const CurrentPage = steps[currentStep].content
 
   return (
     <StepsCardContainer>
@@ -90,26 +89,12 @@ const CheckoutStep = ({ data }) => {
           </Steps>
         </Col>
         <Col xs={24}>
-          {/* {steps[currentStep].content} */}
-          <ShippingForm />
-        </Col>
-        <Divider />
-        <Col xs={24}>
-          {currentStep < steps.length - 1 && (
-            <Button style={{ background: '#fa4c06', borderColor: '#fa4c06' }} block type="primary" onClick={() => next()}>
-              CONTINUE
-            </Button>
-          )}
-          {currentStep === steps.length - 1 && (
-            <Button block type="primary" onClick={() => message.success('Processing complete!')}>
-              Done
-            </Button>
-          )}
-          {currentStep > 0 && (
-            <Button style={{ background: '#eee', color: '#333', borderColor: '#555', marginTop: '1rem' }} block onClick={() => prev()}>
-              BACK
-            </Button>
-          )}
+          <CurrentPage
+            currentStep={currentStep}
+            length={steps.length}
+            checkoutData={checkoutData}
+            action={{ setCurrentStep, setCheckoutData }}
+          />
         </Col>
       </Row>
     </StepsCardContainer>
