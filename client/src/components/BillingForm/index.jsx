@@ -6,7 +6,9 @@ import {
   Radio,
   Divider,
   Button,
-  Typography
+  Typography,
+  Row,
+  Col
 } from 'antd'
 
 const { Item } = Form
@@ -16,6 +18,10 @@ const FromContainer = styled.div`
   .ant-form-item-label {
     line-height: 1
   }
+`
+
+const RadioButtonContainer = styled(Row)`
+  margin-bottom: 1rem;
 `
 
 const BillingForm = ({ form, checkoutData, currentStep, length, action }) => {
@@ -69,16 +75,43 @@ const BillingForm = ({ form, checkoutData, currentStep, length, action }) => {
         {...formItemLayout}
         onSubmit={handleSubmit}
       >
-        <Title level={4}>Billing Method</Title>
-        <Item label={<div style={{ textAlign: 'left' }}><b>Choose a Billing Option</b></div>}>
+        <Title level={4}>Billing & Paymen</Title>
+        <Item>
           {getFieldDecorator('billingMethod')(
             <Radio.Group>
-              <Radio style={radioStyle} value="free_billing">
-                Free Billing
-              </Radio>
-              <Radio style={radioStyle} value="ems">
-                EMS
-              </Radio>
+              <RadioButtonContainer>
+                <Col xs={10}>
+                  <Radio style={radioStyle} value="promptPay">
+                    <img
+                      src="https://qr-generator.digio.co.th/static/media/promptpay.75db5c8f.jpg"
+                      width="100px"
+                      style={{ marginLeft: '1rem' }}
+                    />
+                  </Radio>
+                </Col>
+              </RadioButtonContainer>
+              <RadioButtonContainer>
+                <Col xs={10}>
+                  <Radio style={radioStyle} value="linePay">
+                    <img
+                      src="https://static1.squarespace.com/static/59bf8dc3e5dd5b141a2ba135/t/5b98d0a44ae23713a409f416/1534834575736/linepay_logo_v2_th.png"
+                      width="100px"
+                      style={{ marginLeft: '1rem' }}
+                    />
+                  </Radio>
+                </Col>
+              </RadioButtonContainer>
+              <RadioButtonContainer>
+                <Col xs={16}>
+                  <Radio style={radioStyle} value="bankTransfer">
+                    <img
+                      src="http://9prakun.com/images/scb.png"
+                      width="100px"
+                      style={{ marginLeft: '1rem' }}
+                    />
+                  </Radio>
+                </Col>
+              </RadioButtonContainer>
             </Radio.Group>
           )}
         </Item>
