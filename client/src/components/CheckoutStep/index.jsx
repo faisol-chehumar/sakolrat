@@ -91,7 +91,6 @@ const CheckoutStep = ({ data }) => {
         </Col>
         <Col xs={24}>
           <CurrentPage
-            x={console.log(checkoutData)}
             currentStep={currentStep}
             length={steps.length}
             checkoutData={checkoutData}

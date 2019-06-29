@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, {
+  // useState,
+  useEffect
+} from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {
@@ -21,55 +24,48 @@ const FromContainer = styled.div`
 const ShippingMethodForm = ({ form, checkoutData, currentStep, length, action }) => {
   const { setCheckoutData, setCurrentStep } = action
 
-  const [radioButton, setRadioButton] = useState(1)
+  // const [radioButton, setRadioButton] = useState(1)
 
-  const [customer, setCustomer] = useState({
-    ...checkoutData.customer
-  })
+  // const [customer, setCustomer] = useState({
+  //   ...checkoutData.customer
+  // })
 
-  const [shippingAddress, setShippingAddress] = useState({
-    ...checkoutData.shipping_address
-  })
+  // const [shippingAddress, setShippingAddress] = useState({
+  //   ...checkoutData.shipping_address
+  // })
 
   useEffect(() => {
-    setCustomer(checkoutData.customer)
-    setShippingAddress(checkoutData.shipping_address)
+    // setCustomer(checkoutData.customer)
+    // setShippingAddress(checkoutData.shipping_address)
 
     return () => {
-      setCustomer(checkoutData.customer)
-      setShippingAddress(checkoutData.shipping_address)
+      // setCustomer(checkoutData.customer)
+      // setShippingAddress(checkoutData.shipping_address)
     }
   })
 
   const next = () => { setCurrentStep(currentStep + 1) }
+
+  const prev = () => {
+    setCheckoutData(checkoutData)
+    setCurrentStep(currentStep - 1)
+  }
 
   const handleSubmit = e => {
     e.preventDefault()
     form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values)
-        const { customerName, email, ...addressInfo } = values
 
         setCheckoutData({
           ...checkoutData,
-          customer: {
-            name: customerName,
-            email
-          },
-          shipping_address: {
-            ...addressInfo
-          }
+          payment_method: values.shippingMethod
         })
 
         next()
       }
     })
   }
-
-  // const onChange = e => {
-  //   console.log('radio checked', e.target.value)
-  //   setRadioButton(e.target.value)
-  // }
 
   const { getFieldDecorator } = form
 
@@ -100,8 +96,12 @@ const ShippingMethodForm = ({ form, checkoutData, currentStep, length, action })
         <Item label={<div style={{ textAlign: 'left' }}><b>Choose a Shipping Option</b></div>}>
           {getFieldDecorator('shippingMethod')(
             <Radio.Group>
-              <Radio style={radioStyle} value="free_shipping">Free Shipping</Radio>
-              <Radio style={radioStyle} value="100">EMS</Radio>
+              <Radio style={radioStyle} value="free_shipping">
+                Free Shipping
+              </Radio>
+              <Radio style={radioStyle} value="ems">
+                EMS
+              </Radio>
             </Radio.Group>
           )}
         </Item>
@@ -114,6 +114,15 @@ const ShippingMethodForm = ({ form, checkoutData, currentStep, length, action })
             block
           >
             CONTINUE
+          </Button>
+        )}
+        {currentStep > 0 && (
+          <Button
+            style={{ background: '#eee', color: '#333', borderColor: '#555', marginTop: '1rem' }}
+            onClick={() => prev()}
+            block
+          >
+            BACK
           </Button>
         )}
       </Form>
