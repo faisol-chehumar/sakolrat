@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 import ShippingAddressForm from '../ShippingAddressForm'
 import ShippingMethodForm from '../ShippingMethodForm'
+import BillingForm from '../BillingForm'
 
 const { Step } = Steps
 
@@ -50,7 +51,7 @@ const StepsCardContainer = styled(Card)`
   }
 `
 
-const CheckoutStep = ({ data }) => {
+const CheckoutStep = () => {
   const [currentStep, setCurrentStep] = useState(0)
   const [checkoutData, setCheckoutData] = useState({
     customer: {},
@@ -69,7 +70,7 @@ const CheckoutStep = ({ data }) => {
     },
     {
       title: 'BILLING',
-      content: 'Last-content'
+      content: BillingForm
     },
     {
       title: 'REVIEW',

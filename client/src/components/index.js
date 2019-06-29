@@ -1,5 +1,6 @@
 import AccountDashboard from './AccountDashboard'
 import AnnounceBox from './AnnounceBox'
+import BillingForm from './BillingForm'
 import BlogPost from './BlogPost'
 import BrandSlider from './BrandSlider'
 import BreadcrumbShop from './BreadcrumbShop'
@@ -60,6 +61,7 @@ import WarningAlert from './WarningAlert'
 export default {
   AccountDashboard,
   AnnounceBox,
+  BillingForm,
   BlogPost,
   BrandSlider,
   BreadcrumbShop,

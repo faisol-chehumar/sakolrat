@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {
@@ -18,20 +18,8 @@ const FromContainer = styled.div`
   }
 `
 
-const ShippingMethodForm = ({ form, checkoutData, currentStep, length, action }) => {
+const BillingForm = ({ form, checkoutData, currentStep, length, action }) => {
   const { setCheckoutData, setCurrentStep } = action
-
-  const [shippingMethod, setShippingMethod] = useState({
-    ...checkoutData.shipping_method
-  })
-
-  useEffect(() => {
-    setShippingMethod(checkoutData.shipping_method)
-
-    return () => {
-      setShippingMethod(checkoutData.shipping_method)
-    }
-  })
 
   const next = () => { setCurrentStep(currentStep + 1) }
 
@@ -48,7 +36,7 @@ const ShippingMethodForm = ({ form, checkoutData, currentStep, length, action })
 
         setCheckoutData({
           ...checkoutData,
-          shipping_method: values.shippingMethod
+          payment_method: values.paymentMethod
         })
 
         next()
@@ -81,14 +69,12 @@ const ShippingMethodForm = ({ form, checkoutData, currentStep, length, action })
         {...formItemLayout}
         onSubmit={handleSubmit}
       >
-        <Title level={4}>Shipping Method</Title>
-        <Item label={<div style={{ textAlign: 'left' }}><b>Choose a Shipping Option</b></div>}>
-          {getFieldDecorator('shippingMethod', {
-            initialValue: shippingMethod
-          })(
+        <Title level={4}>Billing Method</Title>
+        <Item label={<div style={{ textAlign: 'left' }}><b>Choose a Billing Option</b></div>}>
+          {getFieldDecorator('billingMethod')(
             <Radio.Group>
-              <Radio style={radioStyle} value="free_shipping">
-                Free Shipping
+              <Radio style={radioStyle} value="free_billing">
+                Free Billing
               </Radio>
               <Radio style={radioStyle} value="ems">
                 EMS
@@ -121,9 +107,9 @@ const ShippingMethodForm = ({ form, checkoutData, currentStep, length, action })
   )
 }
 
-const WrappedShippingMethodForm = Form.create({ name: 'shippingAddress' })(ShippingMethodForm)
+const WrappedBillingForm = Form.create({ name: 'billingAddress' })(BillingForm)
 
-ShippingMethodForm.propTypes = {
+BillingForm.propTypes = {
   form: PropTypes.object,
   checkoutData: PropTypes.PropTypes.oneOfType([
     PropTypes.object,
@@ -137,4 +123,4 @@ ShippingMethodForm.propTypes = {
   length: PropTypes.number
 }
 
-export default WrappedShippingMethodForm
+export default WrappedBillingForm
