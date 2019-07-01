@@ -43,6 +43,7 @@ const ShippingMethodForm = ({ form, checkoutData, currentStep, length, action })
   const handleSubmit = e => {
     e.preventDefault()
     form.validateFieldsAndScroll((err, values) => {
+      console.log(values)
       if (!err) {
         console.log('Received values of form: ', values)
 
@@ -84,7 +85,13 @@ const ShippingMethodForm = ({ form, checkoutData, currentStep, length, action })
         <Title level={4}>Shipping Method</Title>
         <Item label={<div style={{ textAlign: 'left' }}><b>Choose a Shipping Option</b></div>}>
           {getFieldDecorator('shippingMethod', {
-            initialValue: shippingMethod
+            initialValue: shippingMethod,
+            rules: [
+              {
+                required: true,
+                message: 'Please Select Your Shipping Method.'
+              }
+            ]
           })(
             <Radio.Group>
               <Radio style={radioStyle} value="free_shipping">

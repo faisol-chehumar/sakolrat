@@ -9,6 +9,7 @@ import {
   Input,
   message
 } from 'antd'
+import { connect } from 'react-redux'
 
 const { Item } = Form
 const { Title } = Typography
@@ -20,7 +21,16 @@ const FromContainer = styled.div`
   }
 `
 
-const ReviewForm = ({ form, checkoutData, currentStep, length, action }) => {
+const ReviewForm = ({
+  form,
+  checkoutData,
+  currentStep,
+  length,
+  action,
+  customer,
+  checkoutAsync
+}) => {
+  // const { completeCheckoutData, setCompleteCheckoutData } = useState({})
   const { setCheckoutData, setCurrentStep } = action
 
   const prev = () => {
@@ -30,16 +40,20 @@ const ReviewForm = ({ form, checkoutData, currentStep, length, action }) => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    form.validateFieldsAndScroll((err, values) => {
+    form.validateFieldsAndScroll(async (err, values) => {
       if (!err) {
         console.log('Received values of form: ', values)
 
-        setCheckoutData({
+        const customerId = customer.customer_id
+        const result = await checkoutAsync({
           ...checkoutData,
+          customerId,
           review: values.review
         })
 
-        // next()
+        console.log(result)
+        // Delete Cart
+        // Shipping_method ใส่ Custom Fields
       }
     })
   }
@@ -102,12 +116,25 @@ ReviewForm.propTypes = {
     PropTypes.object,
     PropTypes.array
   ]),
-  action: PropTypes.PropTypes.oneOfType([
+  action: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.array
   ]),
   currentStep: PropTypes.number,
-  length: PropTypes.number
+  length: PropTypes.number,
+  checkoutAsync: PropTypes.func,
+  customer: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array
+  ])
 }
 
-export default WrappedReviewForm
+const mapDispatchToProps = ({
+  carts: { checkoutAsync }
+}) => ({ checkoutAsync })
+
+const mapStateToProps = ({
+  users: { customer }
+}) => ({ customer })
+
+export default connect(mapStateToProps, mapDispatchToProps)(WrappedReviewForm)

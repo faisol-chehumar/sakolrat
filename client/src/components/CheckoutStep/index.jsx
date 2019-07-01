@@ -56,9 +56,9 @@ const CheckoutStep = () => {
   const [currentStep, setCurrentStep] = useState(0)
   const [checkoutData, setCheckoutData] = useState({
     customer: {},
-    billing_address: {},
-    shipping_address: {},
-    payment_method: {}
+    billing_address: null,
+    shipping_address: {}
+    // payment_method: {}
   })
 
   const steps = [

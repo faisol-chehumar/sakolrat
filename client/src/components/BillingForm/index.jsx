@@ -91,7 +91,13 @@ const BillingForm = ({ form, checkoutData, currentStep, length, action }) => {
         <Title level={4}>Billing & Paymen</Title>
         <Item>
           {getFieldDecorator('paymentMethod', {
-            initialValue: paymentMethod
+            initialValue: paymentMethod,
+            rules: [
+              {
+                required: true,
+                message: 'Please Select Your Billing Method.'
+              }
+            ]
           })(
             <Radio.Group>
               <RadioButtonContainer>
