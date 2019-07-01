@@ -49,6 +49,7 @@ import ProductSlider from './ProductSlider'
 import ProductQtySelect from './ProductQtySelect'
 import Rating from './Rating'
 import RegisterForm from './RegisterForm'
+import ReviewForm from './ReviewForm'
 import RowBlock from './RowBlock'
 import ShippingAddressForm from './ShippingAddressForm'
 import ShippingMethodForm from './ShippingMethodForm'
@@ -110,6 +111,7 @@ export default {
   ProductQtySelect,
   Rating,
   RegisterForm,
+  ReviewForm,
   RowBlock,
   ShippingAddressForm,
   ShippingMethodForm,

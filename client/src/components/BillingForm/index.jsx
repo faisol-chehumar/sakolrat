@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {
@@ -26,6 +26,19 @@ const RadioButtonContainer = styled(Row)`
 
 const BillingForm = ({ form, checkoutData, currentStep, length, action }) => {
   const { setCheckoutData, setCurrentStep } = action
+
+  const [paymentMethod, setPaymentMethod] = useState({
+    ...checkoutData.payment_method
+  })
+
+  useEffect(() => {
+    console.log(checkoutData)
+    setPaymentMethod(checkoutData.payment_method)
+
+    return () => {
+      setPaymentMethod(checkoutData.payment_method)
+    }
+  })
 
   const next = () => { setCurrentStep(currentStep + 1) }
 
@@ -77,7 +90,9 @@ const BillingForm = ({ form, checkoutData, currentStep, length, action }) => {
       >
         <Title level={4}>Billing & Paymen</Title>
         <Item>
-          {getFieldDecorator('billingMethod')(
+          {getFieldDecorator('paymentMethod', {
+            initialValue: paymentMethod
+          })(
             <Radio.Group>
               <RadioButtonContainer>
                 <Col xs={10}>
