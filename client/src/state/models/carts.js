@@ -111,6 +111,12 @@ export const carts = {
       await Moltin.Cart(cartId).RemoveItem(payload.itemId)
       await dispatch.carts.getCartItemsAsync()
     },
+    async deleteCart () {
+      const cartId = await dispatch.carts.getCartId()
+
+      await Moltin.Cart(cartId).Delete()
+      await dispatch.carts.getCartItemsAsync()
+    },
     async checkoutAsync (payload) {
       const cartId = await dispatch.carts.getCartId()
 

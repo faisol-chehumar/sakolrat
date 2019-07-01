@@ -90,7 +90,7 @@ const ProductPageTemplate = (props) => {
     })
   }
 
-  function handleSelect (qty) {
+  const handleSelect = (qty) => {
     setQuantity(qty)
   }
 

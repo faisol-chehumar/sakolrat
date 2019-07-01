@@ -28,7 +28,8 @@ const ReviewForm = ({
   length,
   action,
   customer,
-  checkoutAsync
+  checkoutAsync,
+  deleteCart
 }) => {
   // const { completeCheckoutData, setCompleteCheckoutData } = useState({})
   const { setCheckoutData, setCurrentStep } = action
@@ -52,6 +53,7 @@ const ReviewForm = ({
         })
 
         console.log(result)
+        deleteCart()
         // Delete Cart
         // Shipping_method ใส่ Custom Fields
       }
@@ -126,12 +128,13 @@ ReviewForm.propTypes = {
   customer: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.array
-  ])
+  ]),
+  deleteCart: PropTypes.func
 }
 
 const mapDispatchToProps = ({
-  carts: { checkoutAsync }
-}) => ({ checkoutAsync })
+  carts: { checkoutAsync, deleteCart }
+}) => ({ checkoutAsync, deleteCart })
 
 const mapStateToProps = ({
   users: { customer }
