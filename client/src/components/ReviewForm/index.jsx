@@ -10,6 +10,7 @@ import {
   message
 } from 'antd'
 import { connect } from 'react-redux'
+import { navigate } from 'gatsby'
 
 const { Item } = Form
 const { Title } = Typography
@@ -54,8 +55,7 @@ const ReviewForm = ({
 
         console.log(result)
         deleteCart()
-        // Delete Cart
-        // Shipping_method ใส่ Custom Fields
+        navigate(`/order/${result.data.id}`)
       }
     })
   }

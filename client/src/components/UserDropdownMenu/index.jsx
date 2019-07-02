@@ -28,7 +28,7 @@ const MenuDropdown = ({ logout }) => {
         <Link to="/account/dashboard"><Icon type="profile" /> View Profile</Link>
       </Menu.Item>
       <Menu.Item key="2">
-        <Link to="/settings"><Icon type="setting" /> Settings</Link>
+        <Link to="/account/order"><Icon type="setting" /> Order</Link>
       </Menu.Item>
       <Menu.Item key="3">
         <Icon type="logout" /> Logout
