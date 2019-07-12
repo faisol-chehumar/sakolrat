@@ -10,7 +10,7 @@ const { Text } = Typography
 const SubscribeBoxContainer = styled.div`
   background-color: #152D5A !important;
   padding: 4rem .5rem 3rem !important;
-  margin: 2rem -3rem;
+  margin: 2rem -3.2rem;
 
   .ant-typography {
     color: #fff !important;

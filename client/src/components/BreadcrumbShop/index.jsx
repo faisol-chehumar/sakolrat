@@ -13,7 +13,7 @@ const defaultBreadcrumb = [
   },
   {
     title: 'all',
-    link: '/product'
+    link: '/products'
   }
 ]
 

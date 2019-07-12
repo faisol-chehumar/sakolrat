@@ -7,19 +7,19 @@ export default [
   },
   {
     title: 'ADV & TOURING',
-    thumbImg: 'blog-thumb-1.jpg',
+    thumbImg: 'blog-thumb-2.jpg',
     link: 'https://www.revzilla.com/motorcycle-weekly-deals',
     caption: 'Explore RevZilla\'s latest offerings of limited time markdowns. Product changes weekly so act fast!'
   },
   {
     title: 'V-TWIN',
-    thumbImg: 'blog-thumb-1.jpg',
+    thumbImg: 'blog-thumb-3.jpg',
     link: 'https://www.revzilla.com/motorcycle-weekly-deals',
     caption: 'Explore RevZilla\'s latest offerings of limited time markdowns. Product changes weekly so act fast!'
   },
   {
     title: 'DIRT',
-    thumbImg: 'blog-thumb-1.jpg',
+    thumbImg: 'blog-thumb-4.jpg',
     link: 'https://www.revzilla.com/motorcycle-weekly-deals',
     caption: 'Explore RevZilla\'s latest offerings of limited time markdowns. Product changes weekly so act fast!'
   }
