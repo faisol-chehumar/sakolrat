@@ -9,8 +9,8 @@ import RegisterForm from '../RegisterForm'
 import UserDropdownMenu from '../UserDropdownMenu'
 
 const LoginButton = styled(Button)`
-  background-color: #fa4c06 !important;
-  border-color: #fa4c06 !important;
+  background-color: #152D5A !important;
+  border-color: #152D5A !important;
 `
 
 const LoginModal = (props) => {
@@ -31,7 +31,7 @@ const LoginModal = (props) => {
   }
 
   return (
-    <div>
+    <div id="user-menu">
       { token === null ? (
         <LoginButton type="primary" onClick={showModal}>
           Signup/Login

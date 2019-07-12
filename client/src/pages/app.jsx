@@ -12,7 +12,7 @@ const App = () => (
   <div>
     <Router>
       <PrivateRoute path="/account/dashboard" component={AccountDashboard} />
-      <PrivateRoute path="/account/order" component={Order} />
+      <PrivateRoute path="/account/order/:id" component={Order} />
       <AuthLogin path="/auth/login" />
     </Router>
   </div>

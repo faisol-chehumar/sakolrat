@@ -20,7 +20,39 @@ const {
 
 const GlobalStyle = createGlobalStyle`
   a {
-    color: #fa4c06;
+    color: #152D5A;
+  }
+
+  header.ant-layout-header {
+    line-height: 0 !important;
+  }
+
+  .LoginModal__LoginButton-fnUezG {
+    margin-top: 1rem;
+  }
+
+  .user-menu-dropdown {
+    margin-top: 6.2rem !important;
+    text-align: left;
+    top: 0 !important;
+  }
+
+  .ant-menu-item {
+    text-align: left !important;
+  }
+
+  /*.ant-dropdown-placement-bottomLeft {
+    top: 175px !important;
+  }*/
+
+  .ant-dropdown {
+    border: 1px solid #eee !important;
+  }
+
+  .ant-menu-inline,
+  .ant-menu-vertical,
+  .ant-menu-vertical-left {
+    border-right: 0 !important;
   }
 
   .text-left {
@@ -68,7 +100,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .bdt-primary {
-    border-top: 2px solid #fa4c06;
+    border-top: 2px solid #152D5A;
   }
 
   .bg-white {
@@ -106,7 +138,7 @@ const HeaderContainer = styled(Header)`
   font-size: 1.5rem;
   height: auto !important;
   padding: 0 1rem !important;
-  background-color: #151211 !important;
+  background-color: #fff !important;
 
   @media (min-width: 992px) {
     padding-left: 4rem !important;
@@ -119,12 +151,18 @@ const ContentContainer = styled(Content)`
 `
 
 const FooterContainer = styled(Footer)`
-  background: #151211 !important;
-  color: #fff !important;
+  background: #fff !important;
+  color: #222 !important;
 
   h3,
   .ant-typography {
-    color: #fff;
+    color: #222;
+  }
+
+  .ant-btn-background-ghost {
+    color: #222;
+    background: #222;
+    border-color: #222;
   }
 `
 

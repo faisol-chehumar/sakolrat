@@ -10,7 +10,7 @@ const MenuIconContainer = styled.div`
   margin: 0;
 
   a {
-    color: #fff;
+    color: #222;
     font-size: 0.8rem;
     display: block;
     position: relative;
@@ -29,9 +29,10 @@ const MenuIconContainer = styled.div`
     font-size: 1.4rem;
     padding: 0.8rem;
     margin-bottom: 0.5rem;
+    color: #222;
 
     &:hover {
-      background-color: #312f2e;
+      background-color: #eee;
     }
   }
 `

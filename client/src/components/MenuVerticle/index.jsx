@@ -19,7 +19,7 @@ const MenuVerticleContainer = styled.div`
     color: #6f6c6c;
 
     &:hover {
-      color: #fff;
+      color: #222;
     }
   }
 

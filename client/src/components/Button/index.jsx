@@ -7,7 +7,7 @@ const buttonStyle = {
   primary: {
     border: 'none',
     color: '#fff',
-    background: '#fa4c06'
+    background: '#152D5A'
   },
   secondary: {
     border: '#eee',
@@ -30,9 +30,9 @@ const ButtonContainer = styled(btn)`
   background-color: ${props => props.type ? buttonStyle[props.type].background : buttonStyle.defaut.background};
 
   &:hover {
-    background-color: #fa4c06;
+    background-color: #152D5A;
     color: #fff;
-    border-color: #fa4c06;
+    border-color: #152D5A;
   }
 `
 

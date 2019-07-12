@@ -32,7 +32,6 @@ const ReviewForm = ({
   checkoutAsync,
   deleteCart
 }) => {
-  // const { completeCheckoutData, setCompleteCheckoutData } = useState({})
   const { setCheckoutData, setCurrentStep } = action
 
   const prev = () => {
@@ -55,7 +54,7 @@ const ReviewForm = ({
 
         console.log(result)
         deleteCart()
-        navigate(`/order/${result.data.id}`)
+        navigate(`/account/order/${result.data.id}`)
       }
     })
   }

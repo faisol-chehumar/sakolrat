@@ -7,7 +7,7 @@ const IconContainer = styled.a`
   color: #6f6c6c;
 
   &:hover {
-    color: #fff;
+    color: #222;
   }
 `
 

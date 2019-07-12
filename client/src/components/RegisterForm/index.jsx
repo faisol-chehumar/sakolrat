@@ -22,13 +22,13 @@ const FormContainer = styled(Form)`
   }
  .register-form-button {
     width: 100%;
-    background-color: #fa4c06 !important;
-    border-color: #fa4c06 !important;
+    background-color: #152D5A !important;
+    border-color: #152D5A !important;
   }
 
   a {
     &:hover {
-      color: #fa4c06 !important;
+      color: #152D5A !important;
     }
   }
 `

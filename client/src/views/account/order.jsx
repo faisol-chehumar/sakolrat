@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 import {
   Layout,
   Typography,
@@ -111,140 +112,147 @@ const TableSummary = () => (
   </Row>
 )
 
-const Order = () => (
-  <Theme bg={'#eee'}>
-    <ExtraBar />
-    <Container>
-      <LayoutContainer>
-        <HeaderContainer>
-          <Title level={2}>
-            Order Complete
-          </Title>
-        </HeaderContainer>
-        <Content>
-          <Card>
-            <RowBlock>
-              <Col xs={24}>
-                <Title level={4}>
-                  Thank you for your order
-                </Title>
-                <SubTitle>Congratulation Your Order is Complete.</SubTitle>
-              </Col>
+const Order = ({ id }) => {
+  return (
+    <Theme bg={'#eee'}>
+      <ExtraBar />
+      <Container>
+        <LayoutContainer>
+          <HeaderContainer>
+            <Title level={2}>
+              Order Complete
+            </Title>
+          </HeaderContainer>
+          <Content>
+            <Card>
+              <RowBlock>
+                <Col xs={24}>
+                  <Title level={4}>
+                    Thank you for your order
+                  </Title>
+                  <SubTitle>Congratulation Your Order is Complete.</SubTitle>
+                </Col>
+                <Divider />
+                <RowBlock>
+                  <Col xs={12}>
+                    <Title level={4}>
+                      Shipping Address
+                    </Title>
+                    <p>Full Name: </p>
+                    <p>Address: </p>
+                    <p>Tel: </p>
+                    <p>Email: </p>
+                  </Col>
+                  <Col xs={12}>
+                    <Title level={4}>
+                      Order Detail
+                    </Title>
+                    <p>Order Date: </p>
+                    <p>Purchase Order: </p>
+                  </Col>
+                </RowBlock>
+                <RowBlock>
+                  <Col xs={12}>
+                    <Title level={4}>
+                      Shipping Method
+                    </Title>
+                    <Text>
+                      Free Shipping
+                    </Text>
+                  </Col>
+                  <Col xs={12}>
+                    <Title level={4}>
+                      Payment Method
+                    </Title>
+                    <Text>
+                      Bank Transfer
+                      <InternalLink
+                        linkText="Waiting for approve"
+                        linkTo="/comfirm-payment"
+                        marginLeft="10px"
+                      />
+                    </Text>
+                  </Col>
+                </RowBlock>
+              </RowBlock>
               <Divider />
               <RowBlock>
-                <Col xs={12}>
-                  <Title level={4}>
-                    Shipping Address
-                  </Title>
-                  <p>Full Name: </p>
-                  <p>Address: </p>
-                  <p>Tel: </p>
-                  <p>Email: </p>
-                </Col>
-                <Col xs={12}>
-                  <Title level={4}>
-                    Order Detail
-                  </Title>
-                  <p>Order Date: </p>
-                  <p>Purchase Order: </p>
-                </Col>
-              </RowBlock>
-              <RowBlock>
-                <Col xs={12}>
-                  <Title level={4}>
-                    Shipping Method
-                  </Title>
-                  <Text>
-                    Free Shipping
-                  </Text>
-                </Col>
-                <Col xs={12}>
-                  <Title level={4}>
-                    Payment Method
-                  </Title>
-                  <Text>
-                    Bank Transfer
-                    <InternalLink
-                      linkText="Waiting for approve"
-                      linkTo="/comfirm-payment"
-                      marginLeft="10px"
-                    />
-                  </Text>
-                </Col>
-              </RowBlock>
-            </RowBlock>
-            <Divider />
-            <RowBlock>
-              <div>
-                <h4>Order Lists</h4>
-                <Table
-                  columns={columns}
-                  dataSource={data}
-                  size="small"
-                  footer={() => <TableSummary />}
-                  pagination={false}
-                />
-              </div>
-            </RowBlock>
-            <Divider />
-            <RowBlock>
-              <Col xs={24}>
-                <Title level={4}>Scan QR Code for Payment</Title>
-              </Col>
-              <Col xs={24} lg={8}>
-                <img src="https://promptpay.io/0877174080.png" width="300px" />
-              </Col>
-              <Col xs={24} lg={16}>
-                <h4>Remark</h4>
-                <ol>
-                  <li>Order will shiped within 3 - 5 days</li>
-                  <li>Order will shiped within 3 - 5 days</li>
-                  <li>Order will shiped within 3 - 5 days</li>
-                  <li>Order will shiped within 3 - 5 days</li>
-                  <li>Order will shiped within 3 - 5 days</li>
-                  <li>Order will shiped within 3 - 5 days</li>
-                  <li>Order will shiped within 3 - 5 days</li>
-                </ol>
-                <p>
-                  <InternalLink
-                    linkTo="/confirm-payment"
-                    linkText="Payment Noticec"
-                  />
-                </p>
-                <p>
-                  <InternalLink
-                    linkTo="/check-order"
-                    linkText="Check Your Order"
-                  />
-                </p>
-              </Col>
-            </RowBlock>
-            <RowBlock>
-              <Col xs={24}>
-                <div style={{ textAlign: 'center' }}>
-                  <InternalLink
-                    linkTo="/product"
-                    linkText="Back To Shoping"
-                    marginLeft="10px"
-                  />
-                  <InternalLink
-                    linkTo="/account"
-                    linkText="Back To My Account"
-                    marginLeft="10px"
-                  />
-                  <InternalLink
-                    linkTo="/print-purchase-order"
-                    linkText="Print Purchase Order"
-                    marginLeft="10px"
+                <div>
+                  <h4>Order Lists</h4>
+                  <Table
+                    columns={columns}
+                    dataSource={data}
+                    size="small"
+                    footer={() => <TableSummary />}
+                    pagination={false}
                   />
                 </div>
-              </Col>
-            </RowBlock>
-          </Card>
-        </Content>
-      </LayoutContainer>
-    </Container>
-  </Theme>
-)
+              </RowBlock>
+              <Divider />
+              <RowBlock>
+                <Col xs={24}>
+                  <Title level={4}>Scan QR Code for Payment</Title>
+                </Col>
+                <Col xs={24} lg={8}>
+                  <img src="https://promptpay.io/0877174080.png" width="300px" />
+                </Col>
+                <Col xs={24} lg={16}>
+                  <h4>Remark</h4>
+                  <ol>
+                    <li>Order will shiped within 3 - 5 days</li>
+                    <li>Order will shiped within 3 - 5 days</li>
+                    <li>Order will shiped within 3 - 5 days</li>
+                    <li>Order will shiped within 3 - 5 days</li>
+                    <li>Order will shiped within 3 - 5 days</li>
+                    <li>Order will shiped within 3 - 5 days</li>
+                    <li>Order will shiped within 3 - 5 days</li>
+                  </ol>
+                  <p>
+                    <InternalLink
+                      linkTo="/confirm-payment"
+                      linkText="Payment Noticec"
+                    />
+                  </p>
+                  <p>
+                    <InternalLink
+                      linkTo="/check-order"
+                      linkText="Check Your Order"
+                    />
+                  </p>
+                </Col>
+              </RowBlock>
+              <Divider />
+              <RowBlock>
+                <Col xs={24}>
+                  <div style={{ textAlign: 'center' }}>
+                    <InternalLink
+                      linkTo="/product"
+                      linkText="Back To Shoping"
+                      marginLeft="10px"
+                    />
+                    <InternalLink
+                      linkTo="/account"
+                      linkText="Back To My Account"
+                      marginLeft="10px"
+                    />
+                    <InternalLink
+                      linkTo="/print-purchase-order"
+                      linkText="Print Purchase Order"
+                      marginLeft="10px"
+                    />
+                  </div>
+                </Col>
+              </RowBlock>
+            </Card>
+          </Content>
+        </LayoutContainer>
+      </Container>
+    </Theme>
+  )
+}
+
+Order.propTypes = {
+  id: PropTypes.string
+}
 
 export default Order

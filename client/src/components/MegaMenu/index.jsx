@@ -12,11 +12,13 @@ const MegaMenuContainer = styled.nav`
 `
 
 const MegaMenuBar = styled.div`
-  background-color: #fa4c06;
+  background-color: #fff;
   padding: 0 4rem;
   height: 44px;
   line-height: 0;
   display: none;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
 
   ul {
     margin: 0;
@@ -36,16 +38,16 @@ const MegaMenuBar = styled.div`
   }
 
   .is-active a {
-    background-color: #fff;
-    color: #333 !important;
+    background-color: #152D5A;
+    color: #3AD10C !important;
   }
 
   .sub-menu  a {
-    color: #fff;
+    color: #222;
 
     &:hover {
-      background-color: #fff;
-      color: #333;
+      background-color: #152D5A;
+      color: #3AD10C;
     }
   }
 
@@ -56,12 +58,13 @@ const MegaMenuBar = styled.div`
 
 const MegaMenuPanel = styled.div`
   background-color: #fff;
-  border-bottom: 4px solid #fa4c06;
-  padding: 0.5rem 4rem;
+  border-bottom: 4px solid #152D5A;
+  padding: 2.5rem 4rem;
   color: #333;
   position: absolute;
   z-index: 9999;
   display: none;
+  height: 25rem;
 
   a {
     font-size: 0.8rem;
@@ -69,7 +72,7 @@ const MegaMenuPanel = styled.div`
     color: #333;
 
     &:hover {
-      color: #fa4c06;
+      color: #152D5A;
     }
   }
 
@@ -220,13 +223,14 @@ const MegaMenu = () => {
               </Col>
             </Row>
             <MegaMenuSidePanel>
-              <Row>
+              {/* <Row>
                 <Col className="text-left" xs={0} lg={24}>
-                  <b className="cat-title">
-                    SHOP {menuLeft[currentMenuIndex].title.toUpperCase()} BY
-                    STYLE
+                  <b>
+                    SHOP {menuLeft[currentMenuIndex].title.toUpperCase()} BY STYLE
                   </b>
                 </Col>
+              </Row> */}
+              <Row>
                 <Col xs={0} lg={24}>
                   {menuLeft[currentMenuIndex].categoriesByStyle.map(
                     (button, index) => (

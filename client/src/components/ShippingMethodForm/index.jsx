@@ -106,7 +106,7 @@ const ShippingMethodForm = ({ form, checkoutData, currentStep, length, action })
         <Divider />
         {currentStep < length - 1 && (
           <Button
-            style={{ background: '#fa4c06', borderColor: '#fa4c06' }}
+            style={{ background: '#152D5A', borderColor: '#152D5A' }}
             type="primary"
             htmlType="submit"
             block

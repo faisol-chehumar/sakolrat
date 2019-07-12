@@ -8,10 +8,13 @@ import HeaderTitle from '../HeaderTitle'
 const { Text } = Typography
 
 const SubscribeBoxContainer = styled.div`
-  color: ${props => props.color};
-  background-color: #fa4c06 !important;
+  background-color: #152D5A !important;
   padding: 4rem .5rem 3rem !important;
   margin: 2rem -3rem;
+
+  .ant-typography {
+    color: #fff !important;
+  }
 
   .ant-col {
     text-align: center;
