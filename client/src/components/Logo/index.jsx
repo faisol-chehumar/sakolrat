@@ -5,8 +5,9 @@ const Logo = ({ ...rest }) => (
   <>
     <Link to="/">
       <img
-        src={'/logo.svg'}
-        alt="Website logo"
+        src={'/SAKOLRAT-LOGO.png'}
+        alt="Sakolrat Website logo"
+        width="100%"
         {...rest}
       />
     </Link>

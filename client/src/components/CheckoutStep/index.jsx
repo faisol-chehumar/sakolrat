@@ -5,6 +5,8 @@ import styled from 'styled-components'
 
 import ShippingAddressForm from '../ShippingAddressForm'
 import ShippingMethodForm from '../ShippingMethodForm'
+import BillingForm from '../BillingForm'
+import ReviewForm from '../ReviewForm'
 
 const { Step } = Steps
 
@@ -50,12 +52,13 @@ const StepsCardContainer = styled(Card)`
   }
 `
 
-const CheckoutStep = ({ data }) => {
+const CheckoutStep = () => {
   const [currentStep, setCurrentStep] = useState(0)
   const [checkoutData, setCheckoutData] = useState({
     customer: {},
-    billing_address: {},
+    billing_address: null,
     shipping_address: {}
+    // payment_method: {}
   })
 
   const steps = [
@@ -69,11 +72,11 @@ const CheckoutStep = ({ data }) => {
     },
     {
       title: 'BILLING',
-      content: 'Last-content'
+      content: BillingForm
     },
     {
       title: 'REVIEW',
-      content: 'Last-content'
+      content: ReviewForm
     }
   ]
 
@@ -91,7 +94,6 @@ const CheckoutStep = ({ data }) => {
         </Col>
         <Col xs={24}>
           <CurrentPage
-            x={console.log(checkoutData)}
             currentStep={currentStep}
             length={steps.length}
             checkoutData={checkoutData}

@@ -6,9 +6,7 @@ import { Link } from 'gatsby'
 import { connect } from 'react-redux'
 
 const UserAvatarContainer = styled.div`
-  span {
-    margin-left: 1rem;
-  }
+  color: #222;
 `
 
 const UserAvatar = styled(Avatar)`
@@ -28,7 +26,7 @@ const MenuDropdown = ({ logout }) => {
         <Link to="/account/dashboard"><Icon type="profile" /> View Profile</Link>
       </Menu.Item>
       <Menu.Item key="2">
-        <Link to="/settings"><Icon type="setting" /> Settings</Link>
+        <Link to="/account/order"><Icon type="setting" /> Order</Link>
       </Menu.Item>
       <Menu.Item key="3">
         <Icon type="logout" /> Logout
@@ -38,10 +36,19 @@ const MenuDropdown = ({ logout }) => {
 }
 
 const UserDropdownMenu = ({ username, avatar, logout }) => (
-  <Dropdown overlay={<MenuDropdown logout={logout} />}>
+  <Dropdown
+    id="tes"
+    overlay={<MenuDropdown logout={logout} />}
+    overlayClassName="user-menu-dropdown"
+    getPopupContainer={triggerNode => triggerNode.parentNode}
+  >
     <UserAvatarContainer>
-      <UserAvatar src={avatar} alt="My Account" />
-      <span>{username} </span><Icon type="down" />
+      <UserAvatar
+        src={avatar}
+        alt="My Account"
+        style={{ width: 30, height: 30, marginTop: 10, marginBottom: 15 }}
+      />
+      <p style={{ fontSize: '.8rem' }}>{username}</p>
     </UserAvatarContainer>
   </Dropdown>
 )

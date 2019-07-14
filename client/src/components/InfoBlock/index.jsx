@@ -8,7 +8,7 @@ const { Title, Paragraph } = Typography
 
 const InfoBlockContainer = styled.div`
   color: ${props => props.color};
-  background-color: #151211 !important;
+  background-color: #fff !important;
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
   margin-top: 4rem;

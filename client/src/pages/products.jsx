@@ -58,12 +58,10 @@ const Product = (props) => {
             name
             slug
             mainImageHref
-            meta {
-              display_price {
-                without_tax {
-                  formatted
-                }
-              }
+            price {
+              amount
+              currency
+              includes_tax
             }
           }
         }

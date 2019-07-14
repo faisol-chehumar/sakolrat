@@ -6,8 +6,13 @@ import { Link } from 'gatsby'
 import Logo from '../Logo'
 import MenuIcon from '../MenuIcon'
 import MegaMenu from '../MegaMenu'
-import LoginModal from '../LoginModal'
 import Cart from '../Cart'
+import SocialGroup from '../SocialGroup'
+import LoginModal from '../LoginModal'
+
+import stores from '../../stores'
+
+const { socialGroup } = stores
 
 const DarkHeader = styled.div`
   color: #fff;
@@ -22,7 +27,7 @@ const DarkHeader = styled.div`
 `
 
 const UtilityBar = styled.div`
-  background-color: #000;
+  background-color: #152D5A;
   line-height: 3rem;
   margin: 0 -4rem;
   font-size: 0.8rem;
@@ -42,21 +47,27 @@ const UtilityBar = styled.div`
 `
 
 const MainMenu = styled.div`
-  line-height: 5rem;
+  /*line-height: 5rem;*/
 
   i {
-    color: #fff;
+    color: #222;
   }
 
   .sub-header {
     background-color: #333;
-    margin: 0 -15px;
+    margin: 0 -16px;
     padding: 0 1rem !important;
-    width: 109%;
+    width: 110%;
+  }
+
+  @media (min-width: 768px) {
+    .sub-header {
+      width: 104.5%;
+    }
   }
 
   @media (min-width: 992px) {
-    line-height: 7rem;
+    /*line-height: 7rem;*/
 
     input {
       height: 3rem;
@@ -77,33 +88,26 @@ const Navbar = () => {
     <DarkHeader>
       <UtilityBar>
         <Row>
-          <Col xs={0} lg={6} xl={5} offset={1}>
-            <Link to="/customer-service">
-              Contact Our Team:
-              <b>+1 (215) 334-5500</b>
-            </Link>
+          <Col
+            xs={0}
+            lg={{ span: 4, offset: 2 }}
+            xl={{ span: 3, offset: 1 }}
+          >
+            <SocialGroup data={socialGroup} />
           </Col>
           <Col
             xs={0}
-            lg={{ span: 3, offset: 7 }}
-            xl={{ span: 3, offset: 9 }}
+            lg={{ span: 7, offset: 9 }}
+            xl={{ span: 7, offset: 13 }}
           >
-            <LoginModal />
-          </Col>
-          <Col xs={0} lg={3} xl={2}>
-            <Link to="/order-status">
-              Order Status
-            </Link>
-          </Col>
-          <Col xs={0} lg={3} xl={2}>
             <Link to="/customer-service">
-              Customer Service
+              สอบถามเพิ่มเติม: <b>+1 (215) 334-5500</b>
             </Link>
           </Col>
         </Row>
       </UtilityBar>
       <MainMenu>
-        <Row gutter={16}>
+        <Row gutter={16} style={{ margin: '2rem 0' }}>
           <Col xs={2} lg={0}>
             <Icon
               type="menu-fold"
@@ -111,7 +115,9 @@ const Navbar = () => {
             />
           </Col>
           <Col xs={8} lg={4}>
-            <Logo className="logo" />
+            <Logo
+              className="logo"
+            />
           </Col>
           <Col xs={4} lg={0} offset={5}>
             <MenuIcon
@@ -125,7 +131,7 @@ const Navbar = () => {
           <Col
             xs={{ span: 24, offset: 0 }}
             lg={{ span: 9, offset: 5 }}
-            xl={{ span: 10, offset: 6 }}
+            xl={{ span: 10, offset: 5 }}
           >
             <div className="sub-header">
               <Input
@@ -138,12 +144,14 @@ const Navbar = () => {
           </Col>
           <Col xs={0} lg={6} xl={4}>
             <div className="menu-group">
-              <MenuIcon
-                type="star"
-                link="/whislist"
-                text="Whislist"
-              />
-              <Cart text="Cart" />
+              <Row>
+                <Col xs={6}>
+                  <Cart text="Cart" />
+                </Col>
+                <Col xs={18}>
+                  <LoginModal style={{ padding: '1rem' }} />
+                </Col>
+              </Row>
             </div>
           </Col>
         </Row>

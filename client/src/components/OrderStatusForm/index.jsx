@@ -27,7 +27,7 @@ const ParagraphContainer = styled(Paragraph)`
   color: #111;
 
   a {
-    color: #fa4c06 !important;
+    color: #152D5A !important;
   }
 `
 

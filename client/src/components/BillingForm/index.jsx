@@ -6,7 +6,9 @@ import {
   Radio,
   Divider,
   Button,
-  Typography
+  Typography,
+  Row,
+  Col
 } from 'antd'
 
 const { Item } = Form
@@ -18,18 +20,23 @@ const FromContainer = styled.div`
   }
 `
 
-const ShippingMethodForm = ({ form, checkoutData, currentStep, length, action }) => {
+const RadioButtonContainer = styled(Row)`
+  margin-bottom: 1rem;
+`
+
+const BillingForm = ({ form, checkoutData, currentStep, length, action }) => {
   const { setCheckoutData, setCurrentStep } = action
 
-  const [shippingMethod, setShippingMethod] = useState({
-    ...checkoutData.shipping_method
+  const [paymentMethod, setPaymentMethod] = useState({
+    ...checkoutData.payment_method
   })
 
   useEffect(() => {
-    setShippingMethod(checkoutData.shipping_method)
+    console.log(checkoutData)
+    setPaymentMethod(checkoutData.payment_method)
 
     return () => {
-      setShippingMethod(checkoutData.shipping_method)
+      setPaymentMethod(checkoutData.payment_method)
     }
   })
 
@@ -43,13 +50,12 @@ const ShippingMethodForm = ({ form, checkoutData, currentStep, length, action })
   const handleSubmit = e => {
     e.preventDefault()
     form.validateFieldsAndScroll((err, values) => {
-      console.log(values)
       if (!err) {
         console.log('Received values of form: ', values)
 
         setCheckoutData({
           ...checkoutData,
-          shipping_method: values.shippingMethod
+          payment_method: values.paymentMethod
         })
 
         next()
@@ -82,24 +88,51 @@ const ShippingMethodForm = ({ form, checkoutData, currentStep, length, action })
         {...formItemLayout}
         onSubmit={handleSubmit}
       >
-        <Title level={4}>Shipping Method</Title>
-        <Item label={<div style={{ textAlign: 'left' }}><b>Choose a Shipping Option</b></div>}>
-          {getFieldDecorator('shippingMethod', {
-            initialValue: shippingMethod,
+        <Title level={4}>Billing & Paymen</Title>
+        <Item>
+          {getFieldDecorator('paymentMethod', {
+            initialValue: paymentMethod,
             rules: [
               {
                 required: true,
-                message: 'Please Select Your Shipping Method.'
+                message: 'Please Select Your Billing Method.'
               }
             ]
           })(
             <Radio.Group>
-              <Radio style={radioStyle} value="free_shipping">
-                Free Shipping
-              </Radio>
-              <Radio style={radioStyle} value="ems">
-                EMS
-              </Radio>
+              <RadioButtonContainer>
+                <Col xs={10}>
+                  <Radio style={radioStyle} value="promptPay">
+                    <img
+                      src="https://qr-generator.digio.co.th/static/media/promptpay.75db5c8f.jpg"
+                      width="100px"
+                      style={{ marginLeft: '1rem' }}
+                    />
+                  </Radio>
+                </Col>
+              </RadioButtonContainer>
+              <RadioButtonContainer>
+                <Col xs={10}>
+                  <Radio style={radioStyle} value="linePay">
+                    <img
+                      src="https://static1.squarespace.com/static/59bf8dc3e5dd5b141a2ba135/t/5b98d0a44ae23713a409f416/1534834575736/linepay_logo_v2_th.png"
+                      width="100px"
+                      style={{ marginLeft: '1rem' }}
+                    />
+                  </Radio>
+                </Col>
+              </RadioButtonContainer>
+              <RadioButtonContainer>
+                <Col xs={16}>
+                  <Radio style={radioStyle} value="bankTransfer">
+                    <img
+                      src="http://9prakun.com/images/scb.png"
+                      width="100px"
+                      style={{ marginLeft: '1rem' }}
+                    />
+                  </Radio>
+                </Col>
+              </RadioButtonContainer>
             </Radio.Group>
           )}
         </Item>
@@ -128,9 +161,9 @@ const ShippingMethodForm = ({ form, checkoutData, currentStep, length, action })
   )
 }
 
-const WrappedShippingMethodForm = Form.create({ name: 'shippingAddress' })(ShippingMethodForm)
+const WrappedBillingForm = Form.create({ name: 'billingAddress' })(BillingForm)
 
-ShippingMethodForm.propTypes = {
+BillingForm.propTypes = {
   form: PropTypes.object,
   checkoutData: PropTypes.PropTypes.oneOfType([
     PropTypes.object,
@@ -144,4 +177,4 @@ ShippingMethodForm.propTypes = {
   length: PropTypes.number
 }
 
-export default WrappedShippingMethodForm
+export default WrappedBillingForm

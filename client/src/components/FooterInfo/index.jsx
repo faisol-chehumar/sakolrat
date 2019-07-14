@@ -22,15 +22,15 @@ const RowWithExtendedMargin = styled(Row)`
 `
 
 const GhostText = styled.p`
-  color: #827c7c !important;
+  color: #333 !important;
   font-size: ${props => props.size || '1rem'};
   text-align: ${props => props.align || 'center'};
 
   a {
-    color: #827c7c !important;
+    color: #333 !important;
 
     &:hover {
-      color: #827c7c !important;
+      color: #333 !important;
     }
   }
 `
@@ -69,7 +69,11 @@ const FooterInfo = ({ data }) => (
     <FooterInfoContainer>
       <BrandDivider>
         <ImageDivider>
-          <img src="revzilla_icon_logo.svg" alt="Brand Logo" />
+          <img
+            src="/SAKOLRAT-LOGO.png"
+            alt="Brand Logo"
+            width="100%"
+          />
         </ImageDivider>
       </BrandDivider>
       <Row>

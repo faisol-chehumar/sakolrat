@@ -12,6 +12,10 @@ const { Title } = Typography
 const SliderContainer = styled(Slider)`
   text-align: center;
   margin-bottom: 1rem;
+
+  .slick-prev:before, .slick-next:before {
+    color: #222 !important;
+  }
 `
 
 const TitleContainer = styled(Title)`

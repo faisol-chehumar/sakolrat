@@ -20,7 +20,7 @@ const IconContainer = styled(Icon)`
   margin-left: 1rem;
 `
 
-const countries = [
+const country = [
   {
     value: 'zhejiang',
     label: 'Zhejiang',
@@ -82,9 +82,10 @@ const ShippingForm = ({ form, checkoutData, currentStep, length, action }) => {
     e.preventDefault()
     form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values)
-        const { customerName, email, ...addressInfo } = values
-
+        // console.log('Received values of form: ', values)
+        const { customerName, email, country, ...addressInfo } = values
+        const countryString = country.join(' ')
+        // console.log(countryString)
         setCheckoutData({
           ...checkoutData,
           customer: {
@@ -92,7 +93,9 @@ const ShippingForm = ({ form, checkoutData, currentStep, length, action }) => {
             email
           },
           shipping_address: {
-            ...addressInfo
+            ...addressInfo,
+            country: countryString,
+            county: countryString
           }
         })
 
@@ -142,28 +145,39 @@ const ShippingForm = ({ form, checkoutData, currentStep, length, action }) => {
         {...formItemLayout}
         onSubmit={handleSubmit}
       >
-        <Item label="Firstname - Lastname">
-          {getFieldDecorator('customerName', {
+        <Item label="Firstname">
+          {getFieldDecorator('first_name', {
             rules: [
               {
                 required: true,
-                message: 'Please input your Firstname and Lastname!'
+                message: 'Please input your First Name.'
               }
             ],
-            initialValue: customer.name
+            initialValue: customer.first_name
+          })(<Input />)}
+        </Item>
+        <Item label="Lastname">
+          {getFieldDecorator('last_name', {
+            rules: [
+              {
+                required: true,
+                message: 'Please input your Last Name.'
+              }
+            ],
+            initialValue: customer.last_name
           })(<Input />)}
         </Item>
         <Item label="Country">
-          {getFieldDecorator('countries', {
-            initialValue: shippingAddress.countries,
+          {getFieldDecorator('country', {
+            initialValue: shippingAddress.country,
             rules: [
-              { type: 'array', required: true, message: 'Please select your habitual countries' }
+              { type: 'array', required: true, message: 'Please select your habitual country.' }
             ]
-          })(<Cascader options={countries} />)}
+          })(<Cascader options={country} />)}
         </Item>
         <Item label="Address Line 1">
-          {getFieldDecorator('addressLine1', {
-            initialValue: shippingAddress.addressLine1,
+          {getFieldDecorator('line_1', {
+            initialValue: shippingAddress.line_1,
             rules: [
               {
                 required: true,
@@ -173,13 +187,13 @@ const ShippingForm = ({ form, checkoutData, currentStep, length, action }) => {
           })(<Input />)}
         </Item>
         <Item label="Address Line 2">
-          {getFieldDecorator('addressLine2', {
-            initialValue: shippingAddress.addressLine2
+          {getFieldDecorator('line_2', {
+            initialValue: shippingAddress.line_2
           })(<Input />)}
         </Item>
         <Item label="Postal Code">
-          {getFieldDecorator('postalCode', {
-            initialValue: shippingAddress.postalCode,
+          {getFieldDecorator('postcode', {
+            initialValue: shippingAddress.postcode,
             rules: [{ required: true, message: 'Please input your Postal Code!' }]
           })(<Input style={{ width: '100%' }} />)}
         </Item>
@@ -220,7 +234,7 @@ const ShippingForm = ({ form, checkoutData, currentStep, length, action }) => {
         <Divider />
         {currentStep < length - 1 && (
           <Button
-            style={{ background: '#fa4c06', borderColor: '#fa4c06' }}
+            style={{ background: '#152D5A', borderColor: '#152D5A' }}
             type="primary"
             htmlType="submit"
             block

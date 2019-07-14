@@ -1,7 +1,5 @@
 import React from 'react'
-// import { Typography, Icon } from 'antd'
 import PropTypes from 'prop-types'
-// import { Row, Col } from 'antd'
 import styled from 'styled-components'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'

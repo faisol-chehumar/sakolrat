@@ -1,5 +1,6 @@
 import AccountDashboard from './AccountDashboard'
 import AnnounceBox from './AnnounceBox'
+import BillingForm from './BillingForm'
 import BlogPost from './BlogPost'
 import BrandSlider from './BrandSlider'
 import BreadcrumbShop from './BreadcrumbShop'
@@ -48,6 +49,7 @@ import ProductSlider from './ProductSlider'
 import ProductQtySelect from './ProductQtySelect'
 import Rating from './Rating'
 import RegisterForm from './RegisterForm'
+import ReviewForm from './ReviewForm'
 import RowBlock from './RowBlock'
 import ShippingAddressForm from './ShippingAddressForm'
 import ShippingMethodForm from './ShippingMethodForm'
@@ -60,6 +62,7 @@ import WarningAlert from './WarningAlert'
 export default {
   AccountDashboard,
   AnnounceBox,
+  BillingForm,
   BlogPost,
   BrandSlider,
   BreadcrumbShop,
@@ -108,6 +111,7 @@ export default {
   ProductQtySelect,
   Rating,
   RegisterForm,
+  ReviewForm,
   RowBlock,
   ShippingAddressForm,
   ShippingMethodForm,
