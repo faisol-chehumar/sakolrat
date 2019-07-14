@@ -41,21 +41,24 @@ const Home = ({ location }) => {
             name
             slug
             mainImageHref
-            meta {
-              display_price {
-                without_tax {
-                  formatted
-                }
-              }
+            mainImage {
+              url
+            }
+            price {
+              amount
+              currency
+              includes_tax
             }
           }
         }
       }
     }
   `)
+
   const products = data['allMoltinProduct']['edges'].map(product => product.node)
   const uniqueProducts = getUniqueProducts(products, 'name')
-
+  // console.log(products)
+  console.log(uniqueProducts)
   return (
     <Theme>
       <HeroBanner data={heroBanners} />
@@ -66,7 +69,7 @@ const Home = ({ location }) => {
           data={categoriesMenu}
         />
       </Container>
-      {uniqueProducts.length > 7 && (
+      {uniqueProducts.length > 0 && (
         <Container>
           <ProductSlider data={uniqueProducts} />
         </Container>

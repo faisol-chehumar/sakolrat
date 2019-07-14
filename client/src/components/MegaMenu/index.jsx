@@ -204,7 +204,8 @@ const MegaMenu = () => {
                   className="cat-link"
                   to={menuLeft[currentMenuIndex].title.replace(' ', '-')}
                 >
-                  Shop All &gt;
+                  {menuLeft[currentMenuIndex].title.replace(' ', '-')}
+                  {/* Shop All &gt; */}
                 </Link>
               </Col>
               <Col xs={0} lg={16}>

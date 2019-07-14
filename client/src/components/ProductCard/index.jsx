@@ -24,7 +24,10 @@ const CardContainer = styled(Card)`
 `
 
 const ProductCard = ({ data }) => (
-  <Link to={`/product/${data.slug}/`}>
+  <Link
+    // x={console.log(data)}
+    to={`/product/${data.slug}/`}
+  >
     <CardContainer
       hoverable
       cover={<img alt={data.title} src={data.mainImageHref} />}
@@ -32,7 +35,7 @@ const ProductCard = ({ data }) => (
       <Meta
         title={data.name}
       />
-      <p className="price">{data.meta.display_price.without_tax.formatted || 0}</p>
+      <p className="price">{data.price[0].amount || 0}</p>
       <Rating score={data.rating || 4} />
     </CardContainer>
   </Link>

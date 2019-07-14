@@ -36,8 +36,10 @@ const ProductPageTemplate = (props) => {
     name,
     sku,
     mainImageHref,
+    mainImage,
     description,
-    meta: { display_price: { with_tax: { amount } } }
+    // mainImage,
+    price: [ { amount } ]
   } = product
 
   const columns = [
@@ -261,22 +263,21 @@ export const pageQuery = graphql`
           id
           name
           description
-          meta {
-            display_price {
-              with_tax {
-                amount
-                currency
-                formatted
-              }
-            }
+          price {
+            amount
+            currency
+            includes_tax
           }
           mainImageHref
+          # mainImage {
+          #   childImageSharp {
+          #     sizes(maxWidth: 400) {
+          #       ...GatsbyImageSharpSizes
+          #     }
+          #   }
+          # }
           mainImage {
-            childImageSharp {
-              sizes(maxWidth: 400) {
-                ...GatsbyImageSharpSizes
-              }
-            }
+            url
           }
           slug
           sku
