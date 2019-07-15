@@ -1,0 +1,33 @@
+footer{
+    background: #3AD10C;
+} 
+
+footer .gTyyHP div{
+    text-align: left;
+}
+footer .gTyyHP .dgzRaw{
+    color: #ffffff;
+    text-align: left;
+}
+
+footer .cmDGzG{
+    color: #ffffff;
+}
+
+footer .company{
+    position: relative;
+    text-align: left;
+    left: 0;
+}
+
+
+@media screen and (min-width: 480px) {
+    footer .company-col{
+        position: absolute;
+        right: 0;
+    }
+    footer .ne-title-text{
+        padding-bottom: 20px;
+        text-align: center;
+    }
+  } 

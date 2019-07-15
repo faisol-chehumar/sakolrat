@@ -11,6 +11,7 @@ import SocialGroup from '../SocialGroup'
 import LoginModal from '../LoginModal'
 
 import stores from '../../stores'
+import './navber.css'
 
 const { socialGroup } = stores
 
@@ -84,16 +85,24 @@ const Navbar = () => {
   const onOpen = () => setVisible(true)
   const onCLose = () => setVisible(false)
 
+  const searchHandle = (value) => (e) => {
+    e.preventDefault()
+
+    if (e.key === 'Enter') {
+      console.log(value)
+    }
+  }
+
   return (
     <DarkHeader>
-      <UtilityBar>
-        <Row>
-          <Col
+      <UtilityBar className="navber">
+        <Row className="ne-navber-row">
+          <Col className="ne-navber-col"
             xs={0}
             lg={{ span: 4, offset: 2 }}
             xl={{ span: 3, offset: 1 }}
           >
-            <SocialGroup data={socialGroup} />
+            <SocialGroup className="ne-nevber-social" data={socialGroup} />
           </Col>
           <Col
             xs={0}
@@ -139,6 +148,8 @@ const Navbar = () => {
                 suffix={
                   <Icon type="search" className="certain-category-icon black clickable" />
                 }
+                onKeyPress={(value) => searchHandle(value)}
+
               />
             </div>
           </Col>

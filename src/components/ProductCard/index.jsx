@@ -25,7 +25,6 @@ const CardContainer = styled(Card)`
 
 const ProductCard = ({ data }) => (
   <Link
-    // x={console.log(data)}
     to={`/product/${data.slug}/`}
   >
     <CardContainer

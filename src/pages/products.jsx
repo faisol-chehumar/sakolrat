@@ -72,7 +72,9 @@ const Product = (props) => {
   useEffect(() => {
     const allProducts = data['allMoltinProduct']['edges'].map(product => product.node)
     const uniqueProducts = getUniqueProducts(allProducts, 'name')
+
     setProducts(uniqueProducts)
+    console.log(props)
   }, [])
 
   return (

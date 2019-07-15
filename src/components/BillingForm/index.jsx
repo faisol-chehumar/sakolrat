@@ -32,7 +32,6 @@ const BillingForm = ({ form, checkoutData, currentStep, length, action }) => {
   })
 
   useEffect(() => {
-    console.log(checkoutData)
     setPaymentMethod(checkoutData.payment_method)
 
     return () => {

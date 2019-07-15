@@ -11,7 +11,6 @@ const ProductList = () => {
         ...data,
         res.data
       ])
-      console.log(res.data)
     }
 
     fetchData()
