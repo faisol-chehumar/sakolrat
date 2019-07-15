@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Drawer, Row, Col, Icon, Input } from 'antd'
 import styled from 'styled-components'
 import { Link, navigate } from 'gatsby'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 import Logo from '../Logo'
 import MenuIcon from '../MenuIcon'
@@ -80,8 +82,10 @@ const MainMenu = styled.div`
   }
 `
 
-const Navbar = () => {
+const Navbar = ({ productQuery }) => {
   const [visible, setVisible] = useState(false)
+  const [searchInput, setSearchInput] = useState(productQuery)
+
   const onOpen = () => setVisible(true)
   const onCLose = () => setVisible(false)
 
@@ -91,6 +95,8 @@ const Navbar = () => {
       navigate(`/products?q=${e.target.value}`)
     }
   }
+
+  const searchOnChangeHandle = e => setSearchInput(e.target.value)
 
   return (
     <DarkHeader>
@@ -143,11 +149,13 @@ const Navbar = () => {
           >
             <div className="sub-header">
               <Input
+                value={searchInput !== '*' ? searchInput : null}
                 placeholder="Search Product or Part #"
                 suffix={
                   <Icon type="search" className="certain-category-icon black clickable" />
                 }
                 onKeyPress={searchHandle}
+                onChange={searchOnChangeHandle}
               />
             </div>
           </Col>
@@ -180,4 +188,12 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+Navbar.propTypes = {
+  productQuery: PropTypes.string
+}
+
+const mapStateToProps = ({
+  products: { productQuery }
+}) => ({ productQuery })
+
+export default connect(mapStateToProps)(Navbar)

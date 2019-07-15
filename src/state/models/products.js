@@ -3,7 +3,8 @@ import _ from 'lodash'
 
 export const products = {
   state: {
-    productItems: []
+    productItems: [],
+    productQuery: ''
   },
 
   reducers: {
@@ -12,13 +13,26 @@ export const products = {
         ...state,
         productItems: payload
       }
+    },
+    setProductQuery (state, payload) {
+      return {
+        ...state,
+        productQuery: payload
+      }
     }
   },
 
   effects: (dispatch) => ({
-    async getAllProductItems () {
+    async getAllProductItems ({ query }) {
+      const search = query.length > 0 ? query : '*'
+
       try {
-        const { data, included } = await Moltin.Products.With('main_image').Limit(30).All()
+        const { data, included } = await Moltin.Products
+          .Filter(query && { like: { name: `*${search}*` } })
+          .With('main_image')
+          .Limit(30)
+          .All()
+
         const uniqueProduct = _.uniqBy(data, 'name')
 
         const uniqueProductWithImage = uniqueProduct.map(product => {
@@ -35,6 +49,7 @@ export const products = {
         })
 
         dispatch.products.setProducts(uniqueProductWithImage)
+        dispatch.products.setProductQuery(search)
 
         return Promise.resolve(uniqueProduct)
       } catch (error) {

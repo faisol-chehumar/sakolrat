@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { graphql, useStaticQuery } from 'gatsby'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import queryString from 'query-string'
 import {
   Row,
   Col,
@@ -30,30 +30,23 @@ const ContentContainer = styled.div`
 `
 
 const Product = ({ productItems, getAllProductItems, location }) => {
-  const categoriesList = {
-    product: 'all'
-  }
+  const [currentQuery, setCurrentQuery] = useState({})
 
   useEffect(() => {
     const { search } = location
-    console.log(search)
-    // const getParam = /(\d+)(?!.*\d)/
-    // const currentPage = search !== '' ? Number(search.match(getParam)[0]) : 1
-    // console.log(currentPage)
+    const query = search ? queryString.parse(search).q : {}
 
-    const fetchProductItems = async () => getAllProductItems()
-
-    fetchProductItems()
+    setCurrentQuery(query)
+    getAllProductItems({ query })
 
     return () => {
-      const fetchProductItems = async () => getAllProductItems()
-
-      fetchProductItems()
+      setCurrentQuery(query)
+      getAllProductItems({ query })
     }
   }, [])
 
   return (
-    <Theme bg={'#eee'} x={console.log(productItems)}>
+    <Theme bg={'#eee'} x={console.log(currentQuery)}>
       <ExtraBar />
       <Container>
         <Row>
@@ -64,7 +57,12 @@ const Product = ({ productItems, getAllProductItems, location }) => {
             <ContentContainer>
               <BreadcrumbShop />
               <Title level={2}>
-                {categoriesList.product.toUpperCase()} PRODUCT <span>({productItems.length})</span>
+                {
+                  currentQuery.length > 0
+                    ? `ALL ${currentQuery.toUpperCase()} PRODUCTS`
+                    : 'ALL PRODUCTS'
+                }
+                <span>({productItems.length})</span>
               </Title>
               <Row>
                 <Col xs={2}>
@@ -119,7 +117,7 @@ const mapStateToProps = ({
 const mapDispatchToProps = ({
   products: { getAllProductItems }
 }) => ({
-  getAllProductItems: () => getAllProductItems()
+  getAllProductItems: (payload) => getAllProductItems(payload)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Product)
