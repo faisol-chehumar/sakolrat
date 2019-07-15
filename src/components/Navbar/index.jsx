@@ -11,6 +11,7 @@ import MegaMenu from '../MegaMenu'
 import Cart from '../Cart'
 import SocialGroup from '../SocialGroup'
 import LoginModal from '../LoginModal'
+import LogoutLink from '../LogoutLink'
 
 import stores from '../../stores'
 import './navber.css'
@@ -82,7 +83,7 @@ const MainMenu = styled.div`
   }
 `
 
-const Navbar = ({ productQuery }) => {
+const Navbar = ({ productQuery, token }) => {
   const [visible, setVisible] = useState(false)
   const [searchInput, setSearchInput] = useState(productQuery)
 
@@ -175,25 +176,38 @@ const Navbar = ({ productQuery }) => {
       </MainMenu>
       <MegaMenu />
       <Drawer
-        title="Basic Drawer"
+        title="SAKOLRAT PARTS"
         placement="left"
         onClose={onCLose}
         visible={visible}
       >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        <p>
+          <Link to="/products">SHOP</Link>
+        </p>
+        {
+          !token
+            ? <p><Link to="/auth/login">SIGN UP/ LOGIN</Link></p>
+            : (
+              <>
+                <p><Link to="/account/dashboard">MY ACCOUNT</Link></p>
+                <p><Link to="/account/orders">MY ORDERS</Link></p>
+                <p><LogoutLink /></p>
+              </>
+            )
+        }
       </Drawer>
     </DarkHeader>
   )
 }
 
 Navbar.propTypes = {
-  productQuery: PropTypes.string
+  productQuery: PropTypes.string,
+  token: PropTypes.string
 }
 
 const mapStateToProps = ({
+  users: { token },
   products: { productQuery }
-}) => ({ productQuery })
+}) => ({ token, productQuery })
 
 export default connect(mapStateToProps)(Navbar)

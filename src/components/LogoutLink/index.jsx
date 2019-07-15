@@ -9,14 +9,21 @@ const LogoutLinkContainer = styled.span`
   margin-left: 1rem !important;
 `
 
-const LogoutLink = ({ logout }) => (
-  <LogoutLinkContainer>
-    <InternalLink
-      linkTo="/auth/logout"
-      linkText="Logout"
-    />
-  </LogoutLinkContainer>
-)
+const LogoutLink = ({ logout }) => {
+  const logoutHandle = () => {
+    logout()
+  }
+
+  return (
+    <LogoutLinkContainer>
+      <InternalLink
+        linkTo="/auth/login"
+        linkText="Logout"
+        onClick={logoutHandle}
+      />
+    </LogoutLinkContainer>
+  )
+}
 
 LogoutLink.propTypes = {
   logout: PropTypes.func
