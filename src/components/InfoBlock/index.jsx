@@ -3,12 +3,15 @@ import { Typography } from 'antd'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
+import Container from '../../layouts/Container'
+import './InfoBlock.css'
+
 
 const { Title, Paragraph } = Typography
 
 const InfoBlockContainer = styled.div`
   color: ${props => props.color};
-  background-color: #fff !important;
+  background-color: #fff;
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
   margin-top: 4rem;
@@ -23,23 +26,26 @@ const InfoBlockContainer = styled.div`
 
     &:active,
     &:hover {
-      color: #ff6629 !important;
+      color: #ff6629;
     }
   }
 `
 
 const InfoBlock = ({ data, ...rest }) => (
-  <InfoBlockContainer {...rest}>
-    <Title className="info-title" level={4}>
-      {data.title}
-    </Title>
-    <Paragraph className="info-paragraph">
-      {data.paragraph}
-    </Paragraph>
-    <Link className="info-link" to={data.link}>
-      Read more
-    </Link>
-  </InfoBlockContainer>
+  <Container>
+    <InfoBlockContainer {...rest}>
+      <Title className="info-title" level={4}>
+        {data.title}
+      </Title>
+      <Paragraph className="info-paragraph">
+        {data.paragraph}
+      </Paragraph>
+      <Link className="info-link" to={data.link}>
+        Read more
+      </Link>
+    </InfoBlockContainer>
+  </Container>
+  
 )
 
 InfoBlock.propTypes = {

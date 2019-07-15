@@ -11,6 +11,7 @@ import SocialGroup from '../SocialGroup'
 import LoginModal from '../LoginModal'
 
 import stores from '../../stores'
+import './navber.css'
 
 const { socialGroup } = stores
 
@@ -86,14 +87,14 @@ const Navbar = () => {
 
   return (
     <DarkHeader>
-      <UtilityBar>
-        <Row>
-          <Col
+      <UtilityBar className="navber">
+        <Row className="ne-navber-row">
+          <Col className="ne-navber-col"
             xs={0}
             lg={{ span: 4, offset: 2 }}
             xl={{ span: 3, offset: 1 }}
           >
-            <SocialGroup data={socialGroup} />
+            <SocialGroup className="ne-nevber-social" data={socialGroup} />
           </Col>
           <Col
             xs={0}

@@ -1,0 +1,15 @@
+.ne-icon-col{
+    background: #ffffff!important;
+    border-radius: 25px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    margin: 5px;
+}
+
+.ne-icon{
+    position: absolute;
+    width: 30px;
+    left: 5px;
+    top: 5px;
+}

@@ -1,0 +1,15 @@
+footer div{
+    background: transparent!important;
+    color: #ffffff!important;
+}
+footer h4{
+    color: #ffffff!important;
+}
+
+footer .info-link{
+    color: goldenrod!important;
+}
+footer .info-link:hover,
+footer .info-link:active{
+    color: #ffffff!important;
+}
