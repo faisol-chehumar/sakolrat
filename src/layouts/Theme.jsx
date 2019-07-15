@@ -151,8 +151,8 @@ const ContentContainer = styled(Content)`
 `
 
 const FooterContainer = styled(Footer)`
-  background: #fff !important;
-  color: #222 !important;
+  background: #152d5a !important;
+  color: #ffffff !important;
 
   h3,
   .ant-typography {

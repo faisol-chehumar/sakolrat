@@ -63,35 +63,35 @@ const SubscribeButton = styled(Button)`
   }
 `
 
-const SubscribeBox = ({ data, ...rest }) => (
-  <SubscribeBoxContainer {...rest}>
-    <Row>
-      <Col xs={{ span: 24 }} lg={{ span: 6, offset: 3 }}>
-        <HeaderTitle
-          className="subscribe-title"
-          text={data.title}
-          level={4}
-        />
-        <Text className="subscribe-subTitle">
-          {data.subTitle}
-        </Text>
-      </Col>
-      <Col xs={24} lg={8}>
-        <SubscribeInput className="subscribe-input" placeholder="Enter your email address" />
-      </Col>
-      <Col xs={24} lg={4}>
-        <SubscribeButton
-          className="subscribe-btn"
-          href="/"
-          type="primary"
-          size="large"
-          block
-        >
-          Subscribe
-        </SubscribeButton>
-      </Col>
-    </Row>
-  </SubscribeBoxContainer>
+const SubscribeBox = ({ data, ...rest }) => ( ''  
+  // <SubscribeBoxContainer {...rest}>
+  //   <Row>
+  //     <Col xs={{ span: 24 }} lg={{ span: 6, offset: 3 }}>
+  //       <HeaderTitle
+  //         className="subscribe-title"
+  //         text={data.title}
+  //         level={4}
+  //       />
+  //       <Text className="subscribe-subTitle">
+  //         {data.subTitle}
+  //       </Text>
+  //     </Col>
+  //     <Col xs={24} lg={8}>
+  //       <SubscribeInput className="subscribe-input" placeholder="Enter your email address" />
+  //     </Col>
+  //     <Col xs={24} lg={4}>
+  //       <SubscribeButton
+  //         className="subscribe-btn"
+  //         href="/"
+  //         type="primary"
+  //         size="large"
+  //         block
+  //       >
+  //         Subscribe
+  //       </SubscribeButton>
+  //     </Col>
+  //   </Row>
+  // </SubscribeBoxContainer>
 )
 
 SubscribeBox.propTypes = {

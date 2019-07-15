@@ -10,6 +10,7 @@ import TitleText from '../TitleText'
 import SocialGroup from '../SocialGroup'
 
 import stores from '../../stores'
+import './footerInfo.css'
 
 const { footerInfo, socialGroup } = stores
 
@@ -22,19 +23,18 @@ const RowWithExtendedMargin = styled(Row)`
 `
 
 const GhostText = styled.p`
-  color: #333 !important;
+  color: #ffffff;
   font-size: ${props => props.size || '1rem'};
   text-align: ${props => props.align || 'center'};
 
   a {
-    color: #333 !important;
+    color: #ffffff !important;
 
     &:hover {
-      color: #333 !important;
+      color: #ffffff !important;
     }
   }
 `
-
 const GhostButton = styled(Button)`
   margin-bottom: 1rem;
 `
@@ -52,7 +52,8 @@ const BrandDivider = styled(Divider)`
 
   &::before,
   &::after {
-    border-color: #484848 !important;
+    border-color: #ffffff !important;
+    botder-top: 1px solid #ffffffimportant; 
   }
 `
 
@@ -61,7 +62,8 @@ const ImageDivider = styled.div`
 `
 
 const GhostDivider = styled(Divider)`
-  background: #484848 !important;
+  background: #ffffff !important;
+  border-top: 1px solid #ffffff!important;
 `
 
 const FooterInfo = ({ data }) => (
@@ -77,30 +79,34 @@ const FooterInfo = ({ data }) => (
         </ImageDivider>
       </BrandDivider>
       <Row>
+        {/* <Col  xs={24} lg={{ span: 12, push: 12 }}>
+          <Row>
+            <Col xs={24} lg={12}>
+              <TitleText text={'CALL CENTER'} />
+            </Col>
+            <Col xs={24} lg={12}>
+              <TitleText text={'02-876-6741-5'}/>
+            </Col>
+          </Row>
+        </Col> */}
         <Col xs={24} lg={{ span: 12, push: 12 }}>
           <RowWithExtendedMargin>
             <Col xs={24} lg={12}>
-              <TitleText text={'NEED HELP ?'} />
+              <TitleText text={'ADDRESS'} />
+              <GhostText size=".85rem" align="left">เพื่อยริการที่ครบวงจอรเรามีทั้งบริการขายออนไลน์และจำหน่ายหน้าร้าน</GhostText>
+              <GhostText size=".85rem" align="left">Sakolrat Equipment<br></br>Bukkhalo, Thon Buri, Bankok 10600</GhostText>
             </Col>
-            <Col xs={24} lg={12}>
-              <p>
-                <b><a href="tel:tel:+1 (215) 334-5500">+1 (215) 334-5500</a></b>
-              </p>
+            <Col className="ne-title-text" xs={24} lg={12}>
+              <TitleText text={'CALL CENTER'} />
             </Col>
-          </RowWithExtendedMargin>
-          <Row>
-            <Col xs={24} lg={12}>
-              <TitleText text={'ALWAYS LOOKING TO IMPROVE'} />
-              <GhostText size=".85rem">Tell us what you love or what we need to fix.</GhostText>
+            <Col className="ne-title-text" xs={24} lg={12}>
+              <TitleText text={'02-876-6741-5'}/>
             </Col>
-            <Col xs={24} lg={12}>
-              <GhostButton ghost>LEAVE FEEDBACK</GhostButton>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={24} lg={{ span: 8, offset: 13 }}>
-              <SocialGroupContainer>
-                <SocialGroup data={socialGroup} />
+          </RowWithExtendedMargin> 
+          <Row className="ne-row">
+            <Col className="ne-col" xs={24} lg={{ span: 8, offset: 13 }}>
+              <SocialGroupContainer className="ne-social-container">
+                <SocialGroup className="ne-social" data={socialGroup} />
               </SocialGroupContainer>
             </Col>
           </Row>
@@ -118,9 +124,6 @@ const FooterInfo = ({ data }) => (
       </Row>
       <GhostDivider />
       <Row>
-        <Col xs={24} lg={6}>
-          <GhostText size=".6rem" align="left">© 2019 REVZILLA.COM ALL RIGHTS RESERVED</GhostText>
-        </Col>
         <Col xs={24} lg={3}>
           <GhostText size=".6rem" align="left">
             <Link to={'/customer-service-hacker-tested-and-secured/'}>
@@ -141,6 +144,9 @@ const FooterInfo = ({ data }) => (
               TERMS AND CONDITIONS
             </Link>
           </GhostText>
+        </Col>
+        <Col className="company-col" xs={24} lg={6}>
+          <GhostText className="company" size=".6rem" align="right">© 2019 REVZILLA.COM ALL RIGHTS RESERVED</GhostText>
         </Col>
       </Row>
     </FooterInfoContainer>

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { Row, Col } from 'antd'
 import styled from 'styled-components'
 
+import './social.css'
+
 const IconContainer = styled.a`
   color: #6f6c6c;
 
@@ -18,9 +20,9 @@ const SocialGroup = ({ data }) => {
     <Row gutter={28}>
       {
         data.map((item, index) => (
-          <Col key={index} span={24 / dataLength}>
-            <IconContainer href={item.link} target="_blank">
-              <item.icon />
+          <Col className="ne-icon-col" key={index} span={24 / dataLength}>
+            <IconContainer className="ne-icon-container" href={item.link} target="_blank">
+              <item.icon className="ne-icon"/>
             </IconContainer>
           </Col>
         ))

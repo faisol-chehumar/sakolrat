@@ -1,0 +1,10 @@
+.navber .ne-navber-row .ne-icon-col{
+    width: 30px;
+    height: 30px;
+}
+
+.navber .ne-icon{
+    width: 25px;
+    left: 3px;
+    top: 2px;
+}
