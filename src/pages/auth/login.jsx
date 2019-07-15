@@ -48,7 +48,10 @@ const AuthLogin = ({ customer }) => {
         <LayoutContainer>
           <Content>
             <Row gutter={25}>
-              <Col xs={24} lg={8} offset={4}>
+              <Col
+                xs={{ span: 24 }}
+                lg={{ span: 8, offset: 4 }}
+              >
                 <CardContainer>
                   <Title level={3}>
                     <b>Login</b>

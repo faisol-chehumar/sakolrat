@@ -27,7 +27,7 @@ const ProductSlider = ({ data, slideShow = [] }) => {
       {
         breakpoint: 992,
         settings: {
-          slidesToShow: 1 || slideShow[0],
+          slidesToShow: 2 || slideShow[0],
           slidesToScroll: 3,
           infinite: true,
           dots: false,
