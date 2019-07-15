@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Drawer, Row, Col, Icon, Input } from 'antd'
 import styled from 'styled-components'
-import { Link } from 'gatsby'
+import { Link, navigate } from 'gatsby'
 
 import Logo from '../Logo'
 import MenuIcon from '../MenuIcon'
@@ -85,11 +85,10 @@ const Navbar = () => {
   const onOpen = () => setVisible(true)
   const onCLose = () => setVisible(false)
 
-  const searchHandle = (value) => (e) => {
-    e.preventDefault()
-
+  const searchHandle = e => {
     if (e.key === 'Enter') {
-      console.log(value)
+      console.log(e.target.value)
+      navigate(`/products?q=${e.target.value}`)
     }
   }
 
@@ -148,8 +147,7 @@ const Navbar = () => {
                 suffix={
                   <Icon type="search" className="certain-category-icon black clickable" />
                 }
-                onKeyPress={(value) => searchHandle(value)}
-
+                onKeyPress={searchHandle}
               />
             </div>
           </Col>
