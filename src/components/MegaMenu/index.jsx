@@ -2,6 +2,9 @@ import React, { useState, useRef, useEffect } from 'react'
 import { Row, Col } from 'antd'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import _ from 'lodash'
 
 import menu from './menu'
 
@@ -65,6 +68,8 @@ const MegaMenuPanel = styled.div`
   z-index: 9999;
   display: none;
   height: 25rem;
+  width: 110%;
+  margin-left: -5%;
 
   a {
     font-size: 0.8rem;
@@ -114,142 +119,164 @@ const MegaMenuSidePanel = styled.div`
   }
 `
 
-const SidePanelButton = styled.div`
+const SidePanelButton = styled(Link)`
   border: 2px solid #bebebe;
   width: 100%;
-  padding: 1rem;
+  padding: 1rem !important;
   line-height: 1;
   margin-bottom: 0.5rem;
   font-size: 0.8rem;
   color: #333;
+  display: block;
 `
 
-const MegaMenu = () => {
+const MegaMenu = ({ getCategories, categories, getSubCategories, subCategories }) => {
   const [currentMenuIndex, setCurrentIndex] = useState(null)
+  const [subCategoriesData, setSubCategoriesData] = useState(null)
   const menu = useRef()
   const panel = useRef()
 
-  const setActiveMenu = index => e => menu.current.contains(e.target) ? setCurrentIndex(index) : null
-
-  const handleLeaveMenuBar = e => !panel.current.contains(e.relatedTarget)
-    ? setCurrentIndex(null) : null
-
-  const handleLeavePanel = e => !panel.current.contains(e.relatedTarget)
-    ? setCurrentIndex(null) : null
-
   useEffect(() => {
-    menu.current.childNodes.forEach((element, index) => {
-      let timer = ''
-      element.addEventListener('mouseover', e => {
-        timer = setTimeout(() => {
-          setActiveMenu(index)(e)
-        }, 100, index, e)
-      }, index, timer)
+    getCategories()
 
-      element.addEventListener('mouseout', e => {
-        clearTimeout(timer)
-        handleLeaveMenuBar(e)
-      })
-    })
+    const setSubCategoriesImage = async () => {
+      const result = await getSubCategories()
+      const resultWithImage = _.mapValues(_.keyBy(result.data, 'sub-categories-id'), 'sub-categories-image')
 
-    panel.current.addEventListener('mouseout', handleLeavePanel)
+      setSubCategoriesData(resultWithImage)
+    }
+
+    setSubCategoriesImage()
 
     return () => {
-      menu.current.childNodes.forEach((element, index) => {
-        let timer = ''
-        element.removeEventListener('mouseover', e => {
-          timer = setTimeout(() => {
-            setActiveMenu(index)(e)
-          }, 100, index, e)
-        }, index, timer)
+      getCategories()
 
-        element.removeEventListener('mouseout', e => {
-          clearTimeout(timer)
-          handleLeaveMenuBar(e)
-        })
-      })
+      const setSubCategoriesImage = async () => {
+        const result = await getSubCategories()
+        const resultWithImage = _.mapValues(_.keyBy(result.data, 'sub-categories-id'), 'sub-categories-image')
 
-      panel.current.removeEventListener('mouseout', handleLeavePanel)
+        setSubCategoriesData(resultWithImage)
+      }
+
+      setSubCategoriesImage()
     }
   }, [])
 
   return (
-    <MegaMenuContainer>
+    <MegaMenuContainer x={console.log(subCategoriesData)}>
       <div>
         <MegaMenuBar>
           <Row gutter={16}>
             <Col xs={0} lg={24}>
-              <ul className="text-left sub-menu" ref={menu}>
-                {menuLeft.map((menu, index) => (
-                  <li key={index} className={currentMenuIndex === index ? 'is-active' : null}>
-                    <Link to={menu.title.replace(' ', '-')}>
-                      {menu.title.toUpperCase()}
+              <ul
+                className="text-left sub-menu"
+                ref={menu}
+                onMouseLeave={() => setCurrentIndex(null)}
+              >
+                {categories && categories.map((menu, index) => (
+                  <li
+                    key={index}
+                    className={currentMenuIndex === index ? 'is-active' : null}
+                    onMouseEnter={() => setCurrentIndex(index)}
+                  >
+                    <Link to={menu.slug}>
+                      {menu.name.toUpperCase()}
                     </Link>
                   </li>
                 ))}
+                <div ref={panel}>
+                  {currentMenuIndex !== null ? (
+                    <MegaMenuPanel>
+                      <Row>
+                        <Col className="text-left" xs={0} lg={24}>
+                          <b className="cat-title">
+                            SHOP {categories[currentMenuIndex].name.toUpperCase()}
+                          </b>
+                          <Link
+                            className="cat-link"
+                            to={categories[currentMenuIndex].slug}
+                          >
+                            Shop All &gt;
+                          </Link>
+                        </Col>
+                        <Col xs={0} lg={16}>
+                          <Row type="flex" justify="space-around">
+                            {categories[currentMenuIndex].children.map((menu, index) => (
+                              <Col key={index} span={5}>
+                                <Link to={menu.slug}>
+                                  <Row>
+                                    <Col xs={24}>
+                                      <img
+                                        src={subCategoriesData[menu.id]}
+                                        alt={`${menu.name}`}
+                                        width="100%"
+                                        style={{ marginBottom: '1rem' }}
+                                      />
+                                    </Col>
+                                    <Col xs={24}>
+                                      {menu.name.toUpperCase()}
+                                    </Col>
+                                  </Row>
+                                </Link>
+                              </Col>
+                            ))}
+                          </Row>
+                        </Col>
+                      </Row>
+                      <MegaMenuSidePanel>
+                        {/* <Row>
+                          <Col className="text-left" xs={0} lg={24}>
+                            <b>
+                              SHOP {menuLeft[currentMenuIndex].title.toUpperCase()} BY STYLE
+                            </b>
+                          </Col>
+                        </Row> */}
+                        <Row>
+                          <Col xs={0} lg={24}>
+                            {menuLeft[currentMenuIndex].categoriesByStyle.map(
+                              (button, index) => (
+                                <SidePanelButton key={index} to={button.link}>
+                                  <b>{button.title.toUpperCase()}</b>
+                                </SidePanelButton>
+                              )
+                            )}
+                          </Col>
+                        </Row>
+                      </MegaMenuSidePanel>
+                    </MegaMenuPanel>
+                  ) : null}
+                </div>
               </ul>
             </Col>
           </Row>
         </MegaMenuBar>
       </div>
-      <div ref={panel}>
-        {currentMenuIndex !== null ? (
-          <MegaMenuPanel>
-            <Row>
-              <Col className="text-left" xs={0} lg={24}>
-                <b className="cat-title">
-                  SHOP {menuLeft[currentMenuIndex].title.toUpperCase()}
-                </b>
-                <Link
-                  className="cat-link"
-                  to={menuLeft[currentMenuIndex].title.replace(' ', '-')}
-                >
-                  {menuLeft[currentMenuIndex].title.replace(' ', '-')}
-                  {/* Shop All &gt; */}
-                </Link>
-              </Col>
-              <Col xs={0} lg={16}>
-                <Row type="flex" justify="space-around">
-                  {menuLeft[currentMenuIndex]['categories'].map(
-                    (menu, index) => (
-                      <Col key={index} span={5}>
-                        <Link to={menu.link}>
-                          <img src={`/${menu.img}`} alt={`${menu.title}`} />
-                          {menu.title.toUpperCase()}
-                        </Link>
-                      </Col>
-                    )
-                  )}
-                </Row>
-              </Col>
-            </Row>
-            <MegaMenuSidePanel>
-              {/* <Row>
-                <Col className="text-left" xs={0} lg={24}>
-                  <b>
-                    SHOP {menuLeft[currentMenuIndex].title.toUpperCase()} BY STYLE
-                  </b>
-                </Col>
-              </Row> */}
-              <Row>
-                <Col xs={0} lg={24}>
-                  {menuLeft[currentMenuIndex].categoriesByStyle.map(
-                    (button, index) => (
-                      <Link to={button.link} key={index}>
-                        <SidePanelButton>
-                          <b>{button.title.toUpperCase()}</b>
-                        </SidePanelButton>
-                      </Link>
-                    )
-                  )}
-                </Col>
-              </Row>
-            </MegaMenuSidePanel>
-          </MegaMenuPanel>
-        ) : null}
-      </div>
     </MegaMenuContainer>
   )
 }
 
-export default MegaMenu
+MegaMenu.propTypes = {
+  getCategories: PropTypes.func,
+  getSubCategories: PropTypes.func,
+  subCategories: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array
+  ]),
+  categories: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array
+  ])
+}
+
+const mapStateToProps = ({
+  categories: { categories, subCategories }
+}) => ({ categories, subCategories })
+
+const mapDispatchToProps = ({
+  categories: { getCategories, getSubCategories }
+}) => ({
+  getCategories: () => getCategories(),
+  getSubCategories: () => getSubCategories()
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(MegaMenu)
