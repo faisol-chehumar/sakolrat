@@ -163,7 +163,7 @@ const MegaMenu = ({ getCategories, categories, getSubCategories, subCategories }
   }, [])
 
   return (
-    <MegaMenuContainer x={console.log(subCategoriesData)}>
+    <MegaMenuContainer>
       <div>
         <MegaMenuBar>
           <Row gutter={16}>

@@ -82,10 +82,9 @@ const ShippingForm = ({ form, checkoutData, currentStep, length, action }) => {
     e.preventDefault()
     form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        // console.log('Received values of form: ', values)
         const { customerName, email, country, ...addressInfo } = values
         const countryString = country.join(' ')
-        // console.log(countryString)
+
         setCheckoutData({
           ...checkoutData,
           customer: {

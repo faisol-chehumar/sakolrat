@@ -38,7 +38,6 @@ export const carts = {
   effects: (dispatch) => ({
     async getCartId (_, rootState) {
       const cartId = rootState.carts.cartId
-      console.log(cartId)
 
       if (cartId) {
         return Promise.resolve(cartId)
@@ -99,9 +98,9 @@ export const carts = {
       return result
     },
     async updateItem (payload) {
-      console.log(payload)
       const cartId = await dispatch.carts.getCartId()
       const result = await Moltin.Cart(cartId).UpdateItemQuantity(payload.id, payload.quantity)
+
       await dispatch.carts.getCartItemsAsync()
 
       return result
@@ -123,8 +122,6 @@ export const carts = {
       const customerId = payload.customerId
       const billing = payload.billing_address || payload.shipping_address
       const shipping = payload.shipping_address
-
-      console.log(shipping)
 
       return Moltin.Cart(cartId).Checkout(customerId, billing, shipping)
     }

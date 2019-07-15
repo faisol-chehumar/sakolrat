@@ -52,7 +52,6 @@ const ReviewForm = ({
           review: values.review
         })
 
-        console.log(result)
         deleteCart()
         navigate(`/account/order/${result.data.id}`)
       }
