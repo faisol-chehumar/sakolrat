@@ -8,3 +8,35 @@
     left: 3px;
     top: 2px;
 }
+.navber .ne-container{
+    padding: 0 6rem;
+}
+.ne-nav .ne-container-her{
+    padding: 0 4rem;
+}
+.navber .ne-navber-col{
+    padding-top: 3px; 
+}
+
+@media screen and (min-width: 1200px){
+    .ne-container-her .ant-col-xl-offset-5 {
+        margin-left: 11%;
+    }
+    .ne-container-her .menu-group i{
+        position: absolute;
+        left: -53px;
+        top: -17px;
+    }
+    .ne-container-her .menu-group span{
+        position: absolute;
+        left: 18px;
+        top: 3px;
+        width: 57px;
+    }
+    .ne-container-her .ne-login-register button{
+        width: 120px;
+        vertical-align: top;
+        top: -10px;
+        left: 97px;
+    }
+}

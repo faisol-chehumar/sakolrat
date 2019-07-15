@@ -1,0 +1,7 @@
+.ne-mega-menu .ne-mega-container{
+    padding: 0 4rem;
+}
+.ne-mega-menu .sub-menu a {
+    padding-left: 25px;
+    padding-right: 25px;
+}

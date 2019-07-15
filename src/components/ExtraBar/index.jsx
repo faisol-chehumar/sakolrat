@@ -3,6 +3,7 @@ import { Row, Col, Carousel } from 'antd'
 import styled from 'styled-components'
 
 import data from './data'
+import './extraber.css'
 
 const ExtraBarContainer = styled.div`
   background-color: #fff;
@@ -24,7 +25,7 @@ const ExtraBarContainer = styled.div`
 `
 
 const ExtraBar = () => (
-  <Row>
+  <Row className="ne-extraber">
     <Col lg={0}>
       <ExtraBarContainer className="container">
         <Carousel effect="fade" dots={false} autoplay>

@@ -32,7 +32,7 @@ const InfoBlockContainer = styled.div`
 `
 
 const InfoBlock = ({ data, ...rest }) => (
-  <Container>
+  <Container className="ne-info-container">
     <InfoBlockContainer {...rest}>
       <Title className="info-title" level={4}>
         {data.title}

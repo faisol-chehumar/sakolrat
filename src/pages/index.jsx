@@ -8,6 +8,7 @@ import { getUniqueProducts } from '../utils/productHelper'
 
 import Theme from '../layouts/Theme'
 import Container from '../layouts/Container'
+import '../assets/css/custom.css'
 
 const {
   brands,
@@ -62,30 +63,30 @@ const Home = ({ location }) => {
     <Theme>
       <HeroBanner data={heroBanners} />
       <ExtraBar />
-      <Container>
+      <Container className="ne-block-category">
         <CategoryMenu
           header="SHOP BY RIDING STYLE"
           data={categoriesMenu}
         />
       </Container>
       {uniqueProducts.length > 0 && (
-        <Container>
+        <Container className="ne-block-product">
           <ProductSlider data={uniqueProducts} />
         </Container>
       )}
-      <Container className="mgt-sm">
+      <Container className="mgt-sm ne-filter">
         <FilterBox
           className="bdt-primary"
           header="SHOP BY BIKE"
         />
       </Container>
-      <Container>
+      <Container className="ne-blog-post">
         <BlogPost data={guides} type={'hero-text'}/>
       </Container>
-      <Container>
+      <Container className="ne-brand-slider">
         <BrandSlider data={brands} />
       </Container>
-      <Container>
+      <Container className="ne-blog-post">
         <BlogPost data={posts} />
       </Container>
     </Theme>
