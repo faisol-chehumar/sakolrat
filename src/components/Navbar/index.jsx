@@ -84,6 +84,14 @@ const Navbar = () => {
   const onOpen = () => setVisible(true)
   const onCLose = () => setVisible(false)
 
+  const searchHandle = (value) => (e) => {
+    e.preventDefault()
+
+    if (e.key === 'Enter') {
+      console.log(value)
+    }
+  }
+
   return (
     <DarkHeader>
       <UtilityBar>
@@ -139,6 +147,8 @@ const Navbar = () => {
                 suffix={
                   <Icon type="search" className="certain-category-icon black clickable" />
                 }
+                onKeyPress={(value) => searchHandle(value)}
+
               />
             </div>
           </Col>

@@ -6,9 +6,9 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 
-import menu from './menu'
+// import menu from './menu'
 
-const { menuLeft } = menu
+// const { menuLeft } = menu
 
 const MegaMenuContainer = styled.nav`
   margin: 0 -4rem;
@@ -75,6 +75,7 @@ const MegaMenuPanel = styled.div`
     font-size: 0.8rem;
     font-weight: 600;
     color: #333;
+    background-color: transparent !important;
 
     &:hover {
       color: #152D5A;
@@ -100,37 +101,37 @@ const MegaMenuPanel = styled.div`
   }
 `
 
-const MegaMenuSidePanel = styled.div`
-  background-color: #eee;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  right: 5%;
-  padding: 0.5rem 1rem;
-  display: none;
+// const MegaMenuSidePanel = styled.div`
+//   background-color: #eee;
+//   height: 100%;
+//   position: absolute;
+//   top: 0;
+//   right: 5%;
+//   padding: 0.5rem 1rem;
+//   display: none;
 
-  @media (min-width: 992px) {
-    display: block;
-    width: 18rem;
-  }
+//   @media (min-width: 992px) {
+//     display: block;
+//     width: 18rem;
+//   }
 
-  @media (min-width: 1200px) {
-    width: 25rem;
-  }
-`
+//   @media (min-width: 1200px) {
+//     width: 25rem;
+//   }
+// `
 
-const SidePanelButton = styled(Link)`
-  border: 2px solid #bebebe;
-  width: 100%;
-  padding: 1rem !important;
-  line-height: 1;
-  margin-bottom: 0.5rem;
-  font-size: 0.8rem;
-  color: #333;
-  display: block;
-`
+// const SidePanelButton = styled(Link)`
+//   border: 2px solid #bebebe;
+//   width: 100%;
+//   padding: 1rem !important;
+//   line-height: 1;
+//   margin-bottom: 0.5rem;
+//   font-size: 0.8rem;
+//   color: #333;
+//   display: block;
+// `
 
-const MegaMenu = ({ getCategories, categories, getSubCategories, subCategories }) => {
+const MegaMenu = ({ getCategories, categories, getSubCategories }) => {
   const [currentMenuIndex, setCurrentIndex] = useState(null)
   const [subCategoriesData, setSubCategoriesData] = useState(null)
   const menu = useRef()
@@ -163,7 +164,7 @@ const MegaMenu = ({ getCategories, categories, getSubCategories, subCategories }
   }, [])
 
   return (
-    <MegaMenuContainer>
+    <MegaMenuContainer x={console.log(categories)}>
       <div>
         <MegaMenuBar>
           <Row gutter={16}>
@@ -200,9 +201,9 @@ const MegaMenu = ({ getCategories, categories, getSubCategories, subCategories }
                           </Link>
                         </Col>
                         <Col xs={0} lg={16}>
-                          <Row type="flex" justify="space-around">
+                          <Row>
                             {categories[currentMenuIndex].children.map((menu, index) => (
-                              <Col key={index} span={5}>
+                              <Col key={index} xs={4}>
                                 <Link to={menu.slug}>
                                   <Row>
                                     <Col xs={24}>
@@ -223,14 +224,14 @@ const MegaMenu = ({ getCategories, categories, getSubCategories, subCategories }
                           </Row>
                         </Col>
                       </Row>
-                      <MegaMenuSidePanel>
-                        {/* <Row>
+                      {/* <MegaMenuSidePanel>
+                        <Row>
                           <Col className="text-left" xs={0} lg={24}>
                             <b>
                               SHOP {menuLeft[currentMenuIndex].title.toUpperCase()} BY STYLE
                             </b>
                           </Col>
-                        </Row> */}
+                        </Row>
                         <Row>
                           <Col xs={0} lg={24}>
                             {menuLeft[currentMenuIndex].categoriesByStyle.map(
@@ -242,7 +243,7 @@ const MegaMenu = ({ getCategories, categories, getSubCategories, subCategories }
                             )}
                           </Col>
                         </Row>
-                      </MegaMenuSidePanel>
+                      </MegaMenuSidePanel> */}
                     </MegaMenuPanel>
                   ) : null}
                 </div>
