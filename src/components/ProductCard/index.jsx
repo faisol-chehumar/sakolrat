@@ -34,7 +34,10 @@ const ProductCard = ({ data }) => (
       <Meta
         title={data.name}
       />
-      <p className="price">{data.price[0].amount || 0}</p>
+      <p className="price">
+        <span style={{ fontSize: '.8rem' }}>{data.price[0].currency === 'USD' ? '$' : 'THB'} </span>
+        {data.price[0].amount || 0}
+      </p>
       <Rating score={data.rating || 4} />
     </CardContainer>
   </Link>

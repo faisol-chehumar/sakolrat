@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { graphql, useStaticQuery } from 'gatsby'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import queryString from 'query-string'
 import {
   Row,
   Col,
@@ -13,7 +13,7 @@ import {
 import Theme from '../layouts/Theme'
 import Container from '../layouts/Container'
 import components from '../components'
-import { getUniqueProducts } from '../utils/productHelper'
+// import { getUniqueProducts } from '../utils/productHelper'
 
 const { Title } = Typography
 
@@ -25,60 +25,28 @@ const {
   SidebarFilter
 } = components
 
-const mapStateToProps = ({
-  products,
-  currentCategory
-}) => ({ products, currentCategory })
-
-const mapDispatchToProps = ({ products: { setProducts, setProductsAsync } }) => ({
-  setProducts: (products) => setProducts(products),
-  setProductsAsync: (products) => setProductsAsync(products)
-})
-
 const ContentContainer = styled.div`
 
 `
 
-const Product = (props) => {
-  const { products, setProducts } = props
-  const categoriesList = {
-    product: 'all'
-  }
-
-  const data = useStaticQuery(graphql`
-    query ProductsQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-      allMoltinProduct {
-        edges {
-          node {
-            name
-            slug
-            mainImageHref
-            price {
-              amount
-              currency
-              includes_tax
-            }
-          }
-        }
-      }
-    }
-  `)
+const Product = ({ productItems, getAllProductItems, location }) => {
+  const [currentQuery, setCurrentQuery] = useState({})
 
   useEffect(() => {
-    const allProducts = data['allMoltinProduct']['edges'].map(product => product.node)
-    const uniqueProducts = getUniqueProducts(allProducts, 'name')
+    const { search } = location
+    const query = search ? queryString.parse(search).q : {}
 
-    setProducts(uniqueProducts)
-    console.log(props)
+    setCurrentQuery(query)
+    getAllProductItems({ query })
+
+    return () => {
+      setCurrentQuery(query)
+      getAllProductItems({ query })
+    }
   }, [])
 
   return (
-    <Theme bg={'#eee'}>
+    <Theme bg={'#eee'} x={console.log(currentQuery)}>
       <ExtraBar />
       <Container>
         <Row>
@@ -89,7 +57,12 @@ const Product = (props) => {
             <ContentContainer>
               <BreadcrumbShop />
               <Title level={2}>
-                {categoriesList.product.toUpperCase()} PRODUCT <span>(7631)</span>
+                {
+                  currentQuery.length > 0
+                    ? `ALL ${currentQuery.toUpperCase()} PRODUCTS`
+                    : 'ALL PRODUCTS'
+                }
+                <span>({productItems.length})</span>
               </Title>
               <Row>
                 <Col xs={2}>
@@ -99,12 +72,12 @@ const Product = (props) => {
                   <FilterProduct style={{ width: '200px' }} />
                 </Col>
                 <Col className="right" xs={10} offset={8}>
-                  <Pagination defaultCurrent={1} total={Math.ceil(products.length / 50)} />
+                  <Pagination defaultCurrent={1} total={Math.ceil(productItems.length / 50)} />
                 </Col>
               </Row>
               <Row>
                 {
-                  products.map((product, index) => (
+                  productItems.map((product, index) => (
                     <Col key={index} xs={12} lg={6}>
                       <ProductCard data={product} />
                     </Col>
@@ -120,16 +93,31 @@ const Product = (props) => {
 }
 
 Product.propTypes = {
-  products: PropTypes.oneOfType([
+  productItems: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.array
   ]),
-  setProducts: PropTypes.func,
+  getAllProductItems: PropTypes.func,
   sortBy: PropTypes.array,
   currentCategory: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.array
+  ]),
+  location: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array
   ])
 }
+
+const mapStateToProps = ({
+  products: { productItems },
+  currentCategory
+}) => ({ productItems, currentCategory })
+
+const mapDispatchToProps = ({
+  products: { getAllProductItems }
+}) => ({
+  getAllProductItems: (payload) => getAllProductItems(payload)
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Product)
