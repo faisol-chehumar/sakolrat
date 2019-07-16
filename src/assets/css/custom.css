@@ -1,0 +1,40 @@
+@media (min-width: 992px){
+    .ne-block-category,
+    .ne-blog-post{
+        padding: 2rem 7rem;
+    }
+    .ne-block-product,
+    .ne-filter{
+        padding: 2rem 8rem;
+    }
+    .ne-brand-slider{
+        padding: 2rem 9rem;
+    }
+    .slider-image{
+        margin-top: 3rem;
+    }
+    .ne-read{
+        background: #fafafa;
+        padding: 2rem 12rem;
+    }
+    .read img,
+    .read h1{
+        text-align: center;
+    }
+    .read h1{
+        font-weight: bold;
+    }
+    .read h2{
+        margin-top: 1rem;
+    }
+    .read h2,
+    .read h3,
+    .read h4{
+        padding: 10px 10px 0 10px;
+    }
+    .read div{
+        background: #ffffff;
+        /* border: 1px solid #333; */
+        padding: 0 5px;
+    }
+}

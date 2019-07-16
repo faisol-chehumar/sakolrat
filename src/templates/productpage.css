@@ -1,0 +1,89 @@
+@media (min-width: 1200px){
+    .ne-select-product .ne-button{
+        margin: 0 10px;
+        background-color: #0c1a34;
+        color: #ffffff;
+        font-weight: bold;
+    }
+    .ne-select-product .ne-button:hover{
+        margin: 0 10px;
+        background-color: #3AD10C;
+        color: #0c1a34;
+        font-weight: bold;
+    }
+    .ne-select-product .ne-view-all span{
+        margin-top: 10px;
+    }
+    .ne-select-product .ne-select i{
+        display: block;
+        background-color: #f1f1f1;
+        color: #0c1a34;
+        padding: 10px;
+        box-sizing: content-box;
+        position: absolute;
+        top: -9px;
+        left: -21px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        height: 10px;
+    }
+    .ne-help h2{
+        margin-bottom: 0px;
+    }
+    .ne-help .ne-col div{
+        margin-top: 3rem;
+    }
+    .ne-help .ne-col .ne-contact,
+    .ne-help .ne-contact div{
+        margin-top: 0rem;
+    }
+    .ne-contact .ne-phone,
+    .ne-contact .ne-email{
+        border-left: 2px solid #e5e3e4;
+        box-shadow: 5px 0 5px -5px #e5e3e4;
+    }
+
+    .ne-contact .ne-icon-phone,
+    .ne-contact .ne-icon-mail{
+        padding: 0 5px;
+    }
+
+    .ne-phone span,
+    .ne-email span{
+        color: #3AD10C;
+    }
+    .ne-product-title .ne-staff-pick{
+        color: #ffffff;
+        padding: 5px 10px;
+        background-color: #06b3f8;
+        font-weight: bold;
+        border-radius: 3px;
+        width: 25%;
+        text-align: center;
+        margin-bottom: 10px;
+    } 
+    .ne-video iframe{
+        margin: 1rem;
+        border: 0;
+    }
+}
+
+.ne-descirption .ant-tabs-tab-active{
+    background-color: #ffffff!important;
+    border-top: 2px solid #3AD10C;
+    border-left: 1px solid #f1f1f1;
+}
+.ne-descirption .ant-tabs-ink-bar{
+    background-color: transparent; 
+}
+.ne-descirption .ant-tabs-content{
+    padding: 1rem 1rem;
+    border-left: 1px solid #f1f1f1;
+}
+.ne-descirption .ant-tabs-bar{
+    margin: 0;
+}
+
+.ne-descirption .ant-tabs-nav div{
+    background-color: #f1f1f1;
+}

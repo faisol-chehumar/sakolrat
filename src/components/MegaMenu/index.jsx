@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import { Link } from 'gatsby'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import Container from '../../layouts/Container'
+import './megamenu.css'
 import _ from 'lodash'
 
 // import menu from './menu'
@@ -158,90 +160,92 @@ const MegaMenu = ({ getCategories, categories, getSubCategories }) => {
   return (
     <MegaMenuContainer>
       <div>
-        <MegaMenuBar>
-          <Row gutter={16}>
-            <Col xs={0} lg={24}>
-              <ul
-                className="text-left sub-menu"
-                ref={menu}
-                onMouseLeave={() => setCurrentIndex(null)}
-              >
-                {categories && categories.map((menu, index) => (
-                  <li
-                    key={index}
-                    className={currentMenuIndex === index ? 'is-active' : null}
-                    onMouseEnter={() => setCurrentIndex(index)}
-                  >
-                    <Link to={`/products?category=${menu.slug}`}>
-                      {menu.name.toUpperCase()}
-                    </Link>
-                  </li>
-                ))}
-                <div ref={panel}>
-                  {currentMenuIndex !== null ? (
-                    <MegaMenuPanel>
-                      <Row>
-                        <Col className="text-left" xs={0} lg={24}>
-                          <b className="cat-title">
-                            SHOP {categories[currentMenuIndex].name.toUpperCase()}
-                          </b>
-                          <Link
-                            className="cat-link"
-                            to={categories[currentMenuIndex].slug}
-                          >
-                            Shop All &gt;
-                          </Link>
-                        </Col>
-                        <Col xs={0} lg={16}>
-                          <Row>
-                            {categories[currentMenuIndex].children.map((menu, index) => (
-                              <Col key={index} xs={4}>
-                                <Link to={menu.slug}>
-                                  <Row>
-                                    <Col xs={24}>
-                                      <img
-                                        src={subCategoriesData[menu.id] || 'https://via.placeholder.com/150'}
-                                        alt={`${menu.name}`}
-                                        width="100%"
-                                        style={{ marginBottom: '1rem' }}
-                                      />
-                                    </Col>
-                                    <Col xs={24}>
-                                      {menu.name.toUpperCase()}
-                                    </Col>
-                                  </Row>
-                                </Link>
-                              </Col>
-                            ))}
-                          </Row>
-                        </Col>
-                      </Row>
-                      {/* <MegaMenuSidePanel>
+        <MegaMenuBar className="ne-mega-menu">
+          <Container className="ne-mega-container">
+            <Row gutter={16}>
+              <Col xs={0} lg={24}>
+                <ul
+                  className="text-left sub-menu"
+                  ref={menu}
+                  onMouseLeave={() => setCurrentIndex(null)}
+                >
+                  {categories && categories.map((menu, index) => (
+                    <li
+                      key={index}
+                      className={currentMenuIndex === index ? 'is-active' : null}
+                      onMouseEnter={() => setCurrentIndex(index)}
+                    >
+                      <Link to={menu.slug}>
+                        {menu.name.toUpperCase()}
+                      </Link>
+                    </li>
+                  ))}
+                  <div ref={panel}>
+                    {currentMenuIndex !== null ? (
+                      <MegaMenuPanel>
                         <Row>
                           <Col className="text-left" xs={0} lg={24}>
-                            <b>
-                              SHOP {menuLeft[currentMenuIndex].title.toUpperCase()} BY STYLE
+                            <b className="cat-title">
+                              SHOP {categories[currentMenuIndex].name.toUpperCase()}
                             </b>
+                            <Link
+                              className="cat-link"
+                              to={categories[currentMenuIndex].slug}
+                            >
+                              Shop All &gt;
+                            </Link>
+                          </Col>
+                          <Col xs={0} lg={16}>
+                            <Row>
+                              {categories[currentMenuIndex].children.map((menu, index) => (
+                                <Col key={index} xs={4}>
+                                  <Link to={menu.slug}>
+                                    <Row>
+                                      <Col xs={24}>
+                                        <img
+                                          src={subCategoriesData[menu.id]}
+                                          alt={`${menu.name}`}
+                                          width="100%"
+                                          style={{ marginBottom: '1rem' }}
+                                        />
+                                      </Col>
+                                      <Col xs={24}>
+                                        {menu.name.toUpperCase()}
+                                      </Col>
+                                    </Row>
+                                  </Link>
+                                </Col>
+                              ))}
+                            </Row>
                           </Col>
                         </Row>
-                        <Row>
-                          <Col xs={0} lg={24}>
-                            {menuLeft[currentMenuIndex].categoriesByStyle.map(
-                              (button, index) => (
-                                <SidePanelButton key={index} to={button.link}>
-                                  <b>{button.title.toUpperCase()}</b>
-                                </SidePanelButton>
-                              )
-                            )}
-                          </Col>
-                        </Row>
-                      </MegaMenuSidePanel> */}
-                    </MegaMenuPanel>
-                  ) : null}
-                </div>
-              </ul>
-            </Col>
-          </Row>
+                        {/* <MegaMenuSidePanel>
+                          <Row>
+                            <Col className="text-left" xs={0} lg={24}>
+                              <b>
+                                SHOP {menuLeft[currentMenuIndex].title.toUpperCase()} BY STYLE
+                              </b>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col xs={0} lg={24}>
+                              {menuLeft[currentMenuIndex].categoriesByStyle.map(
+                                (button, index) => (
+                                  <SidePanelButton key={index} to={button.link}>
+                                    <b>{button.title.toUpperCase()}</b>
+                                  </SidePanelButton>
+                                )
+                              )}
+                            </Col>
+                          </Row>
+                        </MegaMenuSidePanel> */}
+                      </MegaMenuPanel>
+                    ) : null}
+                  </div>
+                </ul>
+              </Col>
+            </Row>
+          </Container>
         </MegaMenuBar>
       </div>
     </MegaMenuContainer>

@@ -13,3 +13,9 @@ footer .info-link:hover,
 footer .info-link:active{
     color: #ffffff!important;
 }
+footer .ne-info-container{
+    padding: 2rem 5rem;
+}
+footer .ne-info-container .czaNxS{
+    margin-bottom: 0; 
+}

@@ -11,7 +11,7 @@ import MegaMenu from '../MegaMenu'
 import Cart from '../Cart'
 import SocialGroup from '../SocialGroup'
 import LoginModal from '../LoginModal'
-import LogoutLink from '../LogoutLink'
+import Container from '../../layouts/Container'
 
 import stores from '../../stores'
 import './navber.css'
@@ -85,7 +85,10 @@ const MainMenu = styled.div`
 
 const Navbar = ({ productQuery, token }) => {
   const [visible, setVisible] = useState(false)
-  const [searchInput, setSearchInput] = useState(productQuery)
+  // const [
+  //   // searchInput,
+  //   // setSearchInput
+  // ] = useState(productQuery)
 
   const onOpen = () => setVisible(true)
   const onCLose = () => setVisible(false)
@@ -97,104 +100,98 @@ const Navbar = ({ productQuery, token }) => {
     }
   }
 
-  const searchOnChangeHandle = e => setSearchInput(e.target.value)
+  // const searchOnChangeHandle = e => setSearchInput(e.target.value)
 
   return (
-    <DarkHeader>
+    <DarkHeader className="ne-nav">
       <UtilityBar className="navber">
-        <Row className="ne-navber-row">
-          <Col className="ne-navber-col"
-            xs={0}
-            lg={{ span: 4, offset: 2 }}
-            xl={{ span: 3, offset: 1 }}
-          >
-            <SocialGroup className="ne-nevber-social" data={socialGroup} />
-          </Col>
-          <Col
-            xs={0}
-            lg={{ span: 7, offset: 9 }}
-            xl={{ span: 7, offset: 13 }}
-          >
-            <Link to="/customer-service">
-              สอบถามเพิ่มเติม: <b>+1 (215) 334-5500</b>
-            </Link>
-          </Col>
-        </Row>
+        <Container className="ne-container">
+          <Row className="ne-navber-row">
+            <Col className="ne-navber-col"
+              xs={0}
+              lg={{ span: 4, offset: 2 }}
+              xl={{ span: 3, offset: 1 }}
+            >
+              <SocialGroup className="ne-nevber-social" data={socialGroup} />
+            </Col>
+            <Col
+              xs={0}
+              lg={{ span: 7, offset: 9 }}
+              xl={{ span: 7, offset: 13 }}
+            >
+              <Link to="/customer-service">
+                สอบถามเพิ่มเติม: <b>+1 (215) 334-5500</b>
+              </Link>
+            </Col>
+          </Row>
+        </Container>
+
       </UtilityBar>
       <MainMenu>
-        <Row gutter={16} style={{ margin: '2rem 0' }}>
-          <Col xs={2} lg={0}>
-            <Icon
-              type="menu-fold"
-              onClick={onOpen}
-            />
-          </Col>
-          <Col xs={8} lg={4}>
-            <Logo
-              className="logo"
-            />
-          </Col>
-          <Col xs={4} lg={0} offset={5}>
-            <MenuIcon
-              type='phone'
-              link='/phone'
-            />
-          </Col>
-          <Col xs={4} lg={0}>
-            <Cart />
-          </Col>
-          <Col
-            xs={{ span: 24, offset: 0 }}
-            lg={{ span: 9, offset: 5 }}
-            xl={{ span: 10, offset: 5 }}
-          >
-            <div className="sub-header">
-              <Input
-                value={searchInput !== '*' ? searchInput : null}
-                placeholder="Search Product or Part #"
-                suffix={
-                  <Icon type="search" className="certain-category-icon black clickable" />
-                }
-                onKeyPress={searchHandle}
-                onChange={searchOnChangeHandle}
+        <Container className="ne-container-her">
+          <Row gutter={16} style={{ margin: '2rem 0' }}>
+            <Col xs={2} lg={0}>
+              <Icon
+                type="menu-fold"
+                onClick={onOpen}
               />
-            </div>
-          </Col>
-          <Col xs={0} lg={6} xl={4}>
-            <div className="menu-group">
-              <Row>
-                <Col xs={6}>
-                  <Cart text="Cart" />
-                </Col>
-                <Col xs={18}>
-                  <LoginModal style={{ padding: '1rem' }} />
-                </Col>
-              </Row>
-            </div>
-          </Col>
-        </Row>
+            </Col>
+            <Col xs={8} lg={4}>
+              <Logo
+                className="logo"
+              />
+            </Col>
+            <Col xs={4} lg={0} offset={5}>
+              <MenuIcon
+                type='phone'
+                link='/phone'
+              />
+            </Col>
+            <Col xs={4} lg={0}>
+              <Cart />
+            </Col>
+            <Col
+              xs={{ span: 24, offset: 0 }}
+              lg={{ span: 9, offset: 5 }}
+              xl={{ span: 10, offset: 5 }}
+            >
+              <div className="sub-header">
+                <Input
+                  placeholder="Search Product or Part #"
+                  suffix={
+                    <Icon type="search" className="certain-category-icon black clickable" />
+                  }
+                  onKeyPress={(value) => searchHandle(value)}
+
+                />
+              </div>
+            </Col>
+            <Col xs={0} lg={6} xl={4}>
+              <div className="menu-group">
+                <Row>
+                  <Col xs={6}>
+                    <Cart text="View Cart" />
+                  </Col>
+                  <Col xs={6} className="ne-login-register">
+                    <LoginModal style={{ padding: '1rem' }} />
+                  </Col>
+                </Row>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+
       </MainMenu>
       <MegaMenu />
       <Drawer
-        title="SAKOLRAT PARTS"
+        title="Basic Drawer"
         placement="left"
         onClose={onCLose}
         visible={visible}
       >
-        <p>
-          <Link to="/products">SHOP</Link>
-        </p>
-        {
-          !token
-            ? <p><Link to="/auth/login">SIGN UP/ LOGIN</Link></p>
-            : (
-              <>
-                <p><Link to="/account/dashboard">MY ACCOUNT</Link></p>
-                <p><Link to="/account/orders">MY ORDERS</Link></p>
-                <p><LogoutLink /></p>
-              </>
-            )
-        }
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
       </Drawer>
     </DarkHeader>
   )
