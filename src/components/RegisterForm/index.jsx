@@ -8,6 +8,7 @@ import {
   Button,
   Checkbox
 } from 'antd'
+import { navigate } from 'gatsby'
 
 import Moltin from '../../utils/moltin'
 
@@ -48,7 +49,9 @@ const Register = (props) => {
         }
 
         Moltin.Customers.Create(customer).then(customer => {
+          // ต้องเพิ่มปิด Modal
           console.log(`Moltin was create  ${customer}`)
+          navigate('/')
         })
       }
     })
