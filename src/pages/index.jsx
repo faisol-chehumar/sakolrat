@@ -11,7 +11,8 @@ import Container from '../layouts/Container'
 import '../assets/css/custom.css'
 import sliderImage from '../../static/slider.png'
 import readImage from '../../static/read.png'
-import { Slider } from 'antd';
+import gas from '../../static/gas.png'
+import { Row, Col, Icon } from 'antd';
 
 const {
   brands,
@@ -80,9 +81,51 @@ const Home = ({ location }) => {
       <div className="slider-image">
         <img src={sliderImage} width="100%"/>
       </div>
-      <div className="ne-read">
+      <div>
         <img src={readImage} width="100%" />
       </div>
+      {/* <div>
+        <Container className="ne-read">
+          <Row className="read">
+            <h1>READ</h1>
+            <Col className="ne-content" xs={24} lg={8}>
+              <img src={gas} width="100%"/>
+              <h2>RevZilla was founded by a core team of riders who were frustrated with</h2>
+              <h4>RevZilla was</h4>
+              <Row>
+                <Col xs={24} lg={12}>
+                  <h5>10/09/2019</h5>
+                </Col>
+              </Row>
+            </Col>
+            <Col className="ne-content" xs={24} lg={8}>
+              <img src={gas} width="100%"/>
+              <h2>RevZilla was founded by a core team of riders who were frustrated with</h2>
+              <h4>RevZilla was</h4>
+              <Row>
+                <Col xs={24} lg={12}>
+                  <h5>10/09/2019</h5>
+                </Col>
+              </Row>
+            </Col>
+            <Col className="ne-content" xs={24} lg={8}>
+              <img src={gas} width="100%"/>
+              <h2>RevZilla was founded by a core team of riders who were frustrated with</h2>
+              <h4>RevZilla was</h4>
+              <Row>
+                <Col xs={24} lg={12}>
+                  <h5>10/09/2019</h5>
+                </Col>
+                <Col xs={24} lg={12}>
+                  <Icon className="ne-icon-phone" type="IoMdBluetooth" theme="filled" /> 
+                  <Icon className="ne-icon-phone" type="phone" theme="filled" /> 
+                  <span>comment</span>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </Container>
+      </div> */}
       {/*<Container className="mgt-sm ne-filter">
         <FilterBox
           className="bdt-primary"
