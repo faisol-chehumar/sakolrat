@@ -13,7 +13,6 @@ import {
 import Theme from '../layouts/Theme'
 import Container from '../layouts/Container'
 import components from '../components'
-// import { getUniqueProducts } from '../utils/productHelper'
 
 const { Title } = Typography
 
@@ -34,14 +33,41 @@ const Product = ({ productItems, getAllProductItems, location }) => {
 
   useEffect(() => {
     const { search } = location
-    const query = search ? queryString.parse(search).q : {}
+    // const queryParam = search && Object.keys(queryString.parse(search))
 
-    setCurrentQuery(query)
-    getAllProductItems({ query })
+    const query = search ? queryString.parse(search) : {}
+
+    setCurrentQuery(query.q)
+    getAllProductItems({ query: query.q })
+
+    // if (queryParam.includes('q')) {
+    //   const query = search ? queryString.parse(search) : {}
+
+    //   setCurrentQuery(query)
+    //   getAllProductItems({ query })
+    // }
+
+    // if (queryParam.includes('category')) {
+    //   const category = search ? queryString.parse(search) : {}
+
+    //   getAllProductItems({ category })
+    // }
 
     return () => {
       setCurrentQuery(query)
       getAllProductItems({ query })
+      // if (queryParam.includes('q')) {
+      //   const query = search ? queryString.parse(search) : {}
+
+      //   setCurrentQuery(query)
+      //   getAllProductItems({ query })
+      // }
+
+      // if (queryParam.includes('category')) {
+      //   const category = search ? queryString.parse(search) : {}
+
+      //   getAllProductItems({ category })
+      // }
     }
   }, [])
 

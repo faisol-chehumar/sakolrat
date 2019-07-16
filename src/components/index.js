@@ -36,6 +36,7 @@ import MenuLink from './MenuLink'
 import MenuVerticle from './MenuVerticle'
 import Navbar from './Navbar'
 import NeedHelpBox from './NeedHelpBox'
+import NewsCard from './NewsCard'
 import OrderSumaryBox from './OrderSumaryBox'
 import OrderStatusForm from './OrderStatusForm'
 import PrivateRoute from './PrivateRoute'
@@ -58,6 +59,7 @@ import SocialGroup from './SocialGroup'
 import SubscribeBox from './SubscribeBox'
 import UserDropdownMenu from './UserDropdownMenu'
 import WarningAlert from './WarningAlert'
+import VideoSlider from './VideoSlider'
 
 export default {
   AccountDashboard,
@@ -98,6 +100,7 @@ export default {
   MenuVerticle,
   Navbar,
   NeedHelpBox,
+  NewsCard,
   OrderSumaryBox,
   OrderStatusForm,
   PrivateRoute,
@@ -119,5 +122,6 @@ export default {
   SocialGroup,
   SubscribeBox,
   UserDropdownMenu,
-  WarningAlert
+  WarningAlert,
+  VideoSlider
 }

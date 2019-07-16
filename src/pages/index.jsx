@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery, Link } from 'gatsby'
+import { Typography, Icon } from 'antd'
+import styled from 'styled-components'
 
 import stores from '../stores'
 import components from '../components'
@@ -9,12 +11,17 @@ import { getUniqueProducts } from '../utils/productHelper'
 import Theme from '../layouts/Theme'
 import Container from '../layouts/Container'
 
+const { Title } = Typography
+
 const {
   brands,
   categoriesMenu,
   guides,
   heroBanners,
-  posts
+  news,
+  posts,
+  productList,
+  videos
 } = stores
 
 const {
@@ -24,8 +31,22 @@ const {
   CategoryMenu,
   BlogPost,
   FilterBox,
-  ProductSlider
+  ProductSlider,
+  VideoSlider,
+  NewsCard
+  // InternalLink
 } = components
+
+const TitleContainer = styled.div`
+  text-align: center;
+  margin-bottom: 1rem;
+`
+
+const TitleCustom = styled(Title)`
+  text-align: center;
+  margin: 1rem 0 !important;
+  font-weight: 800 !important;
+`
 
 const Home = ({ location }) => {
   const data = useStaticQuery(graphql`
@@ -70,7 +91,13 @@ const Home = ({ location }) => {
       </Container>
       {uniqueProducts.length > 0 && (
         <Container>
-          <ProductSlider data={uniqueProducts} />
+          <TitleContainer>
+            <Title level={2}>สินค้าของเรา</Title>
+            <Link to="/products">สินค้าทั้งหมด</Link>
+          </TitleContainer>
+          <ProductSlider data={uniqueProducts}/>
+          <div style={{ height: '2rem' }} />
+          <ProductSlider data={productList}/>
         </Container>
       )}
       <Container className="mgt-sm">
@@ -87,6 +114,18 @@ const Home = ({ location }) => {
       </Container>
       <Container>
         <BlogPost data={posts} />
+      </Container>
+      <VideoSlider data={videos} />
+      <Container>
+        <TitleContainer>
+          <Title level={2}>READ</Title>
+        </TitleContainer>
+        <NewsCard data={news} />
+        <Link to="/brands">
+          <TitleCustom level={4}>
+            VIEW ALL ARTICLES <Icon type="arrow-right" />
+          </TitleCustom>
+        </Link>
       </Container>
     </Theme>
   )

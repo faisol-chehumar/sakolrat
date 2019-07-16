@@ -24,6 +24,7 @@ export const products = {
 
   effects: (dispatch) => ({
     async getAllProductItems ({ query }) {
+      console.log(query)
       const search = query.length > 0 ? query : '*'
 
       try {

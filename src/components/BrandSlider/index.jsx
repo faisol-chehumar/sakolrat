@@ -1,6 +1,7 @@
 import React from 'react'
 import { Typography, Icon } from 'antd'
 import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
 // import { Row, Col } from 'antd'
 import styled from 'styled-components'
 import Slider from 'react-slick'
@@ -55,11 +56,11 @@ const BrandSlider = ({ data, slideShow = [] }) => {
           ))
         }
       </SliderContainer>
-      <a>
+      <Link to="/brands">
         <TitleContainer level={4}>
           SHOP ALL BRANDS <Icon type="arrow-right" />
         </TitleContainer>
-      </a>
+      </Link>
     </div>
   )
 }

@@ -8,10 +8,13 @@ import heroBanners from './heroBanners'
 import infoContent from './infoContent'
 import menuLink from './menuLink'
 import needHelpBox from './needHelpBox'
+import news from './news'
 import posts from './blogPost'
+import productList from './productList'
 import productSlide from './productsSlide'
 import socialGroup from './socialGroup'
 import subscribeBox from './subscribeBox'
+import videos from './videos'
 
 export default {
   announce,
@@ -23,9 +26,12 @@ export default {
   heroBanners,
   infoContent,
   menuLink,
+  news,
   needHelpBox,
   posts,
+  productList,
   productSlide,
   socialGroup,
-  subscribeBox
+  subscribeBox,
+  videos
 }

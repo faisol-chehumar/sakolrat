@@ -180,7 +180,7 @@ const MegaMenu = ({ getCategories, categories, getSubCategories }) => {
                     className={currentMenuIndex === index ? 'is-active' : null}
                     onMouseEnter={() => setCurrentIndex(index)}
                   >
-                    <Link to={menu.slug}>
+                    <Link to={`/products?category=${menu.slug}`}>
                       {menu.name.toUpperCase()}
                     </Link>
                   </li>
