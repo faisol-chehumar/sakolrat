@@ -10,6 +10,7 @@ import Theme from '../layouts/Theme'
 import Container from '../layouts/Container'
 import components from '../components'
 import './productpage.css'
+import userHelp from '../../static/user-help.png'
 
 const { Paragraph } = Typography
 const { Rating, BreadcrumbShop, HeaderTitle } = components
@@ -145,7 +146,7 @@ const ProductPageTemplate = (props) => {
               <Row className="ne-row">
                 <Col className="ne-col" xs={24} lg={6}>
                   <div>
-                    <img src={mainImageHref} width="100px" />
+                    <img src={userHelp} width="100px" />
                   </div>
                 </Col>
                 <Col className="ne-col" xs={24} lg={12}>

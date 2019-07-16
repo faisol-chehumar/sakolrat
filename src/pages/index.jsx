@@ -9,6 +9,9 @@ import { getUniqueProducts } from '../utils/productHelper'
 import Theme from '../layouts/Theme'
 import Container from '../layouts/Container'
 import '../assets/css/custom.css'
+import sliderImage from '../../static/slider.png'
+import readImage from '../../static/read.png'
+import { Slider } from 'antd';
 
 const {
   brands,
@@ -74,7 +77,13 @@ const Home = ({ location }) => {
           <ProductSlider data={uniqueProducts} />
         </Container>
       )}
-      <Container className="mgt-sm ne-filter">
+      <div className="slider-image">
+        <img src={sliderImage} width="100%"/>
+      </div>
+      <div className="ne-read">
+        <img src={readImage} width="100%" />
+      </div>
+      {/*<Container className="mgt-sm ne-filter">
         <FilterBox
           className="bdt-primary"
           header="SHOP BY BIKE"
@@ -83,12 +92,12 @@ const Home = ({ location }) => {
       <Container className="ne-blog-post">
         <BlogPost data={guides} type={'hero-text'}/>
       </Container>
-      <Container className="ne-brand-slider">
+       <Container className="ne-brand-slider">
         <BrandSlider data={brands} />
       </Container>
       <Container className="ne-blog-post">
         <BlogPost data={posts} />
-      </Container>
+      </Container> */}
     </Theme>
   )
 }
