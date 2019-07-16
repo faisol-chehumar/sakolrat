@@ -103,9 +103,7 @@ const Home = ({ location }) => {
       <Container>
         <BlogPost data={posts} />
       </Container>
-      <Container>
-        <VideoSlider data={videos} />
-      </Container>
+      <VideoSlider data={videos} />
     </Theme>
   )
 }

@@ -10,11 +10,16 @@ const { Title } = Typography
 
 const VideoSilderContainer = styled.div`
   background-color: #222;
-  padding: 8rem 15rem;
   color: #fff;
-  margin: 0 -6rem;
+  max-width: 100%;
 
   .slick-slider {
+    margin: 0 auto !important;
+    width: 100% !important;
+  }
+
+  @media (min-width: 768px) {
+    padding: 8rem 0 !important;
     margin: 0 auto !important;
   }
 `
@@ -22,7 +27,7 @@ const VideoSilderContainer = styled.div`
 const SliderContainer = styled(Slider)`
   text-align: center;
   margin-bottom: 1rem;
-  max-width: 640px;
+  max-width: 100%;
 
   .slick-dots {
     bottom: -35px !important;
@@ -30,6 +35,10 @@ const SliderContainer = styled(Slider)`
 
   .slick-prev, .slick-next {
     bottom: 50px !important;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 640px;
   }
 `
 
@@ -51,6 +60,10 @@ const VideoText = styled.p`
   font-size: .8rem !important;
   font-weight: 400 !important;
   color: #d4d4d4;
+`
+
+const CaptionContainer = styled.div`
+  padding: 1rem !important;
 `
 
 const VideoSlider = ({ data, slideShow = [] }) => {
@@ -84,7 +97,7 @@ const VideoSlider = ({ data, slideShow = [] }) => {
             <>
               <iframe
                 key={index}
-                width="640"
+                width="100%"
                 height="360"
                 src={`https://www.youtube.com/embed/${video.link}`}
                 frameBorder="0"
@@ -92,10 +105,10 @@ const VideoSlider = ({ data, slideShow = [] }) => {
                 allowFullscreen
               >
               </iframe>
-              <div>
+              <CaptionContainer>
                 <VideoTitle level={4}>{video.title}</VideoTitle>
                 <VideoText>{video.text}</VideoText>
-              </div>
+              </CaptionContainer>
             </>
           ))
         }
