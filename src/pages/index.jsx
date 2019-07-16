@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql, useStaticQuery, Link } from 'gatsby'
-import { Typography } from 'antd'
+import { Typography, Icon } from 'antd'
 import styled from 'styled-components'
 
 import stores from '../stores'
@@ -18,6 +18,7 @@ const {
   categoriesMenu,
   guides,
   heroBanners,
+  news,
   posts,
   productList,
   videos
@@ -31,12 +32,20 @@ const {
   BlogPost,
   FilterBox,
   ProductSlider,
-  VideoSlider
+  VideoSlider,
+  NewsCard
+  // InternalLink
 } = components
 
 const TitleContainer = styled.div`
   text-align: center;
   margin-bottom: 1rem;
+`
+
+const TitleCustom = styled(Title)`
+  text-align: center;
+  margin: 1rem 0 !important;
+  font-weight: 800 !important;
 `
 
 const Home = ({ location }) => {
@@ -107,6 +116,17 @@ const Home = ({ location }) => {
         <BlogPost data={posts} />
       </Container>
       <VideoSlider data={videos} />
+      <Container>
+        <TitleContainer>
+          <Title level={2}>READ</Title>
+        </TitleContainer>
+        <NewsCard data={news} />
+        <Link to="/brands">
+          <TitleCustom level={4}>
+            VIEW ALL ARTICLES <Icon type="arrow-right" />
+          </TitleCustom>
+        </Link>
+      </Container>
     </Theme>
   )
 }

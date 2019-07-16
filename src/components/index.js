@@ -36,6 +36,7 @@ import MenuLink from './MenuLink'
 import MenuVerticle from './MenuVerticle'
 import Navbar from './Navbar'
 import NeedHelpBox from './NeedHelpBox'
+import NewsCard from './NewsCard'
 import OrderSumaryBox from './OrderSumaryBox'
 import OrderStatusForm from './OrderStatusForm'
 import PrivateRoute from './PrivateRoute'
@@ -99,6 +100,7 @@ export default {
   MenuVerticle,
   Navbar,
   NeedHelpBox,
+  NewsCard,
   OrderSumaryBox,
   OrderStatusForm,
   PrivateRoute,

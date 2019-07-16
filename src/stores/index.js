@@ -8,6 +8,7 @@ import heroBanners from './heroBanners'
 import infoContent from './infoContent'
 import menuLink from './menuLink'
 import needHelpBox from './needHelpBox'
+import news from './news'
 import posts from './blogPost'
 import productList from './productList'
 import productSlide from './productsSlide'
@@ -25,6 +26,7 @@ export default {
   heroBanners,
   infoContent,
   menuLink,
+  news,
   needHelpBox,
   posts,
   productList,
