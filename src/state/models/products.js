@@ -26,7 +26,7 @@ export const products = {
     async getAllProductItems ({ query }) {
       console.log(query)
       const search = query.length > 0 ? query : '*'
-
+      console.log(search)
       try {
         const { data, included } = await Moltin.Products
           .Filter(query && { like: { name: `*${search}*` } })

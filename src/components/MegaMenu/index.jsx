@@ -151,14 +151,6 @@ const MegaMenu = ({ getCategories, categories, getSubCategories }) => {
 
     return () => {
       getCategories()
-
-      const setSubCategoriesImage = async () => {
-        const result = await getSubCategories()
-        const resultWithImage = _.mapValues(_.keyBy(result.data, 'sub-categories-id'), 'sub-categories-image')
-
-        setSubCategoriesData(resultWithImage)
-      }
-
       setSubCategoriesImage()
     }
   }, [])
