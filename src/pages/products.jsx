@@ -37,8 +37,8 @@ const Product = ({ productItems, getAllProductItems, location }) => {
 
     const query = search ? queryString.parse(search) : {}
 
-    setCurrentQuery(query)
-    getAllProductItems({ query })
+    setCurrentQuery(query.q)
+    getAllProductItems({ query: query.q })
 
     // if (queryParam.includes('q')) {
     //   const query = search ? queryString.parse(search) : {}
