@@ -208,7 +208,7 @@ const MegaMenu = ({ getCategories, categories, getSubCategories }) => {
                                   <Row>
                                     <Col xs={24}>
                                       <img
-                                        src={subCategoriesData[menu.id]}
+                                        src={subCategoriesData[menu.id] || 'https://via.placeholder.com/150'}
                                         alt={`${menu.name}`}
                                         width="100%"
                                         style={{ marginBottom: '1rem' }}

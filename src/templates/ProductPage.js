@@ -29,6 +29,13 @@ const Price = styled.span`
   font-size: 1.8rem;
 `
 
+const ProductBadge = styled.div`
+  padding: .2rem 2rem;
+  display: inline-block;
+  background-color: #00adff;
+  color: #fff;
+`
+
 const ProductPageTemplate = (props) => {
   const data = props.data
   const product = get(data, 'allMoltinProduct.edges[0].node')
@@ -107,9 +114,10 @@ const ProductPageTemplate = (props) => {
             </ThumbImg>
           </Col>
           <Col xs={24} lg={12}>
+            <ProductBadge>STAFF PICK</ProductBadge>
             <HeaderTitle leve={2} text={name} align="left" />
             <MetaData>
-              <div>
+              <div style={{ marginBottom: '1rem' }}>
                 Item: XXX | SKU: {sku}
               </div>
               <div>
