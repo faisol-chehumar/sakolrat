@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
-import { Row, Col, Select, Typography, Button, Tabs, Table, Divider } from 'antd'
+import { Row, Col, Select, Typography, Button, Tabs, Table, Divider, Icon } from 'antd'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 
 import Theme from '../layouts/Theme'
 import Container from '../layouts/Container'
 import components from '../components'
+import './productpage.css'
 
 const { Paragraph } = Typography
 const { Rating, BreadcrumbShop, HeaderTitle } = components
@@ -102,11 +103,15 @@ const ProductPageTemplate = (props) => {
         <Row>
           <Col xs={24} lg={12}>
             <BreadcrumbShop data={curBreadcum} />
-            <ThumbImg>
+            <ThumbImg className="ne-image-product">
               <img src={mainImageHref} alt={name} width="100%" />
             </ThumbImg>
+            <div className="ne-video">
+              <iframe height="350px" width="100%" src="https://www.youtube.com/embed/7g1R_LD0yyY?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
           </Col>
-          <Col xs={24} lg={12}>
+          <Col xs={24} lg={12} className="ne-product-title">
+            <div className="ne-staff-pick">STAFF PICK</div>
             <HeaderTitle leve={2} text={name} align="left" />
             <MetaData>
               <div>
@@ -123,21 +128,43 @@ const ProductPageTemplate = (props) => {
               {description}
             </Paragraph>
             <Price>฿ {amount}</Price>
-            <div>
+            <div className="ne-select-product">
               <p><b>In Stock</b>Ships within 24 hours</p>
               <div>
-                <Select defaultValue="1" style={{ width: 120 }} onChange={handleSelect}>
+                <Select className="ne-select" defaultValue="1" style={{ width: 120 }} onChange={handleSelect}>
                   {Array(10).fill('').map((_, index) => (
                     <Option key={index} value={index + 1}>{index + 1}</Option>
                   ))}
                 </Select>
-                <Button onClick={addToCartHandle}>Add To Cart</Button>
-                <a href="/"><span>Add To Wish List</span></a>
+                <Button className="ne-button" onClick={addToCartHandle}>Add To Cart</Button>
+                <Button className="ne-button" onClick={addToCartHandle}>Pay Now</Button>
               </div>
+              <a className="ne-view-all" href="/"><span>Add To Wish List</span></a>
+            </div>
+            <div className="ne-help">
+              <Row className="ne-row">
+                <Col className="ne-col" xs={24} lg={6}>
+                  <div>
+                    <img src={mainImageHref} width="100px" />
+                  </div>
+                </Col>
+                <Col className="ne-col" xs={24} lg={12}>
+                  <div>
+                    <h2><b>NEE HELP ?</b></h2>
+                    <h3>Speak to one of our Gear Geeks:</h3>
+                    <div className="ne-contact">
+                      <Row>
+                        <Col className="ne-phone" xs={24} lg={12}><Icon className="ne-icon-phone" type="phone" theme="filled" /><span>+1 (215) 334-5500</span></Col>
+                        <Col className="ne-email" xs={24} lg={12}><Icon className="ne-icon-mail" type="mail" theme="filled" /><span>Email Us</span></Col>
+                      </Row>
+                    </div>
+                  </div>
+                </Col>
+              </Row>
             </div>
           </Col>
         </Row>
-        <Row>
+        <Row className="ne-descirption">
           <Col xs={24}>
             <Tabs defaultActiveKey="1">
               <TabPane tab="Product Detail" key="1">
