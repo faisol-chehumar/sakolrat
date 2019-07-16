@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
+import { graphql, Link, navigate } from 'gatsby'
 import get from 'lodash/get'
 import { Row, Col, Select, Typography, Button, Tabs, Table, Divider } from 'antd'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
+import queryString from 'query-string'
 
 import Theme from '../layouts/Theme'
 import Container from '../layouts/Container'
@@ -29,18 +30,26 @@ const Price = styled.span`
   font-size: 1.8rem;
 `
 
+const ProductBadge = styled.div`
+  padding: .2rem 2rem;
+  display: inline-block;
+  background-color: #00adff;
+  color: #fff;
+`
+
 const ProductPageTemplate = (props) => {
   const data = props.data
   const product = get(data, 'allMoltinProduct.edges[0].node')
   const {
     name,
     sku,
+    video,
     mainImageHref,
-    // mainImage,
     description,
-    // mainImage,
-    price: [ { amount } ]
+    price: [ { amount, currency } ]
   } = product
+
+  const videoEmbeded = video ? queryString.parse(video.split('?')[1]) : null
 
   const columns = [
     {
@@ -100,38 +109,79 @@ const ProductPageTemplate = (props) => {
     <Theme>
       <Container>
         <Row>
-          <Col xs={24} lg={12}>
+          <Col xs={24} lg={10}>
             <BreadcrumbShop data={curBreadcum} />
             <ThumbImg>
               <img src={mainImageHref} alt={name} width="100%" />
             </ThumbImg>
+            {
+              video && <div style={{ padding: '2rem' }}>
+                <iframe
+                  width="100%"
+                  height="315"
+                  src={`https://www.youtube.com/embed/${videoEmbeded.v}`}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                >
+                </iframe>
+              </div>
+            }
           </Col>
-          <Col xs={24} lg={12}>
+          <Col xs={24} lg={14}>
+            <ProductBadge>STAFF PICK</ProductBadge>
             <HeaderTitle leve={2} text={name} align="left" />
             <MetaData>
-              <div>
+              <div style={{ marginBottom: '1rem' }}>
                 Item: XXX | SKU: {sku}
               </div>
               <div>
-                <Rating className="inline" score={4} />
+                <Rating
+                  className="inline"
+                  score={4}
+                  style={{ marginRight: '1rem' }}
+                />
                 <div className="inline">
-                  | 216 Q&As | Write a Review
+                  | 216 Q&As | <Link to="/write-review">Write a Review</Link>
                 </div>
               </div>
             </MetaData>
             <Paragraph ellipsis={{ rows: 2, expandable: true }}>
-              {description}
+              {description} <Link to="/">Read more</Link>
             </Paragraph>
-            <Price>฿ {amount}</Price>
+            <Price>{`${currency} ${amount}`}</Price>
             <div>
-              <p><b>In Stock</b>Ships within 24 hours</p>
+              <p><b>In Stock</b> Ships within 24 hours</p>
               <div>
-                <Select defaultValue="1" style={{ width: 120 }} onChange={handleSelect}>
+                <Select
+                  defaultValue="1"
+                  style={{ width: 120, marginRight: '1rem' }}
+                  onChange={handleSelect}
+                >
                   {Array(10).fill('').map((_, index) => (
                     <Option key={index} value={index + 1}>{index + 1}</Option>
                   ))}
                 </Select>
-                <Button onClick={addToCartHandle}>Add To Cart</Button>
+                <Button
+                  onClick={addToCartHandle}
+                  style={{
+                    marginRight: '1rem',
+                    backgroundColor: '#152D5A',
+                    color: '#fff'
+                  }}
+                >
+                  หยิบลงตะหร้า
+                </Button>
+                <Button
+                  onClick={() => navigate('/cart')}
+                  style={{
+                    marginRight: '1rem',
+                    backgroundColor: '#152D5A',
+                    color: '#fff'
+                  }}
+                >
+                  ชำระเงิน
+                </Button>
                 <a href="/"><span>Add To Wish List</span></a>
               </div>
             </div>
@@ -139,7 +189,7 @@ const ProductPageTemplate = (props) => {
         </Row>
         <Row>
           <Col xs={24}>
-            <Tabs defaultActiveKey="1">
+            <Tabs defaultActiveKey="1" style={{ marginTop: '2rem' }}>
               <TabPane tab="Product Detail" key="1">
                 <div>
                   <h4>Vance and Hines Fuelpack FP 3 For Harley CAN Bus</h4>
@@ -263,6 +313,7 @@ export const pageQuery = graphql`
           id
           name
           description
+          video
           price {
             amount
             currency

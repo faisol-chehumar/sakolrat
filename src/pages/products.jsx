@@ -34,11 +34,10 @@ const Product = ({ productItems, getAllProductItems, location }) => {
   useEffect(() => {
     const { search } = location
     // const queryParam = search && Object.keys(queryString.parse(search))
-
-    const query = search ? queryString.parse(search) : {}
-
-    setCurrentQuery(query.q)
-    getAllProductItems({ query: query.q })
+    const query = search ? queryString.parse(search).q : {}
+    // console.log(query)
+    setCurrentQuery(query)
+    getAllProductItems({ query })
 
     // if (queryParam.includes('q')) {
     //   const query = search ? queryString.parse(search) : {}
