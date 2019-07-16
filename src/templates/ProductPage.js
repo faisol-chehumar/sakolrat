@@ -36,7 +36,7 @@ const ProductPageTemplate = (props) => {
     name,
     sku,
     mainImageHref,
-    mainImage,
+    // mainImage,
     description,
     // mainImage,
     price: [ { amount } ]

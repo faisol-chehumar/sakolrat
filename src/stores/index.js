@@ -12,6 +12,7 @@ import posts from './blogPost'
 import productSlide from './productsSlide'
 import socialGroup from './socialGroup'
 import subscribeBox from './subscribeBox'
+import videos from './videos'
 
 export default {
   announce,
@@ -27,5 +28,6 @@ export default {
   posts,
   productSlide,
   socialGroup,
-  subscribeBox
+  subscribeBox,
+  videos
 }

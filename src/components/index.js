@@ -58,6 +58,7 @@ import SocialGroup from './SocialGroup'
 import SubscribeBox from './SubscribeBox'
 import UserDropdownMenu from './UserDropdownMenu'
 import WarningAlert from './WarningAlert'
+import VideoSlider from './VideoSlider'
 
 export default {
   AccountDashboard,
@@ -119,5 +120,6 @@ export default {
   SocialGroup,
   SubscribeBox,
   UserDropdownMenu,
-  WarningAlert
+  WarningAlert,
+  VideoSlider
 }

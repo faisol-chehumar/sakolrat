@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery, Link } from 'gatsby'
+import { Typography } from 'antd'
+import styled from 'styled-components'
 
 import stores from '../stores'
 import components from '../components'
@@ -9,12 +11,15 @@ import { getUniqueProducts } from '../utils/productHelper'
 import Theme from '../layouts/Theme'
 import Container from '../layouts/Container'
 
+const { Title } = Typography
+
 const {
   brands,
   categoriesMenu,
   guides,
   heroBanners,
-  posts
+  posts,
+  videos
 } = stores
 
 const {
@@ -24,8 +29,14 @@ const {
   CategoryMenu,
   BlogPost,
   FilterBox,
-  ProductSlider
+  ProductSlider,
+  VideoSlider
 } = components
+
+const TitleContainer = styled.div`
+  text-align: center;
+  margin-bottom: 1rem;
+`
 
 const Home = ({ location }) => {
   const data = useStaticQuery(graphql`
@@ -70,7 +81,11 @@ const Home = ({ location }) => {
       </Container>
       {uniqueProducts.length > 0 && (
         <Container>
-          <ProductSlider data={uniqueProducts} />
+          <TitleContainer>
+            <Title level={2}>สินค้าของเรา</Title>
+            <Link to="/products">สินค้าทั้งหมด</Link>
+          </TitleContainer>
+          <ProductSlider data={uniqueProducts}/>
         </Container>
       )}
       <Container className="mgt-sm">
@@ -87,6 +102,9 @@ const Home = ({ location }) => {
       </Container>
       <Container>
         <BlogPost data={posts} />
+      </Container>
+      <Container>
+        <VideoSlider data={videos} />
       </Container>
     </Theme>
   )
