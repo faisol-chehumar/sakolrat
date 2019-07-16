@@ -33,34 +33,41 @@ const Product = ({ productItems, getAllProductItems, location }) => {
 
   useEffect(() => {
     const { search } = location
-    const queryParam = search && Object.keys(queryString.parse(search))
+    // const queryParam = search && Object.keys(queryString.parse(search))
 
-    if (queryParam.includes('q')) {
-      const query = search ? queryString.parse(search) : {}
+    const query = search ? queryString.parse(search) : {}
 
-      setCurrentQuery(query)
-      getAllProductItems({ query })
-    }
+    setCurrentQuery(query)
+    getAllProductItems({ query })
 
-    if (queryParam.includes('category')) {
-      const category = search ? queryString.parse(search) : {}
+    // if (queryParam.includes('q')) {
+    //   const query = search ? queryString.parse(search) : {}
 
-      getAllProductItems({ category })
-    }
+    //   setCurrentQuery(query)
+    //   getAllProductItems({ query })
+    // }
+
+    // if (queryParam.includes('category')) {
+    //   const category = search ? queryString.parse(search) : {}
+
+    //   getAllProductItems({ category })
+    // }
 
     return () => {
-      if (queryParam.includes('q')) {
-        const query = search ? queryString.parse(search) : {}
+      setCurrentQuery(query)
+      getAllProductItems({ query })
+      // if (queryParam.includes('q')) {
+      //   const query = search ? queryString.parse(search) : {}
 
-        setCurrentQuery(query)
-        getAllProductItems({ query })
-      }
+      //   setCurrentQuery(query)
+      //   getAllProductItems({ query })
+      // }
 
-      if (queryParam.includes('category')) {
-        const category = search ? queryString.parse(search) : {}
+      // if (queryParam.includes('category')) {
+      //   const category = search ? queryString.parse(search) : {}
 
-        getAllProductItems({ category })
-      }
+      //   getAllProductItems({ category })
+      // }
     }
   }, [])
 

@@ -21,6 +21,10 @@ const VideoSilderContainer = styled.div`
   @media (min-width: 768px) {
     padding: 8rem 0 !important;
     margin: 0 auto !important;
+
+    .slick-prev, .slick-next {
+      top: 450px !important;
+    }
   }
 `
 
@@ -31,10 +35,6 @@ const SliderContainer = styled(Slider)`
 
   .slick-dots {
     bottom: -35px !important;
-  }
-
-  .slick-prev, .slick-next {
-    bottom: 50px !important;
   }
 
   @media (min-width: 768px) {
@@ -94,7 +94,7 @@ const VideoSlider = ({ data, slideShow = [] }) => {
       <SliderContainer {...settings}>
         {
           data.map((video, index) => (
-            <>
+            <div key={index}>
               <iframe
                 key={index}
                 width="100%"
@@ -102,14 +102,14 @@ const VideoSlider = ({ data, slideShow = [] }) => {
                 src={`https://www.youtube.com/embed/${video.link}`}
                 frameBorder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowFullscreen
+                allowFullScreen
               >
               </iframe>
               <CaptionContainer>
                 <VideoTitle level={4}>{video.title}</VideoTitle>
                 <VideoText>{video.text}</VideoText>
               </CaptionContainer>
-            </>
+            </div>
           ))
         }
       </SliderContainer>

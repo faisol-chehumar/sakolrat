@@ -16,7 +16,7 @@ const SliderContainer = styled(Slider)`
   }
 `
 
-const ProductSlider = ({ data, slideShow = [] }) => {
+const ProductSlider = ({ data, slideShow = [], ...rest }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -39,7 +39,7 @@ const ProductSlider = ({ data, slideShow = [] }) => {
 
   return (
     <div>
-      <SliderContainer {...settings}>
+      <SliderContainer {...settings} {...rest}>
         {
           data.map((product, index) => (
             <ProductCard key={index} data={product} />

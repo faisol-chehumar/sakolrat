@@ -19,6 +19,7 @@ const {
   guides,
   heroBanners,
   posts,
+  productList,
   videos
 } = stores
 
@@ -86,6 +87,8 @@ const Home = ({ location }) => {
             <Link to="/products">สินค้าทั้งหมด</Link>
           </TitleContainer>
           <ProductSlider data={uniqueProducts}/>
+          <div style={{ height: '2rem' }} />
+          <ProductSlider data={productList}/>
         </Container>
       )}
       <Container className="mgt-sm">

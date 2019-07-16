@@ -9,6 +9,7 @@ import infoContent from './infoContent'
 import menuLink from './menuLink'
 import needHelpBox from './needHelpBox'
 import posts from './blogPost'
+import productList from './productList'
 import productSlide from './productsSlide'
 import socialGroup from './socialGroup'
 import subscribeBox from './subscribeBox'
@@ -26,6 +27,7 @@ export default {
   menuLink,
   needHelpBox,
   posts,
+  productList,
   productSlide,
   socialGroup,
   subscribeBox,
