@@ -18,9 +18,11 @@ const FormContainer = styled(Form)`
   &.register-form {
     max-width: 300px;
   }
+
  .register-form-forgot {
     float: right;
   }
+
  .register-form-button {
     width: 100%;
     background-color: #152D5A !important;
@@ -40,6 +42,7 @@ const Register = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
     props.form.validateFields(async (err, values) => {
       if (!err) {
         const customer = {

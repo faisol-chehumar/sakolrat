@@ -46,7 +46,10 @@ const ProductPageTemplate = (props) => {
     video,
     mainImageHref,
     description,
-    price: [ { amount, currency } ]
+    price: [{
+      amount,
+      currency
+    }]
   } = product
 
   const videoEmbeded = video ? queryString.parse(video.split('?')[1]) : null
@@ -147,7 +150,7 @@ const ProductPageTemplate = (props) => {
               </div>
             </MetaData>
             <Paragraph ellipsis={{ rows: 2, expandable: true }}>
-              {description} <Link to="/">Read more</Link>
+              {description}
             </Paragraph>
             <Price>{`${currency} ${amount}`}</Price>
             <div>
